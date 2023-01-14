@@ -97,6 +97,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/codeception/module-filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/codeception/lib-asserts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/log" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
+      <excludeFolder url="file://$MODULE_DIR$/vagrant" />
+      <excludeFolder url="file://$MODULE_DIR$/environments" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

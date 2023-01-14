@@ -8,9 +8,11 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'language' => 'uk-UA',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'defaultRoute' => 'home/',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -36,14 +38,21 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            // uncomment if you want to cache RBAC items hierarchy
+            // 'cache' => 'cache',
+        ],
+//        'assetManager' => [
+//            'basePath' => '@webroot/assets',
+//            'baseUrl' => '@web/assets',
+//        ],
     ],
     'params' => $params,
 ];
