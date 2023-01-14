@@ -2,6 +2,8 @@
 
 /** @var yii\web\View $this */
 
+use yii\helpers\Url;
+
 //$this->title = 'My Yii Application';
 ?>
 <!----- Баннер ----->
@@ -9,7 +11,7 @@
     <div class="light_background">
         <h1>МаKо</h1>
         <h2>Ви вмились<br> і краса лишилась</h2>
-        <a href="#" class="make_appointment">
+        <a href="<?=Url::to(['site/contact'])?>" class="make_appointment">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="48" rx="24" fill="" />
                 <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2" stroke-linecap="round"

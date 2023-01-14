@@ -424,3 +424,27 @@ $('#product_head .pcc .add_to_cart').click(function (e) { /* Клік по кн�
     $(this).remove();
   });
 });
+
+//================================
+// Замовлення дзвінка
+$( "form#order-a-call" ).submit(function( event ) {
+  var $form = $(this);
+  $.ajax({
+    type: "post",
+    url: $form.attr("action"),
+    data: $form.serialize(),
+    success: function (data) {
+      // console.log(data);
+      if(data.status === 'success'){
+        $("form#order-a-call").trigger('reset');
+        $('.alert-message').html(data.messages);
+      }else{
+        console.log(data);
+      }
+    },
+    error: function (data) {
+      console.log(data);
+    }
+  })
+  event.preventDefault();
+});

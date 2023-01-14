@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\OrderACall;
 use Yii;
 use yii\web\Controller;
 
@@ -13,17 +14,16 @@ class HomeController extends Controller
 {
 
     /**
-     * {@inheritdoc}
-     */
-
-
-    /**
      * Displays homepage.
      *
      * @return mixed
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $order_call = new OrderACall();
+        Yii::$app->params['order_a_call'] = $order_call;
+        return $this->render('index', [
+
+        ]);
     }
 }
