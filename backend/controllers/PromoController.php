@@ -172,7 +172,6 @@ class PromoController extends Controller
                                 Html::button('Зберегти',['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
             }else if($model->load($request->post())){
-                $post = $request->post('Promo');
                 $post_file = $_FILES['Promo']['size']['file'];
                 if($post_file <= 0 ){
                     $old = $this->findModel($id);
@@ -209,8 +208,19 @@ class PromoController extends Controller
             /*
             *   Process for non-ajax request
             */
-            if ($model->load($request->post()) && $model->save()) {
-                debug($_FILES['Promo']['size']['file']); die;
+            if ($model->load($request->post())) {
+                $post_file = $_FILES['Promo']['size']['file'];
+                if($post_file <= 0 ){
+                    $old = $this->findModel($id);
+                    $model->file = $old->file;
+                }else {
+                    $dir = Yii::getAlias('@frontendWeb/promo');
+                    $file = UploadedFile::getInstance($model, 'file');
+                    $imageName = date('d-m-yy', time()) . '-' . uniqid();
+                    $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                    $model->file = $imageName . '.' . $file->extension;
+                }
+                $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             } else {
                 return $this->render('update', [
@@ -230,7 +240,10 @@ class PromoController extends Controller
     public function actionDelete($id)
     {
         $request = Yii::$app->request;
-        $this->findModel($id)->delete();
+        $dir = Yii::getAlias('@frontendWeb/promo');
+        $model = $this->findModel($id);
+        unlink($dir . '/' . $model->file);
+        $model->delete();
 
         if($request->isAjax){
             /*
@@ -261,6 +274,8 @@ class PromoController extends Controller
         $pks = explode(',', $request->post( 'pks' )); // Array or selected records primary keys
         foreach ( $pks as $pk ) {
             $model = $this->findModel($pk);
+            $dir = Yii::getAlias('@frontendWeb/promo');
+            unlink($dir . '/' . $model->file);
             $model->delete();
         }
 
