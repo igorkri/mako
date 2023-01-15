@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "order_a_call".
@@ -12,6 +13,10 @@ use Yii;
  * @property string $phone Номер телефону
  * @property string $address Адреса салону
  * @property int $signUpCheckbox Згода на обробку даних
+ * @property int|null $created_at Дата створення
+ * @property int|null $updated_at Дата оновлення
+ * @property string|null $status Статус
+ * @property string|null $comment Коментар
  */
 class OrderACall extends \yii\db\ActiveRecord
 {
@@ -23,16 +28,29 @@ class OrderACall extends \yii\db\ActiveRecord
         return 'order_a_call';
     }
 
+    public function behaviors()
+    {
+        return [
+
+            'timestamp' => [
+                'class' => 'yii\behaviors\TimestampBehavior',
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-
             [['name', 'phone', 'address'], 'required'],
-            [['signUpCheckbox'], 'integer'],
-            [['name', 'phone', 'address'], 'string', 'max' => 255],
+            [['signUpCheckbox', 'created_at', 'updated_at'], 'safe'],
+            [['name', 'phone', 'address', 'status', 'comment'], 'string', 'max' => 255],
         ];
     }
 
@@ -47,6 +65,10 @@ class OrderACall extends \yii\db\ActiveRecord
             'phone' => 'Номер телефону',
             'address' => 'Адреса салону',
             'signUpCheckbox' => 'Згода на обробку даних',
+            'created_at' => 'Дата створення',
+            'updated_at' => 'Дата оновлення',
+            'status' => 'Статус',
+            'comment' => 'Коментар',
         ];
     }
 }

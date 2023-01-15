@@ -8,13 +8,19 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'language' => 'uk-UA',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module'
+        ]
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+            'baseUrl' => '/admin',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -37,7 +43,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
+//        'view' => [
+//            'theme' => [
+//                'pathMap' => [
+//                    '@app/views' => '@vendor/hail812/yii2-adminlte3/src/views'
+//                ],
+//            ],
+//        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

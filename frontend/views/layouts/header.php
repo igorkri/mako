@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <header id="header">
   <div class="logo">
     <a href="/">
@@ -11,7 +16,7 @@
     <p>Послуги та ціни</p>
   </div>
   <div class="links visible">
-    <a href="promo.php">Акції</a>
+    <a href="<?=Url::to(['promo/index'])?>">Акції</a>
     <a href="#" class="about">Про нас</a>
     <a href="reviews.php">Відгуки</a>
     <a href="contacts.php">Контакти</a>

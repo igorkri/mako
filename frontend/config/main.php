@@ -47,9 +47,10 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'enableStrictParsing' => false,
+//            'enableStrictParsing' => false,
             'rules' => [
-                '/' => 'home/'
+                '/' => 'home/',
+                'promo' => 'promo/index'
             ],
 
         ],
@@ -61,7 +62,6 @@ return [
         'assetManager' => [
             'basePath' => '@webroot/assets',
             'baseUrl' => '@web/assets',
-
         ],
     ],
     'params' => $params,
