@@ -3,11 +3,13 @@
 namespace common\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "promo".
  *
  * @property int $id
+ * @property int $published Опубліковано
  * @property string|null $file Зображення
  * @property string $begin_data Дата начала акції
  * @property string $end_data Дата закінчення акції
@@ -31,6 +33,7 @@ class Promo extends \yii\db\ActiveRecord
         return [
             [['begin_data', 'end_data', 'description'], 'required'],
             [['description'], 'string'],
+            [['published'], 'integer'],
             [['file', 'begin_data', 'end_data'], 'string', 'max' => 255],
         ];
     }
@@ -46,6 +49,8 @@ class Promo extends \yii\db\ActiveRecord
             'begin_data' => 'Дата начала акції',
             'end_data' => 'Дата закінчення акції',
             'description' => 'Опис акції',
+            'published' => 'Опубліковано',
         ];
     }
+
 }

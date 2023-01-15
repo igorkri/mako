@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d89f618d3efae8905762e58b7f5042d0",
+    "content-hash": "9f0386a6251f33bc371350325c5ac4a7",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -48,6 +48,76 @@
                 "source": "https://github.com/ColorlibHQ/AdminLTE/tree/v3.2.0"
             },
             "time": "2022-02-07T20:33:09+00:00"
+        },
+        {
+            "name": "bizley/quill",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bizley/yii2-quill.git",
+                "reference": "4e81fe1d746c114420e7f7b2b7c60d8c6e434301"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bizley/yii2-quill/zipball/4e81fe1d746c114420e7f7b2b7c60d8c6e434301",
+                "reference": "4e81fe1d746c114420e7f7b2b7c60d8c6e434301",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "yiisoft/yii2": "^2.0.0"
+            },
+            "require-dev": {
+                "npm-asset/highlight.js": "^11.0",
+                "npm-asset/katex": "^0.12",
+                "npm-asset/quill": "^1.3",
+                "npm-asset/quill-smart-break": "^0.2",
+                "phpunit/phpunit": ">=7.5",
+                "roave/security-advisories": "dev-latest"
+            },
+            "suggest": {
+                "npm-asset/highlight.js": "For local highlight.js assets",
+                "npm-asset/katex": "For local KaTeX assets",
+                "npm-asset/quill": "For local Quill assets",
+                "npm-asset/quill-smart-break": "For 'SHIFT + Enter' newline support"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bizley\\quill\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Paweł Bizley Brzozowski",
+                    "email": "pawel@positive.codes"
+                }
+            ],
+            "description": "Quill editor implementation for Yii 2.",
+            "keywords": [
+                "editor",
+                "highlight.js",
+                "katex",
+                "quill",
+                "widget",
+                "wysiwyg",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/bizley/yii2-quill/issues",
+                "source": "https://github.com/bizley/yii2-quill"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/bizley",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-07T08:28:03+00:00"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -603,6 +673,69 @@
                 "source": "https://github.com/johnitvn/yii2-ajaxcrud"
             },
             "time": "2020-12-14T05:07:14+00:00"
+        },
+        {
+            "name": "kartik-v/bootstrap-fileinput",
+            "version": "v5.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
+                "reference": "35c29cd9fd5bc47eae5238feaabee95b2d7efe3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/35c29cd9fd5bc47eae5238feaabee95b2d7efe3c",
+                "reference": "35c29cd9fd5bc47eae5238feaabee95b2d7efe3c",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\plugins\\fileinput\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An enhanced HTML 5 file input for Bootstrap 5.x, 4.x, and 3.x with features for file preview for many file types, multiple selection, ajax uploads, and more.",
+            "homepage": "https://github.com/kartik-v/bootstrap-fileinput",
+            "keywords": [
+                "ajax",
+                "bootstrap",
+                "delete",
+                "file",
+                "image",
+                "input",
+                "jquery",
+                "multiple",
+                "preview",
+                "progress",
+                "upload"
+            ],
+            "support": {
+                "issues": "https://github.com/kartik-v/bootstrap-fileinput/issues",
+                "source": "https://github.com/kartik-v/bootstrap-fileinput/tree/v5.5.2"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/bootstrap-fileinput",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2022-10-13T06:16:39+00:00"
         },
         {
             "name": "kartik-v/bootstrap-popover-x",
@@ -1196,6 +1329,131 @@
                 "source": "https://github.com/kartik-v/yii2-widget-alert/tree/v1.1.5"
             },
             "time": "2021-10-16T10:23:22+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-widget-datepicker",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
+                "reference": "04ee13be77790ee14d92c34f3181e521f6457639"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/04ee13be77790ee14d92c34f3181e521f6457639",
+                "reference": "04ee13be77790ee14d92c34f3181e521f6457639",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-krajee-base": ">=2.0.0"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\date\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Enhanced Yii2 wrapper for the bootstrap datepicker plugin (sub repo split from yii2-widgets).",
+            "homepage": "https://github.com/kartik-v/yii2-widget-datepicker",
+            "keywords": [
+                "date",
+                "extension",
+                "form",
+                "jquery",
+                "picker",
+                "plugin",
+                "select2",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/kartik-v/yii2-widget-datepicker/issues",
+                "source": "https://github.com/kartik-v/yii2-widget-datepicker/tree/master"
+            },
+            "time": "2022-05-23T02:43:34+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-widget-fileinput",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-widget-fileinput.git",
+                "reference": "b5500b6855526837154694c2afab8dbc3afc8abd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/b5500b6855526837154694c2afab8dbc3afc8abd",
+                "reference": "b5500b6855526837154694c2afab8dbc3afc8abd",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/bootstrap-fileinput": ">=5.5.0",
+                "kartik-v/yii2-krajee-base": ">=3.0.5"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\file\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An enhanced FileInput widget for Bootstrap 3.x, 4.x & 5.x with file preview, multiple selection, and more features (sub repo split from yii2-widgets)",
+            "homepage": "https://github.com/kartik-v/yii2-widget-fileinput",
+            "keywords": [
+                "extension",
+                "file",
+                "form",
+                "input",
+                "jquery",
+                "plugin",
+                "upload",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/kartik-v/yii2-widget-fileinput/issues",
+                "source": "https://github.com/kartik-v/yii2-widget-fileinput/tree/v1.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/yii2-widget-fileinput",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2022-06-28T04:31:04+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-growl",
@@ -2716,6 +2974,65 @@
                 }
             ],
             "time": "2022-11-25T10:21:52+00:00"
+        },
+        {
+            "name": "vova07/yii2-imperavi-widget",
+            "version": "2.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vova07/yii2-imperavi-widget.git",
+                "reference": "c4fe4a9f64a4c53d9686c80b8744e2c1366184e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vova07/yii2-imperavi-widget/zipball/c4fe4a9f64a4c53d9686c80b8744e2c1366184e5",
+                "reference": "c4fe4a9f64a4c53d9686c80b8744e2c1366184e5",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "~1",
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "vova07\\imperavi\\": "src",
+                    "vova07\\imperavi\\tests\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Crudu Vasile",
+                    "email": "bazillio07@yandex.ru",
+                    "homepage": "https://github.com/vova07",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The imperavi redactor widget for Yii 2 framework.",
+            "homepage": "https://github.com/vova07/yii2-imperavi-widget",
+            "keywords": [
+                "Redactor",
+                "extension",
+                "imperavi",
+                "widget",
+                "wysiwyg",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/vova07/yii2-imperavi-widget/issues?state=open",
+                "source": "https://github.com/vova07/yii2-imperavi-widget"
+            },
+            "time": "2019-03-26T11:39:06+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -6744,7 +7061,9 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kartik-v/yii2-widget-alert": 20,
-        "kartik-v/yii2-bootstrap5-dropdown": 20
+        "kartik-v/yii2-bootstrap5-dropdown": 20,
+        "kartik-v/yii2-widget-datepicker": 20,
+        "kartik-v/yii2-widget-fileinput": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

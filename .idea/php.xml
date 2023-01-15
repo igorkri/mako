@@ -109,6 +109,11 @@
       <path value="$PROJECT_DIR$/vendor/mpdf/mpdf" />
       <path value="$PROJECT_DIR$/vendor/hoaaah/yii2-ajaxcrud-bs4" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-bootstrap5-dropdown" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datepicker" />
+      <path value="$PROJECT_DIR$/vendor/bizley/quill" />
+      <path value="$PROJECT_DIR$/vendor/vova07/yii2-imperavi-widget" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-fileinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-fileinput" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
