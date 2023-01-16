@@ -2,7 +2,7 @@
   <div class="top_part">
     <div class="line">
       <div class="address">
-        <img src="img/marker.svg" alt="">
+        <img src="/img/marker.svg" alt="">
         <p>м. Київ, проспект Леся Курбаса, 5в</p>
       </div>
       <a href="tel:+380689664256" class="tel">
@@ -17,7 +17,7 @@
     </div>
     <div class="line">
       <div class="address">
-        <img src="img/marker.svg" alt="">
+        <img src="/img/marker.svg" alt="">
         <p>м. Київ, вулиця Михайла Максимовича, 3г</p>
       </div>
       <a href="tel:+380689664257" class="tel">
@@ -50,7 +50,7 @@
     </div>
   </div>
   <div class="bottom_part">
-    <img src="img/MaKo_grey.svg" alt="">
+    <img src="/img/MaKo_grey.svg" alt="">
     <div class="links">
       <a href="promo.php">Акції</a>
       <a href="team.php">Про нас</a>

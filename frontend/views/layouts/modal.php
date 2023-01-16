@@ -13,12 +13,12 @@
             </svg>
         </div>
         <a href="tel:+380689664256" class="tel">
-            <img src="img/vodafone-red.svg" alt="">
+            <img src="/img/vodafone-red.svg" alt="">
             <p>+38 068 966 42 56</p>
         </a>
         <p class="address">м. Київ, проспект Леся Курбаса, 5в</p>
         <a href="tel:+380689664257" class="tel">
-            <img src="img/vodafone-red.svg" alt="">
+            <img src="/img/vodafone-red.svg" alt="">
             <p>+38 068 966 42 57</p>
         </a>
         <p class="address">м. Київ, вулиця Михайла Максимовича, 3г</p>
@@ -39,7 +39,7 @@
             <div class="choose_salon">
                 <input type="text" name="address" autocomplete="off" placeholder="Оберіть салон">
                 <div class="mark">
-                    <img src="img/mark.svg" alt="">
+                    <img src="/img/mark.svg" alt="">
                 </div>
                 <div class="drop">
                     <span>м. Київ, проспект Леся Курбаса, 5в</span>
@@ -49,7 +49,7 @@
             <input type="checkbox" name="signUpCheckbox" id="sign_up_checkbox" >
             <label for="sign_up_checkbox">Я даю згоду на обробку моїх персональних даних</label>
             <div class="submit">
-                <img src="img/circle_red_arrow.svg" alt="">
+                <img src="/img/circle_red_arrow.svg" alt="">
                 <input type="submit" value="Відправити заявку">
             </div>
         </form>
@@ -70,7 +70,7 @@
             <div class="goods">
                 <div class="item">
                     <div class="img">
-                        <img src="img/good.webp" alt="">
+                        <img src="/img/good.webp" alt="">
                     </div>
                     <div class="description">
                         <p class="title">Довга назва товару на декілька слів в один-два рядки</p>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="item">
                     <div class="img">
-                        <img src="img/good.webp" alt="">
+                        <img src="/img/good.webp" alt="">
                     </div>
                     <div class="description">
                         <p class="title">Довга назва товару на декілька слів в один-два рядки</p>

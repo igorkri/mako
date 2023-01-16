@@ -6,7 +6,7 @@ use yii\helpers\Url;
 <header id="header">
   <div class="logo">
     <a href="/">
-      <img src="img/logo.svg" alt="">
+      <img src="/img/logo.svg" alt="">
     </a>
   </div>
   <div class="services">
@@ -44,10 +44,10 @@ use yii\helpers\Url;
   </div>
   <div class="social visible">
     <a href="#">
-      <img src="img/facebook.svg" alt="">
+      <img src="/img/facebook.svg" alt="">
     </a>
     <a href="#">
-      <img src="img/instagram.svg" alt="">
+      <img src="/img/instagram.svg" alt="">
     </a>
   </div>
   <div class="order visible">
@@ -73,45 +73,45 @@ use yii\helpers\Url;
     <div class="services_content">
       <div class="services_categories">
         <a href="#">
-          <img src="img/arrow_right_red.svg" alt="">
+          <img src="/img/arrow_right_red.svg" alt="">
           <p>Назва категорії послуг</p>
         </a>
         <a href="#">
-          <img src="img/arrow_right_red.svg" alt="">
+          <img src="/img/arrow_right_red.svg" alt="">
           <p>Назва категорії послуг</p>
         </a>
         <a href="#">
-          <img src="img/arrow_right_red.svg" alt="">
+          <img src="/img/arrow_right_red.svg" alt="">
           <p>Довга назва категорії послуг</p>
         </a>
         <a href="#">
-          <img src="img/arrow_right_red.svg" alt="">
+          <img src="/img/arrow_right_red.svg" alt="">
           <p>Довга назва категорії послуги на декілька слів</p>
         </a>
         <a href="#">
-          <img src="img/arrow_right_red.svg" alt="">
+          <img src="/img/arrow_right_red.svg" alt="">
           <p>Назва категорії послуг</p>
         </a>
         <a href="#">
-          <img src="img/arrow_right_red.svg" alt="">
+          <img src="/img/arrow_right_red.svg" alt="">
           <p>Назва категорії послуг</p>
         </a>
         <a href="#">
-          <img src="img/arrow_right_red.svg" alt="">
+          <img src="/img/arrow_right_red.svg" alt="">
           <p>Довга назва категорії послуги на декілька слів</p>
         </a>
         <a href="#">
-          <img src="img/arrow_right_red.svg" alt="">
+          <img src="/img/arrow_right_red.svg" alt="">
           <p>Назва категорії послуг</p>
         </a>
         <a href="#">
-          <img src="img/arrow_right_red.svg" alt="">
+          <img src="/img/arrow_right_red.svg" alt="">
           <p>Назва категорії послуг</p>
         </a>
       </div>
       <div class="services_names">
         <div class="title">
-          <img src="img/circle-white-arrow.svg" alt="">
+          <img src="/img/circle-white-arrow.svg" alt="">
           <h6>Назва категорії послуг</h6>
         </div>
         <div class="items">
@@ -125,19 +125,19 @@ use yii\helpers\Url;
       </div>
       <div class="header_contacts">
         <div class="address">
-          <img src="img/marker.svg" alt="">
+          <img src="/img/marker.svg" alt="">
           <p>м. Київ, проспект Леся Курбаса, 5в</p>
         </div>
         <a href="tel:+380689664256" class="phone">
-          <img src="img/vodafone.svg" alt="">
+          <img src="/img/vodafone.svg" alt="">
           <p>+38 068 966 42 56</p>
         </a>
         <div class="address">
-          <img src="img/marker.svg" alt="">
+          <img src="/img/marker.svg" alt="">
           <p>м. Київ, вулиця Михайла Максимовича, 3г</p>
         </div>
         <a href="tel:+380689664257" class="phone">
-          <img src="img/vodafone.svg" alt="">
+          <img src="/img/vodafone.svg" alt="">
           <p>+38 068 966 42 57</p>
         </a>
         <a href="#" class="make_appointment">

@@ -1,15 +1,15 @@
-#Options All -ExecCGI -Indexes -Includes +FollowSymLinks
-#
-#<IfModule mod_rewrite.c>
-#    RewriteEngine On
-#
-#    RewriteCond %{REQUEST_URI} ^/(admin)
-#    RewriteRule ^admin(\/?.*)$ backend/web/$1 [L]
-#
-#    RewriteCond %{REQUEST_URI} ^/
-#    RewriteRule ^(\/?.*)$ frontend/web/$1 [L]
-#</IfModule>
-#
+Options All -ExecCGI -Indexes -Includes +FollowSymLinks
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_URI} ^/(admin)
+    RewriteRule ^admin(\/?.*)$ backend/web/$1 [L]
+
+    RewriteCond %{REQUEST_URI} ^/
+    RewriteRule ^(\/?.*)$ frontend/web/$1 [L]
+</IfModule>
+
 #DirectoryIndex index.php
 #
 #<IfModule mod_setenvif.c>
@@ -86,38 +86,38 @@
 #</ifModule>
 
 
- AddDefaultCharset UTF-8
- 
- Options -Indexes
-
- RewriteEngine On
-
- RewriteCond %{REQUEST_URI} ^/(admin)
- RewriteRule ^admin(\/?.*)$ backend/web/$1 [L]
-
- RewriteCond %{REQUEST_URI} ^/(shop-admin)
- RewriteRule ^shop-admin(\/?.*)$ ecommerce/web/$1 [L]
-
- RewriteCond %{REQUEST_URI} ^/(api)
- RewriteRule ^api(\/?.*)$ api/web/$1 [L]
+# AddDefaultCharset UTF-8
+#
+# Options -Indexes
+#
+# RewriteEngine On
+#
+# RewriteCond %{REQUEST_URI} ^/(admin)
+# RewriteRule ^admin(\/?.*)$ backend/web/$1 [L]
+#
+# RewriteCond %{REQUEST_URI} ^/(shop-admin)
+# RewriteRule ^shop-admin(\/?.*)$ ecommerce/web/$1 [L]
+#
+# RewriteCond %{REQUEST_URI} ^/(api)
+# RewriteRule ^api(\/?.*)$ api/web/$1 [L]
 
  # RewriteRule ^shop(\/?.*)$ ecommerce/views/react/public/$1 [L]
  # FallbackResource ./index.html
 
- RewriteCond %{REQUEST_URI} ^/
- RewriteRule ^(\/?.*)$ frontend/web/$1 [L]
-
- RewriteCond %{REQUEST_URI} ^/(assets|css|js|images)
- RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
- RewriteRule ^css/(.*)$ frontend/web/css/$1 [L]
- RewriteRule ^js/(.*)$ frontend/web/js/$1 [L]
- RewriteRule ^images/(.*)$ frontend/web/images/$1 [L]
- RewriteRule ^(.*)$ frontend/web/$1 [L]
- RewriteCond %{REQUEST_URI} !^/(frontend|backend|ecommerce)/web/(assets|css|js|vendor)/
- RewriteCond %{REQUEST_URI} !index.php
- RewriteCond %{REQUEST_FILENAME} !-f [OR]
- RewriteCond %{REQUEST_FILENAME} !-d
- RewriteRule ^.*$ frontend/web/index.php
+# RewriteCond %{REQUEST_URI} ^/
+# RewriteRule ^(\/?.*)$ frontend/web/$1 [L]
+#
+# RewriteCond %{REQUEST_URI} ^/(assets|css|js|images)
+# RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
+# RewriteRule ^css/(.*)$ frontend/web/css/$1 [L]
+# RewriteRule ^js/(.*)$ frontend/web/js/$1 [L]
+# RewriteRule ^images/(.*)$ frontend/web/images/$1 [L]
+# RewriteRule ^(.*)$ frontend/web/$1 [L]
+# RewriteCond %{REQUEST_URI} !^/(frontend|backend|ecommerce)/web/(assets|css|js|vendor)/
+# RewriteCond %{REQUEST_URI} !index.php
+# RewriteCond %{REQUEST_FILENAME} !-f [OR]
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^.*$ frontend/web/index.php
 
 #<VirtualHost *:80>
  #    ServerAdmin webmaster@localhost
