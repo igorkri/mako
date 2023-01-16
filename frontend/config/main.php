@@ -50,8 +50,8 @@ return [
 //            'enableStrictParsing' => false,
             'rules' => [
                 '/' => 'home/',
-                'promos/page/<page:\d+>' => 'promo/index',
-                'promos/' => 'promo/index'
+                'stock/<page:\d+>' => 'promo/index',
+                'stock/' => 'promo/index'
             ],
 
         ],
