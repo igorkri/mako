@@ -18,7 +18,7 @@ use yii\helpers\Url;
   <div class="links visible">
     <a href="<?=Url::to(['promo/index'])?>">Акції</a>
     <a href="#" class="about">Про нас</a>
-    <a href="reviews.php">Відгуки</a>
+    <a href="<?=Url::to(['reviews/index'])?>">Відгуки</a>
     <a href="contacts.php">Контакти</a>
     <div class="cloud">
       <a href="certificates.php">Сертифікати</a>
