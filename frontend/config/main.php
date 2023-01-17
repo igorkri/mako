@@ -51,7 +51,8 @@ return [
             'rules' => [
                 '/' => 'home/',
                 'stock/<page:\d+>' => 'promo/index',
-                'stock/' => 'promo/index'
+                'stock/' => 'promo/index',
+                'reviews/' => 'reviews/index',
             ],
 
         ],

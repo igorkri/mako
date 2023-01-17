@@ -37,6 +37,8 @@ class OrderACallController extends Controller
         $order_call->name = $post['name'];
         $order_call->phone = $post['phone'];
         $order_call->address = $post['address'];
+        $order_call->status = 'Новий';
+        $order_call->comment = '';
         $order_call->signUpCheckbox = $signUpCheckbox;
         if($order_call->save()){
             return ['status' => 'success', 'messages' => '<h4>Дякуємо що вибрали нас!<br>Найближчим часом з вами зв\'яжеться менеджер</h4>'];
