@@ -19,7 +19,7 @@ use yii\helpers\Url;
     <a href="<?=Url::to(['promo/index'])?>">Акції</a>
     <a href="#" class="about">Про нас</a>
     <a href="<?=Url::to(['reviews/index'])?>">Відгуки</a>
-    <a href="contacts.php">Контакти</a>
+    <a href="<?=Url::to(['contacts/index'])?>">Контакти</a>
     <div class="cloud">
       <a href="certificates.php">Сертифікати</a>
       <a href="team.php">Команда</a>
