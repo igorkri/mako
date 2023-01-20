@@ -21,12 +21,12 @@ use yii\helpers\Url;
     <a href="<?=Url::to(['reviews/index'])?>">Відгуки</a>
     <a href="<?=Url::to(['contacts/index'])?>">Контакти</a>
     <div class="cloud">
-      <a href="certificates.php">Сертифікати</a>
-      <a href="team.php">Команда</a>
-      <a href="videos.php">Відео</a>
-      <a href="blog.php">Статті</a>
-      <a href="work.php">Робота в МаКо</a>
-      <a href="learning.php">Навчання в МаКо</a>
+      <a href="<?=Url::to(['certificates/index'])?>">Сертифікати</a>
+      <a href="<?=Url::to(['team/index'])?>">Команда</a>
+      <a href="<?=Url::to(['videos/index'])?>">Відео</a>
+      <a href="<?=Url::to(['blog/index'])?>">Статті</a>
+      <a href="<?=Url::to(['work/index'])?>">Робота в МаКо</a>
+      <a href="<?=Url::to(['learning/index'])?>">Навчання в МаКо</a>
     </div>
   </div>
   <div class="call_us">

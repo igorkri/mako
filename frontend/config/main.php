@@ -42,7 +42,7 @@ return [
             ],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'error/index',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -50,10 +50,17 @@ return [
 //            'enableStrictParsing' => false,
             'rules' => [
                 '/' => 'home/',
-                'stock/<page:\d+>' => 'promo/index',
-                'stocks/' => 'promo/index',
-                'reviews/' => 'reviews/index',
-                'contacts/' => 'contacts/index',
+                'stocks/<page:\d+>' => 'promo/index',
+                'stocks' => 'promo/index',
+                'reviews' => 'reviews/index',
+                'contacts' => 'contacts/index',
+                'certificate' => 'certificates/index',
+                'team' => 'team/index',
+                'videos' => 'videos/index',
+                'blog' => 'blog/index',
+                'work' => 'work/index',
+                'learning' => 'learning/index',
+//                '' => '/index',
             ],
 
         ],

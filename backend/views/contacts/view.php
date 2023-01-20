@@ -12,9 +12,24 @@ use yii\widgets\DetailView;
         'attributes' => [
             'id',
             'address',
+            [
+                'attribute'=>'icon',
+                'format' => 'raw'
+            ],
             'phone',
             'salon_work_schedule',
-            'maps',
+            [
+                'attribute' => 'maps',
+                'format' => 'raw',
+                'value' => function($model){
+                    return '<iframe
+                                src="' . $model->maps . '"
+                                style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>';
+                },
+
+            ],
+
         ],
     ]) ?>
 

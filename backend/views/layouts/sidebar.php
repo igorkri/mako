@@ -49,6 +49,7 @@
                     ],
                     ['label' => 'Відгуки', 'icon' => 'dot-circle', 'url' => ['/reviews']],
                     ['label' => 'Контакти', 'icon' => 'dot-circle', 'url' => ['/contacts']],
+                    ['label' => 'Social', 'icon' => 'dot-circle', 'url' => ['/social']],
 
                 ],
             ]);

@@ -43,4 +43,5 @@ phpunit.phar
 /backend/web/index-test.php
 /backend/web/robots.txt
 /vendor/
-/frontend/web/promo
+/frontend/web/img/promo
+/frontend/web/img/certificates

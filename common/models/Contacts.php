@@ -12,6 +12,7 @@ use Yii;
  * @property string|null $phone Телефон салону
  * @property string|null $salon_work_schedule Графік роботи салону
  * @property string|null $maps google карта
+ * @property string|null $icon Іконка
  */
 class Contacts extends \yii\db\ActiveRecord
 {
@@ -29,8 +30,8 @@ class Contacts extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['address', 'phone', 'salon_work_schedule', 'maps'], 'string', 'max' => 255],
-            [['maps'], 'string'],
+            [['address', 'phone', 'salon_work_schedule'], 'string', 'max' => 255],
+            [['icon', 'maps'], 'string'],
         ];
     }
 
@@ -45,6 +46,7 @@ class Contacts extends \yii\db\ActiveRecord
             'phone' => 'Телефон салону',
             'salon_work_schedule' => 'Графік роботи салону',
             'maps' => 'google карта',
+            'icon' => 'Іконка',
         ];
     }
 }

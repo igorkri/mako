@@ -13,11 +13,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'icon')->textarea(['rows' => 8]) ?>
+
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'salon_work_schedule')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'maps')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'maps')->textarea(['rows' => 6]) ?>
 
   
 	<?php if (!Yii::$app->request->isAjax){ ?>

@@ -16,27 +16,17 @@ return [
     // ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'address',
-    ],[
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'icon',
+        'attribute'=>'file',
         'format' => 'raw',
         'value' => function($model){
-            return $model->icon;
-        }
+            return \yii\helpers\Html::img( Yii::$app->request->hostInfo . '/img/certificates/'. $model->file, ['width' => '80px']);
+        },
+        'width' => '80px'
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'phone',
+        'attribute'=>'title',
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'salon_work_schedule',
-    ],
-//    [
-//        'class'=>'\kartik\grid\DataColumn',
-//        'attribute'=>'maps',
-//    ],
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,

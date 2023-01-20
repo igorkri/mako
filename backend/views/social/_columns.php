@@ -16,27 +16,19 @@ return [
     // ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'address',
-    ],[
-        'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'icon',
-        'format' => 'raw',
-        'value' => function($model){
-            return $model->icon;
-        }
+        'format' => 'raw'
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'phone',
+        'attribute'=>'name',
+        'format' => 'raw'
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'salon_work_schedule',
+        'attribute'=>'link',
+        'format' => 'raw'
     ],
-//    [
-//        'class'=>'\kartik\grid\DataColumn',
-//        'attribute'=>'maps',
-//    ],
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,

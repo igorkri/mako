@@ -1,30 +1,12 @@
 <?php
 
+$contacts = \common\models\Contacts::find()->all();
 
 ?>
 
 <div class="dark_background" id="dark_background">
 
     <!-- Модальне вікно "зателефонуйте нам"  -->
-    <div class="modal_window dn" id="call_us_window">
-        <div class="close">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 2L18 18M18 2L2 18" stroke="#42414D" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-        </div>
-        <a href="tel:+380689664256" class="tel">
-            <img src="/img/vodafone-red.svg" alt="">
-            <p>+38 068 966 42 56</p>
-        </a>
-        <p class="address">м. Київ, проспект Леся Курбаса, 5в</p>
-        <a href="tel:+380689664257" class="tel">
-            <img src="/img/vodafone-red.svg" alt="">
-            <p>+38 068 966 42 57</p>
-        </a>
-        <p class="address">м. Київ, вулиця Михайла Максимовича, 3г</p>
-    </div>
-
-    <!-- Модальне вікно "записатись" -->
     <div class="modal_window dn" id="sign_up_window">
         <div class="close">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,6 +36,22 @@
             </div>
         </form>
         <div class="banner">МаKо — Ви вмились і краса лишилась</div>
+    </div>
+
+    <!-- Модальне вікно "записатись" -->
+    <div class="modal_window dn" id="call_us_window">
+        <div class="close">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2L18 18M18 2L2 18" stroke="#42414D" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <?php foreach ($contacts as $contact): ?>
+            <a href="tel:<?=str_replace(' ', '', $contact->phone)?>" class="tel">
+                <img src="/img/vodafone-red.svg" alt="">
+                <p><?=$contact->phone?></p>
+            </a>
+        <p class="address"><?=$contact->address?></p>
+        <?php endforeach; ?>
     </div>
 
     <!-- Модальне вікно "кощик" -->
