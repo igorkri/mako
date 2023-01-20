@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Certificates;
-use backend\models\search\CertificatesSearch;
+use common\models\Specialists;
+use backend\models\search\SpecialistSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -13,9 +13,9 @@ use yii\helpers\Html;
 use yii\web\UploadedFile;
 
 /**
- * CertificatesController implements the CRUD actions for Certificates model.
+ * SpecialistController implements the CRUD actions for Specialists model.
  */
-class CertificatesController extends Controller
+class SpecialistController extends Controller
 {
     /**
      * @inheritdoc
@@ -34,12 +34,12 @@ class CertificatesController extends Controller
     }
 
     /**
-     * Lists all Certificates models.
+     * Lists all Specialists models.
      * @return mixed
      */
     public function actionIndex()
     {    
-        $searchModel = new CertificatesSearch();
+        $searchModel = new SpecialistSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -50,7 +50,7 @@ class CertificatesController extends Controller
 
 
     /**
-     * Displays a single Certificates model.
+     * Displays a single Specialists model.
      * @param integer $id
      * @return mixed
      */
@@ -60,7 +60,7 @@ class CertificatesController extends Controller
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "Certificates #".$id,
+                    'title'=> "Specialists #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel($id),
                     ]),
@@ -75,7 +75,7 @@ class CertificatesController extends Controller
     }
 
     /**
-     * Creates a new Certificates model.
+     * Creates a new Specialists model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -83,7 +83,7 @@ class CertificatesController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Certificates();  
+        $model = new Specialists();  
 
         if($request->isAjax){
             /*
@@ -92,7 +92,7 @@ class CertificatesController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Create new Certificates",
+                    'title'=> "Create new Specialists",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -101,18 +101,18 @@ class CertificatesController extends Controller
         
                 ];         
             }else if($model->load($request->post())){
-                $dir = Yii::getAlias('@frontendWeb/img/certificates');
+                $dir = Yii::getAlias('@frontendWeb/img/specialists');
 
-                $file = UploadedFile::getInstance($model, 'file');
+                $file = UploadedFile::getInstance($model, 'photo');
                 $imageName = date('d-m-yy', time()) . '-' . uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-                $model->file = $imageName . '.' . $file->extension;
+                $model->photo = $imageName . '.' . $file->extension;
 
                 if ($model->save()) {
                     return [
                         'forceReload' => '#crud-datatable-pjax',
-                        'title' => "Create new Certificates",
-                        'content' => '<span class="text-success">Сертифікат успішно створено</span>',
+                        'title' => "Create new Specialists",
+                        'content' => '<span class="text-success">Успішно створено</span>',
                         'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
                             Html::a('Додати ще', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
 
@@ -120,7 +120,7 @@ class CertificatesController extends Controller
                 }
             }else{           
                 return [
-                    'title'=> "Create new Certificates",
+                    'title'=> "Create new Specialists",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -145,7 +145,7 @@ class CertificatesController extends Controller
     }
 
     /**
-     * Updates an existing Certificates model.
+     * Updates an existing Specialists model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -163,7 +163,7 @@ class CertificatesController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Update Certificates #".$id,
+                    'title'=> "Update Specialists #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -171,31 +171,31 @@ class CertificatesController extends Controller
                                 Html::button('Зберегти',['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
             }else if($model->load($request->post())){
-                $post_file = $_FILES['Certificates']['size']['file'];
+                $post_file = $_FILES['Specialists']['size']['photo'];
                 if($post_file <= 0 ){
                     $old = $this->findModel($id);
-                    $model->file = $old->file;
+                    $model->photo = $old->photo;
                 }else {
-                    $dir = Yii::getAlias('@frontendWeb/img/certificates');
-                    $file = UploadedFile::getInstance($model, 'file');
+                    $dir = Yii::getAlias('@frontendWeb/img/specialists');
+                    $file = UploadedFile::getInstance($model, 'photo');
                     $imageName = date('d-m-yy', time()) . '-' . uniqid();
                     $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-                    $model->file = $imageName . '.' . $file->extension;
+                    $model->photo = $imageName . '.' . $file->extension;
                 }
                 if ($model->save()) {
                     return [
-                        'forceReload'=>'#crud-datatable-pjax',
-                        'title'=> "Сертифікат #".$id,
-                        'content'=>$this->renderAjax('view', [
+                        'forceReload' => '#crud-datatable-pjax',
+                        'title' => "Specialists #" . $id,
+                        'content' => $this->renderAjax('view', [
                             'model' => $model,
                         ]),
-                        'footer'=> Html::button('Закрити',['class'=>'btn btn-default pull-left','data-bs-dismiss'=>"modal"]).
-                            Html::a('Редагувати',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
+                        'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
+                            Html::a('Редагувати', ['update', 'id' => $id], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
                     ];
                 }
             }else{
                  return [
-                    'title'=> "Update Certificates #".$id,
+                    'title'=> "Update Specialists #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -218,7 +218,7 @@ class CertificatesController extends Controller
     }
 
     /**
-     * Delete an existing Certificates model.
+     * Delete an existing Specialists model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -227,9 +227,9 @@ class CertificatesController extends Controller
     public function actionDelete($id)
     {
         $request = Yii::$app->request;
-        $dir = Yii::getAlias('@frontendWeb/img/certificates');
+        $dir = Yii::getAlias('@frontendWeb/img/specialists');
         $model = $this->findModel($id);
-        unlink($dir . '/' . $model->file);
+        unlink($dir . '/' . $model->photo);
         $model->delete();
 
         if($request->isAjax){
@@ -249,7 +249,7 @@ class CertificatesController extends Controller
     }
 
      /**
-     * Delete multiple existing Certificates model.
+     * Delete multiple existing Specialists model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -260,9 +260,9 @@ class CertificatesController extends Controller
         $request = Yii::$app->request;
         $pks = explode(',', $request->post( 'pks' )); // Array or selected records primary keys
         foreach ( $pks as $pk ) {
-            $dir = Yii::getAlias('@frontendWeb/img/certificates');
+            $dir = Yii::getAlias('@frontendWeb/img/specialists');
             $model = $this->findModel($pk);
-            unlink($dir . '/' . $model->file);
+            unlink($dir . '/' . $model->photo);
             $model->delete();
         }
 
@@ -282,15 +282,15 @@ class CertificatesController extends Controller
     }
 
     /**
-     * Finds the Certificates model based on its primary key value.
+     * Finds the Specialists model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Certificates the loaded model
+     * @return Specialists the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Certificates::findOne($id)) !== null) {
+        if (($model = Specialists::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('Потрібна сторінка не існує.');

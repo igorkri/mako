@@ -45,3 +45,5 @@ phpunit.phar
 /vendor/
 /frontend/web/img/promo
 /frontend/web/img/certificates
+/frontend/web/img/specialists/
+/frontend/web/img/team/
