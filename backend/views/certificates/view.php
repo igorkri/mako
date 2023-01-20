@@ -12,7 +12,14 @@ use yii\widgets\DetailView;
         'attributes' => [
             'id',
             'title',
-            'file',
+            [
+                'attribute'=>'file',
+                'format' => 'raw',
+                'value' => function($model){
+                    return \yii\helpers\Html::img( Yii::$app->request->hostInfo . '/img/certificates/'. $model->file, ['width' => '600px']);
+                }
+
+            ],
         ],
     ]) ?>
 

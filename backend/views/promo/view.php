@@ -11,12 +11,24 @@ use yii\widgets\DetailView;
         'model' => $model,
         'attributes' => [
             'id',
-            'file',
+            [
+                'attribute'=>'file',
+                'format' => 'raw',
+                'value' => function($model){
+                    return \yii\helpers\Html::img( Yii::$app->request->hostInfo . '/img/promo/'. $model->file, ['width' => '600px']);
+                }
+
+            ],
             'begin_data',
             'end_data',
             'description:ntext',
-            'published',
-        ],
-    ]) ?>
+            [
+                'attribute'=>'published',
+                'value' => function($model){
+                    return $model->published == "1" ? 'Так' : 'Ні';
+                }
+            ]
+            ],
+        ]) ?>
 
 </div>

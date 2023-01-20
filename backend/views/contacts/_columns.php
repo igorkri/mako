@@ -17,21 +17,25 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'address',
+        'filter' => false
     ],[
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'icon',
         'format' => 'raw',
         'value' => function($model){
             return $model->icon;
-        }
+        },
+        'filter' => false
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'phone',
+        'filter' => false
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'salon_work_schedule',
+        'filter' => false
     ],
 //    [
 //        'class'=>'\kartik\grid\DataColumn',

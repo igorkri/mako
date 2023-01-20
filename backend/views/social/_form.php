@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'icon')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'icon')->textarea(['rows' => 8]) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

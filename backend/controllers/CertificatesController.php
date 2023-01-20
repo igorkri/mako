@@ -112,7 +112,7 @@ class CertificatesController extends Controller
                     return [
                         'forceReload' => '#crud-datatable-pjax',
                         'title' => "Create new Certificates",
-                        'content' => '<span class="text-success">Create Certificates success</span>',
+                        'content' => '<span class="text-success">Сертифікат успішно створено</span>',
                         'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
                             Html::a('Додати ще', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
 
@@ -171,15 +171,28 @@ class CertificatesController extends Controller
                                 Html::button('Зберегти',['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
             }else if($model->load($request->post()) && $model->save()){
-                return [
-                    'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Certificates #".$id,
-                    'content'=>$this->renderAjax('view', [
-                        'model' => $model,
-                    ]),
-                    'footer'=> Html::button('Закрити',['class'=>'btn btn-default pull-left','data-bs-dismiss'=>"modal"]).
+                $post_file = $_FILES['Certificates']['size']['file'];
+                if($post_file <= 0 ){
+                    $old = $this->findModel($id);
+                    $model->file = $old->file;
+                }else {
+                    $dir = Yii::getAlias('@frontendWeb/img/certificates');
+                    $file = UploadedFile::getInstance($model, 'file');
+                    $imageName = date('d-m-yy', time()) . '-' . uniqid();
+                    $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                    $model->file = $imageName . '.' . $file->extension;
+                }
+                if ($model->save()) {
+                    return [
+                        'forceReload'=>'#crud-datatable-pjax',
+                        'title'=> "Сертифікат #".$id,
+                        'content'=>$this->renderAjax('view', [
+                            'model' => $model,
+                        ]),
+                        'footer'=> Html::button('Закрити',['class'=>'btn btn-default pull-left','data-bs-dismiss'=>"modal"]).
                             Html::a('Редагувати',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
-                ];    
+                    ];
+                }
             }else{
                  return [
                     'title'=> "Update Certificates #".$id,
@@ -214,7 +227,10 @@ class CertificatesController extends Controller
     public function actionDelete($id)
     {
         $request = Yii::$app->request;
-        $this->findModel($id)->delete();
+        $dir = Yii::getAlias('@frontendWeb/img/certificates');
+        $model = $this->findModel($id);
+        unlink($dir . '/' . $model->file);
+        $model->delete();
 
         if($request->isAjax){
             /*
@@ -244,7 +260,9 @@ class CertificatesController extends Controller
         $request = Yii::$app->request;
         $pks = explode(',', $request->post( 'pks' )); // Array or selected records primary keys
         foreach ( $pks as $pk ) {
+            $dir = Yii::getAlias('@frontendWeb/img/certificates');
             $model = $this->findModel($pk);
+            unlink($dir . '/' . $model->file);
             $model->delete();
         }
 

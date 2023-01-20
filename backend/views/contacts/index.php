@@ -10,7 +10,7 @@ use backend\widgets\BulkButtonWidget;
 /* @var $searchModel backend\models\search\ContactsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Contacts');
+$this->title = 'Контакти';
 $this->params['breadcrumbs'][] = $this->title;
 
 \backend\assets\AppAsset::register($this);
@@ -40,8 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'responsive' => true,          
             'panel' => [
                 'type' => 'primary', 
-                'heading' => '<i class="glyphicon glyphicon-list"></i> Contacts listing',
-                'before'=>'<em>* Resize table columns just like a spreadsheet by dragging the column edges.</em>',
+                'heading' => '<i class="glyphicon glyphicon-list"></i> Список контактів',
+//                'before'=>'<em>* Resize table columns just like a spreadsheet by dragging the column edges.</em>',
                 'after'=>BulkButtonWidget::widget([
                             'buttons'=>Html::a('<i class="glyphicon glyphicon-trash"></i>&nbsp; Видалити',
                                 ["bulkdelete"] ,

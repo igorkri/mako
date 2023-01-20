@@ -19,7 +19,7 @@ return [
         'attribute'=>'file',
         'format' => 'raw',
         'value' => function($model){
-            return \yii\helpers\Html::img( Yii::$app->request->hostInfo . '/promo/'. $model->file, ['width' => '120px']);
+            return \yii\helpers\Html::img( Yii::$app->request->hostInfo . '/img/promo/'. $model->file, ['width' => '120px']);
         }
 
     ],
@@ -38,6 +38,9 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'published',
+        'value' => function($model){
+            return $model->published == "1" ? 'Так' : 'Ні';
+        }
     ],
     [
         'class' => 'kartik\grid\ActionColumn',

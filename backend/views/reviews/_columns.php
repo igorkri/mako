@@ -17,19 +17,23 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'data',
+        'filter' => false
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'сlient',
+        'filter' => false
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'comment',
-        'format' => 'raw'
+        'format' => 'raw',
+        'filter' => false
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'procedure',
+        'filter' => false
     ],
     [
         'class' => 'kartik\grid\ActionColumn',

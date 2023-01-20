@@ -112,7 +112,7 @@ class PromoController extends Controller
                     return [
                         'forceReload'=>'#crud-datatable-pjax',
                         'title'=> "Створення акції",
-                        'content'=>'<span class="text-success">Акцію успишно створено</span>',
+                        'content'=>'<span class="text-success">Акцію успішно створено</span>',
                         'footer'=> Html::button('Закрити',['class'=>'btn btn-default pull-left','data-bs-dismiss'=>"modal"]).
                             Html::a('Додати ще',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
 

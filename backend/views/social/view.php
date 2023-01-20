@@ -11,7 +11,10 @@ use yii\widgets\DetailView;
         'model' => $model,
         'attributes' => [
             'id',
-            'icon',
+            [
+                'attribute'=>'icon',
+                'format' => 'raw'
+            ],
             'name',
             'link',
         ],

@@ -9,6 +9,7 @@ return [
     [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
+
     ],
         // [
         // 'class'=>'\kartik\grid\DataColumn',
@@ -17,17 +18,20 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'icon',
-        'format' => 'raw'
+        'format' => 'raw',
+        'filter' => false
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'name',
-        'format' => 'raw'
+        'format' => 'raw',
+        'filter' => false
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'link',
-        'format' => 'raw'
+        'format' => 'raw',
+        'filter' => false
     ],
     [
         'class' => 'kartik\grid\ActionColumn',

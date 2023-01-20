@@ -79,6 +79,7 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-12">
+            <?php if($model->isNewRecord): ?>
             <?= $form->field($model, 'file')->widget(FileInput::class, [
                 'language' => 'uk',
                 'options' => ['accept' => 'image/*'],
@@ -90,12 +91,27 @@ use yii\widgets\ActiveForm;
 //                    'browseClass' => 'btn btn-primary btn-block',
 //                    'browseIcon' => '<i class="fas fa-camera"></i> ',
 //                    'browseLabel' =>  ''
-                    'initialPreview'=>[
-                        $model->isNewRecord ?: Yii::$app->request->hostInfo . '/promo/'. $model->file
-                    ],
-                    'initialPreviewAsData'=>true,
                 ],
             ]);?>
+            <?php else: ?>
+                <?= $form->field($model, 'file')->widget(FileInput::class, [
+                    'language' => 'uk',
+                    'options' => ['accept' => 'image/*'],
+                    'pluginOptions' => [
+                        'maxFileCount' => 1,
+//                    'showCaption' => false,
+                        'showRemove' => false,
+                        'showUpload' => false,
+//                    'browseClass' => 'btn btn-primary btn-block',
+//                    'browseIcon' => '<i class="fas fa-camera"></i> ',
+//                    'browseLabel' =>  ''
+                        'initialPreview'=>[
+                            Yii::$app->request->hostInfo . '/img/promo/'. $model->file
+                        ],
+                        'initialPreviewAsData'=>true,
+                    ],
+                ]);?>
+            <?php endif; ?>
         </div>
     </div>
 	<?php if (!Yii::$app->request->isAjax){ ?>
