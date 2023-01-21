@@ -54,6 +54,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'work/<action:\w+>' => 'work-in-mako/<action>',
             ],
         ],
 

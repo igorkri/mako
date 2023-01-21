@@ -59,7 +59,7 @@ return [
                 'videos/<page:\d+>' => 'videos/index',
                 'videos' => 'videos/index',
                 'blog' => 'blog/index',
-                'work' => 'work/index',
+                'work' => 'work-in-mako/index',
                 'learning' => 'learning/index',
 //                '' => '/index',
 //                '' => '/index',
