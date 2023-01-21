@@ -25,8 +25,8 @@ use yii\helpers\Url;
       <a href="<?=Url::to(['team/index'])?>">Команда</a>
       <a href="<?=Url::to(['videos/index'])?>">Відео</a>
       <a href="<?=Url::to(['blog/index'])?>">Статті</a>
-      <a href="<?=Url::to(['work/index'])?>">Робота в МаКо</a>
-      <a href="<?=Url::to(['learning/index'])?>">Навчання в МаКо</a>
+      <a href="<?=Url::to(['work-in-mako/index'])?>">Робота в МаКо</a>
+      <a href="<?=Url::to(['learning-in-mako/index'])?>">Навчання в МаКо</a>
     </div>
   </div>
   <div class="call_us">

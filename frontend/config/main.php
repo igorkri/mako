@@ -60,7 +60,7 @@ return [
                 'videos' => 'videos/index',
                 'blog' => 'blog/index',
                 'work' => 'work-in-mako/index',
-                'learning' => 'learning/index',
+                'learning' => 'learning-in-mako/index',
 //                '' => '/index',
 //                '' => '/index',
             ],

@@ -50,7 +50,7 @@
                             ['label' => 'Відео', 'iconStyle' => 'far', 'url' => ['/videos']],
                             ['label' => 'Статті', 'iconStyle' => 'far', 'url' => ['/blog']],
                             ['label' => 'Робота в МаКо', 'iconStyle' => 'far', 'url' => ['/work/index']],
-                            ['label' => 'Навчання в МаКо', 'iconStyle' => 'far', 'url' => ['/learning']],
+                            ['label' => 'Навчання в МаКо', 'iconStyle' => 'far', 'url' => ['/learning-in-mako/index']],
                         ]
                     ],
                     ['label' => 'Відгуки', 'icon' => 'dot-circle', 'url' => ['/reviews']],

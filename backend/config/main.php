@@ -55,6 +55,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'work/<action:\w+>' => 'work-in-mako/<action>',
+                'learning/<action:\w+>' => 'learning-in-mako/<action>',
             ],
         ],
 
