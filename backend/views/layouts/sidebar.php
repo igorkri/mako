@@ -47,7 +47,7 @@
                                         ['label' => 'Галерея', 'icon' => 'dot-circle', 'url' => ['/team-gallery']],
                                 ]
                             ],
-                            ['label' => 'Відео', 'iconStyle' => 'far', 'url' => ['/videos']],
+                            ['label' => 'Відео', 'iconStyle' => 'far', 'url' => ['/video']],
                             ['label' => 'Статті', 'iconStyle' => 'far', 'url' => ['/blog']],
                             ['label' => 'Робота в МаКо', 'iconStyle' => 'far', 'url' => ['/work/index']],
                             ['label' => 'Навчання в МаКо', 'iconStyle' => 'far', 'url' => ['/learning-in-mako/index']],

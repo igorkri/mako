@@ -1,4 +1,6 @@
 <?php
+
+use kartik\grid\GridView;
 use yii\helpers\Url;
 
 return [
@@ -20,19 +22,29 @@ return [
         'format' => 'raw',
         'value' => function($model){
             return '<iframe width="" height="" src="https://www.youtube.com/embed/'. $model->url_file .'"
-                  title="JustSomeMotion (JSM) – The JSM Hallway Dance (Jamie Berry feat. Octavia Rose – Lost in the Rhythm)"
-                  frameborder="0"
+                  title="" frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen></iframe>';
-        }
+        },
+        'filter' => false, 'mergeHeader' => true,
+        'width' => '120px',
+        'vAlign' => GridView::ALIGN_MIDDLE,
+        'hAlign' => GridView::ALIGN_CENTER,
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'data',
+        'filter' => false, 'mergeHeader' => true,
+        'width' => '120px',
+        'vAlign' => GridView::ALIGN_MIDDLE,
+        'hAlign' => GridView::ALIGN_CENTER,
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'title',
+        'filter' => false, 'mergeHeader' => true,
+        'vAlign' => GridView::ALIGN_MIDDLE,
+//        'hAlign' => GridView::ALIGN_CENTER,
     ],
 
     [
