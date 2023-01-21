@@ -2,6 +2,7 @@
 
 /* @var $team common\models\Team */
 /* @var $specialists common\models\Specialists */
+/* @var $galleries common\models\TeamGallery */
 
 ?>
 
@@ -28,16 +29,11 @@
 </section>
 
 <div class="team_gallery" id="team_gallery">
-    <div class="item">
-        <img src="img/team_gallery1.webp" alt="">
-    </div>
-    <div class="item">
-        <img src="img/team_gallery2.webp" alt="">
-    </div>
-    <div class="item">
-        <img src="img/team_gallery3.webp" alt="">
-    </div>
-    <div class="item">
-        <img src="img/team_gallery4.webp" alt="">
-    </div>
+    <?php if ($galleries): ?>
+        <?php foreach ($galleries as $gallery): ?>
+            <div class="item">
+                <img src="<?= Yii::$app->request->hostInfo . '/img/team-gallery/' . $gallery->file ?>" alt="">
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
 </div>

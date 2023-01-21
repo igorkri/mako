@@ -40,7 +40,13 @@
                         'label' => 'Про нас',
                         'items' => [
                             ['label' => 'Сертифікати', 'iconStyle' => 'far', 'url' => ['/certificates']],
-                            ['label' => 'Команда', 'iconStyle' => 'far', 'url' => ['/team']],
+                            ['label' => 'Команда',
+                                'items' => [
+                                        ['label' => 'Команда', 'icon' => 'dot-circle', 'url' => ['/team']],
+                                        ['label' => 'Спеціалісти', 'icon' => 'dot-circle', 'url' => ['/specialist']],
+                                        ['label' => 'Галерея', 'icon' => 'dot-circle', 'url' => ['/team-gallery']],
+                                ]
+                            ],
                             ['label' => 'Відео', 'iconStyle' => 'far', 'url' => ['/videos']],
                             ['label' => 'Статті', 'iconStyle' => 'far', 'url' => ['/blog']],
                             ['label' => 'Робота в МаКо', 'iconStyle' => 'far', 'url' => ['/work']],
@@ -50,7 +56,7 @@
                     ['label' => 'Відгуки', 'icon' => 'dot-circle', 'url' => ['/reviews']],
                     ['label' => 'Контакти', 'icon' => 'dot-circle', 'url' => ['/contacts']],
                     ['label' => 'Social', 'icon' => 'dot-circle', 'url' => ['/social']],
-                    ['label' => 'Спеціалісти', 'icon' => 'dot-circle', 'url' => ['/specialist']],
+
 
                 ],
             ]);
