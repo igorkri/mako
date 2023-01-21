@@ -46,7 +46,7 @@ class Promo extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'file' => 'Зображення',
-            'begin_data' => 'Дата начала акції',
+            'begin_data' => 'Дата початку акції',
             'end_data' => 'Дата закінчення акції',
             'description' => 'Опис акції',
             'published' => 'Опубліковано',
