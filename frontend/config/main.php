@@ -56,10 +56,12 @@ return [
                 'contacts' => 'contacts/index',
                 'certificate' => 'certificates/index',
                 'team' => 'team/index',
+                'videos/<page:\d+>' => 'videos/index',
                 'videos' => 'videos/index',
                 'blog' => 'blog/index',
                 'work' => 'work/index',
                 'learning' => 'learning/index',
+//                '' => '/index',
 //                '' => '/index',
             ],
 

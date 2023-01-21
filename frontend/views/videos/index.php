@@ -1,34 +1,25 @@
 <?php
 /** @var yii\web\View $this */
-/** @var common\models\Promo $promos */
-
-/** @var $pages */
-
-use yii\widgets\LinkPager;
-
+/** @var \common\models\Video $videos */
 ?>
-<!----- Акції ----->
-<section class="promos">
+<!----- Відеогалерея ----->
+<section class="video_gallery" id="video_gallery">
+    <h3>Відеогалерея</h3>
     <div class="block">
-        <?php foreach ($promos as $promo): ?>
-            <div class="item">
-                <img src="/img/promo/<?= $promo->file ?>" alt="">
-                <div class="disc">
-                    <p><?= $promo->begin_data ?> - <?= $promo->end_data ?></p>
-                    <h5><?= $promo->description ?></h5>
-                    <a href="#" class="make_appointment">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="48" height="48" rx="24" fill=""/>
-                            <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"/>
-                        </svg>
-                        Записатись на прийом
-                    </a>
+        <?php if ($videos): ?>
+            <?php foreach ($videos as $video): ?>
+                <div class="video">
+                    <iframe width="" height="" src="https://www.youtube.com/embed/<?= $video->url_file ?>"
+                            title="<?= $video->title ?>" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <div class="title">
+                        <p><?= $video->data ?></p>
+                        <h2><?= $video->title ?></h2>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
-
+            <?php endforeach; ?>
+        <?php endif; ?>
         <?php
         echo \frontend\components\CustomPager::widget([
             'pagination' => $pages,
