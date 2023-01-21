@@ -18,22 +18,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->widget(Widget::class, [
         'defaultSettings' => [
+            'toolbarFixed' => false,
             'style' => 'position: unset;'
         ],
         'settings' => [
             'lang' => 'uk',
-            'minHeight' => 400,
+            'minHeight' => 200,
             'plugins' => [
 //                'clips',
-                'fullscreen',
-                'table',
+//                'fullscreen',
+//                'table',
             ],
-//            'clips' => [
-//                ['Не вкл', 'Не включается'],
-//                ['Не раб', 'Не работает'],
-//                ['Протекает', 'Протекает'],
-//                ['Шумит', 'Посторонний шум'],
-//            ],
         ],
     ]);?>
 
