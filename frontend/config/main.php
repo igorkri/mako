@@ -61,7 +61,7 @@ return [
                 'blog' => 'blog/index',
                 'work' => 'work-in-mako/index',
                 'learning' => 'learning-in-mako/index',
-//                '' => '/index',
+                'service/<slug:[\w+-]*\w+>' => 'service/index',
 //                '' => '/index',
             ],
 

@@ -4,14 +4,14 @@
 
 use yii\helpers\Url;
 
-//$this->title = 'My Yii Application';
+$this->title = 'Косметологічний центр МаКо';
 ?>
 <!----- Баннер ----->
 <section class="banner">
     <div class="light_background">
         <h1>МаKо</h1>
         <h2>Ви вмились<br> і краса лишилась</h2>
-        <a href="<?=Url::to(['site/contact'])?>" class="make_appointment">
+        <a href="#" class="make_appointment">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="48" rx="24" fill="" />
                 <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2" stroke-linecap="round"
@@ -31,7 +31,7 @@ use yii\helpers\Url;
         <p>Лікарі-дерматологи, косметологи з багаторічним досвідом роботи</p>
         <p>Тільки сертифіковані препарати та оснащення</p>
     </div>
-    <a href="#">
+    <a href="<?=Url::to(['team/index'])?>">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="24" height="24" rx="12" fill="" />
             <path d="M11 15C12 13 14 12 14 12C14 12 12 11 11 9" stroke="white" stroke-linecap="round"
@@ -42,7 +42,7 @@ use yii\helpers\Url;
 </section>
 
 <!----- слайдер "Акційні пропозиції" ----->
-<?=$this->render('promotional_offers')?>
+<?=$this->render('promotional_offers', ['promos' => $promos])?>
 
 <!----- слайдер "Популярні послуги" ----->
 <div class="overlay">
@@ -51,63 +51,63 @@ use yii\helpers\Url;
 <section class="popular_services" id="popular_services">
     <div class="services_block">
         <div class="item">
-            <img src="img/epilation.webp" alt="">
+            <img src="/img/epilation.webp" alt="">
             <a href="service.php" class="arrow"></a>
             <div class="title">
                 <h6>Назва послуги</h6>
             </div>
         </div>
         <div class="item">
-            <img src="img/epilation.webp" alt="">
+            <img src="/img/epilation.webp" alt="">
             <a href="service.php" class="arrow"></a>
             <div class="title">
                 <h6>Довга назва послуги</h6>
             </div>
         </div>
         <div class="item">
-            <img src="img/epilation.webp" alt="">
+            <img src="/img/epilation.webp" alt="">
             <a href="service.php" class="arrow"></a>
             <div class="title">
                 <h6>Довга назва послуги у декілька рядків</h6>
             </div>
         </div>
         <div class="item">
-            <img src="img/epilation.webp" alt="">
+            <img src="/img/epilation.webp" alt="">
             <a href="service.php" class="arrow"></a>
             <div class="title">
                 <h6>Довга назва послуги у декілька рядків</h6>
             </div>
         </div>
         <div class="item">
-            <img src="img/epilation.webp" alt="">
+            <img src="/img/epilation.webp" alt="">
             <a href="service.php" class="arrow"></a>
             <div class="title">
                 <h6>Довга назва послуги</h6>
             </div>
         </div>
         <div class="item">
-            <img src="img/epilation.webp" alt="">
+            <img src="/img/epilation.webp" alt="">
             <a href="service.php" class="arrow"></a>
             <div class="title">
                 <h6>Назва послуги</h6>
             </div>
         </div>
         <div class="item">
-            <img src="img/epilation.webp" alt="">
+            <img src="/img/epilation.webp" alt="">
             <a href="service.php" class="arrow"></a>
             <div class="title">
                 <h6>Довга назва послуги у декілька рядків</h6>
             </div>
         </div>
         <div class="item">
-            <img src="img/epilation.webp" alt="">
+            <img src="/img/epilation.webp" alt="">
             <a href="service.php" class="arrow"></a>
             <div class="title">
                 <h6>Довга назва послуги у декілька рядків. Назва послуги</h6>
             </div>
         </div>
         <div class="item">
-            <img src="img/epilation.webp" alt="">
+            <img src="/img/epilation.webp" alt="">
             <a href="service.php" class="arrow"></a>
             <div class="title">
                 <h6>Довга назва послуги</h6>
@@ -128,19 +128,19 @@ use yii\helpers\Url;
         </div>
         <div class="drugs">
             <div class="img">
-                <img src="img/alergan.svg" alt="">
+                <img src="/img/alergan.svg" alt="">
             </div>
             <div class="img">
-                <img src="img/botox.svg" alt="">
+                <img src="/img/botox.svg" alt="">
             </div>
             <div class="img">
-                <img src="img/christina.svg" alt="">
+                <img src="/img/christina.svg" alt="">
             </div>
             <div class="img">
-                <img src="img/dermaquest.svg" alt="">
+                <img src="/img/dermaquest.svg" alt="">
             </div>
             <div class="img">
-                <img src="img/renew.svg" alt="">
+                <img src="/img/renew.svg" alt="">
             </div>
         </div>
     </div>
@@ -152,7 +152,7 @@ use yii\helpers\Url;
         <div class="pict">
             <div class="overlay">
                 <h3>Подарункові<br> сертифікати<br> на будь-яку суму<br> чи послугу</h3>
-                <img src="img/MaKo.svg" alt="">
+                <img src="/img/MaKo.svg" alt="">
             </div>
         </div>
         <div class="info">

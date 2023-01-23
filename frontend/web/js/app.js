@@ -448,3 +448,9 @@ $( "form#order-a-call" ).submit(function( event ) {
   })
   event.preventDefault();
 });
+
+// відкриття модального вікна "записатись"
+// $('.make_appointment').click(function () {
+//   $('#dark_background').addClass('active');
+//   $('#dark_background #sign_up_window').removeClass('dn');
+// });

@@ -56,7 +56,15 @@
                     ['label' => 'Відгуки', 'icon' => 'dot-circle', 'url' => ['/reviews']],
                     ['label' => 'Контакти', 'icon' => 'dot-circle', 'url' => ['/contacts']],
                     ['label' => 'Social', 'icon' => 'dot-circle', 'url' => ['/social']],
-
+                    ['label' => 'Категорії послуг', 'icon' => 'dot-circle', 'url' => ['/category-service']],
+                    ['label' => 'Послуги', 'icon' => 'dot-circle', 'url' => ['/service']],
+//                    ['label' => 'Головна сторінка',
+//                        'items' => [
+//                            ['label' => 'Баннер', 'icon' => 'dot-circle', 'url' => ['/banner']],
+//                            ['label' => 'Мако це', 'icon' => 'dot-circle', 'url' => ['/mako-it']],
+//                            ['label' => '', 'icon' => 'dot-circle', 'url' => ['/']],
+//                        ]
+//                    ],
 
                 ],
             ]);

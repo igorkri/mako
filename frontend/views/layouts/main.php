@@ -4,7 +4,7 @@
 /** @var string $content */
 
 use frontend\assets\AppAsset;
-
+use yii\helpers\Html;
 
 
 AppAsset::register($this);
@@ -18,8 +18,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/img/favicon.svg" type="image/x-icon">
     <?php $this->registerCsrfMetaTags() ?>
-<!--    <title>--><?php // Html::encode($this->title) ?><!--</title>-->
-    <title>Косметологічний центр МаКо</title>
+    <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
