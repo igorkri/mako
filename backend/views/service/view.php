@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a('Редагувати', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
             <?= Html::a(' + Спеціаліста', ['add-specialist', 'id' => $model->id], ['role' => 'modal-remote', 'class' => 'btn btn-success']) ?>
-            <?= Html::a(' + Відео', ['add-video', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+            <?= Html::a(' + Відео', ['add-video', 'id' => $model->id], ['role' => 'modal-remote', 'class' => 'btn btn-success']) ?>
             <?= Html::a(' + Питання про послугу', ['add-question', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
             <?= Html::a(' + Фото', ['add-photo', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
 
@@ -56,6 +56,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             <figcaption class="figure-caption"><?= $specialist->specialist->fio ?></figcaption>
                         </figure>
                     </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($videos)): ?>
+            <div class="row">
+                <h3>Відео:</h3>
+                <?php foreach ($videos as $video): ?>
+                    <iframe src="https://www.youtube.com/embed/<?=$video->url?>" title="<?=$video->name?>" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                <hr>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>

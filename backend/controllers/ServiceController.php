@@ -5,6 +5,8 @@ namespace backend\controllers;
 use common\models\Service;
 use backend\models\search\ServiceSearch;
 use common\models\ServiceSpecialist;
+use common\models\ServiceVideo;
+use common\models\Video;
 use Yii;
 use yii\base\BaseObject;
 use yii\helpers\Html;
@@ -62,9 +64,11 @@ class ServiceController extends Controller
     public function actionView($id)
     {
         $specialists = ServiceSpecialist::find()->where(['service_id' => $id])->all();
+        $videos = ServiceVideo::find()->where(['service_id' => $id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
             'specialists' => $specialists,
+            'videos' => $videos,
         ]);
     }
 
@@ -162,13 +166,8 @@ class ServiceController extends Controller
 
                 ];
             } else if ($model->load($request->post())) {
-                $post = $request->post('ServiceSpecialist');
-//                foreach ($post['specialist_id'] as $sp) {
-//                    $new_model = new ServiceSpecialist();
-                    $model->service_id = $id;
-//                    $new_model->specialist_id = $sp;
-                    $model->save();
-//                }
+                $model->service_id = $id;
+                $model->save();
                 return [
                     'forceReload' => '#view-pjax',
                     'title' => "Добавлення спеціалістів",
@@ -194,10 +193,73 @@ class ServiceController extends Controller
             /*
             *   Process for non-ajax request
             */
-            if ($model->load($request->post()) && $model->save()) {
+            if ($model->load($request->post())) {
+                $model->service_id = $id;
+                $model->save();
                 return $this->redirect(['view', 'id' => $id]);
             } else {
                 return $this->render('add-specialist', [
+                    'model' => $model,
+                ]);
+            }
+        }
+    }
+
+    public function actionAddVideo($id)
+    {
+
+        $request = Yii::$app->request;
+        $model = new ServiceVideo();
+
+        if ($request->isAjax) {
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if ($request->isGet) {
+                return [
+                    'title' => "Добавлення спеціалістів ",
+                    'content' => $this->renderAjax('add-video', [
+                        'model' => $model,
+                    ]),
+                    'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
+                        Html::button('Зберегти', ['class' => 'btn btn-primary', 'type' => "submit"])
+
+                ];
+            } else if ($model->load($request->post())) {
+                $model->service_id = $id;
+                $model->save();
+                return [
+                    'forceReload' => '#view-pjax',
+                    'title' => "Добавлення спеціалістів",
+                    'content' => '<span class="text-success">Успішно додано!</span>',
+                    'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"])
+                        . Html::a('Додати ще',['add-video', 'id' => $id],['class'=>'btn btn-primary','role'=>'modal-remote'])
+
+                ];
+//                }
+
+            } else {
+                return [
+                    'title' => "Добавлення спеціалістів",
+                    'content' => $this->renderAjax('add-video', [
+                        'model' => $model,
+                    ]),
+                    'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
+                        Html::button('Зберегти', ['class' => 'btn btn-primary', 'type' => "submit"])
+
+                ];
+            }
+        } else {
+            /*
+            *   Process for non-ajax request
+            */
+            if ($model->load($request->post())) {
+                $model->service_id = $id;
+                $model->save();
+                return $this->redirect(['view', 'id' => $id]);
+            } else {
+                return $this->render('add-video', [
                     'model' => $model,
                 ]);
             }
