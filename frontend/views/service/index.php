@@ -37,48 +37,38 @@
     <div class="cont">
         <p>₴<?=$service->price?></p>
     </div>
+    <?php if($service->serviceSpecialists): ?>
     <h3 style="margin-top: 60px;">Спеціалісти, що проводять процедуру</h3>
     <div class="specialists">
+        <?php foreach ($service->serviceSpecialists as $specialist): ?>
         <div class="card">
-            <img src="/img/specialist.webp" alt="">
-            <h6>Ім’я Прізвище</h6>
-            <p>Лікар-косметолог, назва спеціалізації в один, два, три рядки</p>
+            <img src="/img/specialists/<?=$specialist->specialist->photo?>" alt="">
+            <h6><?=$specialist->specialist->profession?></h6>
+            <p><?=$specialist->specialist->fio?></p>
         </div>
-        <div class="card">
-            <img src="/img/specialist.webp" alt="">
-            <h6>Ім’я Прізвище</h6>
-            <p>Лікар-косметолог</p>
-        </div>
+        <?php endforeach; ?>
     </div>
+    <?php endif; ?>
+    <?php if ($service->serviceVideos): ?>
     <h3>Назва відео</h3>
     <div class="cont video">
-        <iframe src="https://www.youtube.com/embed/FPjJW5iTFN0" title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+        <?php foreach ($service->serviceVideos as $video): ?>
+            <iframe src="https://www.youtube.com/embed/<?=$video->url?>" title="<?=$video->name?>" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        <?php endforeach; ?>
     </div>
+    <?php endif; ?>
 </section>
 
 <!----- галерея ----->
 <h3 class="gallery_title">Фотогалерея</h3>
 <div class="gallery" id="gallery">
+    <?php foreach ($service->serviceGalleries as $gallery): ?>
     <div class="item">
-        <img src="/img/gallery1.webp" alt="">
+        <img src="/img/service-photo/<?=$gallery->file?>" alt="">
     </div>
-    <div class="item">
-        <img src="/img/gallery2.webp" alt="">
-    </div>
-    <div class="item">
-        <img src="/img/gallery1.webp" alt="">
-    </div>
-    <div class="item">
-        <img src="/img/gallery2.webp" alt="">
-    </div>
-    <div class="item">
-        <img src="/img/gallery1.webp" alt="">
-    </div>
-    <div class="item">
-        <img src="/img/gallery2.webp" alt="">
-    </div>
+    <?php endforeach; ?>
 </div>
 
 <!----- Питання про послугу ----->
