@@ -14,9 +14,9 @@ class m230122_075603_create_category_service_table extends Migration
     {
         $this->createTable('{{%category_service}}', [
             'id' => $this->primaryKey(),
-            'parent_id' => $this->integer()->comment('Головна категорія'),
-            'name' => $this->string()->unique()->comment('Назва катагорії'),
-            'slug' => $this->string()->unique()->comment('Slug'),
+            'parent_id' => $this->integer()->comment(''),
+            'name' => $this->string(255)->unique()->comment(''),
+            'slug' => $this->string(255)->unique()->comment('Slug'),
         ]);
     }
 
