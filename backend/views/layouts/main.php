@@ -3,6 +3,8 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use kartik\alert\AlertBlock;
+use kartik\growl\Growl;
 use yii\helpers\Html;
 
 \hail812\adminlte3\assets\FontAwesomeAsset::register($this);
@@ -36,7 +38,58 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
 
     <!-- Main Sidebar Container -->
     <?= $this->render('sidebar', ['assetDir' => $assetDir]) ?>
-
+    <?php
+    echo AlertBlock::widget([
+        'type' => AlertBlock::TYPE_GROWL,
+        'useSessionFlash' => true,
+        'delay' => 500,
+        'alertSettings' => [
+            'success' => [
+                'type' => Growl::TYPE_SUCCESS,
+                'pluginOptions' => [
+//                        'showProgressbar' => true,
+                    'z_index' => 3031,
+                    'timer' => 3000,
+                    'placement' => [
+                        'from' => 'top',
+                        'align' => 'right'
+                    ]
+                ]
+            ],
+            'danger' => [
+                'type' => Growl::TYPE_DANGER,
+                'pluginOptions' => [
+                    'z_index' => 3031,
+                    'timer' => 4000,
+                    'placement' => [
+                        'from' => 'top',
+                        'align' => 'right']
+                ]
+            ],
+            'warning' => [
+                'type' => Growl::TYPE_WARNING,
+                'pluginOptions' => [
+                    'z_index' => 3031,
+                    'timer' => 4000,
+                    'placement' => [
+                        'from' => 'top',
+                        'align' => 'right']
+                ]
+            ],
+            'info' => [
+                'type' => Growl::TYPE_INFO,
+                'pluginOptions' => [
+                    'z_index' => 3031,
+                    'timer' => 3000,
+                    'placement' => [
+                        'from' => 'top',
+                        'align' => 'right'
+                    ]
+                ]
+            ]
+        ]
+    ]);
+    ?>
     <!-- Content Wrapper. Contains page content -->
     <?= $this->render('content', ['content' => $content, 'assetDir' => $assetDir]) ?>
     <!-- /.content-wrapper -->

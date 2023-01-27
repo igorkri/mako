@@ -2,6 +2,7 @@
 
 use yii\bootstrap5\Modal;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
@@ -18,9 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a('Редагувати', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
             <?= Html::a(' + Спеціаліста', ['add-specialist', 'id' => $model->id], ['role' => 'modal-remote', 'class' => 'btn btn-success']) ?>
-            <?= Html::a(' + Відео', ['add-video', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-            <?= Html::a(' + Питання про послугу', ['add-question', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-            <?= Html::a(' + Фото', ['add-photo', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+            <?= Html::a(' + Відео', ['add-video', 'id' => $model->id], ['role' => 'modal-remote', 'class' => 'btn btn-success']) ?>
+            <?= Html::a(' + Питання про послугу', ['add-question', 'id' => $model->id], ['role' => 'modal-remote', 'class' => 'btn btn-success']) ?>
+            <?= Html::a(' + Фото', ['add-photo', 'id' => $model->id], ['role' => 'modal-remote', 'class' => 'btn btn-success']) ?>
 
             <?= Html::a('Видалити', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
@@ -54,6 +55,35 @@ $this->params['breadcrumbs'][] = $this->title;
                             <img src="<?= Yii::$app->request->hostInfo . '/img/specialists/' . $specialist->specialist->photo ?>"
                                  class="figure-img img-fluid rounded" alt="">
                             <figcaption class="figure-caption"><?= $specialist->specialist->fio ?></figcaption>
+                        </figure>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($model->serviceVideos): ?>
+            <div class="row">
+                <h3>Відео:</h3>
+                <?php foreach ($model->serviceVideos as $video): ?>
+                    <iframe src="https://www.youtube.com/embed/<?=$video->url?>" title="<?=$video->name?>" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <hr>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($model->serviceGalleries)): ?>
+            <div class="row">
+                <h3>Фото:</h3>
+                <?php foreach ($model->serviceGalleries as $gallery): ?>
+                    <div class="col-3">
+                        <figure class="figure" style="border: 1px solid grey; padding: 10px">
+                            <img src="<?= Yii::$app->request->hostInfo . '/img/service-photo/' . $gallery->file ?>"
+                                 class="figure-img img-fluid rounded" alt="">
+                            <figcaption class="figure-caption text-end">
+                                <a class="btn btn-danger btn-sm" href="<?=Url::to(['remove-photo', 'id' => $gallery->id])?>" role="modal-remote">Видалити</a>
+                            </figcaption>
                         </figure>
                     </div>
                 <?php endforeach; ?>
