@@ -1,6 +1,8 @@
 <?php
 
+use Itstructure\CKEditor\CKEditor;
 use kartik\form\ActiveForm;
+//use mihaildev\ckeditor\CKEditor;
 use vova07\imperavi\Widget;
 
 /** @var yii\web\View $this */
@@ -13,32 +15,25 @@ use vova07\imperavi\Widget;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'question')->widget(Widget::class, [
-        'defaultSettings' => [
-            'style' => 'position: unset;'
-        ],
-        'settings' => [
-            'lang' => 'uk',
-            'minHeight' => 100,
-            'plugins' => [
-                'fullscreen',
-                'table',
-            ],
-        ],
-    ]); ?>
-    <?= $form->field($model, 'reply')->widget(Widget::class, [
-        'defaultSettings' => [
-            'style' => 'position: unset;'
-        ],
-        'settings' => [
-            'lang' => 'uk',
-            'minHeight' => 100,
-            'plugins' => [
-                'fullscreen',
-                'table',
-            ],
-        ],
-    ]); ?>
+    <?php
+
+    echo $form->field($model, 'question')->widget(CKEditor::className(),
+            [
+                'preset' => 'standard',
+                'clientOptions' => [
+                    'allowedContent' => true,
+                    'language' => 'uk',
+                ]
+            ]
+        );
+    ?>
+    <?php echo $form->field($model, 'reply')->widget(CKEditor::className(),[
+        'preset' => 'standard',
+        'clientOptions' => [
+            'allowedContent' => true,
+            'language' => 'uk',
+        ]
+    ]);?>
 
     <?php ActiveForm::end(); ?>
 

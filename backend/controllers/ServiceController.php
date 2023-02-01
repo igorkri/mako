@@ -371,4 +371,47 @@ class ServiceController extends Controller
         }
     }
 
+    public function actionUpdateQuestion($service_id, $id){
+
+        $request = Yii::$app->request;
+        $model = QuestionService::findOne($id);
+
+        if ($request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if ($request->isGet) {
+                return [
+                    'title' => "Питання відповідь ",
+                    'content' => $this->renderAjax('add-question', [
+                        'model' => $model,
+                    ]),
+                    'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
+                        Html::button('Зберегти', ['class' => 'btn btn-primary', 'type' => "submit"])
+
+                ];
+            } else if ($model->load($request->post())) {
+                $model->service_id = $service_id;
+                $model->save();
+                return [
+                    'forceReload' => '#view-pjax',
+                    'title' => "Питання відповідь ",
+                    'content' => '<span class="text-success">Успішно оновлено!</span>',
+                    'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"])
+                ];
+//                }
+
+            } else {
+                return [
+                    'title' => "Питання відповідь ",
+                    'content' => $this->renderAjax('add-question', [
+                        'model' => $model,
+                    ]),
+                    'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
+                        Html::button('Зберегти', ['class' => 'btn btn-primary', 'type' => "submit"])
+
+                ];
+            }
+
+        }
+    }
+
 }

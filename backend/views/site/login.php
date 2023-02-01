@@ -2,6 +2,7 @@
 
 use kartik\form\ActiveForm;
 use yii\helpers\Html;
+use yii\web\View;
 
 ?>
 
@@ -15,20 +16,21 @@ use yii\helpers\Html;
             'options' => ['class' => 'form-group has-feedback'],
 //            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-envelope"></span></div></div>',
             'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
+//            'wrapperOptions' => ['class' => 'input-group mb-3']
         ])
             ->label(false)
-            ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
-
-        <?= $form->field($model, 'password', [
-            'options' => ['class' => 'form-group has-feedback'],
-//            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-lock"></span></div></div>',
-            'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
-        ])
-            ->label(false)
-            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
-
+            ->textInput(['placeholder' => 'Введіть Ім\'я']) ?>
+        <div class="password-container">
+            <?= $form->field($model, 'password', [
+                'options' => ['class' => 'form-group has-feedback'],
+    //            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-lock"></span></div></div>',
+                'template' => '{beginWrapper}{input}{error}{endWrapper}',
+    //            'wrapperOptions' => ['class' => 'input-group mb-3']
+            ])
+                ->label(false)
+                ->passwordInput(['placeholder' => 'Введіть пароль']) ?>
+            <i class="fa-solid fa-eye" id="eye"></i>
+        </div>
         <div class="row">
             <div class="col-8">
                 <?= $form->field($model, 'rememberMe')->checkbox([
@@ -46,13 +48,42 @@ use yii\helpers\Html;
 
         <?php ActiveForm::end(); ?>
 
-<!--        <p class="mb-1">-->
-<!--            <a href="forgot-password.html">Я забув свій пароль</a>-->
-<!--        </p>-->
-<!--        <p class="mb-0">-->
-<!--            <a href="register.html" class="text-center">Зареєструйте нове членство</a>-->
-<!--        </p>-->
     </div>
     <!-- /.login-card-body -->
 </div>
+<style>
+    .password-container{
+        /*width: 400px;*/
+        position: relative;
+    }
+    .password-container input[type="password"],
+    .password-container input[type="text"]{
+        width: 100%;
+        padding: 12px 36px 12px 12px;
+        box-sizing: border-box;
+    }
+    .fa-eye{
+        position: absolute;
+        top: 28%;
+        right: 4%;
+        cursor: pointer;
+        color: lightgray;
+    }
+</style>
+<?php
+$js = <<<JS
+$( document ).ready(function() {
+
+      const passwordInput = document.querySelector("#loginform-password");
+      const eye = document.querySelector("#eye");
+      eye.addEventListener("click", function(){
+          this.classList.toggle("fa-eye-slash");
+          const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+          passwordInput.setAttribute("type", type)
+      })
+});
+
+JS;
+$this->registerJs($js);
+?>
 

@@ -65,7 +65,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <h3>Відео:</h3>
                 <?php foreach ($model->serviceVideos as $video): ?>
-                    <iframe src="https://www.youtube.com/embed/<?=$video->url?>" title="<?=$video->name?>" frameborder="0"
+                    <iframe src="https://www.youtube.com/embed/<?= $video->url ?>" title="<?= $video->name ?>"
+                            frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     <hr>
@@ -82,7 +83,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             <img src="<?= Yii::$app->request->hostInfo . '/img/service-photo/' . $gallery->file ?>"
                                  class="figure-img img-fluid rounded" alt="">
                             <figcaption class="figure-caption text-end">
-                                <a class="btn btn-danger btn-sm" href="<?=Url::to(['remove-photo', 'id' => $gallery->id])?>" role="modal-remote">Видалити</a>
+                                <a class="btn btn-danger btn-sm"
+                                   href="<?= Url::to(['remove-photo', 'id' => $gallery->id]) ?>" role="modal-remote">Видалити</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -90,24 +92,32 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         <?php endif; ?>
 
-        <?php if (!empty($model->serviceQuestions)): ?>
-            <div class="row">
-
-                <?php foreach ($model->serviceQuestions as $question): ?>
-                    <h3>Питання :</h3>
-                    <div class="col-auto">
-                        <?=$question->question?>
-                    </div>
-                    <h3>Відповідь :</h3>
-                    <div class="col-auto">
-                        <?=$question->reply?>
-                    </div>
-                    <hr>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
-
     </div>
+<?php if (!empty($model->serviceQuestions)): ?>
+    <h3>Питання / Відповідь:</h3>
+    <?php foreach ($model->serviceQuestions as $question): ?>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"></h3>
+                <div class="card-tools">
+                    <?= Html::a('<i class="fas fa-edit"></i>', ['update-question', 'service_id' => $model->id, 'id' => $question->id], ['role' => 'modal-remote', 'class' => 'btn btn-success']) ?>
+                </div>
+                <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                Питання :
+                <?= $question->question ?>
+            </div>
+            <div class="card-body">
+                Відповідь :
+                <?= $question->reply ?>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    <?php endforeach; ?>
+<?php endif; ?>
 <?php Modal::begin([
     "id" => "ajaxCrudModal",
     "size" => Modal::SIZE_EXTRA_LARGE,
@@ -120,3 +130,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ]) ?>
 <?php Modal::end(); ?>
 <?php \yii\widgets\Pjax::end() ?>
+
+<style>
+    h3{
+        padding-top: 25px;
+    }
+</style>

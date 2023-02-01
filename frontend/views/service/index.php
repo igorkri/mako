@@ -70,22 +70,18 @@
     </div>
     <?php endforeach; ?>
 </div>
-
+<?php if($service->serviceQuestions): ?>
 <!----- Питання про послугу ----->
 <section class="question_service">
     <h3>Питання про послугу</h3>
+    <?php foreach ($service->serviceQuestions as $question): ?>
     <div class="question_block">
-        <h6>Текст питання</h6>
-        <p>Текст відповіді.</p>
-        <p>В складі пептиди ботулоподібної дії, які мають омолоджуючу дію. Має зволожуючу, антиоксидантну, ботулоподібну,
-            кератолітичну дію, ліфтинг-ефект.</p>
+        <h6><?=$question->question?></h6>
+        <p><?=$question->reply?></p>
     </div>
-    <div class="question_block">
-        <h6>Текст питання</h6>
-        <p>Текст відповіді зі списком:</p>
-        <ul>
-            <li><span>хроно і фотостаріння;</span></li>
-            <li><span>профілактика і корекція вікових змін,а також зони навколо очей.</span></li>
-        </ul>
-    </div>
+    <?php endforeach; ?>
 </section>
+<?php endif; ?>
+
+<!----- слайдер "Акційні пропозиції" ----->
+<?=\frontend\Widgets\PromotionalOffersWidget::widget()?>
