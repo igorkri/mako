@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\QuestionService;
 use common\models\Service;
 use backend\models\search\ServiceSearch;
 use common\models\ServiceGallery;
@@ -323,6 +324,51 @@ class ServiceController extends Controller
         }
         debug($model);
 
+    }
+
+    public function actionAddQuestion($id){
+
+        $request = Yii::$app->request;
+        $model = new QuestionService();
+
+        if ($request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if ($request->isGet) {
+                return [
+                    'title' => "Питання відповідь ",
+                    'content' => $this->renderAjax('add-question', [
+                        'model' => $model,
+                    ]),
+                    'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
+                        Html::button('Зберегти', ['class' => 'btn btn-primary', 'type' => "submit"])
+
+                ];
+            } else if ($model->load($request->post())) {
+                $model->service_id = $id;
+                $model->save();
+                return [
+                    'forceReload' => '#view-pjax',
+                    'title' => "Питання відповідь ",
+                    'content' => '<span class="text-success">Успішно додано!</span>',
+                    'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"])
+                        . Html::a('Додати ще', ['add-question', 'id' => $id], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
+
+                ];
+//                }
+
+            } else {
+                return [
+                    'title' => "Питання відповідь ",
+                    'content' => $this->renderAjax('add-question', [
+                        'model' => $model,
+                    ]),
+                    'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
+                        Html::button('Зберегти', ['class' => 'btn btn-primary', 'type' => "submit"])
+
+                ];
+            }
+
+        }
     }
 
 }

@@ -96,7 +96,7 @@ class Service extends \yii\db\ActiveRecord
      */
     public function getServiceQuestions()
     {
-        return $this->hasMany(ServiceQuestion::class, ['service_id' => 'id']);
+        return $this->hasMany(QuestionService::class, ['service_id' => 'id']);
     }
 
     /**

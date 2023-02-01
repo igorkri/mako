@@ -23,8 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a(' + Питання про послугу', ['add-question', 'id' => $model->id], ['role' => 'modal-remote', 'class' => 'btn btn-success']) ?>
             <?= Html::a(' + Фото', ['add-photo', 'id' => $model->id], ['role' => 'modal-remote', 'class' => 'btn btn-success']) ?>
 
-            <?= Html::a('Видалити', ['delete', 'id' => $model->id], [
-                'class' => 'btn btn-danger',
+            <?= Html::a('Видалити ', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger float-end',
                 'data' => [
                     'confirm' => 'Ви впевнені, що хочете видалити цей елемент?',
                     'method' => 'post',
@@ -86,6 +86,23 @@ $this->params['breadcrumbs'][] = $this->title;
                             </figcaption>
                         </figure>
                     </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($model->serviceQuestions)): ?>
+            <div class="row">
+
+                <?php foreach ($model->serviceQuestions as $question): ?>
+                    <h3>Питання :</h3>
+                    <div class="col-auto">
+                        <?=$question->question?>
+                    </div>
+                    <h3>Відповідь :</h3>
+                    <div class="col-auto">
+                        <?=$question->reply?>
+                    </div>
+                    <hr>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
