@@ -56,6 +56,7 @@ return [
             'rules' => [
                 'work/<action:\w+>' => 'work-in-mako/<action>',
                 'learning/<action:\w+>' => 'learning-in-mako/<action>',
+//                'blog/<action:\w+>' => 'article/<action>',
             ],
         ],
 

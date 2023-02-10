@@ -48,7 +48,7 @@
                                 ]
                             ],
                             ['label' => 'Відео', 'iconStyle' => 'far', 'url' => ['/video']],
-                            ['label' => 'Статті', 'iconStyle' => 'far', 'url' => ['/blog']],
+                            ['label' => 'Статті', 'iconStyle' => 'far', 'url' => ['/article']],
                             ['label' => 'Робота в МаКо', 'iconStyle' => 'far', 'url' => ['/work/index']],
                             ['label' => 'Навчання в МаКо', 'iconStyle' => 'far', 'url' => ['/learning-in-mako/index']],
                         ]

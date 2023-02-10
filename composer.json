@@ -30,12 +30,13 @@
         "kartik-v/yii2-widget-select2": "dev-master",
         "bizley/quill": "^3.3",
         "mihaildev/yii2-ckeditor": "*",
-        "itstructure/yii2-ckeditor": "~1.1.6"
+        "itstructure/yii2-ckeditor": "~1.1.6",
+        "fakerphp/faker": "^1.21"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
         "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "~2.0.0",
+        "yiisoft/yii2-faker": "^2.0",
         "phpunit/phpunit": "~9.5.0",
         "codeception/codeception": "^5.0.0 || ^4.0",
         "codeception/lib-innerbrowser": "^3.0 || ^1.1",
