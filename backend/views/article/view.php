@@ -33,6 +33,12 @@ use yii\widgets\DetailView;
                 'value' => function($model){
                     return '<img src="' . Yii::$app->request->hostInfo . "/img/article/" . $model->file . '" alt="" width="800px">';
                 }
+            ],[
+                'attribute' => 'file_thumb',
+                'format' => 'raw',
+                'value' => function($model){
+                    return '<img src="' . Yii::$app->request->hostInfo . "/img/article/" . $model->file_thumb . '" alt="" width="400px">';
+                }
             ],
         ],
     ]) ?>

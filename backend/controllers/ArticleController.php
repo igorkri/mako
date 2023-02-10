@@ -89,9 +89,13 @@ class ArticleController extends Controller
             $dir = Yii::getAlias('@frontendWeb/img/article');
 
             $file = UploadedFile::getInstance($model, 'file');
+            $file_thumb = UploadedFile::getInstance($model, 'file_thumb');
             $imageName = uniqid();
+            $imageName2 = uniqid();
             $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+            $file_thumb->saveAs($dir . '/' . $imageName2 . '.' . $file->extension);
             $model->file = $imageName . '.' . $file->extension;
+            $model->file_thumb = $imageName . '.' . $file->extension;
 
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -123,13 +127,18 @@ class ArticleController extends Controller
             if ($post_file <= 0) {
                 $old = $this->findModel($id);
                 $model->file = $old->file;
+                $model->file_thumb = $old->file_thumb;
             } else {
                 $dir = Yii::getAlias('@frontendWeb/img/article');
 
                 $file = UploadedFile::getInstance($model, 'file');
+                $file_thumb = UploadedFile::getInstance($model, 'file_thumb');
                 $imageName = uniqid();
+                $imageName2 = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $file_thumb->saveAs($dir . '/' . $imageName2 . '.' . $file->extension);
                 $model->file = $imageName . '.' . $file->extension;
+                $model->file_thumb = $imageName . '.' . $file->extension;
             }
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -153,8 +162,12 @@ class ArticleController extends Controller
      */
     public function actionDelete($id)
     {
+        $dir = Yii::getAlias('@frontendWeb/img/article');
         $request = Yii::$app->request;
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        unlink($dir . "/" . $model->file_thumb);
+        unlink($dir . "/" . $model->file);
+        $model->delete();
 
         if ($request->isAjax) {
             /*
@@ -181,10 +194,14 @@ class ArticleController extends Controller
      */
     public function actionBulkdelete()
     {
+        $dir = Yii::getAlias('@frontendWeb/img/article');
         $request = Yii::$app->request;
         $pks = explode(',', $request->post('pks')); // Array or selected records primary keys
         foreach ($pks as $pk) {
+            $request = Yii::$app->request;
             $model = $this->findModel($pk);
+            unlink($dir . "/" . $model->file_thumb);
+            unlink($dir . "/" . $model->file);
             $model->delete();
         }
 
