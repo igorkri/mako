@@ -58,17 +58,22 @@
                     ['label' => 'Social', 'icon' => 'dot-circle', 'url' => ['/social']],
                     ['label' => 'Категорії послуг', 'icon' => 'dot-circle', 'url' => ['/category-service']],
                     ['label' => 'Послуги', 'icon' => 'dot-circle', 'url' => ['/service']],
-//                    ['label' => 'Головна сторінка',
-//                        'items' => [
-//                            ['label' => 'Баннер', 'icon' => 'dot-circle', 'url' => ['/banner']],
-//                            ['label' => 'Мако це', 'icon' => 'dot-circle', 'url' => ['/mako-it']],
-//                            ['label' => '', 'icon' => 'dot-circle', 'url' => ['/']],
-//                        ]
-//                    ],
+                    ['label' => 'Магазин', 'header' => true],
+                    ['label' => 'Магазин',
+                        'items' => [
+                            ['label' => 'Список товарів', 'icon' => 'dot-circle', 'url' => ['/shop/product-list']],
+                            ['label' => 'Виробники', 'icon' => 'dot-circle', 'url' => ['/shop/producer']],
+                            ['label' => 'Категорії товарів', 'icon' => 'dot-circle', 'url' => ['/shop/category']],
+                            ['label' => 'Серії', 'icon' => 'dot-circle', 'url' => ['/shop/series']],
+                            ['label' => 'Статус', 'icon' => 'dot-circle', 'url' => ['/shop/status']],
+                        ]
+                    ],
 
                 ],
             ]);
             ?>
+            <hr>
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>
