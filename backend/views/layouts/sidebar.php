@@ -61,11 +61,11 @@
                     ['label' => 'Магазин', 'header' => true],
                     ['label' => 'Магазин',
                         'items' => [
-                            ['label' => 'Список товарів', 'icon' => 'dot-circle', 'url' => ['/shop/product-list']],
+                            ['label' => 'Список товарів', 'icon' => 'dot-circle', 'url' => ['/shop/product']],
                             ['label' => 'Виробники', 'icon' => 'dot-circle', 'url' => ['/shop/producer']],
                             ['label' => 'Категорії товарів', 'icon' => 'dot-circle', 'url' => ['/shop/category']],
                             ['label' => 'Серії', 'icon' => 'dot-circle', 'url' => ['/shop/series']],
-                            ['label' => 'Статус', 'icon' => 'dot-circle', 'url' => ['/shop/status']],
+//                            ['label' => 'Статус', 'icon' => 'dot-circle', 'url' => ['/shop/status']],
                         ]
                     ],
 

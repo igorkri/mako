@@ -322,7 +322,7 @@ class ServiceController extends Controller
 
             return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
         }
-        debug($model);
+//        debug($model);
 
     }
 

@@ -36,7 +36,7 @@ class ProductController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex(): string
     {
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
@@ -55,8 +55,12 @@ class ProductController extends Controller
      */
     public function actionView($id)
     {
+//        \Yii::$app->cache->flush();
+        $model = Product::find()
+            ->with('productImages')
+            ->where(['id' => $id])->one();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -71,7 +75,7 @@ class ProductController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['shop/product-image/create', 'product_id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -111,7 +115,19 @@ class ProductController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        if ($model->productImages) {
+            $dir = \Yii::getAlias('@frontendWeb/img/products/');
+            foreach ($model->productImages as $productImage) {
+                if (file_exists($dir . $model->id . '/' . $productImage->name)) {
+                    unlink($dir . $model->id . '/' . $productImage->name);
+                } else {
+                    unlink($dir . $productImage->name);
+                }
+                $productImage->delete();
+            }
+        }
+        $model->delete();
 
         return $this->redirect(['index']);
     }

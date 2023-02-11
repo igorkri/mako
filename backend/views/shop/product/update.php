@@ -5,14 +5,14 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var common\models\shop\Product $model */
 
-$this->title = 'Update Product: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
+$this->title = 'Редагування товару: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Товари', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Редагування';
 ?>
-<div class="product-update">
+<div class="container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <?= $this->render('_form', [
         'model' => $model,

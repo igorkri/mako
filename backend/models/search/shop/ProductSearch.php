@@ -17,8 +17,8 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at', 'published', 'category_id', 'delivery_id', 'series_id', 'status_id', 'popular_product'], 'integer'],
-            [['name', 'description', 'indication', 'producer'], 'safe'],
+            [['id', 'created_at', 'updated_at', 'published', 'category_id', 'series_id', 'status_id', 'popular_product'], 'integer'],
+            [['name', 'description', 'indication', 'producer_id', 'images'], 'safe'],
             [['price'], 'number'],
         ];
     }
@@ -64,9 +64,9 @@ class ProductSearch extends Product
             'updated_at' => $this->updated_at,
             'published' => $this->published,
             'category_id' => $this->category_id,
-            'delivery_id' => $this->delivery_id,
+//            'delivery_id' => $this->delivery_id,
             'series_id' => $this->series_id,
-            'status_id' => $this->status_id,
+//            'status_id' => $this->status_id,
             'popular_product' => $this->popular_product,
             'price' => $this->price,
         ]);
@@ -74,7 +74,7 @@ class ProductSearch extends Product
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'indication', $this->indication])
-            ->andFilterWhere(['like', 'producer', $this->producer]);
+            ->andFilterWhere(['like', 'producer', $this->producer_id]);
 
         return $dataProvider;
     }

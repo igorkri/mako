@@ -121,6 +121,8 @@
       <path value="$PROJECT_DIR$/vendor/mihaildev/yii2-ckeditor" />
       <path value="$PROJECT_DIR$/vendor/ckeditor/ckeditor" />
       <path value="$PROJECT_DIR$/vendor/itstructure/yii2-ckeditor" />
+      <path value="$PROJECT_DIR$/vendor/imagine/imagine" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-imagine" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
