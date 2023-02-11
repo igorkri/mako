@@ -16,15 +16,15 @@ class AppAsset extends AssetBundle
         'css/ajaxcrud.css'
     ];
     public $js = [
-//        'js/ajaxcrud.js',
-//        'js/ModalRemote.js',
+        'js/ajaxcrud.js',
+        'js/ModalRemote.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap5\BootstrapAsset',
+//        'yii\bootstrap5\BootstrapAsset',
 
-        'yii\bootstrap4\BootstrapPluginAsset',
-        'kartik\grid\GridViewAsset',
+//        'yii\bootstrap4\BootstrapPluginAsset',
+//        'kartik\grid\GridViewAsset',
     ];
 
     public function init() {
