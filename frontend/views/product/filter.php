@@ -85,7 +85,11 @@ $get = Yii::$app->request->get('ProductSearch');
 <!--            <h6>Категорії</h6>-->
             <?php foreach ($categories as $category): ?>
             <label class="checkbox">
+                <?php if(isset($_SESSION['category_id'])): ?>
                 <input type="checkbox" <?= in_array($category->id, $_SESSION['category_id']) ? 'checked' : '' ?> name="filter-category-<?=$category->id?>" onclick="filterCategory(<?=$category->id?>)">
+                <?php else: ?>
+                    <input type="checkbox" name="filter-category"  onclick="filterSerie(<?=$category->id?>)">
+                <?php endif; ?>
                 <span><?=$category->name?></span>
             </label>
             <?php endforeach; ?>
@@ -94,16 +98,25 @@ $get = Yii::$app->request->get('ProductSearch');
             <h6>Виробник</h6>
             <?php foreach ($producer as $prod): ?>
             <label class="checkbox">
+                <?php if(isset($_SESSION['producer_id'])): ?>
                 <input type="checkbox" <?= in_array($prod->id, $_SESSION['producer_id']) ? 'checked' : '' ?> name="filter-producer" onclick="filterProducer(<?=$prod->id?>)">
+                <?php else: ?>
+                    <input type="checkbox" name="filter-producer"  onclick="filterSerie(<?=$prod->id?>)">
+                <?php endif; ?>
                 <span><?=$prod->name?></span>
             </label>
             <?php endforeach; ?>
         </div>
         <div class="checkboxes_block">
             <h6>Серія</h6>
+
             <?php foreach ($series as $serie): ?>
             <label class="checkbox">
+                <?php if(isset($_SESSION['series_id'])): ?>
                 <input type="checkbox" <?= in_array($serie->id, $_SESSION['series_id']) ? 'checked' : '' ?> name="filter-serie"  onclick="filterSerie(<?=$serie->id?>)">
+                <?php else: ?>
+                <input type="checkbox" name="filter-serie"  onclick="filterSerie(<?=$serie->id?>)">
+                <?php endif; ?>
                 <span><?=$serie->name?></span>
             </label>
             <?php endforeach; ?>
