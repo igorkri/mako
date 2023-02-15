@@ -33,11 +33,11 @@ use yii\widgets\Pjax;
             </svg>
             <span>Фільтри (<?= count($filters) ?>)</span>
         </button>
-        <button type="button">Популярні</button>
+        <button type="button" onclick="filterPopular(1)">Популярні</button>
 <!--        <button type="button">Дешевше</button>-->
 <!--        <button type="button">Дорожче</button>-->
-        <button type="button"><a href="?sort=price">Дешевше</a></button>
-        <button type="button"><a href="?sort=-price">Дорожче</a></button>
+        <button type="button" onclick="filterPrice(1)">Дешевше</button>
+        <button type="button" onclick="filterPrice(2)">Дорожче</button>
     </div>
     <div class="content">
         <?= $this->render('filter', [

@@ -504,6 +504,24 @@ function filterSerie(id){
     }
   });
 }
+function filterPopular(id){
+  $.ajax({
+    url: '/product/catalog',
+    type: 'post',
+    data: {
+      filters: {
+        popular_product: id
+      }
+    },
+
+    success: function(data){
+      $.pjax.reload({ container: '#catalog' });
+      // $('#catalog').html(data);
+    },
+    error: function(){
+    }
+  });
+}
 
 function removeFilter(key, value){
   $.ajax({
@@ -518,6 +536,24 @@ function removeFilter(key, value){
       if(data === true){
         $.pjax.reload({ container: '#catalog' });
       }
+    },
+    error: function(){
+    }
+  });
+}
+
+function filterPrice(int){
+  $.ajax({
+    url: '/product/catalog',
+    type: 'post',
+    data: {
+      filters: {
+        sort: int,
+      }
+    },
+
+    success: function(data){
+        $.pjax.reload({ container: '#catalog' });
     },
     error: function(){
     }
