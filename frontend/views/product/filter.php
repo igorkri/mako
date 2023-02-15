@@ -142,19 +142,14 @@ $( document ).ready(function() {
         $.ajax({
         url: "/product/remove-all-session",
         type: "post",
-        data: {
-            
-        },
-       
+        data: {},
+      
         success: function(data){
-            console.log(data);
+            // console.log(data);
             if(data === true){
                 // window.location.href = window.location.pathname;
-                $.pjax.reload({ container: '#catalog' });
+                $.pjax.reload({ container: '#catalog-list' });
             }
-            // $('#catalog').html(data);
-            // $.pjax.reload({ container: '#catalog' });
-          // window.location.href = window.location.href + '?' +url;
         },
         error: function(){
             // $.pjax.reload({ container: '#all-page' });
@@ -164,30 +159,6 @@ $( document ).ready(function() {
     }).on('submit', function(e){
     e.preventDefault();
     });
-    
-    
-    
-    // $.ajax({
-    //     url: form.attr("action"),
-    //     type: form.attr("method"),
-    //     data: data,
-    //    
-    //     success: function(data){
-    //         // console.log(data);
-    //         $('#catalog').html(data);
-    //         // $.pjax.reload({ container: '#catalog' });
-    //       window.location.href = window.location.href + '?' +url;
-    //       // window.location.href = window.location.href + '?' +url;
-    //     },
-    //     error: function(){
-    //         // $.pjax.reload({ container: '#all-page' });
-    //     }
-    // });
-    // return false;
-    // }).on('submit', function(e){
-    // e.preventDefault();
-    //
-    // });     
 });
 
 JS;
