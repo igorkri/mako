@@ -82,7 +82,7 @@ $get = Yii::$app->request->get('ProductSearch');
             <?php endif; ?>
         </div>
         <div class="checkboxes_block">
-<!--            <h6>Категорії</h6>-->
+            <h6>Категорії</h6>
             <?php foreach ($categories as $category): ?>
             <label class="checkbox">
                 <?php if(isset($_SESSION['category_id'])): ?>
