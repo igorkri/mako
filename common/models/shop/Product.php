@@ -2,6 +2,7 @@
 
 namespace common\models\shop;
 
+use kr0lik\listFilter\FilterQueryTrait;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -121,5 +122,26 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasMany(ProductImage::class, ['product_id' => 'id']);
     }
 
-
+    public function getFilters($gets){
+        $filter = [];
+        if($gets){
+            foreach ($gets as $k => $get){
+                $filter[$k] = $get;
+            }
+        }
+        $ser_f = [];
+        if(isset($filter['category_id'])){
+            $categories = Category::find()->where(['id' => $filter['category_id']])->asArray()->all();
+            $ser_f['category'] = $categories;
+        }
+        if(isset($filter['producer_id'])){
+            $producers = Producer::find()->where(['id' => $filter['producer_id']])->asArray()->all();
+            $ser_f['producers'] = $producers;
+        }
+        if(isset($filter['series_id'])){
+            $series = Series::find()->where(['id' => $filter['series_id']])->asArray()->all();
+            $ser_f['series'] = $series;
+        }
+        return $ser_f;
+    }
 }

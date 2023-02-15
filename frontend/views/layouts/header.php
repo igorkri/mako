@@ -51,7 +51,7 @@ use yii\helpers\Url;
     </a>
   </div>
   <div class="order visible">
-    <a href="catalog.php" class="home_care">
+    <a href="<?=Url::to(['product/catalog'])?>" class="home_care">
       Замовити домашній догляд
     </a>
     <div class="sign_up">

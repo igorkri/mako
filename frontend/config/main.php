@@ -64,6 +64,9 @@ return [
                 'work' => 'work-in-mako/index',
                 'learning' => 'learning-in-mako/index',
                 'service/<slug:[\w+-]*\w+>' => 'service/index',
+                'catalog/<page:\d+>' => 'product/catalog',
+                'catalog/<slug:[\w+-]*\w+>' => 'product/view',
+                'catalog' => 'product/catalog',
 //                '' => '/index',
             ],
 
