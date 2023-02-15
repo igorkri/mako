@@ -31,6 +31,12 @@ class ProductController extends \yii\web\Controller
         if (!$session->has('series_id')){
             $session->set('series_id', []);
         }
+        if (!$session->has('popular_product')){
+            $session->set('popular_product', []);
+        }
+        if (!$session->has('sort')){
+            $session->set('sort', []);
+        }
         $request = Yii::$app->request;
         $searchModel = new Filter();
 
@@ -40,9 +46,16 @@ class ProductController extends \yii\web\Controller
         $product = new Product();
         $filters = [];
         $fil = $request->post('filters');
+//        debug($fil);
         if($fil){
             foreach ($fil as $k => $f){
-                if(!in_array($f, $_SESSION[$k])){
+                if($k === "sort"){
+                    if(isset($_SESSION[$k][0])){
+                        $_SESSION[$k][0] = $f;
+                    }else{
+                        $_SESSION[$k][] = $f;
+                    }
+                }elseif(!in_array($f, $_SESSION[$k])){
                     array_push($_SESSION[$k], $f);
                 }else{
                     $this->actionRemoveSession($k, $f);
@@ -52,7 +65,6 @@ class ProductController extends \yii\web\Controller
         $filters = $product->getFilters($_SESSION);
         $q_s = ['Filter' => $_SESSION];
         $dataProvider = $searchModel->search($q_s);
-//debug($_SESSION);
 
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;

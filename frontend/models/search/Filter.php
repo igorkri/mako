@@ -42,10 +42,16 @@ class Filter extends Product
 
         $query = Product::find();
 
-        // add conditions that should always apply here
-
+        $sort_price = [];
+        if(isset($params['Filter']['sort'][0]) and $params['Filter']['sort'][0] == 1){
+            $sort_price = ['defaultOrder'=> ['price' => SORT_ASC]];
+        }elseif(isset($params['Filter']['sort'][0]) and $params['Filter']['sort'][0] == 2){
+            $sort_price = ['defaultOrder'=> ['price' => SORT_DESC]];
+        }
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+//            'sort' => ['defaultOrder'=> ['price' => SORT_ASC]],
+            'sort' => $sort_price,
             'pagination' => [
                 'pageSize' => 9,
                 'forcePageParam' => false,

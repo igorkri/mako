@@ -142,6 +142,12 @@ class Product extends \yii\db\ActiveRecord
             $series = Series::find()->where(['id' => $filter['series_id']])->asArray()->all();
             $ser_f['series'] = $series;
         }
+        if(isset($filter['popular_product'])){
+            $ser_f['popular_product'] = $_SESSION['popular_product'];
+        }
+        if(isset($filter['sort'])){
+            $ser_f['sort'] = $_SESSION['sort'];
+        }
         return $ser_f;
     }
 }

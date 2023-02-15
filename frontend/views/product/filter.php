@@ -13,7 +13,6 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-$get = Yii::$app->request->get('ProductSearch');
 ?>
     <div class="filters">
         <div class="top_panel">
@@ -25,7 +24,7 @@ $get = Yii::$app->request->get('ProductSearch');
             </div>
         </div>
         <div class="head">
-            <?php if ($filters and !empty($filters['category']) or !empty($filters['producers']) or !empty($filters['series'])): ?>
+            <?php if ($filters and !empty($filters['category']) or !empty($filters['producers']) or !empty($filters['series'] or !empty($filters['popular_product']))): ?>
                 <div class="you_choose">
                     <p>Ви обрали:</p>
                     <div class="clear" id="remove-filter">
@@ -37,6 +36,18 @@ $get = Yii::$app->request->get('ProductSearch');
                         </svg>
                     </div>
                 </div>
+                <?php if (!empty($filters['popular_product'])): ?>
+                    <div class="clear" onclick="removeFilter('popular_product', 1)">
+                        Популярні
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <rect width="24" height="24" fill="white"/>
+                            <path d="M18 18L6 6" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 18L18 6" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                <?php endif; ?>
+
                 <?php if (isset($filters['category'])): ?>
                     <?php foreach ($filters['category'] as $filter): ?>
                         <div class="clear" onclick="removeFilter('category_id', <?=$filter['id']?>)">
