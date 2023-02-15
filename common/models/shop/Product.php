@@ -150,4 +150,14 @@ class Product extends \yii\db\ActiveRecord
         }
         return $ser_f;
     }
+
+    public function getCountFilters($filters){
+        $count = [];
+        foreach ($filters as $filter){
+            foreach ($filter as $f){
+                $count[] = $f;
+            }
+        }
+        return count($count);
+    }
 }

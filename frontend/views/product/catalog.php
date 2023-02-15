@@ -13,7 +13,7 @@ use yii\helpers\Url;
 use yii\widgets\Pjax;
 
 ?>
-<?php Pjax::begin(['id' => 'catalog']) ?>
+<?php Pjax::begin(['id' => 'catalog-list']) ?>
 
 <section class="catalog_title">
     <h3>Домашній догляд</h3>
@@ -31,11 +31,9 @@ use yii\widgets\Pjax;
                       fill="#42414D" />
                 <rect x="0.5" y="0.5" width="19" height="19" rx="9.5" stroke="#EDEDF3" />
             </svg>
-            <span>Фільтри (<?= count($filters) ?>)</span>
+            <span>Фільтри (<?= $count_filters ?>)</span>
         </button>
         <button type="button" onclick="filterPopular(1)">Популярні</button>
-<!--        <button type="button">Дешевше</button>-->
-<!--        <button type="button">Дорожче</button>-->
         <button type="button" onclick="filterPrice(1)">Дешевше</button>
         <button type="button" onclick="filterPrice(2)">Дорожче</button>
     </div>

@@ -355,7 +355,15 @@ $(function () {
 
 // сторінка catalog.html
 // фільтри
-$('#filter_button').click(function () {
+
+
+// $('#filter_button').click(function () {
+//   console.log('filter_button click');
+//   $('#catalog .content .filters').slideDown(300);
+// });
+
+$(document).on('click', '#filter_button', function (event) {
+  event.preventDefault();
   $('#catalog .content .filters').slideDown(300);
 });
 
@@ -460,7 +468,7 @@ function filterCategory(id){
       }
     },
     success: function(data){
-      $('#catalog').html(data);
+      $('#catalog-list').html(data);
     },
     error: function(){
       // $.pjax.reload({ container: '#all-page' });
@@ -479,7 +487,7 @@ function filterProducer(id){
     },
 
     success: function(data){
-      $('#catalog').html(data);
+      $('#catalog-list').html(data);
     },
     error: function(){
       // $.pjax.reload({ container: '#all-page' });
@@ -497,7 +505,7 @@ function filterSerie(id){
     },
 
     success: function(data){
-      $('#catalog').html(data);
+      $('#catalog-list').html(data);
     },
     error: function(){
       // $.pjax.reload({ container: '#all-page' });
@@ -515,8 +523,8 @@ function filterPopular(id){
     },
 
     success: function(data){
-      $.pjax.reload({ container: '#catalog' });
-      // $('#catalog').html(data);
+      $.pjax.reload({ container: '#catalog-list' });
+      // $('#catalog-list').html(data);
     },
     error: function(){
     }
@@ -534,7 +542,7 @@ function removeFilter(key, value){
 
     success: function(data){
       if(data === true){
-        $.pjax.reload({ container: '#catalog' });
+        $.pjax.reload({ container: '#catalog-list' });
       }
     },
     error: function(){
@@ -553,7 +561,7 @@ function filterPrice(int){
     },
 
     success: function(data){
-        $.pjax.reload({ container: '#catalog' });
+        $.pjax.reload({ container: '#catalog-list' });
     },
     error: function(){
     }

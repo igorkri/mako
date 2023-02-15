@@ -63,6 +63,8 @@ class ProductController extends \yii\web\Controller
             }
         }
         $filters = $product->getFilters($_SESSION);
+        $count_filters = $product->getCountFilters($filters);
+//        debug();
         $q_s = ['Filter' => $_SESSION];
         $dataProvider = $searchModel->search($q_s);
 
@@ -75,6 +77,7 @@ class ProductController extends \yii\web\Controller
                 'searchModel' => $searchModel,
                 'products' => $dataProvider,
                 'filters' => $filters,
+                'count_filters' => $count_filters,
             ]);
         }
 
@@ -85,6 +88,7 @@ class ProductController extends \yii\web\Controller
             'searchModel' => $searchModel,
             'products' => $dataProvider,
             'filters' => $filters,
+            'count_filters' => $count_filters,
         ]);
     }
 
