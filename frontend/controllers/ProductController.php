@@ -21,8 +21,14 @@ class ProductController extends \yii\web\Controller
         if(!$session->isActive){
             // открываем сессию
             $session->open();
+        }
+        if (!$session->has('category_id')){
             $session->set('category_id', []);
+        }
+        if (!$session->has('producer_id')){
             $session->set('producer_id', []);
+        }
+        if (!$session->has('series_id')){
             $session->set('series_id', []);
         }
         $request = Yii::$app->request;
