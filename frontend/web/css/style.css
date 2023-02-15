@@ -3444,6 +3444,195 @@ section.reviews .block .tape .item p.v2 {
           transform: rotate(180deg) scale(2);
 }
 
+/***** сторінка order.html *****/
+
+section.order {
+  background: #FFF5F5;
+  padding-top: 180px;
+}
+
+section.order h3 {
+  margin-bottom: 10px;
+}
+
+section.order h3 ~ p {
+  font-size: 20px;
+}
+
+section.order form {
+  display: block;
+  max-width: 630px;
+  width: 100%;
+  margin: 80px auto 0;
+}
+
+section.order form h3 {
+  margin-bottom: 30px;
+}
+
+section.order form .item {
+  display: flex;
+  gap: 10px;
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+section.order form .item .img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #FFF5F5;
+}
+
+section.order form .item .img img {
+  width: 100%;
+}
+
+section.order form .item .specification {
+  width: 82%;
+}
+
+section.order form .item .specification p {
+  margin-bottom: 10px;
+}
+
+section.order form .item .specification h6 {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+section.order form .item .specification h6 span {
+  font-weight: 400;
+  font-weight: 14px;
+}
+
+section.order form .item .delete {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+section.order form .item .delete svg path {
+  fill: #C2C2D1;
+}
+
+section.order form .item .delete:hover svg path {
+  fill: #000;
+}
+
+section.order form .total {
+  display: flex;
+  gap: 10px;
+  margin: 30px 0 80px auto;
+  width: fit-content;
+}
+
+section.order form .total h5 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+section.order form .total p {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+section.order form .total h6 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+section.order form .total h6 span {
+  font-weight: 400;
+  font-weight: 14px;
+}
+
+section.order form .fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+section.order form .fields input[type=text] {
+  width: calc(50% - 15px);
+  border: 1px solid #EDEDF3;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+section.order form .fields textarea {
+  width: 100%;
+  border: 1px solid #EDEDF3;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 30px;
+  resize: none;
+}
+
+section.order form .fields input[type=submit] {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  height: 48px;
+  padding: 0 0 0 60px;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: right;
+  color: #F05454;
+  background-color: transparent;
+  background: no-repeat url(../img/circle_red_arrow.svg);
+}
+
+section.order form .fields input[type=submit]:hover {
+  padding: 0 0 0 55px;
+}
+
+/***** сторінка order_confirm.html *****/
+
+section.order_confirm {
+  padding-top: 180px;
+  background: #FFF5F5;
+}
+
+section.order_confirm img {
+  display: block;
+  margin: auto;
+}
+
+section.order_confirm h3 {
+  text-align: center;
+  margin: 30px 0 80px;
+}
+
+section.order_confirm a {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #42414D;
+}
+
+section.order_confirm a svg rect {
+  fill: #42414D;
+}
+
+section.order_confirm a:hover {
+  color: #F05454;
+}
+
+section.order_confirm a:hover svg rect {
+  fill: #F05454;
+}
+
+section.order_confirm p {
+  font-size: 14px;
+  margin: 30px 0;
+  text-align: center;
+}
+
 /***** Футер *****/
 
 footer {
@@ -4592,6 +4781,16 @@ footer .chat:hover a svg path {
     -webkit-transform: rotate(180deg) scale(1.5);
         -ms-transform: rotate(180deg) scale(1.5);
             transform: rotate(180deg) scale(1.5);
+  }
+}
+
+@media (max-width: 410px) {
+  section.order form .fields input[type=text] {
+    width: 100%;
+  }
+
+  section.order form .fields input[type=submit] {
+    font-size: 17px;
   }
 }
 
