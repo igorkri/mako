@@ -449,8 +449,77 @@ $( "form#order-a-call" ).submit(function( event ) {
   event.preventDefault();
 });
 
-// відкриття модального вікна "записатись"
-// $('.make_appointment').click(function () {
-//   $('#dark_background').addClass('active');
-//   $('#dark_background #sign_up_window').removeClass('dn');
-// });
+
+function filterCategory(id){
+  $.ajax({
+    url: '/product/catalog',
+    type: 'post',
+    data: {
+      filters: {
+        category_id: id
+      }
+    },
+    success: function(data){
+      $('#catalog').html(data);
+    },
+    error: function(){
+      // $.pjax.reload({ container: '#all-page' });
+    }
+  });
+}
+
+function filterProducer(id){
+  $.ajax({
+    url: '/product/catalog',
+    type: 'post',
+    data: {
+      filters: {
+        producer_id: id
+      }
+    },
+
+    success: function(data){
+      $('#catalog').html(data);
+    },
+    error: function(){
+      // $.pjax.reload({ container: '#all-page' });
+    }
+  });
+}
+function filterSerie(id){
+  $.ajax({
+    url: '/product/catalog',
+    type: 'post',
+    data: {
+      filters: {
+        series_id: id
+      }
+    },
+
+    success: function(data){
+      $('#catalog').html(data);
+    },
+    error: function(){
+      // $.pjax.reload({ container: '#all-page' });
+    }
+  });
+}
+
+function removeFilter(key, value){
+  $.ajax({
+    url: '/product/remove-session',
+    type: 'get',
+    data: {
+      key: key,
+      value: value,
+    },
+
+    success: function(data){
+      if(data === true){
+        $.pjax.reload({ container: '#catalog' });
+      }
+    },
+    error: function(){
+    }
+  });
+}
