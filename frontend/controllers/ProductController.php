@@ -46,7 +46,6 @@ class ProductController extends \yii\web\Controller
         $product = new Product();
         $filters = [];
         $fil = $request->post('filters');
-//        debug($fil);
         if($fil){
             foreach ($fil as $k => $f){
                 if($k === "sort"){
@@ -64,7 +63,6 @@ class ProductController extends \yii\web\Controller
         }
         $filters = $product->getFilters($_SESSION);
         $count_filters = $product->getCountFilters($filters);
-//        debug();
         $q_s = ['Filter' => $_SESSION];
         $dataProvider = $searchModel->search($q_s);
 
@@ -118,6 +116,16 @@ class ProductController extends \yii\web\Controller
         }else{
             return false;
         }
+    }
+
+    public function actionView($slug){
+        $product = Product::find()->where(['slug' => $slug])->one();
+        $filters = $product->getFilters($_SESSION);
+
+        return $this->render('view', [
+            'product' => $product,
+            'filters' => $filters
+        ]);
     }
 
 }
