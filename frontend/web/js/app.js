@@ -416,7 +416,7 @@ $('#product_head .pcc .add_to_cart').click(function (e) { /* Клік по кн�
     'width': '30px',
     'height': '30px',
     'border-radius': '15px',
-    'background': 'no-repeat url(img/add_to_cart.svg)',
+    'background': 'no-repeat url(/img/add_to_cart.svg)',
     'background-size': 'cover',
     'z-index': '9999999999',
     'left': e.pageX - 25,
