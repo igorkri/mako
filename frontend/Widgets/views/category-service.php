@@ -28,22 +28,16 @@ use yii\helpers\Url;
             </div>
         </div>
         <div class="header_contacts">
+            <?php foreach ($contacts as $contact): ?>
             <div class="address">
                 <img src="/img/marker.svg" alt="">
-                <p>м. Київ, проспект Леся Курбаса, 5в</p>
+                <p><?=$contact->address?></p>
             </div>
-            <a href="tel:+380689664256" class="phone">
+            <a href="tel:<?=str_replace(' ', '', $contact->phone)?>" class="phone">
                 <img src="/img/vodafone.svg" alt="">
-                <p>+38 068 966 42 56</p>
+                <p><?=$contact->phone?></p>
             </a>
-            <div class="address">
-                <img src="/img/marker.svg" alt="">
-                <p>м. Київ, вулиця Михайла Максимовича, 3г</p>
-            </div>
-            <a href="tel:+380689664257" class="phone">
-                <img src="/img/vodafone.svg" alt="">
-                <p>+38 068 966 42 57</p>
-            </a>
+            <?php endforeach; ?>
             <a href="#" class="make_appointment">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="48" height="48" rx="24" fill="" />
