@@ -31,11 +31,15 @@
     <div class="sum">
         <span class="total">Разом:</span>
         <span class="quantity"><?= \Yii::$app->cart->getCount() ?> од.</span>
-        <span class="price"><?= $totalSumm ?>₴</span>
+        <span class="price"><?= Yii::$app->formatter->asCurrency($totalSumm)?></span>
     </div>
-    <button class="to_order">
-        Оформити замовлення
-    </button>
+    <?=\yii\helpers\Html::a('Оформити замовлення', ['/order'], [
+            'style' => 'text-align: center',
+            'class' => 'to_order',
+            'data' => [
+                    'pjax' => 0
+            ]
+    ])?>
     <button class="clear_cart">
         Очистити кошик
     </button>

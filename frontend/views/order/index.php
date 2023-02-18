@@ -10,7 +10,7 @@ use yii\helpers\Html;
 <section class="order">
     <h3>Оформлення замовлення</h3>
     <p>Заповніть поля та підтвердіть замовлення.</p>
-    <form>
+    <form method="post">
         <h3>Склад замовлення</h3>
         <?php foreach ($products as $product): ?>
             <?php $d = explode('/', $product->productImages[0]->name); ?>
@@ -43,10 +43,12 @@ use yii\helpers\Html;
             <h6><?= Yii::$app->formatter->asDecimal($totalSumm , 2) ?> <span>₴</span></h6>
         </div>
         <div class="fields">
-            <input type="text" placeholder="Ваше ПІБ">
-            <input type="text" placeholder="Номер телефону">
-            <textarea rows="4" placeholder="Додайте коментар (самовивіз, відділення Нової Пошти)"></textarea>
+            <input type="hidden" name="<?=Yii::$app->request->csrfParam?>" value="<?=Yii::$app->request->getCsrfToken()?>" />
+            <input type="text" name="name" placeholder="Ваше ПІБ">
+            <input type="text" name="phone" placeholder="Номер телефону">
+            <textarea rows="4" name="note" placeholder="Додайте коментар (самовивіз, відділення Нової Пошти)"></textarea>
             <input type="submit" value="Підтвердити замовлення">
+            <?php // Html::submitButton('Підтвердити замовлення', ['class' => '']) ?>
         </div>
     </form>
 </section>
