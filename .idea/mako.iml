@@ -60,7 +60,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-gii" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/deprecations" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fakerphp/faker" />

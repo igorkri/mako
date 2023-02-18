@@ -4,6 +4,7 @@
 /** @var string $content */
 
 use frontend\assets\AppAsset;
+use yii\bootstrap5\Modal;
 use yii\helpers\Html;
 
 
@@ -37,3 +38,4 @@ AppAsset::register($this);
 </body>
 </html>
 <?php $this->endPage();
+

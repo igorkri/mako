@@ -146,6 +146,17 @@ $('#dark_background form .choose_salon .drop span').click(function () {
 
 // модальне вікно "Кошик"
 $('#header .order .cart').click(function () {
+  $.ajax({
+    url: '/product/cart',
+    type: 'post',
+    data: {},
+    success: function(data){
+      $('.body_cart').html(data);
+    },
+    error: function(){
+      // $.pjax.reload({ container: '#all-page' });
+    }
+  });
   $('#dark_background').addClass('active');
   $('#dark_background #cart_window').removeClass('dn');
 });
@@ -431,6 +442,7 @@ $('#product_head .pcc .add_to_cart').click(function (e) { /* Клік по кн�
   $('.animtocart').animate({ top: cart.top + 'px', left: cart.left + 'px', width: 0, height: 0 }, 800, function () { /* Робимо анімацію польоту картинки від кнопки в кошик і по закінченню видаляємо його */
     $(this).remove();
   });
+
 });
 
 //================================
@@ -541,9 +553,7 @@ function removeFilter(key, value){
     },
 
     success: function(data){
-      if(data === true){
-        $.pjax.reload({ container: '#catalog-list' });
-      }
+        $.pjax.reload({ container: '#catalog-list' });// }
     },
     error: function(){
     }
@@ -566,4 +576,20 @@ function filterPrice(int){
     error: function(){
     }
   });
+
 }
+
+$(document).on('click', '.clear_cart', function (event) {
+
+  $.ajax({
+    url: '/product/clear-cart',
+    type: 'post',
+    data: {},
+    success: function(data){
+      $.pjax.reload({ container: '#header-qty-product' });
+    },
+    error: function(){
+    }
+  });
+    event.preventDefault();
+});

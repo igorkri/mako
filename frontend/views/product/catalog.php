@@ -58,7 +58,7 @@ use yii\widgets\Pjax;
                     <p><?=$product->name?></p>
                     <div>
                         <h5><?=$product->price?>₴</h5>
-                        <div class="cart">
+                        <div class="cart" id="add_to_cart" data-product-id="<?=$product->id?>">
                             <img src="/img/cart_red.svg" alt="">
                         </div>
                     </div>
@@ -94,3 +94,39 @@ use yii\widgets\Pjax;
         ?>
 </section>
 <?php \yii\widgets\Pjax::end() ?>
+
+<?php
+$js = <<<JS
+$( document ).ready(function() {
+    
+    $('#add_to_cart').click(function (){
+        var qty = 1;
+        var product_id = this.data( "productId" );
+        
+        $.ajax({
+        url: "/product/add-to-cart",
+        type: "get",
+        data: {
+            product_id: product_id,
+            qty: qty
+        },
+
+        success: function(data){
+            console.log(data);
+            $('#header-qty-product').html(data.qty);
+            // $.pjax.reload({ container: '#cart-products' });
+        },
+        error: function(){
+            // $.pjax.reload({ container: '#header-qty-product' });
+        }
+    });
+    return false;
+    }).on('submit', function(e){
+    e.preventDefault();
+    });
+});
+
+JS;
+$this->registerJs($js);
+
+?>

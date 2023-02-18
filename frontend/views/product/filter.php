@@ -146,10 +146,10 @@ $( document ).ready(function() {
       
         success: function(data){
             // console.log(data);
-            if(data === true){
+            // if(data === true){
                 // window.location.href = window.location.pathname;
                 $.pjax.reload({ container: '#catalog-list' });
-            }
+            // }
         },
         error: function(){
             // $.pjax.reload({ container: '#all-page' });

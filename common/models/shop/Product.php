@@ -2,10 +2,11 @@
 
 namespace common\models\shop;
 
-use kr0lik\listFilter\FilterQueryTrait;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yz\shoppingcart\CartPositionInterface;
+use yz\shoppingcart\CartPositionTrait;
 
 /**
  * This is the model class for table "product".
@@ -26,8 +27,9 @@ use yii\db\ActiveRecord;
  * @property int|null $popular_product Популярний товар
  * @property float|null $price Ціна
  */
-class Product extends \yii\db\ActiveRecord
+class Product extends ActiveRecord implements CartPositionInterface
 {
+    use CartPositionTrait;
     /**
      * {@inheritdoc}
      */
@@ -101,6 +103,15 @@ class Product extends \yii\db\ActiveRecord
             'images' => 'Зображення',
         ];
     }
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getCategory()
     {
@@ -160,4 +171,5 @@ class Product extends \yii\db\ActiveRecord
         }
         return count($count);
     }
+
 }

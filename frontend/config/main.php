@@ -44,6 +44,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'error/index',
         ],
+        'cart' => [
+            'class' => 'yz\shoppingcart\ShoppingCart',
+            'cartId' => 'MaKo_cart',
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -64,8 +68,9 @@ return [
                 'work' => 'work-in-mako/index',
                 'learning' => 'learning-in-mako/index',
                 'service/<slug:[\w+-]*\w+>' => 'service/index',
-                'catalog/<slug:[\w+-]*\w+>' => 'product/view',
+//                'catalog/<page:\d+>/<slug:[\w+-]*\w+>' => 'product/view',
                 'catalog/<page:\d+>' => 'product/catalog',
+                'catalog/<slug:[\w+-]*\w+>' => 'product/view',
                 'catalog' => 'product/catalog',
 //                '' => '/index',
             ],
