@@ -1021,6 +1021,10 @@ header .services_block .services_content .services_categories a p {
   color: #42414D;
 }
 
+header .services_block .services_content .services_categories .wrapper .items {
+  display: none;
+}
+
 header .services_block .services_content .services_categories a:hover img {
   -webkit-transform: scaleX(1);
       -ms-transform: scaleX(1);

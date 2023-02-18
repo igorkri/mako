@@ -70,6 +70,12 @@ $('#header .services_block .services_categories a').hover(function () {
   $('#header .services_block .services_names .title h6').html(name);
 });
 
+// заміна блоку послуг
+$('#header .services_block .services_categories .wrapper').hover(function () {
+  $('#header .services_block .services_names .items').remove();
+  $(this).find('.items').clone().appendTo('#header .services_block .services_names');
+});
+
 // поява вікна в послугах при <506
 $('#header .services_block .services_categories a').click(function () {
   if ($(window).width() < 506) {
