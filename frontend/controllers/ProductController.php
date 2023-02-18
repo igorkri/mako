@@ -184,17 +184,22 @@ class ProductController extends Controller
         }
     }
 
-    public function actionRemoveCart($id){
-        $product = Product::findOne($id);
-        if ($product) {
-            \Yii::$app->cart->remove($product);
-            if (Yii::$app->request->isAjax) {
+    public function actionRemoveCart(){
+
+        $request = Yii::$app->request;
+        if ($request->post()){
+            $id = $request->post('id');
+            $product = Product::findOne($id);
+            if ($product) {
+                \Yii::$app->cart->remove($product);
                 $products = Yii::$app->cart->getPositions();
-                Yii::$app->response->format = Response::FORMAT_JSON;
-                return $this->renderAjax('cart', [
+                if($request->isAjax) {
+                    Yii::$app->response->format = Response::FORMAT_JSON;
+                    return $this->renderAjax('cart', [
                         'products' => $products,
                         'totalSumm' => Yii::$app->cart->getCost(),
-                ]);
+                    ]);
+                }
             }
         }
     }

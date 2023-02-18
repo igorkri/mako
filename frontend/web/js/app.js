@@ -579,6 +579,40 @@ function filterPrice(int){
 
 }
 
+function removePosition(id){
+  $.ajax({
+    url: '/order/remove-cart',
+    type: 'post',
+    data: {
+        id: id,
+    },
+    success: function(data){
+        // console.log(data);
+        $.pjax.reload({ container: '#body_cart' });
+    },
+    error: function(){
+    }
+  });
+
+}
+
+function removePositionModalCart(id){
+  $.ajax({
+    url: '/product/remove-cart',
+    type: 'post',
+    data: {
+        id: id,
+    },
+    success: function(data){
+      $('.body_cart').html(data);
+      $.pjax.reload({ container: '#header-qty-product' });
+    },
+    error: function(){
+    }
+  });
+
+}
+
 $(document).on('click', '.clear_cart', function (event) {
 
   $.ajax({
