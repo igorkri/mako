@@ -1039,6 +1039,7 @@ header .services_block .services_content .services_categories a:hover p {
 
 header .services_block .services_content .services_names {
   max-width: 360px;
+  width: 100%;
   border-left: 1px solid #C2C2D1;
 }
 
