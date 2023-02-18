@@ -610,7 +610,7 @@ h3 {
 .dark_background .modal_cart .body_cart .empty_cart {
   height: calc(95vh - 94px);
   width: 100%;
-  position: absolute;
+  /*position: absolute;*/
   left: 100%;
   display: -webkit-box;
   display: -ms-flexbox;

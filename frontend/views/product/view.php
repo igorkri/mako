@@ -1,6 +1,3 @@
-<?php
-debug($product->id);
-?>
 
 <!----- Продукт ----->
 <form action="">
