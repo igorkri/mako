@@ -72,4 +72,9 @@ class OrderController extends \yii\web\Controller
 
         return $this->render('confirm');
     }
+
+    public function actionQty(){
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return ['qty' => Yii::$app->cart->getCount()];
+    }
 }

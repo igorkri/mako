@@ -604,8 +604,20 @@ function removePositionModalCart(id){
         id: id,
     },
     success: function(data){
-      $('.body_cart').html(data);
-      $.pjax.reload({ container: '#header-qty-product' });
+      $.ajax({
+        url: '/order/qty',
+        // type: 'post',
+        // data: {
+        // },
+        success: function(res){
+          // console.log(qty);
+          $('.body_cart').html(data);
+          $('#header-qty-product').html(res.qty);
+          // $.pjax.reload({ container: '#catalog-list', async:false });
+          // $.pjax.reload({ container: '#header-qty-product', async:false });
+        },
+        error: function(){}
+      });
     },
     error: function(){
     }
