@@ -120,20 +120,21 @@ class ProductController extends Controller
         }
     }
 
-    public function actionClearCart(): bool
+    public function actionClearCart(): string
     {
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        // Удаление переменной из сессии
         if ($_SESSION) {
             foreach ($_SESSION as $keys => $value) {
                 if ($keys === 'MaKo_cart') {
                     unset($_SESSION[$keys]);
                 }
             }
-            return true;
-        } else {
-            return false;
         }
+        $products = Yii::$app->cart->getPositions();
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $this->renderAjax('cart', [
+            'products' => $products,
+            'totalSumm' => Yii::$app->cart->getCost(),
+        ]);
     }
 
     public function actionView($slug): string

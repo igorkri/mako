@@ -75,7 +75,7 @@ $( document ).ready(function() {
             id: product_id,
         },
         success: function(data){
-            console.log(data);
+            // console.log(data);
             $('.body_cart').html(data);
             // $.pjax.reload({ container: '#cart-list' });
         },

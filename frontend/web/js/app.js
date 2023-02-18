@@ -586,6 +586,8 @@ $(document).on('click', '.clear_cart', function (event) {
     type: 'post',
     data: {},
     success: function(data){
+      console.log(data);
+      $('.body_cart').html(data);
       $.pjax.reload({ container: '#header-qty-product' });
     },
     error: function(){
