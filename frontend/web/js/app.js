@@ -613,8 +613,6 @@ function removePositionModalCart(id){
           // console.log(qty);
           $('.body_cart').html(data);
           $('#header-qty-product').html(res.qty);
-          // $.pjax.reload({ container: '#catalog-list', async:false });
-          // $.pjax.reload({ container: '#header-qty-product', async:false });
         },
         error: function(){}
       });
@@ -632,9 +630,18 @@ $(document).on('click', '.clear_cart', function (event) {
     type: 'post',
     data: {},
     success: function(data){
-      console.log(data);
-      $('.body_cart').html(data);
-      $.pjax.reload({ container: '#header-qty-product' });
+      $.ajax({
+        url: '/order/qty',
+        // type: 'post',
+        // data: {
+        // },
+        success: function(res){
+          // console.log(qty);
+          $('.body_cart').html(data);
+          $('#header-qty-product').html(res.qty);
+        },
+        error: function(){}
+      });
     },
     error: function(){
     }
