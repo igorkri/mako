@@ -12,12 +12,12 @@ use yii\grid\ActionColumn;
 /** @var backend\models\search\shop\OrderSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Orders';
+$this->title = 'Замовлення';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
         <?php // Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
