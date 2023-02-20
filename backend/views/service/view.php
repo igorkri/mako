@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'attributes' => [
 //            'id',
 //            'slug',
-                'popular',
+                'popular:boolean',
                 'categoryService.name',
                 'name',
                 'short_description',

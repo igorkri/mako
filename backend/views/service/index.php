@@ -30,12 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
             'categoryService.name',
             'name',
-            'short_description',
+//            'short_description',
+            'popular:boolean',
 //            'description:raw',
 //            'indication:raw',
-            //'price',
+            'price',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::class,
                 'urlCreator' => function ($action, Service $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

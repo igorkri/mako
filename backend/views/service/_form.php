@@ -18,15 +18,29 @@ use yii\helpers\Html;
     <div class="form-group">
         <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>
     </div>
-    <?= $form->field($model, 'category_service_id')->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(\common\models\CategoryService::find()->orderBy('id')->asArray()->all(), 'id', 'name'),
-        'options' => ['placeholder' => 'Виберіть категорію послуги ...'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); ?>
+    <div class="row">
+        <div class="col-sm-8">
+            <?= $form->field($model, 'category_service_id')->widget(Select2::classname(), [
+                'data' => ArrayHelper::map(\common\models\CategoryService::find()->orderBy('id')->asArray()->all(), 'id', 'name'),
+                'options' => ['placeholder' => 'Виберіть категорію послуги ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
+        </div>
+        <div class="col-sm-4">
+            <?= $form->field($model, 'popular')->dropDownList([
+                    1 => 'Так',
+                    0 => 'Ні',
+                ],[
+                    'prompt' => 'Виберіть ...',
+                ]
+            ) ?>
+        </div>
+    </div>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
 
     <?= $form->field($model, 'short_description')->textInput(['maxlength' => true]) ?>
 
