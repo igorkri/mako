@@ -15,6 +15,7 @@ use Yii;
  * @property string|null $name Назва послуги
  * @property string|null $slug Slug
  * @property float|null $price Ціна за процедуру
+ * @property integer|null $popular Популярна
  *
  * @property ServiceGallery[] $serviceGalleries
  * @property ServiceQuestion[] $serviceQuestions
@@ -55,7 +56,7 @@ class Service extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_service_id'], 'integer'],
+            [['category_service_id', 'popular'], 'integer'],
             [['description', 'indication', 'name', 'slug'], 'string'],
             [['price'], 'number'],
             [['short_description'], 'string', 'max' => 255],
@@ -70,6 +71,7 @@ class Service extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'category_service_id' => 'Категорія послуги',
+            'popular' => 'Популярна послуга',
             'name' => 'Назва послуги',
             'slug' => 'Slug',
             'short_description' => 'Короткий опис послуги',

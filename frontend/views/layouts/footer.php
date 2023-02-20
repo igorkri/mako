@@ -7,10 +7,10 @@ use frontend\Widgets\FooterWidget; ?>
   <div class="bottom_part">
     <img src="/img/MaKo_grey.svg" alt="">
     <div class="links">
-      <a href="promo.php">Акції</a>
-      <a href="team.php">Про нас</a>
-      <a href="reviews.php">Відгуки</a>
-      <a href="contacts.php">Контакти</a>
+      <a href="<?=\yii\helpers\Url::to(['promo/index'])?>">Акції</a>
+      <a href="<?=\yii\helpers\Url::to(['team/index'])?>">Про нас</a>
+      <a href="<?=\yii\helpers\Url::to(['reviews/index'])?>">Відгуки</a>
+      <a href="<?=\yii\helpers\Url::to(['contacts/index'])?>">Контакти</a>
     </div>
     <p>© <?=date('Y')?></p>
   </div>

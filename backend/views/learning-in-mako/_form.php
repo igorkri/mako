@@ -1,5 +1,6 @@
 <?php
 
+use Itstructure\CKEditor\CKEditor;
 use kartik\file\FileInput;
 use vova07\imperavi\Widget;
 use yii\helpers\Html;
@@ -16,22 +17,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->widget(Widget::class, [
-        'defaultSettings' => [
-            'toolbarFixed' => false,
-            'style' => 'position: unset;'
-        ],
-        'settings' => [
-            'lang' => 'uk',
-            'minHeight' => 200,
-            'plugins' => [
-//                'clips',
-//                'fullscreen',
-//                'table',
-            ],
-        ],
-    ]);?>
-
+    <?= $form->field($model, 'description')->widget(CKEditor::className(), [
+        'preset' => 'standard',
+        'clientOptions' => [
+            'allowedContent' => true,
+            'language' => 'uk',
+        ]
+    ]); ?>
     <?= $form->field($model, 'date')->textInput(['maxlength' => true]) ?>
 
     <?php if($model->isNewRecord): ?>

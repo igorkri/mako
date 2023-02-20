@@ -26,8 +26,9 @@ $contacts = \common\models\Contacts::find()->all();
                     <img src="/img/mark.svg" alt="">
                 </div>
                 <div class="drop">
-                    <span>м. Київ, проспект Леся Курбаса, 5в</span>
-                    <span>м. Київ, вулиця Михайла Максимовича, 3г</span>
+                    <?php foreach ($contacts as $contact): ?>
+                        <span><?=$contact->address?></span>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <input type="checkbox" name="signUpCheckbox" id="sign_up_checkbox" >

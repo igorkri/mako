@@ -311,9 +311,9 @@ class ServiceController extends Controller
         }
     }
 
-    public function actionRemovePhoto($id){
+    public function actionRemovePhoto($service_id, $id){
 
-        $model = ServiceGallery::find()->where(['id' => $id])->one();
+        $model = ServiceGallery::find()->where(['id' => $id])->andWhere(['service_id' => $service_id])->one();
         if($model){
             $dir = Yii::getAlias('@frontendWeb/img/service-photo/');
             unlink($dir . $model->file);
@@ -412,6 +412,58 @@ class ServiceController extends Controller
             }
 
         }
+    }
+
+    public function actionDeleteSpecialist($specialist_id, $id){
+        $model = ServiceSpecialist::find()
+            ->where(['service_id' => $id])
+            ->andWhere(['specialist_id' => $specialist_id])
+            ->one();
+
+        if($model->delete()){
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return [
+                'forceReload' => '#view-pjax',
+                'title' => " ",
+                'content' => '<span class="text-success">Успішно видалено!</span>',
+                'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"])
+            ];
+        }
+    }
+
+    public function actionDeleteVideo($service_id, $id){
+        $model = ServiceVideo::find()
+            ->where(['service_id' => $service_id])
+            ->andWhere(['id' => $id])
+            ->one();
+
+        if($model->delete()){
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return [
+                'forceReload' => '#view-pjax',
+                'title' => " ",
+                'content' => '<span class="text-success">Успішно видалено!</span>',
+                'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"])
+            ];
+        }
+    }
+
+    public function actionDeleteQuestion($service_id, $id){
+
+        $model = QuestionService::find()
+            ->where(['service_id' => $service_id])
+            ->andWhere(['id' => $id])
+            ->one();
+        if($model->delete()){
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return [
+                'forceReload' => '#view-pjax',
+                'title' => " ",
+                'content' => '<span class="text-success">Успішно видалено!</span>',
+                'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"])
+            ];
+        }
+
     }
 
 }

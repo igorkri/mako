@@ -1,0 +1,52 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
+
+<div class="overlay">
+    <h3>Популярні послуги</h3>
+</div>
+<section class="popular_services" id="popular_services">
+    <div class="services_block">
+        <?php foreach ($services as $service): ?>
+        <div class="item">
+            <img src="/img/service-photo/<?=$service->serviceGalleries[0]->file?>" alt="">
+            <a href="<?=Url::to(['/service/index', 'slug' => $service->slug])?>" class="arrow"></a>
+            <div class="title">
+                <h6><?=$service->name?></h6>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+    <a href="#" class="make_appointment">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="24" fill="" />
+            <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+        </svg>
+        Записатись на прийом
+    </a>
+    <div class="work_drugs">
+        <div class="title">
+            Працюємо з такими препаратами
+        </div>
+        <div class="drugs">
+            <div class="img">
+                <img src="/img/alergan.svg" alt="">
+            </div>
+            <div class="img">
+                <img src="/img/botox.svg" alt="">
+            </div>
+            <div class="img">
+                <img src="/img/christina.svg" alt="">
+            </div>
+            <div class="img">
+                <img src="/img/dermaquest.svg" alt="">
+            </div>
+            <div class="img">
+                <img src="/img/renew.svg" alt="">
+            </div>
+        </div>
+    </div>
+</section>

@@ -61,6 +61,7 @@
                     ['label' => 'Магазин', 'header' => true],
                     ['label' => 'Магазин',
                         'items' => [
+                            ['label' => 'Замовлення', 'icon' => 'dot-circle', 'url' => ['/shop/order']],
                             ['label' => 'Список товарів', 'icon' => 'dot-circle', 'url' => ['/shop/product']],
                             ['label' => 'Виробники', 'icon' => 'dot-circle', 'url' => ['/shop/producer']],
                             ['label' => 'Категорії товарів', 'icon' => 'dot-circle', 'url' => ['/shop/category']],

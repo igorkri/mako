@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'attributes' => [
 //            'id',
 //            'slug',
+                'popular',
                 'categoryService.name',
                 'name',
                 'short_description',
@@ -51,10 +52,23 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3>Спеціалісти які проводять дану процедуру:</h3>
                 <?php foreach ($specialists as $specialist): ?>
                     <div class="col-3">
-                        <figure class="figure">
+                        <figure class="figure" style="border: 1px solid grey; padding: 10px">
                             <img src="<?= Yii::$app->request->hostInfo . '/img/specialists/' . $specialist->specialist->photo ?>"
                                  class="figure-img img-fluid rounded" alt="">
-                            <figcaption class="figure-caption"><?= $specialist->specialist->fio ?></figcaption>
+                            <figcaption class="figure-caption">
+                                <?= $specialist->specialist->fio ?>
+                                <figcaption class="figure-caption text-end">
+                                    <?= Html::a('<i class="far fa-trash-alt"></i>', ['delete-specialist', 'specialist_id' => $specialist->specialist->id, 'id' => $model->id], [
+                                        'class' => 'btn btn-danger btn-sm float-end',
+                                        'role' => 'modal-remote',
+                                        'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                                        'data-request-method'=>'post',
+                                        'data-toggle'=>'tooltip',
+                                        'data-confirm-title'=>'Ви впевнені?',
+                                        'data-confirm-message'=>'Ви впевнені, що хочете видалити цього спеціаліста?'
+                                    ]) ?>
+                                </figcaption>
+                            </figcaption>
                         </figure>
                     </div>
                 <?php endforeach; ?>
@@ -65,11 +79,27 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <h3>Відео:</h3>
                 <?php foreach ($model->serviceVideos as $video): ?>
+
+                    <figcaption class="figure-caption text-end" style="margin-bottom: 3px">
+                        <?= Html::a('<i class="far fa-trash-alt"></i>', ['delete-video', 'service_id' => $model->id, 'id' => $video->id], [
+                            'class' => 'btn btn-danger btn-sm float-end',
+                            'role' => 'modal-remote',
+                            'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                            'data-request-method'=>'post',
+                            'data-toggle'=>'tooltip',
+                            'data-confirm-title'=>'Ви впевнені?',
+                            'data-confirm-message'=>'Ви впевнені, що хочете видалити відео?'
+                        ]) ?>
+                    </figcaption>
+
                     <iframe src="https://www.youtube.com/embed/<?= $video->url ?>" title="<?= $video->name ?>"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                            allowfullscreen>
+                    </iframe>
+
                     <hr>
+
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
@@ -83,8 +113,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             <img src="<?= Yii::$app->request->hostInfo . '/img/service-photo/' . $gallery->file ?>"
                                  class="figure-img img-fluid rounded" alt="">
                             <figcaption class="figure-caption text-end">
-                                <a class="btn btn-danger btn-sm"
-                                   href="<?= Url::to(['remove-photo', 'id' => $gallery->id]) ?>" role="modal-remote">Видалити</a>
+                                <?= Html::a('<i class="far fa-trash-alt"></i>', ['remove-photo', 'service_id' => $model->id, 'id' => $gallery->id], [
+                                    'class' => 'btn btn-danger btn-sm float-end',
+                                    'style' => 'margin-left: 10px',
+                                    'role' => 'modal-remote',
+                                    'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                                    'data-request-method'=>'post',
+                                    'data-toggle'=>'tooltip',
+                                    'data-confirm-title'=>'Ви впевнені?',
+                                    'data-confirm-message'=>'Ви впевнені, що хочете видалити зображення?'
+                                ]) ?>
                             </figcaption>
                         </figure>
                     </div>
@@ -92,7 +130,6 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         <?php endif; ?>
 
-    </div>
 <?php if (!empty($model->serviceQuestions)): ?>
     <h3>Питання / Відповідь:</h3>
     <?php foreach ($model->serviceQuestions as $question): ?>
@@ -101,6 +138,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3 class="card-title"></h3>
                 <div class="card-tools">
                     <?= Html::a('<i class="fas fa-edit"></i>', ['update-question', 'service_id' => $model->id, 'id' => $question->id], ['role' => 'modal-remote', 'class' => 'btn btn-success']) ?>
+
+                    <?= Html::a('<i class="far fa-trash-alt"></i>', ['delete-question', 'service_id' => $model->id, 'id' => $question->id], [
+                        'class' => 'btn btn-danger float-end',
+                        'style' => 'margin-left: 10px',
+                        'role' => 'modal-remote',
+                        'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                        'data-request-method'=>'post',
+                        'data-toggle'=>'tooltip',
+                        'data-confirm-title'=>'Ви впевнені?',
+                        'data-confirm-message'=>'Ви впевнені, що хочете видалити питання відповідь?'
+                    ]) ?>
                 </div>
                 <!-- /.card-tools -->
             </div>
@@ -118,6 +166,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <!-- /.card -->
     <?php endforeach; ?>
 <?php endif; ?>
+    </div>
 <?php Modal::begin([
     "id" => "ajaxCrudModal",
     "size" => Modal::SIZE_EXTRA_LARGE,

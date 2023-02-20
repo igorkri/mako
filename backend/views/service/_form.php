@@ -1,5 +1,6 @@
 <?php
 
+use Itstructure\CKEditor\CKEditor;
 use kartik\form\ActiveForm;
 use kartik\select2\Select2;
 use vova07\imperavi\Widget;
@@ -19,7 +20,7 @@ use yii\helpers\Html;
     </div>
     <?= $form->field($model, 'category_service_id')->widget(Select2::classname(), [
         'data' => ArrayHelper::map(\common\models\CategoryService::find()->orderBy('id')->asArray()->all(), 'id', 'name'),
-        'options' => ['placeholder' => 'Выбрать тип ремонта ...'],
+        'options' => ['placeholder' => 'Виберіть категорію послуги ...'],
         'pluginOptions' => [
             'allowClear' => true
         ],
@@ -29,51 +30,21 @@ use yii\helpers\Html;
 
     <?= $form->field($model, 'short_description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->widget(Widget::class, [
-        'defaultSettings' => [
-            'style' => 'position: unset;'
-        ],
-        'settings' => [
-            'lang' => 'ru',
-            'minHeight' => 100,
-            'plugins' => [
-//                'clips',
-                'fullscreen',
-                'table',
-            ],
-            'clips' => [
-                ['Не вкл', 'Не включается'],
-                ['Не раб', 'Не работает'],
-                ['Протекает', 'Протекает'],
-                ['Шумит', 'Посторонний шум'],
-            ],
-        ],
-    ]);
+    <?= $form->field($model, 'description')->widget(CKEditor::className(), [
+        'preset' => 'standard',
+        'clientOptions' => [
+            'allowedContent' => true,
+            'language' => 'uk',
+        ]
+    ]); ?>
 
-    ?>
-
-    <?= $form->field($model, 'indication')->widget(Widget::class, [
-        'defaultSettings' => [
-            'style' => 'position: unset;'
-        ],
-        'settings' => [
-            'lang' => 'ru',
-            'minHeight' => 100,
-            'plugins' => [
-//                'clips',
-                'fullscreen',
-                'table',
-            ],
-            'clips' => [
-                ['Не вкл', 'Не включается'],
-                ['Не раб', 'Не работает'],
-                ['Протекает', 'Протекает'],
-                ['Шумит', 'Посторонний шум'],
-            ],
-        ],
-    ]);
-
-    ?>
+    <?= $form->field($model, 'indication')->widget(CKEditor::className(), [
+        'preset' => 'standard',
+        'clientOptions' => [
+            'allowedContent' => true,
+            'language' => 'uk',
+        ]
+    ]); ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 
