@@ -1,10 +1,12 @@
 <?php
 
 use common\models\shop\Order;
+use common\models\shop\OrderStatus;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
-use yii\grid\GridView;
+
 
 /** @var yii\web\View $this */
 /** @var backend\models\search\shop\OrderSearch $searchModel */
@@ -18,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php // Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -28,15 +30,45 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+            [
+                'attribute' => 'id',
+                'width' => '80px',
+            ],
+            [
+                'attribute' => 'created_at',
+                'value' => function($model){
+                    return $model->created_at ? Yii::$app->formatter->asDatetime($model->created_at) : '';
+                },
+                'width' => '150px',
 
-            'id',
-            'created_at',
-            'updated_at',
-            'order_status_id',
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => function($model){
+                    return $model->updated_at ? Yii::$app->formatter->asDatetime($model->updated_at) : 'Не оновлювалось';
+                },
+                'width' => '150px',
+
+            ],
             'fio',
-            //'phone',
+            [
+                'attribute' => 'phone',
+                'value' => function($model){
+                    return $model->phone ? $model->phone : "";
+                },
+                'width' => '180px',
+
+            ],
             //'city',
-            //'note',
+//            'note',
+            [
+                'attribute' => 'order_status_id',
+                'value' => function($model){
+                    return $model->orderStatus ? $model->orderStatus->name : "Новий";
+                },
+                'width' => '120px',
+
+            ],
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Order $model, $key, $index, $column) {

@@ -27,7 +27,7 @@ class m230216_074520_create_order_table extends Migration
             'fio' => $this->string()->comment('ПІБ'),
             'phone' => $this->string()->comment('Телефон'),
             'city' => $this->string()->comment('Город'),
-            'note' => $this->string()->comment('Примітка'),
+            'note' => $this->text()->comment('Примітка'),
 
         ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 

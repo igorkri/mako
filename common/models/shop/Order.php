@@ -49,7 +49,8 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             [['created_at', 'updated_at', 'order_status_id'], 'integer'],
-            [['fio', 'phone', 'city', 'note'], 'string', 'max' => 255],
+            [['fio', 'phone', 'city'], 'string', 'max' => 255],
+            [['note'], 'string'],
             [['order_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => OrderStatus::class, 'targetAttribute' => ['order_status_id' => 'id']],
         ];
     }

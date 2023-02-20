@@ -6,38 +6,61 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\shop\Order $model */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
+$this->title = $model->fio;
+$this->params['breadcrumbs'][] = ['label' => 'Замовлення', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="order-view">
+<div class="container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?= Html::a('Редагувати', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'created_at',
-            'updated_at',
-            'order_status_id',
+            'created_at:datetime',
+            'updated_at:datetime',
+            'note',
+            [
+                'attribute'  => 'order_status_id',
+                'value' => function($model){
+                    return $model->orderStatus ? $model->orderStatus->name : 'Новий';
+                },
+            ],
             'fio',
             'phone',
-            'city',
-            'note',
+//            'city',
         ],
     ]) ?>
 
 </div>
+<?php if($model->orderItems): ?>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ID товару</th>
+                <th scope="col">Товар</th>
+                <th scope="col">К-ть</th>
+                <th scope="col">Ціна</th>
+            </tr>
+            </thead>
+            <?php $i = 1; foreach ($model->orderItems as $item): ?>
+                <tbody>
+                <tr>
+                    <th scope="row"><?=$i?></th>
+                    <td><?=$item->id?></td>
+                    <td><?=$item->product->name?></td>
+                    <td><?=$item->quantity?></td>
+                    <td><?=$item->price?></td>
+                </tr>
+                </tbody>
+                <?php $i++; endforeach; ?>
+        </table>
+    </div>
+<?php endif; ?>

@@ -9,9 +9,9 @@ $this->title = 'Create Order';
 $this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="order-create">
+<div class="container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h6><?= Html::encode($this->title) ?></h6>
 
     <?= $this->render('_form', [
         'model' => $model,
