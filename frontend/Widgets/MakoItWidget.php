@@ -17,7 +17,7 @@ class MakoItWidget extends Widget
 
     public function run()
     {
-        $makoit = MakoIt::find()->where(['id' => 1])->one();
+        $makoit = MakoIt::find()->limit(1)->all();
 
         return $this->render('mako-it', [
             'makoit' => $makoit,
