@@ -11,7 +11,11 @@ use yii\helpers\Url;
     <div class="services_block">
         <?php foreach ($services as $service): ?>
         <div class="item">
+            <?php if($service->serviceGalleries): ?>
             <img src="/img/service-photo/<?=$service->serviceGalleries[0]->file?>" alt="">
+            <?php else: ?>
+            <img src="/img/gallery1.jpg" alt="">
+            <?php endif; ?>
             <a href="<?=Url::to(['/service/index', 'slug' => $service->slug])?>" class="arrow"></a>
             <div class="title">
                 <h6><?=$service->name?></h6>
