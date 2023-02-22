@@ -2,6 +2,8 @@
 
 /** @var yii\web\View $this */
 
+use frontend\Widgets\MakoItWidget;
+use frontend\Widgets\PopularServiceWidget;
 use yii\helpers\Url;
 
 $this->title = 'Косметологічний центр МаКо';
@@ -23,29 +25,13 @@ $this->title = 'Косметологічний центр МаКо';
 </section>
 
 <!----- Мако це ----->
-<section class="mako_it">
-    <h3>MaKo це</h3>
-    <div class="info">
-        <p>Більше 16 560 задоволених клієнтів</p>
-        <p>Вирішення будь-якої косметологічної проблеми</p>
-        <p>Лікарі-дерматологи, косметологи з багаторічним досвідом роботи</p>
-        <p>Тільки сертифіковані препарати та оснащення</p>
-    </div>
-    <a href="<?=Url::to(['team/index'])?>">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="24" height="24" rx="12" fill="" />
-            <path d="M11 15C12 13 14 12 14 12C14 12 12 11 11 9" stroke="white" stroke-linecap="round"
-                  stroke-linejoin="round" />
-        </svg>
-        Більше про нас
-    </a>
-</section>
+<?php echo MakoItWidget::widget([]) ?>
 
 <!----- слайдер "Акційні пропозиції" ----->
 <?=$this->render('promotional_offers', ['promos' => $promos])?>
 
 <!----- слайдер "Популярні послуги" ----->
-<?php echo \frontend\Widgets\PopularServiceWidget::widget() ?>
+<?php echo PopularServiceWidget::widget() ?>
 
 <!----- слайдер "Подарункові сертіфікати" ----->
 <section class="gift_certificates">
