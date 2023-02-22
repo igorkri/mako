@@ -35,7 +35,7 @@
     </div>
     <h3>Ціна за процедуру</h3>
     <div class="cont">
-        <p>₴<?=$service->price?></p>
+        <?=$service->price?>
     </div>
     <?php if($service->serviceSpecialists): ?>
     <h3 style="margin-top: 60px;">Спеціалісти, що проводять процедуру</h3>
