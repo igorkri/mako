@@ -17,9 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-<!--    <p>-->
-        <?php // Html::a('Create Mako It', ['create'], ['class' => 'btn btn-success']) ?>
-<!--    </p>-->
+    <p>
+        <?php
+            if(count($dataProvider->models) <= 0){
+                echo Html::a(' + Створити', ['create'], ['class' => 'btn btn-success']);
+            }
+        ?>
+    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
