@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'short_description',
                 'description:raw',
                 'indication:raw',
-                'price',
+                'price:raw',
             ],
         ]) ?>
 
