@@ -58,8 +58,8 @@ class Service extends \yii\db\ActiveRecord
         return [
             [['category_service_id', 'popular', 'name', 'short_description', 'description'], 'required'],
             [['category_service_id', 'popular'], 'integer'],
-            [['description', 'indication', 'name', 'slug'], 'string'],
-            [['price'], 'number'],
+            [['description', 'indication', 'name', 'slug', 'price'], 'string'],
+//            [['price'], 'number'],
             [['short_description'], 'string', 'max' => 255],
         ];
     }

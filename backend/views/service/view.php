@@ -167,6 +167,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php endforeach; ?>
 <?php endif; ?>
     </div>
+<br>
+<br>
+<br>
 <?php Modal::begin([
     "id" => "ajaxCrudModal",
     "size" => Modal::SIZE_EXTRA_LARGE,

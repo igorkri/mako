@@ -18,7 +18,8 @@ class m230122_083030_create_service_table extends Migration
             'short_description' => $this->string()->comment('Короткий опис послуги'),
             'description' => $this->text()->comment('Опис послуги'),
             'indication' => $this->text()->comment('Показання'),
-            'price' => $this->money(19, 2)->comment('Ціна за процедуру'),
+//            'price' => $this->money(19, 2)->comment('Ціна за процедуру'),
+            'price' => $this->text(1000)->comment('Ціна за процедуру'),
         ]);
 
         $this->createTable('{{%service_specialist}}', [

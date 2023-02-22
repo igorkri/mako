@@ -45,7 +45,7 @@ use yii\helpers\Html;
     <?= $form->field($model, 'short_description')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->widget(CKEditor::className(), [
-        'preset' => 'standard',
+        'preset' => 'full',
         'clientOptions' => [
             'allowedContent' => true,
             'language' => 'uk',
@@ -53,6 +53,14 @@ use yii\helpers\Html;
     ]); ?>
 
     <?= $form->field($model, 'indication')->widget(CKEditor::className(), [
+        'preset' => 'full',
+        'clientOptions' => [
+            'allowedContent' => true,
+            'language' => 'uk',
+        ]
+    ]); ?>
+
+    <?= $form->field($model, 'price')->widget(CKEditor::className(), [
         'preset' => 'standard',
         'clientOptions' => [
             'allowedContent' => true,
@@ -60,8 +68,9 @@ use yii\helpers\Html;
         ]
     ]); ?>
 
-    <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
-
     <?php ActiveForm::end(); ?>
 
 </div>
+<br>
+<br>
+<br>
