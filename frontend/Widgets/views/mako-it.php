@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 
 ?>
-
+<?php if(isset($makoit[0]->col1)): ?>
 <section class="mako_it">
     <h3>MaKo це</h3>
     <div class="info">
@@ -20,3 +20,4 @@ use yii\helpers\Url;
         Більше про нас
     </a>
 </section>
+<?php endif; ?>
