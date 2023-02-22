@@ -6,10 +6,10 @@ use yii\helpers\Url;
 <section class="mako_it">
     <h3>MaKo це</h3>
     <div class="info">
-        <p><?=$makoit->col1?></p>
-        <p><?=$makoit->col2?></p>
-        <p><?=$makoit->col3?></p>
-        <p><?=$makoit->col4?></p>
+        <p><?=$makoit->col1 ?? $makoit->col1 ?></p>
+        <p><?=$makoit->col2 ?? $makoit->col2 ?></p>
+        <p><?=$makoit->col3 ?? $makoit->col3 ?></p>
+        <p><?=$makoit->col4 ?? $makoit->col4 ?></p>
     </div>
     <a href="<?=Url::to(['team/index'])?>">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
