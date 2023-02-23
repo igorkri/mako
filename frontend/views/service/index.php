@@ -29,10 +29,12 @@
     <div class="cont">
         <?=$service->description?>
     </div>
+    <?php if($service->indication): ?>
     <h3>Показання</h3>
     <div class="cont">
         <?=$service->indication?>
     </div>
+    <?php endif; ?>
     <h3>Ціна за процедуру</h3>
     <div class="cont">
         <?=$service->price?>
