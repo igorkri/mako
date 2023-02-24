@@ -59,6 +59,7 @@
                     ['label' => 'Категорії послуг', 'icon' => 'dot-circle', 'url' => ['/category-service']],
                     ['label' => 'Послуги', 'icon' => 'dot-circle', 'url' => ['/service']],
                     ['label' => 'MaKo це', 'icon' => 'dot-circle', 'url' => ['/mako-it']],
+                    ['label' => 'Препарати', 'icon' => 'dot-circle', 'url' => ['/preparat']],
                     ['label' => 'Магазин', 'header' => true],
                     ['label' => 'Магазин',
                         'items' => [
