@@ -31,26 +31,18 @@ use yii\helpers\Url;
         </svg>
         Записатись на прийом
     </a>
+    <?php if ($preparats): ?>
     <div class="work_drugs">
         <div class="title">
             Працюємо з такими препаратами
         </div>
         <div class="drugs">
+            <?php foreach ($preparats as $preparat): ?>
             <div class="img">
-                <img src="/img/alergan.svg" alt="">
+                <img src="/img/preparat/<?=$preparat->file?>" alt="">
             </div>
-            <div class="img">
-                <img src="/img/botox.svg" alt="">
-            </div>
-            <div class="img">
-                <img src="/img/christina.svg" alt="">
-            </div>
-            <div class="img">
-                <img src="/img/dermaquest.svg" alt="">
-            </div>
-            <div class="img">
-                <img src="/img/renew.svg" alt="">
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
+    <?php endif; ?>
 </section>
