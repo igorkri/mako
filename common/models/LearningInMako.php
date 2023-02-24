@@ -31,6 +31,7 @@ class LearningInMako extends \yii\db\ActiveRecord
         return [
             [['description'], 'string'],
             [['title', 'date', 'file'], 'string', 'max' => 255],
+//            [['description', 'title', 'file'], 'required'],
         ];
     }
 

@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php Modal::begin([
     "id"=>"ajaxCrudModal",
      "size" => Modal::SIZE_EXTRA_LARGE,
-    "scrollable" => true,
+//    "scrollable" => true,
     "options" => [
         "data-bs-backdrop" => "static",
         // "class" => "modal-dialog-scrollable",

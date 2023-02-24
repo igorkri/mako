@@ -86,13 +86,10 @@ class LearningInMakoController extends Controller
         $model = new LearningInMako();  
 
         if($request->isAjax){
-            /*
-            *   Process for ajax request
-            */
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Create new LearningInMako",
+                    'title'=> "Створення нового навчання",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -102,15 +99,19 @@ class LearningInMakoController extends Controller
                 ];         
             }else if($model->load($request->post())){
                 $dir = Yii::getAlias('@frontendWeb/img/learning');
-
-                $file = UploadedFile::getInstance($model, 'file');
-                $imageName = date('d-m-yy', time()) . '-' . uniqid();
-                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-                $model->file = $imageName . '.' . $file->extension;
+                $post_file = $_FILES['LearningInMako']['size']['file'];
+                if($post_file <= 0 ){
+                    $model->file = '';
+                }else {
+                    $file = UploadedFile::getInstance($model, 'file');
+                    $imageName = date('d-m-yy', time()) . '-' . uniqid();
+                    $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                    $model->file = $imageName . '.' . $file->extension;
+                }
                 if ($model->save()) {
                     return [
                         'forceReload' => '#crud-datatable-pjax',
-                        'title' => "Create new LearningInMako",
+                        'title' => "Створення нового навчання",
                         'content' => '<span class="text-success">Успішно створено</span>',
                         'footer' => Html::button('Закрити', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
                             Html::a('Додати ще', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
@@ -119,7 +120,7 @@ class LearningInMakoController extends Controller
                 }
             }else{           
                 return [
-                    'title'=> "Create new LearningInMako",
+                    'title'=> "Створення нового навчання",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -129,9 +130,6 @@ class LearningInMakoController extends Controller
                 ];         
             }
         }else{
-            /*
-            *   Process for non-ajax request
-            */
             if ($model->load($request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             } else {
@@ -228,19 +226,15 @@ class LearningInMakoController extends Controller
         $request = Yii::$app->request;
         $dir = Yii::getAlias('@frontendWeb/img/learning');
         $model = $this->findModel($id);
-        unlink($dir . '/' . $model->file);
+        if($model->file){
+            unlink($dir . '/' . $model->file);
+        }
         $model->delete();
 
         if($request->isAjax){
-            /*
-            *   Process for ajax request
-            */
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ['forceClose'=>true,'forceReload'=>'#crud-datatable-pjax'];
         }else{
-            /*
-            *   Process for non-ajax request
-            */
             return $this->redirect(['index']);
         }
 
@@ -261,7 +255,9 @@ class LearningInMakoController extends Controller
         foreach ( $pks as $pk ) {
             $model = $this->findModel($pk);
             $dir = Yii::getAlias('@frontendWeb/img/learning');
-            unlink($dir . '/' . $model->file);
+            if(file_exists($dir . '/' . $model->file)){
+                unlink($dir . '/' . $model->file);
+            }
             $model->delete();
         }
 
