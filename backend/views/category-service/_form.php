@@ -5,13 +5,17 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model common\models\CategoryService */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="category-service-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php // $form->field($model, 'parent_id')->textInput() ?>
+    <?= $form->field($model, 'parent_id')->dropDownList(
+            \yii\helpers\ArrayHelper::map(\common\models\CategoryService::find()->where(['is', 'parent_id', new \yii\db\Expression('null')])->asArray()->all(), 'id', 'name'),
+            ['prompt'=>'- Виберіть головну категорію або залиште пустою щоб створити головну -']
+    ) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

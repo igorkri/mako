@@ -123,6 +123,7 @@
       <path value="$PROJECT_DIR$/vendor/imagine/imagine" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-imagine" />
       <path value="$PROJECT_DIR$/vendor/omnilight/yii2-shopping-cart" />
+      <path value="$PROJECT_DIR$/vendor/zrk4939/yii2-depdrop" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

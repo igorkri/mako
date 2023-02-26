@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\CategoryService;
 use common\models\QuestionService;
 use common\models\Service;
 use backend\models\search\ServiceSearch;
@@ -464,6 +465,23 @@ class ServiceController extends Controller
             ];
         }
 
+    }
+
+    public function actionSubcat1(){
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $result = [
+            'output' => [],
+            'selected' => ''
+        ];
+        $post = Yii::$app->request->post('depdrop_all_params');
+        $categories = CategoryService::find()->where(['parent_id' => $post['parent_id']])->all();
+        foreach ($categories as $category){
+            $result['output'][] = [
+                'id' => $category['id'],
+                'name' => $category['name'],
+            ];
+        }
+        return $result;
     }
 
 }

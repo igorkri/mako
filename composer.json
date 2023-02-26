@@ -33,7 +33,8 @@
       "itstructure/yii2-ckeditor": "~1.1.6",
       "fakerphp/faker": "^1.21",
       "yiisoft/yii2-imagine": "^2.3",
-        "omnilight/yii2-shopping-cart": "*"
+        "omnilight/yii2-shopping-cart": "*",
+        "zrk4939/yii2-depdrop": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

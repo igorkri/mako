@@ -59,7 +59,7 @@ class CategoryServiceController extends Controller
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "CategoryService #".$id,
+                    'title'=> "Категорія послуг #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel($id),
                     ]),
@@ -91,7 +91,7 @@ class CategoryServiceController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Create new CategoryService",
+                    'title'=> "Створення нової категорії послуг",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -102,15 +102,15 @@ class CategoryServiceController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Create new CategoryService",
-                    'content'=>'<span class="text-success">Create CategoryService success</span>',
+                    'title'=> "Створення нової категорії послуг",
+                    'content'=>'<span class="text-success">Успішно додано</span>',
                     'footer'=> Html::button('Закрити',['class'=>'btn btn-default pull-left','data-bs-dismiss'=>"modal"]).
                             Html::a('Додати ще',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
                 ];         
             }else{           
                 return [
-                    'title'=> "Create new CategoryService",
+                    'title'=> "Створення нової категорії послуг",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -153,7 +153,7 @@ class CategoryServiceController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Update CategoryService #".$id,
+                    'title'=> "Редагування нової категорії послуг #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -163,7 +163,7 @@ class CategoryServiceController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "CategoryService #".$id,
+                    'title'=> "Категорія послуг #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -172,7 +172,7 @@ class CategoryServiceController extends Controller
                 ];    
             }else{
                  return [
-                    'title'=> "Update CategoryService #".$id,
+                    'title'=> "Редагування нової категорії послуг #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),

@@ -9,8 +9,8 @@
 <!----- Назва категорії послуг ----->
 <div class="name_service_category">
     <section class="background">
-        <p class="n1"><?=$service->name?></p>
-        <h1><?=$service->categoryService->name?></h1>
+        <p class="n1"><?=$service->categoryService->name?></p>
+        <h1><?=$service->name?></h1>
         <p class="n2"><?=$service->short_description?></p>
         <a href="#" class="make_appointment">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -18,7 +18,7 @@ class CategoryServiceWidget extends Widget
 
     public function run()
     {
-        $categories = CategoryService::find()->with('services')->all();
+        $categories = CategoryService::find()->where(['is', 'parent_id', new \yii\db\Expression('null')])->with('parent')->all();
         $contacts = Contacts::find()->all();
 
         return $this->render('category-service', [

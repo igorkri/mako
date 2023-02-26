@@ -70,4 +70,14 @@ class CategoryService extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Service::class, ['category_service_id' => 'id']);
     }
+
+    public function getParent()
+    {
+        return $this->hasOne(CategoryService::class, ['id' => 'parent_id']);
+    }
+
+    public function getParents()
+    {
+        return $this->hasMany(CategoryService::class, ['parent_id' => 'id']);
+    }
 }

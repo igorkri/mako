@@ -14,10 +14,11 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'id',
     // ],
-//    [
-//        'class'=>'\kartik\grid\DataColumn',
-//        'attribute'=>'parent_id',
-//    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'parent_id',
+        'value' => 'parent.name'
+    ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'name',

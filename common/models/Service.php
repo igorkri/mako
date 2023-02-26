@@ -32,6 +32,8 @@ class Service extends \yii\db\ActiveRecord
         return 'service';
     }
 
+    public $parent_category_id;
+
     public function behaviors()
     {
         return [
@@ -57,7 +59,7 @@ class Service extends \yii\db\ActiveRecord
     {
         return [
             [['category_service_id', 'popular', 'name', 'short_description', 'description'], 'required'],
-            [['category_service_id', 'popular'], 'integer'],
+            [['parent_category_id', 'category_service_id', 'popular'], 'integer'],
             [['description', 'indication', 'name', 'slug', 'price'], 'string'],
 //            [['price'], 'number'],
             [['short_description'], 'string', 'max' => 255],
@@ -71,6 +73,7 @@ class Service extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'parent_category_id' => 'Головна категорія послуги',
             'category_service_id' => 'Категорія послуги',
             'popular' => 'Популярна послуга',
             'name' => 'Назва послуги',

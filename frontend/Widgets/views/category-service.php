@@ -14,8 +14,8 @@ use yii\helpers\Url;
                     <p><?=$category->name?></p>
                 </a>
                 <div class="items">
-                    <?php foreach ($category->services as $service): ?>
-                    <a href="<?=Url::to(['/service/index', 'slug' => $service->slug])?>"><?=$service->name?></a>
+                    <?php foreach ($category->parents as $parent): ?>
+                    <a href="<?=Url::to(['/service/list', 'slug' => $parent->slug])?>"><?=$parent->name?></a>
                     <?php endforeach; ?>
                 </div>
             </div>
