@@ -143,6 +143,7 @@ class CategoryServiceController extends Controller
      */
     public function actionUpdate($id)
     {
+        Yii::$app->cache->flush();
         $request = Yii::$app->request;
         $model = $this->findModel($id);       
 

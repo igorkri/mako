@@ -14,6 +14,7 @@ use yii\widgets\DetailView;
 //            'parent_id',
             'name',
             'slug',
+            'description'
         ],
     ]) ?>
 

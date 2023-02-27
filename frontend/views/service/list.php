@@ -1,14 +1,15 @@
 <?php
+
 use yii\helpers\Url;
+
 
 ?>
 <!----- Назва категорії послуг ----->
 
 <div class="name_service_category">
     <section class="background">
-        <h1>Назва категорії послуг</h1>
-        <p class="n2">Короткий опис категорії послуг. Одне-два речення.
-            Може бути у два-три рядки. Може бути слоган.</p>
+        <h1><?=$category->name?></h1>
+        <p class="n2"><?=$category->description?></p>
         <a href="#" class="make_appointment">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="48" rx="24" fill="" />

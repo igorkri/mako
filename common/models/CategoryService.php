@@ -11,6 +11,7 @@ use Yii;
  * @property int|null $parent_id Головна категорія
  * @property string|null $name Назва катагорії
  * @property string|null $slug Slug
+ * @property string|null $description Короткий опис
  */
 class CategoryService extends \yii\db\ActiveRecord
 {
@@ -48,6 +49,7 @@ class CategoryService extends \yii\db\ActiveRecord
         return [
             [['parent_id'], 'integer'],
             [['name', 'slug'], 'string', 'max' => 255],
+            [['description'], 'string'],
             [['name'], 'unique'],
             [['slug'], 'unique'],
         ];
@@ -63,6 +65,7 @@ class CategoryService extends \yii\db\ActiveRecord
             'parent_id' => 'Головна категорія',
             'name' => 'Назва катагорії',
             'slug' => 'Slug',
+            'description' => 'Короткий опис',
         ];
     }
 

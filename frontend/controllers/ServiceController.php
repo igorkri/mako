@@ -31,10 +31,12 @@ class ServiceController extends Controller
     }
 
     public function actionList($slug){
+        Yii::$app->cache->flush();
         $category = CategoryService::find()->where(['slug' => $slug])->one();
         $services = Service::find()->where(['category_service_id' => $category->id])->all();
         return $this->render('list', [
-            'services' => $services
+            'services' => $services,
+            'category' => $category
         ]);
     }
 }
