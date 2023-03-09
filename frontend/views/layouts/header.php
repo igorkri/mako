@@ -6,7 +6,7 @@ use yii\helpers\Url;
 <header id="header">
     <div class="logo">
         <a href="/">
-            <img src="/img/logo.svg" alt="">
+            <img src="/img/MaKo_logo.svg" style="width: 50px" alt="">
         </a>
     </div>
     <div class="services">
