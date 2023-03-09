@@ -48,10 +48,14 @@ use yii\widgets\Pjax;
             <?php foreach ($products->models as $product): ?>
                 <a href="<?=Url::to(['product/view', 'slug' => $product->slug])?>" class="item">
                 <div class="img">
+                    <?php if(isset($product->productImages[0])): ?>
                     <?php if(file_exists('/img/products/' . $product->id . '/' . $product->productImages[0]->name)): ?>
                         <img src="/img/products/<?=$product->productImages[0]->name?>" alt="">
                     <?php else: ?>
                         <img src="/img/products/<?=$product->id . '/' . $product->productImages[0]->name?>" alt="">
+                    <?php endif; ?>
+                    <?php else: ?>
+                        <img src="/img/no-image.png" alt="">
                     <?php endif; ?>
                 </div>
                 <div class="title">
