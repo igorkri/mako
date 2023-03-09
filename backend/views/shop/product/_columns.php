@@ -23,11 +23,14 @@ return [
         'format' => 'raw',
         'value' => function ($model) {
             $dir = \Yii::getAlias('@frontendWeb/img/products/');
-            if (file_exists($dir . $model->id . '/' . $model->productImages[0]->name)) {
-                return Html::img(Yii::$app->request->hostInfo . '/img/products/' . $model->id . "/" . $model->productImages[0]->name, ['width' => '60px']);
-            } else {
-                return Html::img(Yii::$app->request->hostInfo . '/img/products/' . $model->productImages[0]->name, ['width' => '60px']);
+            if(isset($model->productImages[0])) {
+                if (file_exists($dir . $model->id . '/' . $model->productImages[0]->name)) {
+                    return Html::img(Yii::$app->request->hostInfo . '/img/products/' . $model->id . "/" . $model->productImages[0]->name, ['width' => '60px']);
+                } else {
+                    return Html::img(Yii::$app->request->hostInfo . '/img/products/' . $model->productImages[0]->name, ['width' => '60px']);
+                }
             }
+            return Html::img(Yii::$app->request->hostInfo . '/img/products/' . $model->productImages[0]->name, ['width' => '60px']);
         },
         'width' => '60px'
     ],
