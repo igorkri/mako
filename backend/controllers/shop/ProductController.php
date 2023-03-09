@@ -4,9 +4,11 @@ namespace backend\controllers\shop;
 
 use common\models\shop\Product;
 use backend\models\search\shop\ProductSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -132,6 +134,33 @@ class ProductController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionBulkdelete()
+    {
+        $request = Yii::$app->request;
+        $pks = explode(',', $request->post('pks')); // Array or selected records primary keys
+        foreach ($pks as $pk) {
+            $model = $this->findModel($pk);
+            if ($model->productImages) {
+                $dir = \Yii::getAlias('@frontendWeb/img/products/');
+                foreach ($model->productImages as $productImage) {
+                    if (file_exists($dir . $model->id . '/' . $productImage->name)) {
+                        unlink($dir . $model->id . '/' . $productImage->name);
+                    } else {
+                        unlink($dir . $productImage->name);
+                    }
+                }
+            }
+            $model->delete();
+        }
+        if ($request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ['forceClose' => true, 'forceReload' => '#crud-datatable-pjax'];
+        } else {
+            return $this->redirect(['index']);
+        }
+
+
+    }
     /**
      * Finds the Product model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
