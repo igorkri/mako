@@ -30,7 +30,7 @@ return [
                     return Html::img(Yii::$app->request->hostInfo . '/img/products/' . $model->productImages[0]->name, ['width' => '60px']);
                 }
             }
-            return Html::img(Yii::$app->request->hostInfo . '/img/products/' . $model->productImages[0]->name, ['width' => '60px']);
+            return Html::img(Yii::$app->request->hostInfo . '/img/no-image.png', ['width' => '60px']);
         },
         'width' => '60px'
     ],
