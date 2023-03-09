@@ -152,14 +152,7 @@ class ProductController extends Controller
             }
             $model->delete();
         }
-        if ($request->isAjax) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return ['forceClose' => true, 'forceReload' => '#crud-datatable-pjax'];
-        } else {
-            return $this->redirect(['index']);
-        }
-
-
+        return $this->redirect(['index']);
     }
     /**
      * Finds the Product model based on its primary key value.
