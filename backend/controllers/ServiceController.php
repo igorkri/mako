@@ -66,6 +66,7 @@ class ServiceController extends Controller
      */
     public function actionView($id)
     {
+        Yii::$app->cache->flush();
         $specialists = ServiceSpecialist::find()->where(['service_id' => $id])->all();
         $videos = ServiceVideo::find()->where(['service_id' => $id])->all();
 

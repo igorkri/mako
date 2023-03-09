@@ -4,10 +4,10 @@ use frontend\Widgets\FooterWidget; ?>
 
 <footer>
     <?= FooterWidget::widget() ?>
-  <div class="bottom_part">
-    <img src="/img/MaKo_grey.svg" alt="">
-    <div class="links">
-      <a href="<?=\yii\helpers\Url::to(['promo/index'])?>">Акції</a>
+    <div class="bottom_part">
+        <img src="/img/MaKo_logo.svg" style="width: 50px" alt="">
+        <div class="links">
+            <a href="<?=\yii\helpers\Url::to(['promo/index'])?>">Акції</a>
       <a href="<?=\yii\helpers\Url::to(['team/index'])?>">Про нас</a>
       <a href="<?=\yii\helpers\Url::to(['reviews/index'])?>">Відгуки</a>
       <a href="<?=\yii\helpers\Url::to(['contacts/index'])?>">Контакти</a>

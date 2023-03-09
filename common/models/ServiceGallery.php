@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property int|null $service_id Категорія послуги
+ * @property int|null $position Позиція відображення
  * @property string|null $file Зображення
  *
  * @property Service $service
@@ -29,7 +30,7 @@ class ServiceGallery extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['service_id'], 'integer'],
+            [['service_id', 'position'], 'integer'],
             [['file'], 'string', 'max' => 255],
             [['service_id'], 'exist', 'skipOnError' => true, 'targetClass' => Service::class, 'targetAttribute' => ['service_id' => 'id']],
         ];
@@ -44,6 +45,7 @@ class ServiceGallery extends \yii\db\ActiveRecord
             'id' => 'ID',
             'service_id' => 'Категорія послуги',
             'file' => 'Зображення',
+            'position' => 'Позиція відображення',
         ];
     }
 
