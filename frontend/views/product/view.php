@@ -3,9 +3,9 @@
 <form action="">
     <section class="product_head" id="product_head">
         <div class="filters">
-            <span><?= $product->category->name ?></span>
-            <span><?= $product->producer->name ?></span>
-            <span><?= $product->serie->name ?></span>
+            <span><?= $product->category ?? $product->category->name ?></span>
+            <span><?= $product->producer ?? $product->producer->name ?></span>
+            <span><?= $product->serie ?? $product->serie->name ?></span>
         </div>
         <h1><?=$product->name?></h1>
         <?php
