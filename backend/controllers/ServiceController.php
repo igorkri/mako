@@ -512,16 +512,24 @@ class ServiceController extends Controller
         return $result;
     }
 
-    public function actionPositionUpdateImg($pos, $img_id, $prod_id){
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        $image = ServiceGallery::find()
-            ->where(['id' => $img_id])
-            ->andWhere(['service_id' => $prod_id])
-            ->one();
-        if($image){
-            $image->position = $pos;
-            $image->save();
+    public function actionPositionUpdateImg($pos, $prod_id){
+        $res_pos = mb_substr($pos, 0, -1);
+
+        $extts = explode(',', $res_pos);
+        if($extts){
+            $i = 0;
+            foreach ($extts as $id){
+                $image = ServiceGallery::find()
+                    ->where(['id' => $id])
+                    ->one();
+                if($image){
+                    $image->position = $i;
+                    $image->save();
+                }
+                $i++;
+            }
         }
-        return $image;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $extts;
     }
 }

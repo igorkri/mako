@@ -113,40 +113,38 @@ $this->params['breadcrumbs'][] = $this->title;
             'name' => 'sort_list',
 //            'value'=>'3,4,2,1,5',
             'items' => $items_img,
-            'hideInput' => false,
+//            'hideInput' => false,
             'sortableOptions' => [
                 'type' => Sortable::TYPE_GRID,
-                'handleLabel' => true,
+                'handleLabel' => false,
                 'pluginEvents' => [
                     'sortupdate' => 'function(e) { 
                             var elemPos = e.originalEvent.detail.origin.index; 
                             var liArrs = e.originalEvent.detail.destination.items;
+                            //var liArrs = e.originalEvent.detail.origin.items;
+                            var ress = "";
+                            var prod = "";
                             $.each(liArrs, function( index, value ) {
-                           var key = $(value).data("key");
-                               if(key == elemPos){
-                                  var attr = value.lastChild;
-                                  var imgId = $(attr).data("id");
-                                  var prodId = $(attr).data("productId");
-//                                  console.log(prodId);
-//                                  console.log(imgId);
+                                var attr = value.lastChild;
+                                prod = $(attr).data("id");
+                                console.log(prod);
+                                var key = $(value).data("key");
+                                ress += prod + ",";
+                            })
                                   $.ajax({
                                         url: "position-update-img",
                                         data: {
-                                            pos: elemPos,
-                                            img_id: imgId,
-                                            prod_id: prodId
+                                            pos: ress,
+                                            prod_id: prod
                                         },
                                         success: function(data){
-                                                console.log(data);
-//                                            $.pjax.reload({ container: "#all-page" });
+
                                         },
                                         error: function(data){
                                             
                                         }
                                   });
-                               }
-                           });
-                            
+                               
                     }',
                 ],
             ],
