@@ -116,6 +116,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'hideInput' => false,
             'sortableOptions' => [
                 'type' => Sortable::TYPE_GRID,
+//                'type' => Sortable::TYPE_LIST,
                 'handleLabel' => false,
                 'pluginEvents' => [
                     'sortupdate' => 'function(e) { 
