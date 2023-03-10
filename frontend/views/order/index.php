@@ -44,8 +44,8 @@ use yii\helpers\Html;
         </div>
         <div class="fields">
             <input type="hidden" name="<?=Yii::$app->request->csrfParam?>" value="<?=Yii::$app->request->getCsrfToken()?>" />
-            <input type="text" name="name" placeholder="Ваше ПІБ">
-            <input type="text" name="phone" placeholder="Номер телефону">
+            <input type="text" name="name" placeholder="Ваше ПІБ"  oninvalid="this.setCustomValidity('Укажіть будь ласка Ваше ПІБ')" oninput="this.setCustomValidity('')" required>
+            <input type="text" name="phone" placeholder="Номер телефону"  oninvalid="this.setCustomValidity('Укажіть будь ласка Ваш телефон')" oninput="this.setCustomValidity('')"required>
             <textarea rows="4" name="note" placeholder="Додайте коментар (самовивіз, відділення Нової Пошти)"></textarea>
             <input type="submit" value="Підтвердити замовлення">
             <?php // Html::submitButton('Підтвердити замовлення', ['class' => '']) ?>
