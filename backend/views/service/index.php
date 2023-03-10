@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'popular:boolean',
 //            'description:raw',
 //            'indication:raw',
-            'price:raw',
+//            'price:raw',
             [
                 'class' => ActionColumn::class,
                 'urlCreator' => function ($action, Service $model, $key, $index, $column) {
