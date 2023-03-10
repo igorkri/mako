@@ -34,7 +34,9 @@
       "fakerphp/faker": "^1.21",
       "yiisoft/yii2-imagine": "^2.3",
         "omnilight/yii2-shopping-cart": "*",
-        "zrk4939/yii2-depdrop": "@dev"
+        "zrk4939/yii2-depdrop": "@dev",
+        "kartik-v/yii2-sortable": "dev-master",
+        "kartik-v/yii2-sortable-input": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

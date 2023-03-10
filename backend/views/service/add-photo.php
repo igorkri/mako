@@ -21,6 +21,7 @@ use yii\helpers\Url;
             'multiple' => true,
         ],
         'pluginEvents' => [
+
 //            "fileclear" => "function() { log(fileclear); }",
             //    "filereset" => "function() { console.log(filereset); }",
             "fileuploaded" => "function(event, data, previewId, index) { 

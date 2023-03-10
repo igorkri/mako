@@ -124,6 +124,8 @@
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-imagine" />
       <path value="$PROJECT_DIR$/vendor/omnilight/yii2-shopping-cart" />
       <path value="$PROJECT_DIR$/vendor/zrk4939/yii2-depdrop" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-sortable" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-sortable-input" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

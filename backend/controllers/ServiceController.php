@@ -66,14 +66,38 @@ class ServiceController extends Controller
      */
     public function actionView($id)
     {
-        Yii::$app->cache->flush();
+//        Yii::$app->cache->flush();
+        $model = $this->findModel($id);
+        $items_img = [];
+        foreach ($model->serviceGalleries as $gallery):
+                $items_img[]['content'] = '<figure data-id="'. $gallery->id .'" data-product-id="'. $gallery->service_id .'" class="figure" style="width:210px; ">
+                    <img src="' . Yii::$app->request->hostInfo . '/img/service-photo/' . $gallery->file .'"
+                         class="figure-img img-fluid rounded" alt="">
+                    <figcaption class="figure-caption text-end">'
+                        . Html::a('<i class="far fa-trash-alt"></i>', ['remove-photo', 'service_id' => $model->id, 'id' => $gallery->id], [
+                            'class' => 'btn btn-danger btn-sm float-end',
+                            'style' => 'margin-left: 10px',
+                            'role' => 'modal-remote',
+                            'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                            'data-request-method'=>'post',
+                            'data-toggle'=>'tooltip',
+                            'data-confirm-title'=>'Ви впевнені?',
+                            'data-confirm-message'=>'Ви впевнені, що хочете видалити зображення?'
+                        ]) .
+                    '</figcaption>
+                </figure>';
+        endforeach;
+
+//        debug($items_img);
+//        die();
         $specialists = ServiceSpecialist::find()->where(['service_id' => $id])->all();
         $videos = ServiceVideo::find()->where(['service_id' => $id])->all();
 
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
             'specialists' => $specialists,
             'videos' => $videos,
+            'items_img' => $items_img,
         ]);
     }
 
@@ -314,15 +338,18 @@ class ServiceController extends Controller
     }
 
     public function actionRemovePhoto($service_id, $id){
-
+        Yii::$app->response->format = Response::FORMAT_JSON;
         $model = ServiceGallery::find()->where(['id' => $id])->andWhere(['service_id' => $service_id])->one();
         if($model){
             $dir = Yii::getAlias('@frontendWeb/img/service-photo/');
             unlink($dir . $model->file);
             $model->delete();
-//            Yii::$app->getSession()->addFlash('success', "Зображення успішно видалено!");
 
-            return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
+            return [
+                'forceReload' => '#view-pjax',
+                'forceClose'=>true,
+            ];
+//            return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
         }
 //        debug($model);
 
@@ -485,4 +512,16 @@ class ServiceController extends Controller
         return $result;
     }
 
+    public function actionPositionUpdateImg($pos, $img_id, $prod_id){
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $image = ServiceGallery::find()
+            ->where(['id' => $img_id])
+            ->andWhere(['service_id' => $prod_id])
+            ->one();
+        if($image){
+            $image->position = $pos;
+            $image->save();
+        }
+        return $image;
+    }
 }

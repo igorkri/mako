@@ -92,7 +92,8 @@ class Service extends \yii\db\ActiveRecord
      */
     public function getServiceGalleries()
     {
-        return $this->hasMany(ServiceGallery::class, ['service_id' => 'id']);
+        return $this->hasMany(ServiceGallery::class, ['service_id' => 'id'])
+            ->orderBy('position ASC');
     }
 
     /**
