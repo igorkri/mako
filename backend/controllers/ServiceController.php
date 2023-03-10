@@ -70,11 +70,11 @@ class ServiceController extends Controller
         $model = $this->findModel($id);
         $items_img = [];
         foreach ($model->serviceGalleries as $gallery):
-                $items_img[]['content'] = '<figure data-id="'. $gallery->id .'" data-product-id="'. $gallery->service_id .'" class="figure" style="width:210px; ">
+                $items_img[]['content'] = '<figure data-id="'. $gallery->id .'" data-product-id="'. $gallery->service_id .'" class="figure">
                     <img src="' . Yii::$app->request->hostInfo . '/img/service-photo/' . $gallery->file .'"
                          class="figure-img img-fluid rounded" alt="">
                     <figcaption class="figure-caption text-end">'
-                        . Html::a('<i class="far fa-trash-alt"></i>', ['remove-photo', 'service_id' => $model->id, 'id' => $gallery->id], [
+                    . Html::a('<i class="far fa-trash-alt"></i>', ['remove-photo', 'service_id' => $model->id, 'id' => $gallery->id], [
                             'class' => 'btn btn-danger btn-sm float-end',
                             'style' => 'margin-left: 10px',
                             'role' => 'modal-remote',

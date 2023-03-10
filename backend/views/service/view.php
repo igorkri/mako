@@ -430,3 +430,12 @@ JS;
 $this->registerJs($js);
 
 ?>
+<style>
+    .sortable.grid li {
+        float: left;
+        width: 195px;
+        height: 214px;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
