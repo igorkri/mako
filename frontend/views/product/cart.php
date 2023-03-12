@@ -7,7 +7,7 @@
                 <?php if(isset($cart_product->productImages[0])): ?>
                     <img src="/img/products/<?= $cart_product->productImages[0]->name ?>" alt="" width="86">
                 <?php else: ?>
-                    <img src="/img/no-image.png" alt="">
+                    <img src="/img/no-image.png" alt="" width="86">
                 <?php endif; ?>
             </div>
             <div class="description">
