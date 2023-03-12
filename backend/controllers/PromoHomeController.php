@@ -64,10 +64,7 @@ class PromoHomeController extends Controller
                 'model' => $model,
             ]);
         }
-        $model_new = new PromoHome();
-        return $this->render('create', [
-            'model' => $model_new,
-        ]);
+        return $this->redirect(['create']);
     }
 
     /**

@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var common\models\PromoHome $model */
 
-$this->title = 'Create Promo Home';
-$this->params['breadcrumbs'][] = ['label' => 'Promo Homes', 'url' => ['index']];
+$this->title = '';
+//$this->params['breadcrumbs'][] = ['label' => 'Promo Homes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="promo-home-create">
