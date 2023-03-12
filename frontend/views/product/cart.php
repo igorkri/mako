@@ -2,14 +2,12 @@
 <?php if($products): ?>
 <div class="goods">
     <?php foreach ($products as $cart_product): ?>
-        <?php $d = explode('/', $cart_product->productImages[0]->name); ?>
         <div class="item">
             <div class="img">
-                <?php if (!isset($d[1])): ?>
-                    <img src="/img/products/<?= $cart_product->getId() ?>/<?= $cart_product->productImages[0]->name ?>"
-                         alt="" width="86">
-                <?php else: ?>
+                <?php if(file_exists(Yii::getAlias('@frontend/web/img/products/') . $cart_product->productImages[0]->name)): ?>
                     <img src="/img/products/<?= $cart_product->productImages[0]->name ?>" alt="" width="86">
+                <?php else: ?>
+                    <img src="/img/no-image.png" alt="">
                 <?php endif; ?>
             </div>
             <div class="description">
