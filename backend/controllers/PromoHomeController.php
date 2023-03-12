@@ -57,7 +57,8 @@ class PromoHomeController extends Controller
      */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
+        $model = PromoHome::findOne(['id' => $id]);
+
         if($model){
             return $this->render('view', [
                 'model' => $model,
