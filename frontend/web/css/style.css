@@ -1603,14 +1603,6 @@ section.gift_certificates .block {
   gap: 16px;
 }
 
-section.gift_certificates .block .pict {
-  width: calc(50% - 8px);
-  height: 500px;
-  background: url(../img/gift_certificates.webp) 50%;
-  background-size: cover;
-  position: relative;
-}
-
 section.gift_certificates .block .pict .overlay {
   position: absolute;
   top: 0;

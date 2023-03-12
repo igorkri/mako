@@ -34,12 +34,13 @@ $this->title = 'Косметологічний центр МаКо';
 <?php echo PopularServiceWidget::widget() ?>
 
 <!----- слайдер "Подарункові сертіфікати" ----->
+<?php if($sertificat): ?>
 <section class="gift_certificates">
     <div class="block">
         <div class="pict">
             <div class="overlay">
-                <h3>Подарункові<br> сертифікати<br> на будь-яку суму<br> чи послугу</h3>
-                <img src="/img/MaKo.svg" alt="">
+                <h3><?=$sertificat->name?></h3>
+                <img src="/img/MaKo_logo.svg" style="width:50px;" alt="">
             </div>
         </div>
         <div class="info">
@@ -50,10 +51,17 @@ $this->title = 'Косметологічний центр МаКо';
                 <h1>₴2000</h1>
                 <h1>₴10 000</h1>
             </div>
-            <p>Отримати сертифікат можна в одній із філій косметології МаКо за адресами: пр-т Л. Курбаса, 5в (Борщагівка),
-                вул. М.
-                Максимовича, 3г (м.Васильківська). Також можемо надіслати поштою.</p>
+            <?=$sertificat->info?>
         </div>
     </div>
 </section>
-
+<style>
+    section.gift_certificates .block .pict {
+        width: calc(50% - 8px);
+        height: 500px;
+        background: url(../img/certificates/<?=$sertificat->file?>) 50%;
+        background-size: cover;
+        position: relative;
+    }
+</style>
+<?php endif; ?>
