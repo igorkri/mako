@@ -4,7 +4,7 @@
     <?php foreach ($products as $cart_product): ?>
         <div class="item">
             <div class="img">
-                <?php if(file_exists(Yii::getAlias('@frontend/web/img/products/') . $cart_product->productImages[0]->name)): ?>
+                <?php if(isset($cart_product->productImages[0])): ?>
                     <img src="/img/products/<?= $cart_product->productImages[0]->name ?>" alt="" width="86">
                 <?php else: ?>
                     <img src="/img/no-image.png" alt="">
