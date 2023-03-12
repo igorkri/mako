@@ -55,16 +55,17 @@ class PromoHomeController extends Controller
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id = null)
+    public function actionView($id)
     {
-        if($id != null){
+        $model = $this->findModel($id);
+        if($model){
             return $this->render('view', [
-                'model' => $this->findModel($id),
+                'model' => $model,
             ]);
         }
-        $model = new PromoHome();
+        $model_new = new PromoHome();
         return $this->render('create', [
-            'model' => $model,
+            'model' => $model_new,
         ]);
     }
 
