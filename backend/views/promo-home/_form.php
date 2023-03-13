@@ -67,11 +67,21 @@ use yii\widgets\ActiveForm;
         <?php endif; ?>
     </div>
     <div class="col-6">
-        <?= $form->field($model, 'price_1')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'price_2')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'price_3')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'price_4')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'price_5')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'if_empty_price')->textarea(['maxlength' => true]) ?>
+        <div class="row">
+            <p style="color: red">Якщо заповнити поле "<b>Текст замість ціни</b>" ціни відображаться не будуть!</p>
+            <hr>
+        <div class="col-6">
+            <?= $form->field($model, 'price_1')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'price_2')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'price_3')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-6">
+            <?= $form->field($model, 'price_4')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'price_5')->textInput(['maxlength' => true]) ?>
+        </div>
+        </div>
+
     </div>
 </div>
 

@@ -48,7 +48,6 @@ $this->title = 'Косметологічний центр МаКо';
                 <?php if(!empty($sertificat->if_empty_price)): ?>
                     <h1 style="text-align:center; white-space: unset;font-size: 40px;"><?=$sertificat->if_empty_price?></h1>
                 <?php else: ?>
-                <?php dd($sertificat->if_empty_price);?>
                     <?=$sertificat->price_1 ? '<h1>₴' . Yii::$app->formatter->asDecimal($sertificat->price_1, 0) . '</h1>' : '' ?>
                     <?=$sertificat->price_2 ? '<h1>₴' . Yii::$app->formatter->asDecimal($sertificat->price_2, 0) . '</h1>' : '' ?>
                     <?=$sertificat->price_3 ? '<h1>₴' . Yii::$app->formatter->asDecimal($sertificat->price_3, 0) . '</h1>' : '' ?>
