@@ -22,6 +22,7 @@ class HomeController extends Controller
      */
     public function actionIndex()
     {
+        Yii::$app->cache->flush();
 //        $order_call = new OrderACall();
         $promos = Promo::find()->where(['published' => 1])->all();
         $sertificat = PromoHome::find()->one();

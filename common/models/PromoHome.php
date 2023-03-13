@@ -11,6 +11,7 @@ use Yii;
  * @property string|null $name Назва
  * @property string|null $file Зображення
  * @property string|null $info Інформація
+ * @property string|null $if_empty_price Якщо немає ціни
  */
 class PromoHome extends \yii\db\ActiveRecord
 {
@@ -29,6 +30,7 @@ class PromoHome extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'file'], 'string', 'max' => 255],
+            [['if_empty_price'], 'string', 'max' => 120],
             [['info'], 'string', 'max' => 1100],
             [['price_1', 'price_2', 'price_3', 'price_4', 'price_5'], 'number'],
         ];
@@ -49,6 +51,7 @@ class PromoHome extends \yii\db\ActiveRecord
             'price_3' => 'Ціна 3',
             'price_4' => 'Ціна 4',
             'price_5' => 'Ціна 5',
+            'if_empty_price' => 'Текст замість ціни',
         ];
     }
 }
