@@ -45,11 +45,11 @@ $this->title = 'Косметологічний центр МаКо';
         </div>
         <div class="info">
             <div class="prices">
-                <h1>₴<?= Yii::$app->formatter->asDecimal($sertificat->price_1, 0)?></h1>
-                <h1>₴<?= Yii::$app->formatter->asDecimal($sertificat->price_2, 0)?></h1>
-                <h1>₴<?= Yii::$app->formatter->asDecimal($sertificat->price_3, 0)?></h1>
-                <h1>₴<?= Yii::$app->formatter->asDecimal($sertificat->price_4, 0)?></h1>
-                <h1>₴<?= Yii::$app->formatter->asDecimal($sertificat->price_5, 0)?></h1>
+                <?=$sertificat->price_1 ? '<h1>₴' . Yii::$app->formatter->asDecimal($sertificat->price_1, 0) . '</h1>' : '' ?>
+                <?=$sertificat->price_2 ? '<h1>₴' . Yii::$app->formatter->asDecimal($sertificat->price_2, 0) . '</h1>' : '' ?>
+                <?=$sertificat->price_3 ? '<h1>₴' . Yii::$app->formatter->asDecimal($sertificat->price_3, 0) . '</h1>' : '' ?>
+                <?=$sertificat->price_4 ? '<h1>₴' . Yii::$app->formatter->asDecimal($sertificat->price_4, 0) . '</h1>' : '' ?>
+                <?=$sertificat->price_5 ? '<h1>₴' . Yii::$app->formatter->asDecimal($sertificat->price_5, 0) . '</h1>' : '' ?>
             </div>
             <?=$sertificat->info?>
         </div>
