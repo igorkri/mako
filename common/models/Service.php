@@ -32,7 +32,7 @@ class Service extends \yii\db\ActiveRecord
         return 'service';
     }
 
-    public $parent_category_id;
+//    public $parent_category_id = 10;
 
     public function behaviors()
     {

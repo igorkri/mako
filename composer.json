@@ -36,7 +36,8 @@
         "omnilight/yii2-shopping-cart": "*",
         "zrk4939/yii2-depdrop": "@dev",
         "kartik-v/yii2-sortable": "dev-master",
-        "kartik-v/yii2-sortable-input": "dev-master"
+        "kartik-v/yii2-sortable-input": "dev-master",
+        "kartik-v/yii2-widget-depdrop": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

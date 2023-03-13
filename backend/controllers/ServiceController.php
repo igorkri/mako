@@ -495,21 +495,42 @@ class ServiceController extends Controller
 
     }
 
-    public function actionSubcat1(){
-        Yii::$app->response->format = Response::FORMAT_JSON;
+    public function actionSubcat1() {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $result = [
             'output' => [],
             'selected' => ''
         ];
         $post = Yii::$app->request->post('depdrop_all_params');
-        $categories = CategoryService::find()->where(['parent_id' => $post['parent_id']])->all();
-        foreach ($categories as $category){
+        $sub_categories = CategoryService::find()->where(['parent_id' => $post['parent_id']])->asArray()->all();
+        foreach ($sub_categories as $category) {
             $result['output'][] = [
                 'id' => $category['id'],
                 'name' => $category['name'],
             ];
         }
         return $result;
+
+
+//        $out = [];
+//        if (isset($_POST['depdrop_parents'])) {
+//            $id = end($_POST['depdrop_parents']);
+//            $list = CategoryService::find()->where(['parent_id' => $post['parent_id']])->all();
+//
+//            $selected  = null;
+//            if ($id != null && count($list) > 0) {
+//                $selected = '';
+//                foreach ($list as $i => $account) {
+//                    $out[] = ['id' => $account['Ref'], 'name' => $account['DescriptionRu']];
+//                    if ($i == 0) {
+//                        $selected = $account['Ref'];
+//                    }
+//                }
+//                // Shows how you can preselect a value
+//                return ['output' => $out, 'selected' => $selected];
+//            }
+//        }
+//        return ['output' => '', 'selected' => ''];
     }
 
     public function actionPositionUpdateImg($pos, $prod_id){

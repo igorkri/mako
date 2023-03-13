@@ -2,17 +2,31 @@
 
 use common\models\CategoryService;
 use Itstructure\CKEditor\CKEditor;
+use kartik\depdrop\DepDrop;
 use kartik\form\ActiveForm;
 use kartik\select2\Select2;
 use vova07\imperavi\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use zrk4939\widgets\depdrop\DepDrop;
+
+//use zrk4939\widgets\depdrop\DepDrop;
 
 /** @var yii\web\View $this */
 /** @var common\models\Service $model */
 /** @var kartik\form\ActiveForm $form */
+
+$data = ArrayHelper::map(CategoryService::find()
+        ->where(['is', 'parent_id', new \yii\db\Expression('null')])
+        ->orderBy('name')
+        ->asArray()
+        ->all(),'id', 'name');
+
+$data_dep = ArrayHelper::map(CategoryService::find()
+    ->where(['parent_id' => $model->parent_category_id])
+    ->asArray()
+    ->all(), 'id', 'name');
+
 ?>
 
 <div class="container">
@@ -23,30 +37,11 @@ use zrk4939\widgets\depdrop\DepDrop;
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <?php // $form->field($model, 'parent_id')->widget(Select2::classname(),[
-//                'data' => $data,
-//                'language' => 'ru',
-//                'options' => ['placeholder' => "Выберите из списка, или оставьте пустым если надо [ создать ] родителя",'id' => 'parent_id'],
-//                'pluginLoading' => true,
-//                'pluginOptions' => [
-//                    'allowClear' => true,
-//                ],
-//            ]);?>
-
-            <?php // $form->field($model, 'sm_id')->widget(DepDrop::class, [
-////        'options' => ['id' => 'parent_id', 'placeholder' => 'Select ...'],
-//                'placeholder' => "Выберите из списка, или оставьте пустым если надо [ добавить ] к родителю",
-//                'depends' => ['parent_id'],
-//                'url' => Url::to(['/category/subcat1']),
-//            ]); ?>
-
-
             <?= $form->field($model, 'parent_category_id')->widget(Select2::classname(),[
-                'data' => ArrayHelper::map(
-                    CategoryService::find()->where(['is', 'parent_id', new \yii\db\Expression('null')])->orderBy('name')->asArray()->all(),
-                    'id', 'name'),
-                'language' => 'uk',
-                'options' => ['placeholder' => "Виберіть із списку",'id' => 'parent_id'],
+                'data' => $data,
+                'options' => ['placeholder' => "Виберіть із списку",
+//                    'value' => $parent_id->parent_id ? $parent_id->parent_id : '',
+                    'id' => 'parent_id'],
                 'pluginLoading' => true,
                 'pluginOptions' => [
                     'allowClear' => true,
@@ -54,12 +49,20 @@ use zrk4939\widgets\depdrop\DepDrop;
             ]);?>
         </div>
         <div class="col-sm-5">
-            <?= $form->field($model, 'category_service_id')->widget(DepDrop::class, [
-//                'options' => ['id' => 'parent_id'],
-                'placeholder' => "Виберіть категорію для статті ...",
-                'depends' => ['parent_id'],
-                'url' => Url::to(['/service/subcat1']),
-            ]); ?>
+            <?php
+            echo $form->field($model, 'category_service_id')->widget(DepDrop::classname(), [
+                'type' => DepDrop::TYPE_SELECT2,
+                'data' => $data_dep,
+                'options' => ['id' => 'category_service_id', 'placeholder' => 'Виберіть із списку'],
+                'select2Options' => ['pluginOptions' => ['allowClear' => true]],
+                'pluginOptions' => [
+                    'cache' => true,
+                    'depends' => ['parent_id'],
+                    'url' => Url::to(['/service/subcat1']),
+//                    'params' => ['input-type-1', 'input-type-2']
+                ]
+            ]);
+            ?>
         </div>
         <div class="col-sm-2">
             <?= $form->field($model, 'popular')->dropDownList([
