@@ -21,7 +21,7 @@ class PopularServiceWidget extends Widget
 
     public function run()
     {
-        $services = Service::find()->with('serviceGalleries')->limit(9)->all();
+        $services = Service::find()->with('serviceGalleries')->where(['popular' => 1])->limit(21)->all();
         $preparats = Preparat::find()->all();
 //        debug($services);
 

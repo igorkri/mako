@@ -45,11 +45,11 @@ $this->title = 'Косметологічний центр МаКо';
         </div>
         <div class="info">
             <div class="prices">
-                <h1>₴500</h1>
-                <h1>₴1000</h1>
-                <h1>₴1500</h1>
-                <h1>₴2000</h1>
-                <h1>₴10 000</h1>
+                <h1>₴<?= Yii::$app->formatter->asDecimal($sertificat->price_1, 0)?></h1>
+                <h1>₴<?= Yii::$app->formatter->asDecimal($sertificat->price_2, 0)?></h1>
+                <h1>₴<?= Yii::$app->formatter->asDecimal($sertificat->price_3, 0)?></h1>
+                <h1>₴<?= Yii::$app->formatter->asDecimal($sertificat->price_4, 0)?></h1>
+                <h1>₴<?= Yii::$app->formatter->asDecimal($sertificat->price_5, 0)?></h1>
             </div>
             <?=$sertificat->info?>
         </div>
