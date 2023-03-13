@@ -438,4 +438,9 @@ $this->registerJs($js);
         text-align: center;
         padding: 20px;
     }
+    .figure-img {
+        margin-bottom: 0.5rem;
+        line-height: 1;
+        height: 145px;
+    }
 </style>

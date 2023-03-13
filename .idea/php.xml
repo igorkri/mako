@@ -128,6 +128,7 @@
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-sortable-input" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/dependent-dropdown" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-depdrop" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

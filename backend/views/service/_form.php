@@ -26,7 +26,6 @@ $data_dep = ArrayHelper::map(CategoryService::find()
     ->where(['parent_id' => $model->parent_category_id])
     ->asArray()
     ->all(), 'id', 'name');
-
 ?>
 
 <div class="container">
