@@ -68,7 +68,7 @@ class ProductController extends Controller
         foreach($ps as $filt){
             $f_cat[] = $filt['category_id'];
             $f_producer[] = $filt['producer_id'];
-            $f_serie[] = $filt->['series_id'];
+            $f_serie[] = $filt['series_id'];
         }
 
         $categories = Category::find()
