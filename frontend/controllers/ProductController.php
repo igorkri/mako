@@ -64,14 +64,22 @@ class ProductController extends Controller
         $q_s = ['Filter' => $_SESSION];
         $dataProvider = $searchModel->search($q_s);
         $f_cat = []; $f_producer = []; $f_serie = [];
-        foreach($dataProvider->models as $filt){
-            $f_cat[] = $filt->category_id;
-            $f_producer[] = $filt->producer_id;
-            $f_serie[] = $filt->series_id;
+        $ps = Product::find()->asArray()->all();
+        foreach($ps as $filt){
+            $f_cat[] = $filt['category_id'];
+            $f_producer[] = $filt['producer_id'];
+            $f_serie[] = $filt->['series_id'];
         }
-        $categories = Category::find()->where(['in', 'id', $f_cat])->all();
-        $producer = Producer::find()->where(['in', 'id', $f_producer])->all();
-        $series = Series::find()->where(['in', 'id', $f_serie])->all();
+
+        $categories = Category::find()
+            ->where(['in', 'id', $f_cat])
+            ->all();
+        $producer = Producer::find()
+            ->where(['in', 'id', $f_producer])
+            ->all();
+        $series = Series::find()
+            ->where(['in', 'id', $f_serie])
+            ->all();
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return $this->renderAjax('catalog', [
