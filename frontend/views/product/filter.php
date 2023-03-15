@@ -92,6 +92,7 @@ use yii\widgets\ActiveForm;
 
             <?php endif; ?>
         </div>
+        <?php if($categories): ?>
         <div class="checkboxes_block">
             <h6>Категорії</h6>
             <?php foreach ($categories as $category): ?>
@@ -105,6 +106,8 @@ use yii\widgets\ActiveForm;
             </label>
             <?php endforeach; ?>
         </div>
+        <?php endif; ?>
+        <?php if($producer): ?>
         <div class="checkboxes_block">
             <h6>Виробник</h6>
             <?php foreach ($producer as $prod): ?>
@@ -118,6 +121,8 @@ use yii\widgets\ActiveForm;
             </label>
             <?php endforeach; ?>
         </div>
+        <?php endif; ?>
+        <?php if($series): ?>
         <div class="checkboxes_block">
             <h6>Серія</h6>
 
@@ -133,6 +138,7 @@ use yii\widgets\ActiveForm;
             <?php endforeach; ?>
 
         </div>
+        <?php endif; ?>
     </div>
 <?php
 $js = <<<JS

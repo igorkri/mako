@@ -40,9 +40,6 @@ class ProductController extends Controller
         $request = Yii::$app->request;
         $searchModel = new Filter();
 
-        $categories = Category::find()->all();
-        $producer = Producer::find()->all();
-        $series = Series::find()->all();
         $product = new Product();
         $filters = [];
         $fil = $request->post('filters');
@@ -62,10 +59,19 @@ class ProductController extends Controller
             }
         }
         $filters = $product->getFilters($_SESSION);
+
         $count_filters = $product->getCountFilters($filters);
         $q_s = ['Filter' => $_SESSION];
         $dataProvider = $searchModel->search($q_s);
-
+        $f_cat = []; $f_producer = []; $f_serie = [];
+        foreach($dataProvider->models as $filt){
+            $f_cat[] = $filt->category_id;
+            $f_producer[] = $filt->producer_id;
+            $f_serie[] = $filt->series_id;
+        }
+        $categories = Category::find()->where(['in', 'id', $f_cat])->all();
+        $producer = Producer::find()->where(['in', 'id', $f_producer])->all();
+        $series = Series::find()->where(['in', 'id', $f_serie])->all();
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return $this->renderAjax('catalog', [
