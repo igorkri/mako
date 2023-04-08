@@ -18,7 +18,10 @@ $contacts = \common\models\Contacts::find()->all();
         <div class="alert-message"></div>
         <form action="/order-a-call" method="post" id="order-a-call">
             <h4>Замовити дзвінок</h4>
-            <input type="text" name="name" oninvalid="this.setCustomValidity('Укажіть будь ласка Ваше ім’я')" oninput="this.setCustomValidity('')" placeholder="Ваше ім’я" required>
+            <input type="text" name="name" 
+            oninvalid="this.setCustomValidity('Укажіть будь ласка Ваше ім’я')"
+             oninput="this.setCustomValidity('')" 
+             placeholder="Ваше ім’я" required>
             <input type="text" name="phone"  oninvalid="this.setCustomValidity('Укажіть будь ласка Ваш телефон')" oninput="this.setCustomValidity('')"  placeholder="Номер телефону" required>
             <div class="choose_salon">
                 <input type="text" name="address" autocomplete="off" placeholder="Оберіть салон">

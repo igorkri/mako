@@ -2,9 +2,11 @@
 
 namespace frontend\controllers;
 
+use common\models\NovaPoshta;
 use common\models\shop\Order;
 use common\models\shop\OrderItem;
 use common\models\shop\Product;
+use LisDev\Delivery\NovaPoshtaApi2;
 use Yii;
 use yii\web\Response;
 
@@ -14,14 +16,32 @@ class OrderController extends \yii\web\Controller
 
     public function actionIndex()
     {
+        $np = new NovaPoshtaApi2(
+            NovaPoshta::KEY_NP,
+            'ua', // Язык возвращаемых данных: ru (default) | ua | en
+            FALSE, // При ошибке в запросе выбрасывать Exception: FALSE (default) | TRUE
+            'file_get_content' // Используемый механизм запроса: curl (defalut) | file_get_content
+        // 'curl' // Используемый механизм запроса: curl (defalut) | file_get_content
+        );
         $request = Yii::$app->request;
         $products = Yii::$app->cart->getPositions();
+        $order = new Order();
         if($request->post()){
             $post = $request->post();
-            $order = new Order();
+            $n = $np->getWarehouses($post['Order']['city']);
+            $city = '';
+            $address = '';
+            foreach ($n['data'] as $datum){
+                if($datum['Ref'] == $post['Order']['address']){
+                    $city = $datum['SettlementTypeDescription'] . ' ' . $datum['CityDescription'];
+                    $address = $datum['Description'];
+                }
+            }
             $order->fio = $post['name'];
             $order->phone = $post['phone'];
             $order->note = $post['note'];
+            $order->city = $city;
+            $order->address = $address;
             if($order->save()){
                 foreach ($products as $product){
                     $order_item = new OrderItem();
@@ -40,11 +60,13 @@ class OrderController extends \yii\web\Controller
             return $this->renderAjax('index', [
                 'products' => $products,
                 'totalSumm' => Yii::$app->cart->getCost(),
+                'order' => $order
             ]);
         }
         return $this->render('index', [
             'products' => $products,
             'totalSumm' => Yii::$app->cart->getCost(),
+            'order' => $order
         ]);
     }
 
@@ -76,5 +98,78 @@ class OrderController extends \yii\web\Controller
     public function actionQty(){
         Yii::$app->response->format = Response::FORMAT_JSON;
         return ['qty' => Yii::$app->cart->getCount()];
+    }
+
+    public function actionCity($q = null)
+    {
+        /**
+         * Запись клиента в бд для статистики
+         */
+        $np = new NovaPoshtaApi2(
+            NovaPoshta::KEY_NP,
+            'ua', // Язык возвращаемых данных: ru (default) | ua | en
+            FALSE, // При ошибке в запросе выбрасывать Exception: FALSE (default) | TRUE
+            'file_get_content' // Используемый механизм запроса: curl (defalut) | file_get_content
+        // 'curl' // Используемый механизм запроса: curl (defalut) | file_get_content
+        );
+
+        //        $this->enableCsrfValidation = false;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $out = ['results' => ['id' => '', 'text' => '', 'area' => '']];
+        if (!is_null($q)) {
+//            $cities = NpCity::find()
+//                ->select('Ref, Description, AreaDescription')
+//                ->where(['like', 'Description', $q])->orderBy('Description ASC')
+//                ->asArray()
+//                ->all();
+
+            $cities = $np->getCities(0, $q, '');
+//debug($cities);
+//die();
+            $arrs = [];
+            foreach ($cities['data'] as $value) {
+                $arr = [];
+                $arr['id'] = $value['Ref'];
+                $arr['text'] = $value['Description'];
+                $arr['area'] = $value['AreaDescription'];
+
+                $arrs[] = $arr;
+            }
+            $out['results'] = $arrs;
+        } else {
+            $out['results'] = ['id' => '', 'text' => '', 'area' => ''];
+        }
+        return $out;
+    }
+
+    public function actionSubNp()
+    {
+        /**
+         * Запись клиента в бд для статистики
+         */
+
+        $np = new NovaPoshtaApi2(
+            NovaPoshta::KEY_NP,
+            'ua', // Язык возвращаемых данных: ru (default) | ua | en
+            FALSE, // При ошибке в запросе выбрасывать Exception: FALSE (default) | TRUE
+            'file_get_content' // Используемый механизм запроса: curl (defalut) | file_get_content
+        // 'curl' // Используемый механизм запроса: curl (defalut) | file_get_content
+        );
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $result = [
+            'output' => [],
+            'selected' => ''
+        ];
+        $post = Yii::$app->request->post('depdrop_all_params');
+        $warehouses = $np->getWarehouses(strval($post['checkout-country']));
+        foreach ($warehouses['data'] as $warehous) {
+            $result['output'][] = [
+                'id' => $warehous['Ref'] ?? '',
+                'name' => $warehous['Description'] ?? '',
+            ];
+        }
+        return $result;
+        // return $warehouses;
     }
 }

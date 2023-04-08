@@ -59,7 +59,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'width' => '180px',
 
             ],
-            //'city',
+            'city',
+            'address',
 //            'note',
             [
                 'attribute' => 'order_status_id',

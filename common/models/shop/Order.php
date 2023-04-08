@@ -16,6 +16,7 @@ use yii\db\ActiveRecord;
  * @property string|null $fio ПІБ
  * @property string|null $phone Телефон
  * @property string|null $city Город
+ * @property string|null $address Адреса
  * @property string|null $note Примітка
  *
  * @property OrderItem[] $orderItems
@@ -49,7 +50,8 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             [['created_at', 'updated_at', 'order_status_id'], 'integer'],
-            [['fio', 'phone', 'city'], 'string', 'max' => 255],
+            [['fio', 'phone', 'city', 'address'], 'required'],
+            [['fio', 'phone', 'city', 'address'], 'string', 'max' => 255],
             [['note'], 'string'],
             [['order_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => OrderStatus::class, 'targetAttribute' => ['order_status_id' => 'id']],
         ];
@@ -68,6 +70,7 @@ class Order extends \yii\db\ActiveRecord
             'fio' => 'ПІБ',
             'phone' => 'Телефон',
             'city' => 'Город',
+            'address' => 'Адреса',
             'note' => 'Примітка',
         ];
     }
