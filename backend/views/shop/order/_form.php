@@ -32,7 +32,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'fio')->textInput(['maxlength' => true]) ?>
 
 
-    <?php // $form->field($model, 'city')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'city')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
 
     <?php ActiveForm::end(); ?>
