@@ -7,7 +7,9 @@ use common\models\Contacts;
 use common\models\OrderACall;
 use common\models\Service;
 use common\models\Specialists;
+use frontend\models\BaseSettings;
 use Yii;
+use yii\base\BaseObject;
 use yii\web\Controller;
 
 
@@ -25,8 +27,11 @@ class ServiceController extends Controller
     public function actionIndex($slug)
     {
         $service = Service::find()->where(['slug' => $slug])->one();
+        $setting = new BaseSettings();
+
         return $this->render('index', [
-            'service' => $service
+            'service' => $service,
+            'url' => $setting->getAltegioUrl()
         ]);
     }
 
@@ -34,9 +39,12 @@ class ServiceController extends Controller
         Yii::$app->cache->flush();
         $category = CategoryService::find()->where(['slug' => $slug])->one();
         $services = Service::find()->where(['category_service_id' => $category->id])->all();
+        $setting = new BaseSettings();
+
         return $this->render('list', [
             'services' => $services,
-            'category' => $category
+            'category' => $category,
+            'url' => $setting->getAltegioUrl()
         ]);
     }
 }
