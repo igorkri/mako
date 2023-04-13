@@ -79,15 +79,19 @@ use yii\helpers\Html;
                 ],
             ]); ?>
 
-            <?php // $form->field($model, 'status_id')->widget(Select2::classname(),[
-            //                    'data' => ArrayHelper::map(\common\models\shop\Status::find()->all(), 'id', 'name'),
-            //                    'language' => 'uk',
-            //                    'options' => ['placeholder' => "Виберіть із списку статус"],
-            //                    'pluginLoading' => true,
-            //                    'pluginOptions' => [
-            //                        'allowClear' => true,
-            //                    ],
-            //                ]);?>
+            <?= $form->field($model, 'currency')->widget(Select2::classname(),[
+                                'data' => $model->currencyList(),
+                                'language' => 'uk',
+                                'options' => ['placeholder' => "Виберіть із списку статус"],
+                                'pluginLoading' => true,
+                                'pluginOptions' => [
+                                    'allowClear' => true,
+                                ],
+                            ]);?>
+
+            <?php // $form->field($model, 'volume_val')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'volume_int')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
             <br>

@@ -66,6 +66,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
 
                     'price',
+                    [
+                        'attribute' => 'volume_int',
+                        'format' => 'raw',
+                        'value' => function ($model) {
+                            return isset($model->volume_int) ? $model->volume_int . " " . $model->volume_val : "";
+                        }
+                    ],
+
+                    'currency',
                 ],
             ]) ?>
         </div>

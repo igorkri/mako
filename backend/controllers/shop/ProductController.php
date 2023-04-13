@@ -97,6 +97,7 @@ class ProductController extends Controller
      */
     public function actionUpdate($id)
     {
+        \Yii::$app->cache->flush();
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {

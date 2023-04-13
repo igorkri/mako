@@ -1,3 +1,9 @@
+<?php
+
+use yii\bootstrap5\Modal;
+use yii\helpers\Html;
+
+?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/admin" class="brand-link">
@@ -34,6 +40,7 @@
 //                    ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
 
                     ['label' => 'Сайт', 'header' => true],
+                    ['label' => 'Курс', 'icon' => 'dot-circle', 'url' => ['/exchange-rates/index']],
                     ['label' => 'Замовлені дзвінки', 'icon' => 'dot-circle', 'url' => ['/order-a-call/index']],
                     ['label' => 'Список акцій', 'iconStyle' => 'far', 'url' => ['/promo/index']],
                     ['label' => 'Сертифікати гол. стор.', 'iconStyle' => 'far', 'url' => ['/promo-home/view', 'id' => 1]],
@@ -83,3 +90,15 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<?php Modal::begin([
+    "id"=>"ajaxCrudModal",
+    "size" => Modal::SIZE_EXTRA_LARGE,
+    "scrollable" => true,
+    "options" => [
+        "data-bs-backdrop" => "static",
+        // "class" => "modal-dialog-scrollable",
+    ],
+    "footer"=>"",// always need it for jquery plugin
+])?>
+<?php Modal::end(); ?>

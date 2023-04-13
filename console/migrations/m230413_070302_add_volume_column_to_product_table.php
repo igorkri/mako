@@ -12,7 +12,8 @@ class m230413_070302_add_volume_column_to_product_table extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('{{%product}}', 'volume', $this->integer());
+        $this->addColumn('{{%product}}', 'volume_val', $this->string()->defaultValue('ml'));
+        $this->addColumn('{{%product}}', 'volume_int', $this->money(19, 2)->defaultValue(0.00));
     }
 
     /**

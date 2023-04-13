@@ -1,7 +1,10 @@
 <?php
 
+use common\models\ExchangeRates;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
+$course = ExchangeRates::find()->one();
 ?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -23,6 +26,10 @@ use yii\helpers\Html;
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
+            <a class="nav-link" href="<?=Url::to(['/exchange-rates/index'])?>" role="button">
+                <i class="fas fa-dollar-sign"></i> <?=$course->USD?>
+            </a>
+        </li><li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                 <i class="fas fa-th-large"></i>
             </a>

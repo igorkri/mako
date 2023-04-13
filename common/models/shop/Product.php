@@ -19,13 +19,16 @@ use yz\shoppingcart\CartPositionTrait;
  * @property string|null $slug Url
  * @property string|null $description Опис товару
  * @property string|null $indication Показання
+ * @property string|null $currency Валюта
  * @property int|null $category_id Категорія
  * @property string|null $producer_id Виробник
+ * @property string|null $volume_val Обєм ml
  * @property int|null $delivery_id Доставка
  * @property int|null $series_id Серія
  * @property int|null $status_id Статус
  * @property int|null $popular_product Популярний товар
  * @property float|null $price Ціна
+ * @property float|null $volume_int Обєм int
  */
 class Product extends ActiveRecord implements CartPositionInterface
 {
@@ -72,8 +75,8 @@ class Product extends ActiveRecord implements CartPositionInterface
     {
         return [
             [['created_at', 'updated_at', 'producer_id', 'published', 'category_id', 'series_id', 'status_id', 'popular_product'], 'integer'],
-            [['description', 'indication'], 'string'],
-            [['price'], 'number'],
+            [['description', 'indication', 'currency', 'volume_val'], 'string'],
+            [['price', 'volume_int'], 'number'],
             [['images'], 'safe'],
             [['name', 'slug'], 'string', 'max' => 255],
         ];
@@ -101,6 +104,9 @@ class Product extends ActiveRecord implements CartPositionInterface
             'popular_product' => 'Популярний товар',
             'price' => 'Ціна',
             'images' => 'Зображення',
+            'currency' => 'Валюта',
+            'volume_int' => 'Об\'єм 0.00',
+            'volume_val' => 'Об\'єм ml',
         ];
     }
     public function getPrice()
@@ -170,6 +176,13 @@ class Product extends ActiveRecord implements CartPositionInterface
             }
         }
         return count($count);
+    }
+
+    public function currencyList(){
+        return [
+            'UAH' => 'Гривна',
+            'USD' => 'Долар'
+        ];
     }
 
 }
