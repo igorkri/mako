@@ -27,7 +27,7 @@ $course = ExchangeRates::find()->one();
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <a class="nav-link" href="<?=Url::to(['/exchange-rates/index'])?>" role="button">
-                <i class="fas fa-dollar-sign"></i> <?=$course->USD?>
+                <i class="fas fa-dollar-sign"></i> <?=!empty($course->USD) ? $course->USD : 'Не установлено'?>
             </a>
         </li><li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
