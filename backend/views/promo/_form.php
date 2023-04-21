@@ -1,7 +1,9 @@
 <?php
 
+use Itstructure\CKEditor\CKEditor;
 use kartik\date\DatePicker;
 use kartik\file\FileInput;
+//use mihaildev\ckeditor\CKEditor;
 use vova07\imperavi\Widget;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -53,7 +55,15 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-12">
-            <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+            <?= $form->field($model, 'description')->widget(CKEditor::className(), [
+                'preset' => 'full',
+                'clientOptions' => [
+                    'allowedContent' => true,
+                    'language' => 'uk',
+                ]
+            ]); ?>
+
+
             <?php // $form->field($model, 'description')->widget(Widget::class, [
 //                'defaultSettings' => [
 //                    'style' => 'position: unset;'
