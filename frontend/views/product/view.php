@@ -50,6 +50,21 @@
         <div class="description">
             <h4>Опис товару</h4>
             <?= $product->description ?>
+            <h4>Об’єм</h4>
+            <div class="select_value">
+                <label>
+                    <input type="radio" name="select_value" checked>
+                    <span>30 мл</span>
+                </label>
+                <label>
+                    <input type="radio" name="select_value">
+                    <span>50 мл</span>
+                </label>
+                <label>
+                    <input type="radio" name="select_value">
+                    <span>100 мл</span>
+                </label>
+            </div>
             <h4>Показання</h4>
             <?= $product->indication ?>
             <h4>Доставка</h4>
