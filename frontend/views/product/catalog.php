@@ -116,7 +116,6 @@ $( document ).ready(function() {
         },
 
         success: function(data){
-            console.log(data);
             $('#header-qty-product').html(data.qty);
             // $.pjax.reload({ container: '#cart-products' });
         },
