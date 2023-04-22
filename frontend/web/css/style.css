@@ -3562,6 +3562,17 @@ section.order form .item .specification p {
   margin-bottom: 10px;
 }
 
+section.order form .item .specification h5 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  border: 1px solid #C2C2D1;
+  border-radius: 12px;
+  padding: 2px 8px;
+  width: max-content;
+  margin-bottom: 10px;
+}
+
 section.order form .item .specification h6 {
   font-weight: 700;
   font-size: 16px;
@@ -3653,6 +3664,92 @@ section.order form .fields input[type=submit] {
 
 section.order form .fields input[type=submit]:hover {
   padding: 0 0 0 55px;
+}
+
+section.order form input[type=radio] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -1;
+  opacity: 0;
+}
+
+section.order form input[type=radio]+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
+  user-select: none;
+  cursor: pointer;
+}
+
+section.order form input[type=radio]+label::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 1px solid #C2C2D1;
+  border-radius: 12px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+section.order form input[type=radio]:checked+label::before {
+  border: 1px solid #F05454;
+  background: #F05454;
+}
+
+#post_select_block {
+  display: none;
+  transition: none;
+}
+
+section.order form .post_select {
+  position: relative;
+  margin-bottom: 10px;
+  transition: none;
+}
+
+section.order form .post_select input {
+  font-size: 16px;
+  line-height: 30px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #757A7E;
+  color: #42414D;
+  transition: none;
+}
+
+section.order form .post_select svg {
+  position: absolute;
+  top: 23px;
+  right: 10px;
+  cursor: pointer;
+  transition: none;
+}
+
+section.order form .post_select .drop_list {
+  position: absolute;
+  width: 100%;
+  top: calc(100% + 1px);
+  border: 1px solid #757A7E;
+  background: #fff;
+  display: none;
+  z-index: 2;
+  transition: none;
+}
+
+section.order form .post_select .drop_list span {
+  display: block;
+  font-size: 16px;
+  line-height: 30px;
+  color: #757A7E;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: none;
+}
+
+section.order form .post_select .drop_list span:hover {
+  background: #EDEDF3;
 }
 
 /***** сторінка order_confirm.html *****/
