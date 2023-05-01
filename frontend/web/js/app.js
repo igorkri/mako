@@ -442,20 +442,3 @@ $('#product_head .pcc .add_to_cart').click(function (e) { /* Клік по кн�
     $(this).remove();
   });
 });
-
-$('#body_cart .order form input').click(function () {
-  if ($('#new_post').prop('checked')) {
-    $("#post_select_block").slideDown(250);
-  } else {
-    $("#post_select_block").slideUp(250);
-  }
-});
-
-$('#body_cart .order form .post_select').click(function () {
-  $(this).find('.drop_list').slideToggle(250);
-});
-
-$('#body_cart .order form .post_select .drop_list span').click(function () {
-  let val = $(this).html();
-  $(this).closest('.post_select').find('input').val(val);
-});
