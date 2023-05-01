@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 
 ?>
-<!-- te -->
+
 <header id="header">
     <div class="logo"> 
         <a href="/">
