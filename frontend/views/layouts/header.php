@@ -3,8 +3,9 @@
 use yii\helpers\Url;
 
 ?>
+<!-- te -->
 <header id="header">
-    <div class="logo">
+    <div class="logo"> 
         <a href="/">
             <img src="/img/MaKo_logo.svg" style="width: 50px" alt="">
         </a>
