@@ -3,7 +3,6 @@
 use yii\helpers\Url;
 
 ?>
-<!--4545-->
 <header id="header">
     <div class="logo">
         <a href="/">
