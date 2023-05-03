@@ -10,12 +10,19 @@ use yii\helpers\Url;
             <?php foreach ($categories as $category): ?>
             <div class="wrapper">
                 <a href="#">
-                    <img src="/img/arrow_right_red.svg" alt="">
-                    <p><?=$category->name?></p>
+                    <p>
+                        <?=$category->name?>
+                    </p>
+                    <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 9C8.33333 6.33333 11 5 11 5M11 5C11 5 8.33333 3.66667 7 1M11 5H1" stroke=""
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </a>
                 <div class="items">
                     <?php foreach ($category->parents as $parent): ?>
-                    <a href="<?=Url::to(['/service/list', 'slug' => $parent->slug])?>"><?=$parent->name?></a>
+                    <a href="<?=Url::to(['/service/list', 'slug' => $parent->slug])?>">
+                        <?=$parent->name?>
+                    </a>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -27,6 +34,7 @@ use yii\helpers\Url;
                 <h6></h6>
             </div>
         </div>
+        <!--  
         <div class="header_contacts">
             <?php foreach ($contacts as $contact): ?>
             <div class="address">
@@ -47,5 +55,6 @@ use yii\helpers\Url;
                 Записатись на прийом
             </a>
         </div>
+        -->
     </div>
 </div>

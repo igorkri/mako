@@ -9,7 +9,7 @@ $(window).bind('scroll', function () {
       $('header .logo').css('padding', '10px 0 10px 20px');
     }
   } else {
-    $('header .logo').css('padding', '24px 0 24px 30px');
+    $('header .logo').css('padding', '29px 0 29px 30px');
     if ($(window).width() < 506) {
       $('header .logo').css('padding', '20px 0 20px 20px');
     }
@@ -51,16 +51,26 @@ $('#header .call_us .burger').click(function () {
   }
 });
 
-if ($(window).width() < 1465) {
+if ($(window).width() < 1275) {
   $('#header .order, #header .links, #header .social').removeClass('visible').addClass('notVisible');
 }
 
 $(window).resize(function () {
-  if ($(window).width() < 1465) {
+  if ($(window).width() < 1275) {
     $('#header .order, #header .links, #header .social').removeClass('visible').addClass('notVisible');
   }
   else {
     $('#header .order, #header .links, #header .social').removeClass('notVisible').addClass('visible');
+  }
+});
+
+if ($(window).width() < 505) {
+  $('#header .links').append($('#header .social'));
+}
+
+$(window).resize(function () {
+  if ($(window).width() < 505) {
+    $('#header .links').append($('#header .social'));
   }
 });
 
@@ -74,6 +84,12 @@ $('#header .services_block .services_categories a').hover(function () {
 $('#header .services_block .services_categories .wrapper').hover(function () {
   $('#header .services_block .services_names .items').remove();
   $(this).find('.items').clone().appendTo('#header .services_block .services_names');
+});
+
+$('#header .services_block .services_categories a').click(function () {
+  if (($(window).width() > 506) && ($(window).width() < 769)) {
+    $(this).siblings('.items').slideToggle(250);
+  }
 });
 
 // поява вікна в послугах при <506
@@ -156,10 +172,10 @@ $('#header .order .cart').click(function () {
     url: '/product/cart',
     type: 'post',
     data: {},
-    success: function(data){
+    success: function (data) {
       $('.body_cart').html(data);
     },
-    error: function(){
+    error: function () {
       // $.pjax.reload({ container: '#all-page' });
     }
   });

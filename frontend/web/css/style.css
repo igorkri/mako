@@ -1,39 +1,31 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: BookmanC;
+  font-family: Manrope;
   font-display: swap;
-  src: url("../fonts/BookmanC Bold Italic.woff2") format("woff2"), url("../fonts/BookmanC Bold Italic.woff") format("woff");
-  font-weight: 700;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: Mulish;
-  font-display: swap;
-  src: url("../fonts/Mulish-Bold.woff2") format("woff2"), url("../fonts/Mulish-Bold.woff") format("woff");
+  src: url("../fonts/Manrope-Bold.woff2") format("woff2"), url("../fonts/Manrope-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: Mulish;
+  font-family: Manrope;
   font-display: swap;
-  src: url("../fonts/Mulish-Medium.woff2") format("woff2"), url("../fonts/Mulish-Medium.woff") format("woff");
+  src: url("../fonts/Manrope-Medium.woff2") format("woff2"), url("../fonts/Manrope-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: Mulish;
+  font-family: Manrope;
   font-display: swap;
-  src: url("../fonts/Mulish-Regular.woff2") format("woff2"), url("../fonts/Mulish-Regular.woff") format("woff");
+  src: url("../fonts/Manrope-Regular.woff2") format("woff2"), url("../fonts/Manrope-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 body {
-  font-family: "Mulish", sans-serif;
+  font-family: "Manrope", sans-serif;
   color: #42414D;
   height: 100%;
 }
@@ -669,6 +661,9 @@ h3 {
 header {
   border-bottom: 1px solid #C2C2D1;
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1002;
   background-color: #fff;
   max-width: 1600px;
@@ -680,16 +675,17 @@ header {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  gap: 10px;
   font-weight: 500;
-  position: relative;
   padding: 0;
 }
 
 header .logo {
-  padding: 24px 0 24px 30px;
+  padding: 29px 0 29px 30px;
+}
+
+header .logo img {
+  width: 165px;
 }
 
 header .services {
@@ -703,6 +699,7 @@ header .services {
   border: 1px solid #EDEDF3;
   border-radius: 15px;
   cursor: pointer;
+  margin-left: 20px;
 }
 
 header .services .badge {
@@ -799,8 +796,7 @@ header .links a {
 }
 
 header .links a:hover {
-  color: #fff;
-  background-color: #F05454;
+  color: #F05454;
 }
 
 header .links .cloud {
@@ -833,6 +829,10 @@ header .links .cloud.active {
   transform: scale(1);
 }
 
+header .call_us {
+  display: none;
+}
+
 header .call_us .call_button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -840,9 +840,11 @@ header .call_us .call_button {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 4px 12px 4px 8px;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
   border: 1px solid #EDEDF3;
-  border-radius: 15px;
+  border-radius: 24px;
   cursor: pointer;
 }
 
@@ -850,16 +852,8 @@ header .call_us .call_button svg path {
   fill: #42414D;
 }
 
-header .call_us .call_button p {
-  margin-left: 6px;
-}
-
 header .call_us .call_button:hover {
   background-color: #F05454;
-}
-
-header .call_us .call_button:hover p {
-  color: #fff;
 }
 
 header .call_us .call_button:hover svg path {
@@ -871,9 +865,11 @@ header .call_us .burger {
 }
 
 header .social {
+  display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  margin: auto;
 }
 
 header .social.visible {
@@ -888,6 +884,16 @@ header .social.not_visible {
 
 header .social a {
   margin: 0 12px;
+  display: flex;
+  align-items: center;
+}
+
+header .social a svg {
+  fill: #42414D;
+}
+
+header .social a:hover svg {
+  fill: #F05454;
 }
 
 header .order {
@@ -908,9 +914,11 @@ header .order.not_visible {
 }
 
 header .order .home_care {
-  padding: 4px 12px;
+  padding: 4px 12px 5px;
+  font-size: 16px;
+  line-height: 23px;
   border: 1px solid #EDEDF3;
-  border-radius: 15px;
+  border-radius: 17px;
   cursor: pointer;
   text-align: center;
   color: #42414D;
@@ -961,10 +969,10 @@ header .order .cart:hover svg path {
 
 header .services_block {
   display: none;
-  position: absolute;
-  width: 100%;
+  width: 760px;
   background-color: #fff;
-  left: 0;
+  position: absolute;
+  left: 200px;
   top: calc(100% + 1px);
   -webkit-transition: none;
   -o-transition: none;
@@ -981,8 +989,8 @@ header .services_block .services_content {
 }
 
 header .services_block .services_content .services_categories {
-  max-width: 360px;
-  padding: 30px 50px 30px 30px;
+  width: 50%;
+  padding: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -990,7 +998,7 @@ header .services_block .services_content .services_categories {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   overflow: auto;
   max-height: 400px;
 }
@@ -1016,9 +1024,9 @@ header .services_block .services_content .services_categories a {
   align-items: center;
 }
 
-header .services_block .services_content .services_categories a img {
-  margin-right: 10px;
-  opacity: 0;
+header .services_block .services_content .services_categories a svg {
+  margin-left: auto;
+  stroke: #42414D;
 }
 
 header .services_block .services_content .services_categories a p {
@@ -1031,11 +1039,8 @@ header .services_block .services_content .services_categories .wrapper .items {
   display: none;
 }
 
-header .services_block .services_content .services_categories a:hover img {
-  -webkit-transform: scaleX(1);
-  -ms-transform: scaleX(1);
-  transform: scaleX(1);
-  opacity: 1;
+header .services_block .services_content .services_categories a:hover svg {
+  stroke: #F05454;
 }
 
 header .services_block .services_content .services_categories a:hover p {
@@ -1043,15 +1048,12 @@ header .services_block .services_content .services_categories a:hover p {
 }
 
 header .services_block .services_content .services_names {
-  max-width: 360px;
-  width: 100%;
+  width: 50%;
   border-left: 1px solid #C2C2D1;
 }
 
 header .services_block .services_content .services_names .title {
-  padding: 0 16px;
-  height: 84px;
-  border-bottom: 1px solid #C2C2D1;
+  padding: 30px 30px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1068,8 +1070,7 @@ header .services_block .services_content .services_names .title img {
 
 header .services_block .services_content .services_names .title h6 {
   font-weight: 700;
-  font-size: 20px;
-  color: #F05454;
+  font-size: 18px;
 }
 
 header .services_block .services_content .services_names .items {
@@ -1080,9 +1081,8 @@ header .services_block .services_content .services_names .items {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 30px;
-  padding: 30px 16px;
-  height: 316px;
+  gap: 20px;
+  padding: 20px 30px 30px;
   overflow: auto;
 }
 
@@ -1099,7 +1099,7 @@ header .services_block .services_content .services_names .items::-webkit-scrollb
 }
 
 header .services_block .services_content .services_names .items a {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 30px;
   color: #42414D;
 }
@@ -1191,16 +1191,12 @@ section.banner .light_background {
 }
 
 section.banner .light_background h1 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-size: 100px;
   line-height: 100px;
   font-weight: 700;
 }
 
 section.banner .light_background h2 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-size: 60px;
   line-height: 60px;
   font-weight: 700;
@@ -1213,8 +1209,6 @@ section.mako_it {
 }
 
 section.mako_it h3 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -3815,7 +3809,23 @@ footer .chat:hover a svg path {
   fill: #F05454;
 }
 
-@media (max-width: 1465px) {
+@media (max-width: 1350px) {
+  footer .top_part .line {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: start;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  footer .top_part .line .address {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1275px) {
   header {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
@@ -3831,6 +3841,7 @@ footer .chat:hover a svg path {
     order: 2;
     padding: 30px 0 30px 30px;
     display: none;
+    gap: 30px;
   }
 
   header .call_us {
@@ -3843,8 +3854,8 @@ footer .chat:hover a svg path {
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: end;
-    width: calc(100% - 195px);
     padding: 0 20px 0 0;
+    margin-left: auto;
   }
 
   header .call_us .burger {
@@ -3926,7 +3937,7 @@ footer .chat:hover a svg path {
     -webkit-box-ordinal-group: 3;
     -ms-flex-order: 2;
     order: 2;
-    margin-right: auto;
+    margin: 0 auto 0 20px;
     display: none;
   }
 
@@ -3949,34 +3960,26 @@ footer .chat:hover a svg path {
   header .order .sign_up {
     width: 43%;
     margin: 0 30px;
+    order: 2;
   }
 
   header .order .cart {
-    margin-right: 20px;
+    margin: auto;
+    order: 1;
   }
 
   header .services_block {
     display: none;
+    width: 100%;
+    left: 0;
+  }
+
+  header .services_block .services_content .services_categories a {
+    max-width: 320px;
   }
 
   .catalog .content .goods .item {
     width: calc(50% - 1px);
-  }
-}
-
-@media (max-width: 1350px) {
-  footer .top_part .line {
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: start;
-    gap: 30px;
-    margin-bottom: 60px;
-  }
-
-  footer .top_part .line .address {
-    width: 100%;
   }
 }
 
@@ -4070,6 +4073,34 @@ footer .chat:hover a svg path {
 }
 
 @media (max-width: 768px) {
+  header .services_block  {
+    background: transparent;
+  }
+
+  header .services_block .services_content .services_categories {
+    background: #fff;
+  }
+
+  header .services_block .services_content .services_categories .wrapper .items {
+    transition: none;
+    margin-left: 20px;
+  }
+
+  header .services_block .services_content .services_categories .wrapper .items a {
+    color: #42414D;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  header .services_block .services_content .services_categories .wrapper .items a:hover {
+    color: #F05454;
+  }
+
+  header .services_block .services_content .services_names {
+    opacity: 0;
+    transform: scale(0);
+  }
+
   section.banner .light_background {
     padding: 30px;
   }
@@ -4296,20 +4327,22 @@ footer .chat:hover a svg path {
   header .order {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
   }
 
   header .order .home_care {
-    width: 100%;
-    margin-bottom: 20px;
+    width: calc(100% - 56px);
+    margin: 0;
   }
 
   header .order .sign_up {
-    width: 70%;
-    margin: 0 0 0 20px;
+    width: 100%;
+    margin: 0;
   }
 
   header .order .cart {
-    margin-left: auto;
+    margin: 0;
   }
 }
 
@@ -4422,6 +4455,10 @@ footer .chat:hover a svg path {
     order: 1;
   }
 
+  header {
+    gap: 0;
+  }
+
   header .logo {
     padding: 20px 0 20px 20px;
   }
@@ -4452,16 +4489,14 @@ footer .chat:hover a svg path {
     margin-left: 20px;
   }
 
-  header .order {
-    padding: 20px 0;
-  }
-
   header .links {
     padding: 20px 0 20px 20px;
+    gap: 20px;
   }
 
   header .social {
-    padding: 0 0 20px 5px;
+    padding: 0;
+    margin: 0;
   }
 
   header .services_block .services_content {
@@ -4472,24 +4507,33 @@ footer .chat:hover a svg path {
   header .services_block .services_content .services_categories {
     width: 100%;
     max-width: 100%;
-    padding: 20px 15px;
+    padding: 20px;
   }
 
   header .services_block .services_content .services_names {
     position: absolute;
     width: 100%;
+    height: 100%;
     max-width: 100%;
     left: 100%;
     z-index: 2;
     background-color: #fff;
+    transform: scale(1);
+    opacity: 1;
   }
 
   header .services_block .services_content .services_names .title {
     padding: 20px;
+    border-bottom: 1px solid #C2C2D1;
   }
 
   header .services_block .services_content .services_names .title img {
     display: block;
+  }
+
+  header .services_block .services_content .services_names .items {
+    height: calc(100% - 65px);
+    overflow: auto;
   }
 
   section.banner .light_background {
