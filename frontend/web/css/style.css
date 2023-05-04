@@ -1760,7 +1760,6 @@ section.gift_certificates .block .info p {
   font-weight: 600;
   font-size: 60px;
   line-height: 60px;
-  margin: 0 0 30px;
 }
 
 .name_service_category section.background p.n1 {
@@ -1804,7 +1803,7 @@ section.service_description .cont p {
 }
 
 section.service_description .cont ul {
-  margin: 0 0 30px 20px;
+  margin: 0 0 30px 0;
 }
 
 section.service_description .cont ul li {
@@ -1815,6 +1814,11 @@ section.service_description .cont ul li {
 
 section.service_description .cont ul li::marker {
   color: #F05454;
+}
+
+section.service_description .make_appointment {
+  margin: auto;
+  width: fit-content;
 }
 
 section.service_description .cont iframe {

@@ -60,7 +60,7 @@ $contacts = \common\models\Contacts::find()->all();
         <?php endforeach; ?>
     </div>
 
-    <!-- Модальне вікно "кощик" -->
+    <!-- Модальне вікно "кошик" -->
     <div class="modal_cart dn" id="cart_window">
         <div class="head">
             <h5>Кошик</h5>

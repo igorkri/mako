@@ -15,9 +15,8 @@ use yii\helpers\Url;
             <div class="item">
                 <a href="<?=Url::to(['promo/index'])?>">
                     <div class="title">
-                        <?//=$promo->description?>
                         <p>22.08.2022 - 30.09.2022</p>
-                        <h3>Довга назва акції на декілька слів у два-три рядки. Назва акції</h3>
+                        <h3><?=$promo->description?></h3>
                         <div class="make_appointment">
                             <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">

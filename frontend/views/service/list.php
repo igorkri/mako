@@ -27,17 +27,16 @@ use yii\helpers\Url;
     <h4>Пропонуємо наступні послуги:</h4>
     <div class="services_block">
         <?php foreach ($services as $service): ?>
-        <div class="item">
+        <a href="<?=Url::to(['/service/index', 'slug' => $service->slug])?>" class="item">
             <?php if($service->serviceGalleries): ?>
                 <img src="/img/service-photo/<?=$service->serviceGalleries[0]->file?>" alt="">
             <?php else: ?>
                 <img src="/img/gallery1.jpg" alt="">
             <?php endif; ?>
-            <a href="<?=Url::to(['/service/index', 'slug' => $service->slug])?>" class="arrow"></a>
             <div class="title">
                 <h6><?=$service->name?></h6>
             </div>
-        </div>
+        </a>
         <?php endforeach; ?>
     </div>
     <?php else: ?>
