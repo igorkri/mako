@@ -115,8 +115,6 @@ section {
 }
 
 h3 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -423,8 +421,6 @@ h3 {
   left: 0;
   background: #EDEDF3;
   padding: 20px 30px;
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 16px;
   text-align: center;
@@ -451,8 +447,6 @@ h3 {
 }
 
 .dark_background .modal_cart .head h5 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 700;
   font-size: 24px;
   line-height: 30px;
@@ -973,7 +967,7 @@ header .services_block {
   background-color: #fff;
   position: absolute;
   left: 200px;
-  top: calc(100% + 1px);
+  top: 100%;
   -webkit-transition: none;
   -o-transition: none;
   transition: none;
@@ -1166,15 +1160,16 @@ header .services_block .services_content .header_contacts .phone:hover p {
 /***** Баннер *****/
 
 section.banner {
-  height: 100vh;
+  height: calc(100vh - 100px);
   background: url(../img/banner.webp) 75%;
   background-size: cover;
-  padding: 80px 0 0 0;
+  padding: 0;
+  margin-top: 100px;
 }
 
 section.banner .light_background {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 100px);
   background: -o-radial-gradient(0% 50%, 100% 522.45%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
   background: radial-gradient(100% 522.45% at 0% 50%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
   display: -webkit-box;
@@ -1188,6 +1183,10 @@ section.banner .light_background {
   -ms-flex-pack: center;
   justify-content: center;
   padding: 88px;
+}
+
+section.banner .light_background img {
+  width: 275px;
 }
 
 section.banner .light_background h1 {
@@ -1268,8 +1267,6 @@ section.promotional_offers {
 }
 
 section.promotional_offers h3 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   color: #F05454;
@@ -1288,31 +1285,51 @@ section.promotional_offers .slider_block .slider {
 }
 
 section.promotional_offers .slider_block .slider .item a {
-  display: block;
+  display: flex;
   position: relative;
+  border: 1px solid #EDEDF3;
 }
 
-section.promotional_offers .slider_block .slider .item a img {
+section.promotional_offers .slider_block .slider .item a .title {
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+section.promotional_offers .slider_block .slider .item a .title p {
+  font-size: 14px;
+  line-height: 20px;
+  color: #42414D;
+}
+
+section.promotional_offers .slider_block .slider .item a .title h3 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: #42414D;
+  flex: auto;
+}
+
+section.promotional_offers .slider_block .slider .item a .title .make_appointment {
+  margin: 0;
+  
+}
+
+section.promotional_offers .slider_block .slider .item a .img {
+  width: 50%;
+  overflow: hidden;
+}
+
+section.promotional_offers .slider_block .slider .item a .img img {
   width: 100%;
   height: 300px;
   -o-object-fit: cover;
   object-fit: cover;
 }
 
-section.promotional_offers .slider_block .slider .item a .title {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.6);
-  font-weight: 700;
-  font-size: 34px;
-  line-height: 40px;
-  color: #F05454;
-  padding: 10px;
-}
-
-section.promotional_offers .slider_block .slider .item a:hover img {
+section.promotional_offers .slider_block .slider .item a:hover .img img {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
@@ -1410,7 +1427,7 @@ section.promotional_offers .more:hover svg rect {
   fill: #F05454;
 }
 
-/***** Акційні пропозиції *****/
+/***** Популярні послуги *****/
 
 .overlay {
   max-width: 1600px;
@@ -1422,8 +1439,6 @@ section.promotional_offers .more:hover svg rect {
 }
 
 .overlay h3 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -1438,6 +1453,10 @@ section.popular_services.v2 {
   background: #fff;
 }
 
+section.popular_services h3 {
+  margin-bottom: 30px;
+}
+
 section.popular_services.v2 .services_block .item {
   border: 1px solid #EDEDF3;
 }
@@ -1447,8 +1466,6 @@ section.popular_services.v2 a.make_appointment {
 }
 
 section.popular_services h4 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -1470,20 +1487,34 @@ section.popular_services .services_block {
 section.popular_services .services_block .item {
   display: block;
   position: relative;
-  width: calc(33.33% - 11px);
-}
-
-section.popular_services .services_block .item:hover .title {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  -webkit-transform-origin: 100% 0%;
-  -ms-transform-origin: 100% 0%;
-  transform-origin: 100% 0%;
+  width: calc(33.33% - 11px); 
 }
 
 section.popular_services .services_block .item img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+section.popular_services .services_block .item:hover img {
+  opacity: 1;
+}
+
+section.popular_services .services_block .item .title {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background: rgba(255, 255, 255, 0.6);
+  width: calc(100% - 60px);
+  padding: 10px;
+}
+
+section.popular_services .services_block .item .title h6 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #42414D;
 }
 
 section.popular_services .services_block .item .arrow {
@@ -1510,34 +1541,6 @@ section.popular_services .services_block .item .arrow:hover {
   transform: rotate(0);
 }
 
-section.popular_services .services_block .item .title {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  z-index: 3;
-  padding: 0 20px;
-  cursor: pointer;
-}
-
-section.popular_services .services_block .item .title h6 {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  text-align: center;
-}
-
 section.popular_services a.make_appointment {
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1556,8 +1559,6 @@ section.popular_services .work_drugs {
 }
 
 section.popular_services .work_drugs .title {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -1574,7 +1575,6 @@ section.popular_services .work_drugs .drugs {
   -ms-flex-pack: justify;
   justify-content: space-between;
   overflow: auto;
-  max-width: 1064px;
   width: 100%;
 }
 
@@ -1588,8 +1588,54 @@ section.popular_services .work_drugs .drugs .img {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding: 0 100px;
   height: 125px;
+  padding: 0 120px;
+}
+
+section.popular_services .work_drugs .drugs .img img {
+  width: 100px;
+}
+
+/***** awards *****/
+
+section.awards {
+  border-bottom: 1px solid #C2C2D1;
+}
+
+section.awards .block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+section.awards .block .item {
+  display: flex;
+  gap: 10px;
+  width: calc(50% - 8px);
+}
+
+section.awards .block .item .img {
+  width: 100px;
+}
+
+section.awards .block .item .img img {
+  width: 100%;
+}
+
+section.awards .block .item .text {
+  width: calc(100% - 110px);
+  margin-top: 36px;
+}
+
+section.awards .block .item .text h5 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+
+section.awards .block .item .text p {
+  font-size: 18px;
 }
 
 /***** Подарункові сертіфікати *****/
@@ -1635,8 +1681,6 @@ section.gift_certificates .block .pict .overlay {
 }
 
 section.gift_certificates .block .pict .overlay h3 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 44px;
   line-height: 54px;
@@ -1678,8 +1722,6 @@ section.gift_certificates .block .info .prices {
 }
 
 section.gift_certificates .block .info .prices h1 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 60px;
   line-height: 74px;
@@ -1710,12 +1752,11 @@ section.gift_certificates .block .info p {
 
 .name_service_category section.background {
   background: url(../img/service_category_back.png) 50%;
+  padding: 30px 88px;
   background-size: cover;
 }
 
 .name_service_category section.background h1 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 60px;
   line-height: 60px;
@@ -1741,8 +1782,6 @@ section.gift_certificates .block .info p {
 /***** Опис послуги *****/
 
 section.service_description h3 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -1823,8 +1862,6 @@ section.service_description .specialists .card p {
   width: 100%;
   margin: 0 auto 88px;
   padding-left: 88px;
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -1850,8 +1887,6 @@ section.question_service {
 }
 
 section.question_service h3 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -2017,8 +2052,6 @@ section.reviews {
 }
 
 section.reviews h3 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -2107,8 +2140,6 @@ section.reviews .block .tape .item p.v2 {
 
 .contacts h3 {
   margin: 0 0 20px 88px;
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -2197,8 +2228,6 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .certificates h3 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -2427,8 +2456,6 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .article h2 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 60px;
   line-height: 60px;
@@ -2440,8 +2467,6 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .article_text h3 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 48px;
   line-height: 48px;
@@ -3008,8 +3033,6 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .product_head h1 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 60px;
   line-height: 60px;
@@ -3026,8 +3049,6 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .product_head .pcc .price {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 48px;
   line-height: 48px;
@@ -3243,8 +3264,6 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .product .description h4 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -3398,8 +3417,6 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .error .dark_back h1 {
-  font-family: "BookmanC";
-  font-style: italic;
   font-weight: 600;
   font-size: 48px;
   line-height: 48px;
@@ -3656,7 +3673,7 @@ section.order_confirm p {
 /***** Футер *****/
 
 footer {
-  background: #EDEDF3;
+  border-top: 1px solid #C2C2D1;
   max-width: 1600px;
   width: 100%;
   margin: auto;
@@ -4109,6 +4126,26 @@ footer .chat:hover a svg path {
     margin: 0;
   }
 
+  section.promotional_offers .slider_block .slider .item a .img {
+    width: 100%;
+  }
+
+  section.promotional_offers .slider_block .slider .item a .title {
+    position: absolute;
+    width: calc(100% - 40px);
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+  }
+
+  section.promotional_offers .slider_block .slider .item a .title p,
+  section.promotional_offers .slider_block .slider .item a .title .make_appointment {
+    display: none;
+  }
+
   section.promotional_offers .slider_block .slider .slick-arrow.slick-prev {
     left: 20px;
   }
@@ -4129,11 +4166,26 @@ footer .chat:hover a svg path {
     width: calc(50% - 8px);
   }
 
+  section.popular_services .services_block .item .title {
+    left: 20px;
+    bottom: 20px;
+    width: calc(100% - 40px);
+  }
+
+  section.popular_services .services_block .item .title h6 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
   section.popular_services .work_drugs {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+  }
+
+  section.awards .block .item {
+    width: 100%;
   }
 
   .name_service_category section.background p.n1,
@@ -4536,6 +4588,10 @@ footer .chat:hover a svg path {
     overflow: auto;
   }
 
+  section.banner {
+    margin-top: 80px;
+  }
+
   section.banner .light_background {
     padding: 30px 20px;
   }
@@ -4680,6 +4736,15 @@ footer .chat:hover a svg path {
     width: 25px;
     height: 25px;
     border-radius: 12.5px;
+  }
+
+  section.awards .block .item {
+    flex-wrap: wrap;
+  }
+
+  section.awards .block .item .text {
+    width: 100%;
+    margin: 0;
   }
 
   section.gift_certificates .block .pict {

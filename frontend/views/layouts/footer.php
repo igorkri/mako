@@ -5,7 +5,7 @@ use frontend\Widgets\FooterWidget; ?>
 <footer>
     <?= FooterWidget::widget() ?>
     <div class="bottom_part">
-        <img src="/img/MaKo_logo.svg" style="width: 50px" alt="">
+        <img src="/img/MaKo_logo1.png" style="width: 165px" alt="">
         <div class="links">
             <a href="<?=\yii\helpers\Url::to(['promo/index'])?>">Акції</a>
       <a href="<?=\yii\helpers\Url::to(['team/index'])?>">Про нас</a>

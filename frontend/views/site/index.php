@@ -15,7 +15,7 @@ $this->title = 'My Yii Application';
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="48" rx="24" fill="" />
                 <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" />
+                    stroke-linejoin="round" />
             </svg>
             Записатись на прийом
         </a>
@@ -35,7 +35,7 @@ $this->title = 'My Yii Application';
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="24" height="24" rx="12" fill="" />
             <path d="M11 15C12 13 14 12 14 12C14 12 12 11 11 9" stroke="white" stroke-linecap="round"
-                  stroke-linejoin="round" />
+                stroke-linejoin="round" />
         </svg>
         Більше про нас
     </a>
@@ -118,7 +118,7 @@ $this->title = 'My Yii Application';
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="48" height="48" rx="24" fill="" />
             <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" />
+                stroke-linejoin="round" />
         </svg>
         Записатись на прийом
     </a>
@@ -163,10 +163,10 @@ $this->title = 'My Yii Application';
                 <h1>₴2000</h1>
                 <h1>₴10 000</h1>
             </div>
-            <p>Отримати сертифікат можна в одній із філій косметології МаКо за адресами: пр-т Л. Курбаса, 5в (Борщагівка),
+            <p>Отримати сертифікат можна в одній із філій косметології МаКо за адресами: пр-т Л. Курбаса, 5в
+                (Борщагівка),
                 вул. М.
                 Максимовича, 3г (м.Васильківська). Також можемо надіслати поштою.</p>
         </div>
     </div>
 </section>
-
