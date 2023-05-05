@@ -359,7 +359,7 @@ h3 {
   opacity: 0;
 }
 
-.dark_background .modal_window form input#sign_up_checkbox + label {
+.dark_background .modal_window form input#sign_up_checkbox+label {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -374,7 +374,7 @@ h3 {
   cursor: pointer;
 }
 
-.dark_background .modal_window form input#sign_up_checkbox + label::before {
+.dark_background .modal_window form input#sign_up_checkbox+label::before {
   content: "";
   width: 16px;
   height: 16px;
@@ -382,7 +382,7 @@ h3 {
   margin-right: 4px;
 }
 
-.dark_background .modal_window form input#sign_up_checkbox:checked + label::before {
+.dark_background .modal_window form input#sign_up_checkbox:checked+label::before {
   background-image: url(../img/checkbox.svg);
 }
 
@@ -525,7 +525,11 @@ h3 {
 }
 
 .dark_background .modal_cart .body_cart .goods .item .description .counter {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -864,6 +868,8 @@ header .call_us .call_button {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   width: 48px;
   height: 48px;
@@ -889,6 +895,8 @@ header .call_us .burger {
 }
 
 header .social {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -908,7 +916,11 @@ header .social.not_visible {
 
 header .social a {
   margin: 0 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -1242,6 +1254,8 @@ section.mako_it {
 }
 
 section.mako_it .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 12px;
   margin-bottom: 30px;
@@ -1261,13 +1275,18 @@ section.mako_it .info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 30px;
 }
 
 section.mako_it .info .item {
   width: calc(33.33% - 20px);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: start;
   gap: 25px;
 }
@@ -1340,6 +1359,8 @@ section.promotional_offers .slider_block .slider {
 }
 
 section.promotional_offers .slider_block .slider .item a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
   border: 1px solid #EDEDF3;
@@ -1348,7 +1369,12 @@ section.promotional_offers .slider_block .slider .item a {
 section.promotional_offers .slider_block .slider .item a .title {
   width: 50%;
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   gap: 8px;
 }
@@ -1364,12 +1390,14 @@ section.promotional_offers .slider_block .slider .item a .title h3 {
   font-size: 24px;
   line-height: 30px;
   color: #42414D;
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
   flex: auto;
 }
 
 section.promotional_offers .slider_block .slider .item a .title .make_appointment {
   margin: 0;
-  
+
 }
 
 section.promotional_offers .slider_block .slider .item a .img {
@@ -1542,12 +1570,13 @@ section.popular_services .services_block {
 section.popular_services .services_block .item {
   display: block;
   position: relative;
-  width: calc(33.33% - 11px); 
+  width: calc(33.33% - 11px);
 }
 
 section.popular_services .services_block .item img {
   width: 100%;
   height: 200px;
+  -o-object-fit: cover;
   object-fit: cover;
   opacity: 0.5;
 }
@@ -1658,12 +1687,17 @@ section.awards {
 }
 
 section.awards .block {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 16px;
 }
 
 section.awards .block .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px;
   width: calc(50% - 8px);
@@ -1797,8 +1831,8 @@ section.gift_certificates .block .info p {
 
 .name_service_category {
   padding: 100px 0 0 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#FFF2F2));
   background: -o-linear-gradient(top, #FFFFFF 0%, #FFF2F2 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#FFF2F2));
   background: linear-gradient(180deg, #FFFFFF 0%, #FFF2F2 100%);
   max-width: 1600px;
   width: 100%;
@@ -1873,6 +1907,8 @@ section.service_description .cont ul li::marker {
 
 section.service_description .make_appointment {
   margin: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -1894,7 +1930,12 @@ section.service_description .specialists {
 
 section.service_description .specialists .card {
   width: calc(33.33% - 11px);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -1932,7 +1973,10 @@ section.service_description .specialists.mod {
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   padding: 20px;
 }
@@ -1942,7 +1986,12 @@ section.service_description .specialists.mod .card {
 }
 
 section.service_description .specialists.mod .card.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   gap: 16px;
   max-width: 1064px;
@@ -1952,8 +2001,14 @@ section.service_description .specialists.mod .card.visible {
 }
 
 section.service_description .specialists.mod .close {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   width: 48px;
   height: 48px;
@@ -1983,6 +2038,8 @@ section.service_description .specialists.mod .card.visible .img img {
 
 section.service_description .specialists.mod .card.visible .text {
   border: 1px solid #C2C2D1;
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
 }
 
@@ -1992,7 +2049,12 @@ section.service_description .specialists.mod .card.visible .text .person {
 }
 
 section.service_description .specialists.mod .card.visible .text .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   gap: 10px;
   background: #fff;
@@ -2101,7 +2163,10 @@ section.promos .block {
 
 section.promos .block .item {
   border: 1px solid #EDEDF3;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
@@ -2119,7 +2184,12 @@ section.promos .block .item img {
 section.promos .block .item .disc {
   width: 50%;
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   gap: 8px;
 }
@@ -2133,6 +2203,8 @@ section.promos .block .item .disc h5 {
   font-weight: 700;
   font-size: 24px;
   line-height: 30px;
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
   flex: auto;
 }
 
@@ -2309,6 +2381,8 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .contacts .cont .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   border: 1px solid #EDEDF3;
@@ -2549,8 +2623,8 @@ section.reviews .block .tape .item p.v2 {
   right: 0;
   left: 0;
   bottom: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#FFF2F2));
   background: -o-linear-gradient(top, #FFFFFF 0%, #FFF2F2 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#FFF2F2));
   background: linear-gradient(180deg, #FFFFFF 0%, #FFF2F2 100%);
   border: 1px solid #EDEDF3;
   z-index: 3;
@@ -2753,8 +2827,14 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .learning .close {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   width: 48px;
   height: 48px;
@@ -2779,6 +2859,7 @@ section.reviews .block .tape .item p.v2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 16px;
 }
@@ -2795,6 +2876,7 @@ section.reviews .block .tape .item p.v2 {
 .learning .block .learning_item .img img {
   width: 100%;
   height: 600px;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -2856,7 +2938,10 @@ section.reviews .block .tape .item p.v2 {
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   padding: 20px;
   margin: 0;
@@ -2867,7 +2952,12 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .learning .block.mod .learning_item.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   gap: 16px;
   max-width: 1064px;
@@ -2889,6 +2979,8 @@ section.reviews .block .tape .item p.v2 {
 
 .learning .block.mod .learning_item.visible .text {
   width: calc(100% - 360px);
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
 }
 
@@ -2897,7 +2989,12 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .learning .block.mod .learning_item.visible .text .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   gap: 20px;
   background: #EDEDF3;
@@ -2908,7 +3005,11 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .learning .block.mod .learning_item.visible .text .title .date {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 16px;
 }
@@ -3159,7 +3260,7 @@ section.reviews .block .tape .item p.v2 {
   box-sizing: border-box;
 }
 
-.catalog .content .filters .checkboxes_block label.checkbox input[type=checkbox]:checked + span:before {
+.catalog .content .filters .checkboxes_block label.checkbox input[type=checkbox]:checked+span:before {
   background: #F05454;
 }
 
@@ -3186,7 +3287,12 @@ section.reviews .block .tape .item p.v2 {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid #EDEDF3;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -3215,15 +3321,24 @@ section.reviews .block .tape .item p.v2 {
   padding: 10px;
   background: #fff;
   border-top: 1px solid #EDEDF3;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   gap: 10px;
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
   flex: auto;
 }
 
 .catalog .content .goods .item .title p {
   font-size: 16px;
   line-height: 24px;
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
   flex: auto;
 }
 
@@ -3244,6 +3359,8 @@ section.reviews .block .tape .item p.v2 {
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
 
@@ -3439,6 +3556,8 @@ section.reviews .block .tape .item p.v2 {
 
 .product .slider {
   width: 36.7%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
   border: 1px solid #EDEDF3;
   position: relative;
@@ -3446,6 +3565,7 @@ section.reviews .block .tape .item p.v2 {
 
 .product .slider .item img {
   width: 100%;
+  -o-object-fit: contain;
   object-fit: contain;
   margin: auto;
 }
@@ -3567,9 +3687,14 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .product .description .select_value {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 10px;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin: 10px 0 30px;
 }
@@ -3587,9 +3712,12 @@ section.reviews .block .tape .item p.v2 {
   line-height: 30px;
   color: #42414D;
   padding: 10px 20px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid #C2C2D1;
   border-radius: 25px;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
   transition: all 0.25s ease;
   display: block;
 }
@@ -3809,7 +3937,7 @@ section.order h3 {
   margin-bottom: 10px;
 }
 
-section.order h3 ~ p {
+section.order h3~p {
   font-size: 20px;
 }
 
@@ -3825,6 +3953,8 @@ section.order form h3 {
 }
 
 section.order form .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px;
   background-color: #fff;
@@ -3859,6 +3989,8 @@ section.order form .item .specification h5 {
   border: 1px solid #C2C2D1;
   border-radius: 12px;
   padding: 2px 8px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   margin-bottom: 10px;
 }
@@ -3887,9 +4019,13 @@ section.order form .item .delete:hover svg path {
 }
 
 section.order form .total {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px;
   margin: 30px 0 30px auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -3916,7 +4052,10 @@ section.order form .total h6 span {
 }
 
 section.order form .fields {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 30px;
 }
@@ -3940,6 +4079,8 @@ section.order form .fields textarea {
 
 section.order form .fields input[type=submit] {
   display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   margin-left: auto;
   height: 48px;
@@ -3965,10 +4106,17 @@ section.order form input[type=radio] {
 }
 
 section.order form input[type=radio]+label {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 10px;
   margin: 30px 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   cursor: pointer;
 }
@@ -3980,6 +4128,7 @@ section.order form input[type=radio]+label::before {
   border: 1px solid #C2C2D1;
   border-radius: 12px;
   background: #fff;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -3990,12 +4139,16 @@ section.order form input[type=radio]:checked+label::before {
 
 #post_select_block {
   display: none;
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none;
 }
 
 section.order form .post_select {
   position: relative;
   margin-bottom: 10px;
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none;
 }
 
@@ -4006,6 +4159,8 @@ section.order form .post_select input {
   padding: 10px;
   border: 1px solid #757A7E;
   color: #42414D;
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none;
 }
 
@@ -4014,6 +4169,8 @@ section.order form .post_select svg {
   top: 23px;
   right: 10px;
   cursor: pointer;
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none;
 }
 
@@ -4025,6 +4182,8 @@ section.order form .post_select .drop_list {
   background: #fff;
   display: none;
   z-index: 2;
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none;
 }
 
@@ -4035,6 +4194,8 @@ section.order form .post_select .drop_list span {
   color: #757A7E;
   padding: 5px 10px;
   cursor: pointer;
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none;
 }
 
@@ -4060,7 +4221,11 @@ section.order_confirm h3 {
 }
 
 section.order_confirm a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   gap: 8px;
   font-weight: 700;
@@ -4393,11 +4558,15 @@ footer .chat:hover a svg path {
   header .order .sign_up {
     width: 43%;
     margin: 0 30px;
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
     order: 2;
   }
 
   header .order .cart {
     margin: auto;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
     order: 1;
   }
 
@@ -4487,7 +4656,7 @@ footer .chat:hover a svg path {
 }
 
 @media (max-width: 768px) {
-  header .services_block  {
+  header .services_block {
     background: transparent;
   }
 
@@ -4496,6 +4665,8 @@ footer .chat:hover a svg path {
   }
 
   header .services_block .services_content .services_categories .wrapper .items {
+    -webkit-transition: none;
+    -o-transition: none;
     transition: none;
     margin-left: 20px;
   }
@@ -4512,6 +4683,8 @@ footer .chat:hover a svg path {
 
   header .services_block .services_content .services_names {
     opacity: 0;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0);
   }
 
@@ -4600,6 +4773,8 @@ footer .chat:hover a svg path {
 
   section.promos .block .item .disc {
     width: 100%;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
     order: 1;
   }
 
@@ -4684,6 +4859,7 @@ footer .chat:hover a svg path {
   }
 
   .contacts .cont .item {
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     border: none;
   }
@@ -4848,6 +5024,7 @@ footer .chat:hover a svg path {
   }
 
   .learning .block.mod .learning_item.visible {
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
   }
 
@@ -5029,6 +5206,8 @@ footer .chat:hover a svg path {
     left: 100%;
     z-index: 2;
     background-color: #fff;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
     opacity: 1;
   }
@@ -5198,6 +5377,7 @@ footer .chat:hover a svg path {
   }
 
   section.awards .block .item {
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
   }
 
@@ -5240,6 +5420,9 @@ footer .chat:hover a svg path {
   }
 
   section.service_description .specialists.mod .card.visible {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     margin-top: 60px;
   }
