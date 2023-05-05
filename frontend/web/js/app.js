@@ -458,3 +458,16 @@ $('#product_head .pcc .add_to_cart').click(function (e) { /* Клік по кн�
     $(this).remove();
   });
 });
+
+// specialists
+$('#specialists .card').click(function () {
+  $('#specialists').addClass('mod');
+  $(this).addClass('visible');
+});
+
+$('#specialists .close').click(function () {
+  $('#specialists').removeClass('mod');
+  $('#specialists .card').removeClass('visible');
+});
+
+

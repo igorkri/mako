@@ -1204,10 +1204,24 @@ section.banner .light_background h2 {
 /***** Мако це *****/
 
 section.mako_it {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: 1px solid #C2C2D1;
+  border-bottom: 1px solid #C2C2D1;
   background-color: #fff;
 }
 
-section.mako_it h3 {
+section.mako_it .title {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+section.mako_it .title img {
+  width: 78px;
+}
+
+section.mako_it .title h3 {
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -1217,15 +1231,26 @@ section.mako_it .info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 16px;
-  margin: 30px 0;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+section.mako_it .info .item {
+  width: calc(33.33% - 20px);
+  display: flex;
+  align-items: start;
+  gap: 25px;
+}
+
+section.mako_it .info .item img {
+  width: 30px;
 }
 
 section.mako_it .info p {
   display: block;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 30px;
 }
 
 section.mako_it a {
@@ -1839,9 +1864,19 @@ section.service_description .specialists {
 
 section.service_description .specialists .card {
   width: calc(33.33% - 11px);
+  display: flex;
+  flex-direction: column;
 }
 
-section.service_description .specialists .card img {
+section.service_description .specialists .close {
+  display: none;
+}
+
+section.service_description .specialists .card .text .info {
+  display: none;
+}
+
+section.service_description .specialists .card .img img {
   width: 100%;
 }
 
@@ -1855,6 +1890,83 @@ section.service_description .specialists .card h6 {
 section.service_description .specialists .card p {
   font-size: 14px;
   line-height: 20px;
+}
+
+section.service_description .specialists.mod {
+  position: fixed;
+  max-width: 100%;
+  height: 100%;
+  z-index: 10000;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  padding: 20px;
+}
+
+section.service_description .specialists.mod .card {
+  display: none;
+}
+
+section.service_description .specialists.mod .card.visible {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  max-width: 1064px;
+  width: 100%;
+  position: relative;
+  margin-top: 120px;
+}
+
+section.service_description .specialists.mod .close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  cursor: pointer;
+}
+
+section.service_description .specialists.mod .close svg {
+  stroke: #42414D;
+}
+
+section.service_description .specialists.mod .close:hover svg {
+  stroke: #F05454;
+}
+
+section.service_description .specialists.mod .card.visible .img {
+  width: 344px;
+}
+
+section.service_description .specialists.mod .card.visible .img img {
+  width: 100%;
+}
+
+section.service_description .specialists.mod .card.visible .text {
+  border: 1px solid #C2C2D1;
+  height: max-content;
+}
+
+section.service_description .specialists.mod .card.visible .text .person {
+  background: #EDEDF3;
+  padding: 30px;
+}
+
+section.service_description .specialists.mod .card.visible .text .info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  padding: 30px;
 }
 
 /***** сторінка "service_category *****/
@@ -1959,6 +2071,12 @@ section.promos .block {
 
 section.promos .block .item {
   border: 1px solid #EDEDF3;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+section.promos .block .item .img {
+  width: 50%;
 }
 
 section.promos .block .item img {
@@ -1969,24 +2087,23 @@ section.promos .block .item img {
 }
 
 section.promos .block .item .disc {
+  width: 50%;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 section.promos .block .item .disc p {
   font-size: 14px;
   line-height: 20px;
-  margin-bottom: 8px;
 }
 
 section.promos .block .item .disc h5 {
   font-weight: 700;
   font-size: 24px;
   line-height: 30px;
-  color: #F05454;
-}
-
-section.promos .block .item .disc a {
-  margin: 20px 0 0 0;
+  flex: auto;
 }
 
 .nav {
@@ -2051,15 +2168,14 @@ section.promos .block .item .disc a {
 /***** Що думають клієнти про МаKо *****/
 
 section.reviews {
-  padding-top: 180px;
-  background: #FFF5F5;
+  padding-top: 130px;
 }
 
 section.reviews h3 {
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
-  margin-bottom: 67px;
+  margin-bottom: 30px;
 }
 
 section.reviews .block {
@@ -2081,6 +2197,10 @@ section.reviews .block .tape {
   flex-direction: column;
   gap: 16px;
   width: calc(50% - 8px);
+}
+
+section.reviews .block .tape .item {
+  border: 1px solid #EDEDF3;
 }
 
 section.reviews .block .tape .item .head {
@@ -2136,14 +2256,14 @@ section.reviews .block .tape .item p.v2 {
 /***** Адреси салонів *****/
 
 .contacts {
-  padding: 180px 0 0;
+  padding: 130px 0 30px;
   max-width: 1600px;
   width: 100%;
   margin: auto;
 }
 
 .contacts h3 {
-  margin: 0 0 20px 88px;
+  margin: 0 0 30px 120px;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -2155,17 +2275,21 @@ section.reviews .block .tape .item p.v2 {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  gap: 30px;
 }
 
-.contacts .cont .half {
+.contacts .cont .item {
+  display: flex;
+  width: 100%;
+  border: 1px solid #EDEDF3;
+}
+
+.contacts .cont .item .text {
   width: 50%;
+  padding: 30px;
 }
 
-.contacts .cont .half .head {
-  padding: 60px 80px 80px;
-}
-
-.contacts .cont .half .head div {
+.contacts .cont .item .text div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2177,11 +2301,11 @@ section.reviews .block .tape .item p.v2 {
   line-height: 24px;
 }
 
-.contacts .cont .half .head div img {
+.contacts .cont .item .text div img {
   margin: 5px 8px 0 0;
 }
 
-.contacts .cont .half .head a {
+.contacts .cont .item .text a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2196,31 +2320,22 @@ section.reviews .block .tape .item p.v2 {
   white-space: nowrap;
 }
 
-.contacts .cont .half .head a:hover {
+.contacts .cont .item .text a:hover {
   color: #F05454;
 }
 
-.contacts .cont .half .head a img {
+.contacts .cont .item .text a img {
   margin-right: 12px;
 }
 
-.contacts .cont .half.left {
-  border-right: 1px solid #C2C2D1;
-}
-
-.contacts .cont .half.left .head div,
-.contacts .cont .half.left .head a {
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: end;
-}
-
 .contacts .cont .map {
+  width: 50%;
   overflow: hidden;
 }
 
 .contacts .cont .map iframe {
   width: 100%;
+  height: 536px;
 }
 
 /***** сторінка certificates *****/
@@ -2228,7 +2343,7 @@ section.reviews .block .tape .item p.v2 {
 /***** Сертифікати *****/
 
 .certificates {
-  padding-top: 180px;
+  padding-top: 130px;
 }
 
 .certificates h3 {
@@ -2272,15 +2387,14 @@ section.reviews .block .tape .item p.v2 {
 /***** Наша команда *****/
 
 .team {
-  padding-top: 180px;
-  background: #FFF5F5;
+  padding-top: 130px;
   text-align: center;
 }
 
 .team p {
   font-size: 20px;
   line-height: 30px;
-  margin: 10px auto 80px;
+  margin: 10px auto 30px;
   max-width: 1064px;
 }
 
@@ -2314,7 +2428,7 @@ section.reviews .block .tape .item p.v2 {
 /***** Наша команда *****/
 
 .video_gallery {
-  padding-top: 180px;
+  padding-top: 130px;
 }
 
 .video_gallery .block {
@@ -2352,7 +2466,7 @@ section.reviews .block .tape .item p.v2 {
 /***** Статті *****/
 
 .blog {
-  padding-top: 180px;
+  padding-top: 130px;
 }
 
 .blog .block {
@@ -2362,8 +2476,8 @@ section.reviews .block .tape .item p.v2 {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 16px;
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .blog .block .item {
@@ -2450,8 +2564,9 @@ section.reviews .block .tape .item p.v2 {
 /***** Стаття *****/
 
 .article {
-  padding-top: 180px;
-  background: #FFF5F5;
+  padding-top: 130px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #C2C2D1;
 }
 
 .article p {
@@ -2514,7 +2629,7 @@ section.reviews .block .tape .item p.v2 {
 /***** Робота в MaKo *****/
 
 .work {
-  padding-top: 180px;
+  padding-top: 130px;
 }
 
 .work h3 {
@@ -2527,7 +2642,7 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .work .block {
-  margin-top: 80px;
+  margin-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2595,7 +2710,7 @@ section.reviews .block .tape .item p.v2 {
 /***** Навчання в MaKo *****/
 
 .learning {
-  padding-top: 180px;
+  padding-top: 130px;
 }
 
 .learning h3 {
@@ -2608,7 +2723,7 @@ section.reviews .block .tape .item p.v2 {
 }
 
 .learning .block {
-  margin-top: 80px;
+  margin-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4031,7 +4146,7 @@ footer .chat:hover a svg path {
     gap: 20px;
   }
 
-  section.mako_it .info p {
+  section.mako_it .info .item {
     width: calc(50% - 10px);
   }
 
@@ -4043,26 +4158,7 @@ footer .chat:hover a svg path {
 
 @media (max-width: 960px) {
   .contacts h3 {
-    margin: 0 0 0 30px;
-  }
-
-  .contacts .cont .half {
-    width: 100%;
-  }
-
-  .contacts .cont .half .head {
-    padding: 60px 30px 30px;
-  }
-
-  .contacts .cont .half.left {
-    border-right: 0;
-  }
-
-  .contacts .cont .half.left .head div,
-  .contacts .cont .half.left .head a {
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: start;
+    margin: 0 0 30px 30px;
   }
 }
 
@@ -4201,8 +4297,17 @@ footer .chat:hover a svg path {
     width: calc(50% - 8px);
   }
 
+  section.promos .block .item .img {
+    width: 100%;
+  }
+
+  section.promos .block .item .disc {
+    width: 100%;
+    order: 1;
+  }
+
   section.reviews {
-    padding-top: 160px;
+    padding-top: 130px;
   }
 
   section.reviews .block .tape {
@@ -4218,7 +4323,7 @@ footer .chat:hover a svg path {
   }
 
   .video_gallery {
-    padding-top: 160px;
+    padding-top: 130px;
   }
 
   .video_gallery .block {
@@ -4245,27 +4350,33 @@ footer .chat:hover a svg path {
   }
 
   .article {
-    padding-top: 160px;
+    padding-top: 130px;
   }
 
   .work {
-    padding-top: 160px;
-  }
-
-  .work .block {
-    margin-top: 60px;
+    padding-top: 130px;
   }
 
   .learning {
-    padding-top: 160px;
-  }
-
-  .learning .block {
-    margin-top: 60px;
+    padding-top: 130px;
   }
 
   .learning .block .learning_item .title {
     max-width: calc(100% - 60px);
+  }
+
+  .contacts .cont .item {
+    flex-wrap: wrap;
+    border: none;
+  }
+
+  .contacts .cont .item .text,
+  .contacts .cont .item .map {
+    width: 100%;
+  }
+
+  .contacts .cont .item .map {
+    height: 384px;
   }
 
   .catalog_title {
@@ -4610,7 +4721,7 @@ footer .chat:hover a svg path {
     line-height: 40px;
   }
 
-  section.mako_it .info p {
+  section.mako_it .info .item {
     width: 100%;
   }
 
@@ -4780,6 +4891,31 @@ footer .chat:hover a svg path {
     width: 100%;
   }
 
+  section.service_description .specialists.mod .close {
+    top: 20px;
+  }
+
+  section.service_description .specialists.mod .card.visible {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  section.service_description .specialists.mod .card.visible .img {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  section.service_description .specialists.mod .card.visible .img img {
+    width: 100%;
+  }
+
+  section.service_description .specialists.mod .card.visible .text .person,
+  section.service_description .specialists.mod .card.visible .text .info {
+    padding: 20px;
+  }
+
   .gallery_title {
     padding-left: 20px;
   }
@@ -4798,25 +4934,29 @@ footer .chat:hover a svg path {
   }
 
   .contacts h3 {
-    margin: 0 0 0 20px;
+    margin: 0 0 30px 20px;
   }
 
-  .contacts .cont .half .head {
-    padding: 60px 20px 20px;
+  .contacts .cont .item .text {
+    padding: 20px;
   }
 
-  .contacts .cont .half .head div {
+  .contacts .cont .item .text div {
     white-space: wrap;
   }
 
-  .contacts .cont .half .head a {
+  .contacts .cont .item .text a {
     margin: 20px 0;
     font-size: 20px;
     line-height: 24px;
   }
 
+  .contacts .cont .item .map {
+    height: 180px;
+  }
+
   .certificates {
-    padding-top: 160px;
+    padding-top: 110px;
   }
 
   .certificates .block {
@@ -4864,6 +5004,10 @@ footer .chat:hover a svg path {
 
   .work .block .work_item .params {
     gap: 20px;
+  }
+
+  .video_gallery {
+    padding-top: 110px;
   }
 
   .learning .block .learning_item .title {

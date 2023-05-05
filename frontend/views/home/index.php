@@ -25,7 +25,7 @@ $this->title = 'Косметологічний центр МаКо';
 </section>
 
 <!----- Мако це ----->
-<?php // echo MakoItWidget::widget([]) ?>
+<?php echo MakoItWidget::widget([]) ?>
 
 <!----- слайдер "Акційні пропозиції" ----->
 <?=$this->render('promotional_offers', ['promos' => $promos])?>

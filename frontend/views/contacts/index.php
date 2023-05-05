@@ -6,12 +6,12 @@
 
 <!----- Контакти ----->
 <div class="contacts" id="contacts">
-    <h3>Адреси салонів</h3>
-    <div class="cont">
+    <h3>Локації Косметологічних Центрів МаКо</h3>
+    <div class="block cont">
         <?php foreach ($contacts as $contact): ?>
             <?php if ($contact->id % 2 !== 0): ?>
-                <div class="half left">
-                    <div class="head">
+                <div class="item">
+                    <div class="text">
                         <div>
                             <img src="img/marker.svg" alt="">
                             <?=$contact->address?>
@@ -30,8 +30,8 @@
                     </div>
                 </div>
             <?php else: ?>
-                <div class="half">
-                    <div class="head">
+                <div class="item">
+                    <div class="text">
                         <div>
                             <img src="img/marker.svg" alt="">
                             <?=$contact->address?>

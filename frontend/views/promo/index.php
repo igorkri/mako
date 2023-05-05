@@ -12,7 +12,6 @@ use yii\widgets\LinkPager;
     <div class="block">
         <?php foreach ($promos as $promo): ?>
             <div class="item">
-                <img src="/img/promo/<?= $promo->file ?>" alt="">
                 <div class="disc">
                     <p><?= $promo->begin_data ?> - <?= $promo->end_data ?></p>
                     <h5><?= $promo->description ?></h5>
@@ -25,6 +24,9 @@ use yii\widgets\LinkPager;
                         </svg>
                         Записатись на прийом
                     </a>
+                </div>
+                <div class="img">
+                    <img src="/img/promo/<?= $promo->file ?>" alt="">
                 </div>
             </div>
         <?php endforeach; ?>
