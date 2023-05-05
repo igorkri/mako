@@ -2722,46 +2722,64 @@ section.reviews .block .tape .item p.v2 {
   line-height: 30px;
 }
 
+.learning .close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  cursor: pointer;
+}
+
+.learning .close svg {
+  stroke: #42414D;
+}
+
+.learning .close:hover svg {
+  stroke: #F05454;
+}
+
 .learning .block {
   margin-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  gap: 60px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .learning .block .learning_item {
-  position: relative;
+  width: calc(50% - 8px);
+  cursor: pointer;
 }
 
-.learning .block .learning_item .bcg {
+.learning .block .learning_item .img {
+  overflow: hidden;
+}
+
+.learning .block .learning_item .img img {
   width: 100%;
-  height: 400px;
-  -o-object-fit: cover;
+  height: 600px;
   object-fit: cover;
 }
 
-.learning .block .learning_item:hover .bcg {
+.learning .block .learning_item:hover img {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
 
-.learning .block .learning_item .title {
-  position: absolute;
-  left: 30px;
-  bottom: -30px;
-  padding: 30px;
+.learning .block .learning_item .text {
   border: 1px solid #C2C2D1;
-  max-width: 494px;
-  width: 100%;
-  height: 232px !important;
-  background: #fff;
-  overflow: auto;
+}
+
+.learning .block .learning_item .title {
+  padding: 20px;
 }
 
 .learning .block .learning_item .title h6 {
@@ -2770,25 +2788,112 @@ section.reviews .block .tape .item p.v2 {
   line-height: 24px;
 }
 
+.learning .block .learning_item:hover .text {
+  border: 1px solid #F05454;
+}
+
+.learning .block .learning_item:hover .title h6 {
+  color: #F05454;
+}
+
 .learning .block .learning_item .title p {
   margin: 10px 0;
   font-size: 14px;
   line-height: 20px;
 }
 
-.learning .block .learning_item .title .date {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+.learning .block .learning_item .info {
+  display: none;
+}
+
+.learning .block .learning_item .text .date {
+  display: none;
 }
 
 .learning .block .learning_item .title .date span {
   font-size: 14px;
   line-height: 20px;
   margin-left: 8px;
+}
+
+.learning .block.mod {
+  position: fixed;
+  max-width: 100%;
+  height: 100%;
+  z-index: 10000;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  padding: 20px;
+  margin: 0;
+}
+
+.learning .block.mod .learning_item {
+  display: none;
+}
+
+.learning .block.mod .learning_item.visible {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  max-width: 1064px;
+  width: 100%;
+  position: relative;
+  margin-top: 120px;
+}
+
+.learning .block.mod .learning_item.visible .img {
+  width: 344px;
+  height: 394px;
+}
+
+.learning .block.mod .learning_item.visible:hover img {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.learning .block.mod .learning_item.visible .text {
+  width: calc(100% - 360px);
+  height: max-content;
+}
+
+.learning .block.mod .learning_item.visible:hover .text {
+  border: 1px solid #C2C2D1;
+}
+
+.learning .block.mod .learning_item.visible .text .title {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #EDEDF3;
+}
+
+.learning .block.mod .learning_item.visible:hover .text .title h6 {
+  color: #42414D;
+}
+
+.learning .block.mod .learning_item.visible .text .title .date {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.learning .block.mod .learning_item.visible .text .title .date span {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.learning .block.mod .learning_item.visible .info {
+  display: block;
+  padding: 20px;
+  max-height: 336px;
+  overflow: auto;
 }
 
 /***** сторінка catalog *****/
@@ -4361,8 +4466,29 @@ footer .chat:hover a svg path {
     padding-top: 130px;
   }
 
-  .learning .block .learning_item .title {
-    max-width: calc(100% - 60px);
+  .learning .close {
+    top: 10px;
+  }
+
+  .learning .block .learning_item {
+    width: 100%;
+  }
+
+  .learning .block .learning_item .img img {
+    height: 400px;
+  }
+
+  .learning .block.mod .learning_item.visible {
+    margin-top: 40px;
+  }
+
+  .learning .block.mod .learning_item.visible .img {
+    width: 35%;
+    height: 300px;
+  }
+
+  .learning .block.mod .learning_item.visible .text {
+    width: calc(65% - 16px);
   }
 
   .contacts .cont .item {
@@ -4526,6 +4652,31 @@ footer .chat:hover a svg path {
   .popular_products .block .item .img {
     width: 320px;
     height: 320px;
+  }
+
+  .learning .block.mod .learning_item.visible {
+    flex-wrap: wrap;
+  }
+
+  .learning .block.mod .learning_item.visible .img {
+    width: 100%;
+  }
+
+  .learning .block.mod .learning_item.visible .img {
+    height: 250px;
+  }
+
+  .learning .block.mod .learning_item.visible .text {
+    width: 100%;
+  }
+
+  .learning .block.mod .learning_item.visible .text .title {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .learning .block.mod .learning_item.visible .text .info {
+    padding: 10px;
   }
 }
 
@@ -5008,13 +5159,6 @@ footer .chat:hover a svg path {
 
   .video_gallery {
     padding-top: 110px;
-  }
-
-  .learning .block .learning_item .title {
-    padding: 10px;
-    left: 20px;
-    bottom: -20px;
-    max-width: calc(100% - 40px);
   }
 
   .catalog .buttons {

@@ -470,4 +470,13 @@ $('#specialists .close').click(function () {
   $('#specialists .card').removeClass('visible');
 });
 
+// learning
+$('#learning .learning_item').click(function () {
+  $('#learning .block').addClass('mod');
+  $(this).addClass('visible');
+});
 
+$('#learning .close').click(function () {
+  $('#learning .block').removeClass('mod');
+  $('#learning .learning_item').removeClass('visible');
+});
