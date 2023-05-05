@@ -424,10 +424,10 @@ $('#product .slider').slick({
 // сторінка product.html
 // налаштування висоти слайдера
 $(function () {
-  $('#product .slider').height($('#product .slider').width());
+  $('#product .slider .item img').height($('#product .slider').width());
 
   $(window).resize(function () {
-    $('#product .slider').height($('#product .slider').width());
+    $('#product .slider .item img').height($('#product .slider').width());
   });
 });
 
@@ -479,4 +479,22 @@ $('#learning .learning_item').click(function () {
 $('#learning .close').click(function () {
   $('#learning .block').removeClass('mod');
   $('#learning .learning_item').removeClass('visible');
+});
+
+// order доставка
+$('#body_cart .order form input').click(function () {
+  if ($('#new_post').prop('checked')) {
+    $("#post_select_block").slideDown(250);
+  } else {
+    $("#post_select_block").slideUp(250);
+  }
+});
+
+$('#body_cart .order form .post_select').click(function () {
+  $(this).find('.drop_list').slideToggle(250);
+});
+
+$('#body_cart .order form .post_select .drop_list span').click(function () {
+  let val = $(this).html();
+  $(this).closest('.post_select').find('input').val(val);
 });

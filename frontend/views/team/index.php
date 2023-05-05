@@ -3,7 +3,7 @@
 /* @var $team common\models\Team */
 /* @var $specialists common\models\Specialists */
 /* @var $galleries common\models\TeamGallery */
-
+use frontend\Widgets\MakoItWidget;
 ?>
 
 <!----- Команда ----->
@@ -53,6 +53,9 @@
         <?php endforeach; ?>
         <?php endif; ?>
 </section>
+
+<!----- Мако це ----->
+<?php echo MakoItWidget::widget([]) ?>
 
 <div class="team_gallery" id="team_gallery">
     <?php if ($galleries): ?>
