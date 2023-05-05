@@ -1096,6 +1096,7 @@ header .services_block .services_content .services_names .title {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: none;
 }
 
 header .services_block .services_content .services_names .title img {
@@ -5215,6 +5216,7 @@ footer .chat:hover a svg path {
   header .services_block .services_content .services_names .title {
     padding: 20px;
     border-bottom: 1px solid #C2C2D1;
+    display: flex;
   }
 
   header .services_block .services_content .services_names .title img {
