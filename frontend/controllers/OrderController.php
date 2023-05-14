@@ -16,32 +16,17 @@ class OrderController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $np = new NovaPoshtaApi2(
-            NovaPoshta::KEY_NP,
-            'ua', // Язык возвращаемых данных: ru (default) | ua | en
-            FALSE, // При ошибке в запросе выбрасывать Exception: FALSE (default) | TRUE
-            'file_get_content' // Используемый механизм запроса: curl (defalut) | file_get_content
-        // 'curl' // Используемый механизм запроса: curl (defalut) | file_get_content
-        );
+
         $request = Yii::$app->request;
         $products = Yii::$app->cart->getPositions();
         $order = new Order();
         if($request->post()){
             $post = $request->post();
-            $n = $np->getWarehouses($post['Order']['city']);
-            $city = '';
-            $address = '';
-            foreach ($n['data'] as $datum){
-                if($datum['Ref'] == $post['Order']['address']){
-                    $city = $datum['SettlementTypeDescription'] . ' ' . $datum['CityDescription'];
-                    $address = $datum['Description'];
-                }
-            }
             $order->fio = $post['name'];
             $order->phone = $post['phone'];
             $order->note = $post['note'];
-            $order->city = $city;
-            $order->address = $address;
+            $order->city = $post['Order']['city'];;
+            $order->address = $post['Order']['address'];;
             if($order->save()){
                 foreach ($products as $product){
                     $order_item = new OrderItem();
