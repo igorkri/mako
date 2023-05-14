@@ -11,6 +11,7 @@ class TeamController extends \yii\web\Controller
 {
     public function actionIndex()
     {
+//        \Yii::$app->cache->flush();
         $team = Team::find()->one();
         $specialists = Specialists::find()->all();
         $galleries = TeamGallery::find()->limit(50)->all();

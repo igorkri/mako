@@ -155,8 +155,6 @@ class ProductController extends Controller
     {
         $product = Product::find()->with('productImages')->where(['slug' => $slug])->one();
 
-//        debug($_SESSION);
-
         return $this->render('view', [
             'product' => $product,
         ]);
@@ -215,6 +213,26 @@ class ProductController extends Controller
                     ]);
                 }
             }
+        }
+    }
+
+    public function actionUpdateCart($product_id, $qty){
+        $request = Yii::$app->request;
+        if ($product_id != null) {
+            $product = Product::find()->with('productImages')->where(['id' => $product_id])->one();
+            Yii::$app->cart->update($product, $qty);
+        }
+        $products = Yii::$app->cart->getPositions();
+
+        if ($request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+
+            return [
+                'products' => $products,
+                'totalSumm' => Yii::$app->cart->getCost(),
+                'qty' => \Yii::$app->cart->getCount(),
+            ];
+
         }
     }
 

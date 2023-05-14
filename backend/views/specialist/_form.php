@@ -1,5 +1,6 @@
 <?php
 
+use Itstructure\CKEditor\CKEditor;
 use kartik\file\FileInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -17,6 +18,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'profession')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'info')->widget(CKEditor::className(), [
+        'preset' => 'full',
+        'clientOptions' => [
+            'allowedContent' => true,
+            'language' => 'uk',
+        ]
+    ]); ?>
     <?php // $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
 
     <?php if($model->isNewRecord): ?>

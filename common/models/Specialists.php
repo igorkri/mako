@@ -12,6 +12,7 @@ use Yii;
  * @property string|null $fio ПІБ
  * @property string|null $photo Фото
  * @property string|null $status Статус
+ * @property string|null $info Інформація про спеціаліста
  */
 class Specialists extends \yii\db\ActiveRecord
 {
@@ -30,6 +31,7 @@ class Specialists extends \yii\db\ActiveRecord
     {
         return [
             [['profession', 'fio', 'photo', 'status'], 'string', 'max' => 255],
+            [['info'], 'string'],
         ];
     }
 
@@ -44,6 +46,7 @@ class Specialists extends \yii\db\ActiveRecord
             'fio' => 'ПІБ',
             'photo' => 'Фото',
             'status' => 'Статус',
+            'info' => 'Інформація про спеціаліста',
         ];
     }
 }

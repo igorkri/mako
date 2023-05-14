@@ -14,15 +14,15 @@
                 <?= $cart_product->name ?>
             </p>
             <div class="counter">
-                <div class="minus">
+                <div class="minus" onclick="minusQtyProduct('<?=$cart_product->getId()?>')">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="28" height="28" rx="14" fill="#FFF5F5" />
                         <path d="M22.5 15L7.5 15" stroke="" stroke-width="2" stroke-linecap="round" />
                         <rect x="1" y="1" width="28" height="28" rx="14" stroke="" stroke-width="2" />
                     </svg>
                 </div>
-                <input type="text" value="<?= \Yii::$app->cart->getCount() ?>">
-                <div class="plus">
+                <input type="text" id="qty-product-modal-<?=$cart_product->getId()?>" value="<?= $cart_product->getQuantity() ?>">
+                <div class="plus" onclick="plusQtyProduct('<?=$cart_product->getId()?>')">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="28" height="28" rx="14" fill="#FFF5F5" />
                         <path d="M22.5 15L7.5 15" stroke="" stroke-width="2" stroke-linecap="round" />
@@ -32,9 +32,9 @@
                 </div>
             </div>
             <p class="price">
-                <?= Yii::$app->formatter->asCurrency($cart_product->price) ?>
+                <span id="qty-total-price-<?=$cart_product->getId()?>"><?= Yii::$app->formatter->asDecimal($cart_product->price * $cart_product->getQuantity()) ?> </span> ₴
                 |
-                <?= $cart_product->getQuantity() ?> од.
+                <span id="qty-total-prod-<?=$cart_product->getId()?>"><?= $cart_product->getQuantity() ?></span> од.
             </p>
         </div>
         <div class="delete" onclick="removePositionModalCart(<?=$cart_product->getId()?>)">
@@ -51,11 +51,11 @@
     <div class="sum">
         <span class="total">Разом:</span>
         <span class="quantity">
-            <?= \Yii::$app->cart->getCount() ?> од.
+            <span id="qty-total"><?= \Yii::$app->cart->getCount() ?></span> од.
         </span>
-        <span class="price">
-            <?= Yii::$app->formatter->asCurrency($totalSumm)?>
-        </span>
+        <span class="price" id="summ-total">
+            <?= Yii::$app->formatter->asDecimal($totalSumm, 2)?>
+        </span> <span class="price"> ₴</span>
     </div>
     <?=\yii\helpers\Html::a('Оформити замовлення', ['/order'], [
             'style' => 'text-align: center',
@@ -87,3 +87,172 @@
                     Ознайомтесь з акційними пропозиціями', ['promo/index'], ['data-pjax' => 0]) ?>
 </div>
 <?php endif; ?>
+
+<script>
+
+    function plusQtyProduct(id) {
+        var qty = $('input#qty-product-modal-' + id).val();
+        var valQty = Number(qty) + 1;
+        $('input#qty-product-modal-' + id).val(valQty);
+
+        // console.log('id', id);
+        // console.log('qty', valQty);
+
+        $.ajax({
+            url: "/product/update-cart",
+            type: "get",
+            data: {
+                product_id: id,
+                qty: valQty
+            },
+
+            success: function(data){
+                // var productPrice = (data.products[id].price * valQty).toLocaleString('uk-UA');;
+                var productPrice = new Intl.NumberFormat('uk-UA').format(data.products[id].price * valQty);
+                var currency = new Intl.NumberFormat('uk-UA').format(data.totalSumm);
+                $('#qty-total').html(data.qty);
+                $('#header-qty-product').html(data.qty);
+                $('#summ-total').html(currency);
+                $('#qty-total-prod-' + id).html(valQty);
+                $('#qty-total-price-' + id).html(productPrice);
+
+            },
+            error: function(){
+                console.log('error', data);
+            }
+        });
+    }
+
+    function minusQtyProduct(id){
+
+        var qty = $('input#qty-product-modal-' + id).val();
+        var valQty = Number(qty) - 1;
+        $('input#qty-product-modal-' + id).val(valQty);
+
+        $.ajax({
+            url: "/product/update-cart",
+            type: "get",
+            data: {
+                product_id: id,
+                qty: valQty
+            },
+
+            success: function(data){
+                var productPrice = new Intl.NumberFormat('uk-UA').format(data.products[id].price * valQty);
+                var currency = new Intl.NumberFormat('uk-UA').format(data.totalSumm);
+                $('#qty-total').html(data.qty);
+                $('#header-qty-product').html(data.qty);
+                $('#summ-total').html(currency);
+                $('#qty-total-prod-' + id).html(valQty);
+                $('#qty-total-price-' + id).html(productPrice);
+
+            },
+            error: function(){
+                console.log('error', data);
+            }
+        });
+    }
+</script>
+<?php
+//$js = <<<JS
+//$( document ).ready(function() {
+//
+//    // function rmQtyproduct(id){
+//    //     console.log('id', id);
+//    //
+//    //     var product_id = $('#rm-qty-product-' + id).data('productId');
+//    //     var qty = $('input#qty-product-modal-' + id).val();
+//    //     var valQty = Number(qty) + 1;
+//    //     $('input#qty-product-modal-' + id).val(valQty);
+//    //
+//    //
+//    //     // var qtyCartTotal = $('#header-qty-product p').html();
+//    //     // console.log(Number(qtyCartTotal));
+//    //     // $('#header-qty-product').html(valQty);
+//    //
+//    //     $.ajax({
+//    //         url: "/product/update-cart",
+//    //         type: "get",
+//    //         data: {
+//    //             product_id: product_id,
+//    //             qty: valQty
+//    //         },
+//    //
+//    //         success: function(data){
+//    //             console.log('success', data);
+//    //
+//    //         },
+//    //         error: function(){
+//    //            console.log('error', data);
+//    //         }
+//    //     });
+//    // }
+//
+//    // $('#add-qty-product-' + product_id).click(function (){
+//    //     var product_id = $('#rm-qty-product-' + product_id).data('productId');
+//    //     var qty = $('input#qty-product-modal-' + product_id).val();
+//    //     var valQty = Number(qty) + 1;
+//    //     $('input#qty-product-modal-' + product_id).val(valQty);
+//    //
+//    //     console.log('qty', qty);
+//    //
+//    //     // var qtyCartTotal = $('#header-qty-product p').html();
+//    //     // console.log(Number(qtyCartTotal));
+//    //     // $('#header-qty-product').html(valQty);
+//    //
+//    //     $.ajax({
+//    //     url: "/product/update-cart",
+//    //     type: "get",
+//    //     data: {
+//    //         product_id: product_id,
+//    //         qty: valQty
+//    //     },
+//    //
+//    //     success: function(data){
+//    //         console.log('success', data);
+//    //
+//    //     },
+//    //     error: function(){
+//    //        console.log('error', data);
+//    //     }
+//    // });
+//    // return false;
+//    // }).on('submit', function(e){
+//    // e.preventDefault();
+//    // });
+//
+//    // $('#rm-qty-product').click(function (){
+//    //     var qty = $('input#qty-product-modal').val();
+//    //     var product_id = $('#rm-qty-product').data('productId');
+//    //     var valQty = Number(qty) - 1;
+//    //     $('input#qty-product-modal').val(valQty);
+//    //
+//    //     // $.ajax({
+//    //     // url: "/product/add-to-cart",
+//    //     // type: "get",
+//    //     // data: {
+//    //     //     product_id: product_id,
+//    //     //     qty: qty
+//    //     // },
+//    //     //
+//    //     // success: function(data){
+//    //     //     console.log(data);
+//    //     //     $('#header-qty-product').html(data.qty);
+//    //     //     $.pjax.reload({ container: '#cart-products' });
+//    //     // },
+//    //     // error: function(){
+//    //     //     $.pjax.reload({ container: '#header-qty-product' });
+//    //     // }
+//    // // });
+//    // return false;
+//    // }).on('submit', function(e){
+//    // e.preventDefault();
+//    // });
+//
+//
+//});
+//
+//JS;
+//$this->registerJs($js);
+
+?>
