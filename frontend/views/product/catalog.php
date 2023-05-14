@@ -27,11 +27,13 @@ use yii\widgets\Pjax;
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="0.5" y="0.5" width="19" height="19" rx="9.5" fill="white" />
                 <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M5 7.5C5 7.22386 5.22386 7 5.5 7H14.5C14.7761 7 15 7.22386 15 7.5C15 7.77614 14.7761 8 14.5 8H5.5C5.22386 8 5 7.77614 5 7.5ZM6 10.5C6 10.2239 6.22386 10 6.5 10H13.5C13.7761 10 14 10.2239 14 10.5C14 10.7761 13.7761 11 13.5 11H6.5C6.22386 11 6 10.7761 6 10.5ZM7 13.5C7 13.2239 7.22386 13 7.5 13H12.5C12.7761 13 13 13.2239 13 13.5C13 13.7761 12.7761 14 12.5 14H7.5C7.22386 14 7 13.7761 7 13.5Z"
-                      fill="#42414D" />
+                    d="M5 7.5C5 7.22386 5.22386 7 5.5 7H14.5C14.7761 7 15 7.22386 15 7.5C15 7.77614 14.7761 8 14.5 8H5.5C5.22386 8 5 7.77614 5 7.5ZM6 10.5C6 10.2239 6.22386 10 6.5 10H13.5C13.7761 10 14 10.2239 14 10.5C14 10.7761 13.7761 11 13.5 11H6.5C6.22386 11 6 10.7761 6 10.5ZM7 13.5C7 13.2239 7.22386 13 7.5 13H12.5C12.7761 13 13 13.2239 13 13.5C13 13.7761 12.7761 14 12.5 14H7.5C7.22386 14 7 13.7761 7 13.5Z"
+                    fill="#42414D" />
                 <rect x="0.5" y="0.5" width="19" height="19" rx="9.5" stroke="#EDEDF3" />
             </svg>
-            <span>Фільтри (<?= $count_filters ?>)</span>
+            <span>Фільтри (
+                <?= $count_filters ?>)
+            </span>
         </button>
         <button type="button" onclick="filterPopular(1)">Популярні</button>
         <button type="button" onclick="filterPrice(1)">Дешевше</button>
@@ -46,35 +48,39 @@ use yii\widgets\Pjax;
         ]) ?>
         <div class="goods">
             <?php foreach ($products->models as $product): ?>
-                <a href="<?=Url::to(['product/view', 'slug' => $product->slug])?>" class="item">
-                <div class="img">
+            <div class="item">
+                <a href="<?=Url::to(['product/view', 'slug' => $product->slug])?>" class="img">
                     <?php if(isset($product->productImages[0])):?>
-                        <?php if(file_exists(Yii::getAlias('@frontend/web/img/products/') . $product->productImages[0]->name)): ?>
-                            <img src="/img/products/<?=$product->productImages[0]->name?>" alt="">
-                        <?php else: ?>
-                        <img src="/img/no-image.png" alt="">
-                        <?php endif; ?>
+                    <?php if(file_exists(Yii::getAlias('@frontend/web/img/products/') . $product->productImages[0]->name)): ?>
+                    <img src="/img/products/<?=$product->productImages[0]->name?>" alt="">
                     <?php else: ?>
-                        <img src="/img/no-image.png" alt="">
+                    <img src="/img/no-image.png" alt="">
                     <?php endif; ?>
-                </div>
+                    <?php else: ?>
+                    <img src="/img/no-image.png" alt="">
+                    <?php endif; ?>
+                </a>
                 <div class="title">
-                    <p><?=$product->name?></p>
+                    <p>
+                        <?=$product->name?>
+                    </p>
                     <div>
-                        <h5><?=$product->price?>₴</h5>
+                        <h5>
+                            <?=$product->price?>₴
+                        </h5>
                         <div class="cart" id="add_to_cart" data-product-id="<?=$product->id?>">
                             <img src="/img/cart_red.svg" alt="">
                         </div>
                     </div>
                 </div>
-            </a>
+            </div>
             <?php endforeach; ?>
         </div>
     </div>
     <br>
     <br>
     <br>
-        <?php
+    <?php
         echo CustomPager::widget([
             'pagination' => $products->pagination,
             'activePageCssClass' => 'page active',
