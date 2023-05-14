@@ -126,79 +126,23 @@ JS;
     </label>
     <div id="post_select_block">
         <div class="post_select">
-            <input type="text" id="city" value="" placeholder="Оберіть населений пункт">
+            <input type="text" name="Order[city]" id="city" value="" placeholder="Оберіть населений пункт">
             <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 0.999999C5 3 7 7 7 7C7 7 9 3 13 1" stroke="#42414D" stroke-width="2" stroke-linecap="round"
                       stroke-linejoin="round" />
             </svg>
-            <div class="drop_list">
-                <span>м. Дніпро, Дніпропетровська обл.</span>
-                <span>м. Дніпро, Дніпропетровська обл.</span>
-            </div>
-            <?php //echo $form->field($order, 'city')->widget(Select2::classname(), [
-//                 'theme' => Select2::THEME_DEFAULT,
-//                'language' => 'uk',
-//                'hideSearch' => true,
-//                'options' => [
-//                    'placeholder' => "Виберіть місто",
-//                    'class' => 'form-control  form-control-select2',
-//                    'id' => 'checkout-country',
-//                ],
-//                'pluginLoading' => true,
-//                'pluginOptions' => [
-//                    'width' => '100%',
-//                    'allowCle
-//                    ar' => true,
-//                    'minimumInputLength' => 3,
-//                    'ajax' => [
-//                        'url' => '/order/city',
-//                        'dataType' => 'json',
-//                        'delay' => 550,
-//                        'data' => new JsExpression('function(params) { return { q:params.term, page: params.page}; }'),
-//                        'processResults' => new JsExpression($resultsJs),
-//                        'cache' => true
-//                    ],
-//                    'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-//                    'templateResult' => new JsExpression('formatRepo'),
-//                    'templateSelection' => new JsExpression('formatRepoSelection'),
-//                ],
-//            ])->label(false);
-            ?>
+            <div class="drop_list" id="city-drop_list"></div>
         </div>
         <div class="post_select">
-<!--            <input type="text" value="" placeholder="Відділення або поштомат">-->
-<!--            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--                <path d="M1 0.999999C5 3 7 7 7 7C7 7 9 3 13 1" stroke="#42414D" stroke-width="2" stroke-linecap="round"-->
-<!--                      stroke-linejoin="round" />-->
-<!--            </svg>-->
-<!--            <div class="drop_list">-->
-<!--                <span>стих в числах</span>-->
-<!--                <span>14 126 14</span>-->
-<!--                <span>132 17 43</span>-->
-<!--                <span>16 42 511</span>-->
-<!--                <span>704 83</span>-->
-<!--            </div>-->
+            <input type="text" value="" name="Order[address]" id="address" placeholder="Відділення або поштомат">
+            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 0.999999C5 3 7 7 7 7C7 7 9 3 13 1" stroke="#42414D" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+            </svg>
+            <div class="drop_list" id="address-drop_list">
 
-            <?php echo $form->field($order, 'address')->widget(DepDrop::classname(), [
-                'type' => DepDrop::TYPE_SELECT2,
-                'options' => ['id' => 'postOffice', 'placeholder' => "Виберіть віділення"],
-                'select2Options' => ['pluginOptions' => ['width' => '100%', 'allowClear' => true]],
-                'pluginOptions' => [
-                    'loading' => true,
-                    'loadingText' => 'Завантаження відділень... <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>',
-                    'cache' => true,
-                    'depends' => ['checkout-country'],
-                    'url' => Url::to(['/order/sub-np']),
-                ],
-                'pluginEvents' => [
-                    // "depdrop:init"=>"function() { console.log('depdrop:init'); }",
-                    // "depdrop:ready"=>"function() { console.log('depdrop:ready'); }",
-                    // "depdrop:change"=>"function(event, id, value, count) { console.log(id); console.log(value); console.log(count); }",
-                    // "depdrop:beforeChange"=>"function(event, id, value) { console.log('depdrop:beforeChange', value); }",
-                    // "depdrop:afterChange"=>"function(event, id, value) { console.log('depdrop:afterChange'); }",
-                    // "depdrop:error"=>"function(event, id, value) { console.log('depdrop:error'); }",
-                ],
-            ])->label(false); ?>
+            </div>
+
         </div>
     </div>
     <input type="radio" id="pickup" name="new_post" checked>
@@ -220,69 +164,46 @@ JS;
 </section>
 <?php \yii\widgets\Pjax::end(); ?>
 <?php endif; ?>
+<script>
+    function addressInput(id, city){
+        $('#city').val(city)
+        $.ajax({
+            url: '/order/sub-np',
+            data: {id: id},
 
+            success: function(data){
+                $.each( data, function( index, value ){
+                    var html = '<span onclick="warehousInput(`'+ value.desc +'`)">' + value.desc + '</span>';
+                    $('#address-drop_list').append(html);
+                    // console.log(value.desc);
+                });
+            },
+            error: function(){
+
+            }
+        });
+    }
+
+    function warehousInput(city){
+        $('#address').val(city)
+    }
+</script>
 <?php
 
 $js = <<<JS
 $( document ).ready(function() {
-    $('#city').change(function(){   
-        
-    var form = $(this),
-        data = $(this).serialize();
+    $('#city').change(function(){
+    var val =  $('#city').val();
     $.ajax({
-        url: form.attr("action"),
-        type: form.attr("method"),
-        data: data,
-        isReadonly: function(){
-            $('#process').fadeIn();
-        },
+        url: '/order/city',
+        data: {q: val},
+       
         success: function(data){
-            console.log(data)
-            
-            if(data.success == 'true'){
-                //https://kamranahmed.info/toast#quick-demos
-                $.toast({
-                    loader: false,
-                    hideAfter: 1000,
-                    position: 'top-right',
-                    // heading: 'OK',
-                    text: 'Успешно сохранено!',
-                    bgColor: '#00b52a',
-                    textColor: 'white',
-                    icon: 'success'
-                });
-                
-            }else{
-                $.each(data.content.errors, function(index, value) {
-                    $.toast({
-                        loader: true,
-                        hideAfter: 5000,
-                        position: 'top-right',
-                        // heading: 'OK',
-                        text: value,
-                        bgColor: '#FF1356',
-                        textColor: 'white',
-                        icon: 'error'
-                    })
-                });
-            }
-            $('#process').fadeOut();
-            $.pjax.reload({ container: '#all-page' });
+            // console.log(data);
+            $('#city-drop_list').html(data);
         },
         error: function(){
-            $.each(data.content.errors, function(index, value) {
-                $.toast({
-                    loader: true,
-                    hideAfter: 5000,
-                    position: 'top-right',
-                    // heading: 'OK',
-                    text: value,
-                    bgColor: '#FF1356',
-                    textColor: 'white',
-                    icon: 'error'
-                })
-            });
-            $.pjax.reload({ container: '#all-page' });
+            
         }
     });
     return false;
@@ -290,151 +211,7 @@ $( document ).ready(function() {
     e.preventDefault();
     
     });
-
-    $('#send-sms-akt-new').on('click', function () {
-        // alert('send-sms-akt-new');
-        var phone = $(this).data("phone");
-        var message = $(this).data("message");
-        var appl_id = $(this).data("appl_id");
-        $.ajax({
-            // url: '/shop-admin/app/default/sms',
-            url: 'https://api.turbosms.ua/message/send.json',
-            data: {
-                recipients:{0: phone},
-                sms:{
-                    sender: 'MasterOK',
-                    text: message
-                },
-                token: '1bf554780927bf8bbe0eaad232591cbb954c8deb'
-            },
-            success: function(data){
-            var message_id = '';
-            $.each(data.response_result, function(index, value) {
-                var message_id = value.message_id
-            });
-            if(data.response_code == 801){
-                $.ajax({
-                    url: '/shop-admin/app/default/sms',
-                    data: {
-                        phone: phone,
-                        message: message,
-                        message_id: message_id,
-                        appl_id: appl_id
-                    }
-                });
-                //https://kamranahmed.info/toast#quick-demos
-                $.toast({
-                    loader: false,
-                    hideAfter: 1000,
-                    position: 'top-right',
-                    // heading: 'OK',
-                    text: 'SMS успешно отправлено!',
-                    bgColor: '#00b52a',
-                    textColor: 'white',
-                    icon: 'success'
-                });
-                
-            }
-            
-            $.pjax.reload({ container: '#all-page' });
-        },
-        error: function(data){
-            console.log(data)
-
-            $.each(data.content.errors, function(index, value) {
-                $.toast({
-                    loader: true,
-                    hideAfter: 5000,
-                    position: 'top-right',
-                    // heading: 'OK',
-                    text: value,
-                    bgColor: '#FF1356',
-                    textColor: 'white',
-                    icon: 'error'
-                })
-            });
-            $.pjax.reload({ container: '#all-page' });
-        }
-        });
-    });
-
-
-    $('#send-sms-akt-vipolneno').on('click', function () {
-        // alert('send-sms-akt-new');
-        var phone = $(this).data("phone");
-        var message = $(this).data("message");
-        var appl_id = $(this).data("appl_id");
-        $.ajax({
-            // url: '/shop-admin/app/default/sms',
-            url: 'https://api.turbosms.ua/message/send.json',
-            data: {
-                recipients:{0: phone},
-                sms:{
-                    sender: 'MasterOK',
-                    text: message
-                },
-                token: '1bf554780927bf8bbe0eaad232591cbb954c8deb'
-            },
-            success: function(data){
-            var message_id = '';
-            $.each(data.response_result, function(index, value) {
-                var message_id = value.message_id
-            });
-            if(data.response_code == 801){
-                $.ajax({
-                    url: '/shop-admin/app/default/sms',
-                    data: {
-                        phone: phone,
-                        message: message,
-                        message_id: message_id,
-                        appl_id: appl_id
-                    }
-                });
-                //https://kamranahmed.info/toast#quick-demos
-                $.toast({
-                    loader: false,
-                    hideAfter: 1000,
-                    position: 'top-right',
-                    // heading: 'OK',
-                    text: 'SMS успешно отправлено!',
-                    bgColor: '#00b52a',
-                    textColor: 'white',
-                    icon: 'success'
-                });
-                
-            }
-            
-            $.pjax.reload({ container: '#all-page' });
-        },
-        error: function(data){
-            console.log(data)
-
-            $.each(data.content.errors, function(index, value) {
-                $.toast({
-                    loader: true,
-                    hideAfter: 5000,
-                    position: 'top-right',
-                    // heading: 'OK',
-                    text: value,
-                    bgColor: '#FF1356',
-                    textColor: 'white',
-                    icon: 'error'
-                })
-            });
-            $.pjax.reload({ container: '#all-page' });
-        }
-        });
-    });
-
-
-    $('.komplektnost').on('click', function () {
-        $("#komplektnost").css("display", "block");
-    });
     
-    $('.mekhanicheskiye-povrezhdeniya').on('click', function () {
-        $("#mekhanicheskiye-povrezhdeniya").css("display", "block");
-    });
-      
 });
 JS;
 $this->registerJs($js);

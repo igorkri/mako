@@ -117,15 +117,8 @@ class OrderController extends \yii\web\Controller
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $out = ['results' => ['id' => '', 'text' => '', 'area' => '']];
         if (!is_null($q)) {
-//            $cities = NpCity::find()
-//                ->select('Ref, Description, AreaDescription')
-//                ->where(['like', 'Description', $q])->orderBy('Description ASC')
-//                ->asArray()
-//                ->all();
 
             $cities = $np->getCities(0, $q, '');
-//debug($cities);
-//die();
             $arrs = [];
             foreach ($cities['data'] as $value) {
                 $arr = [];
@@ -136,13 +129,21 @@ class OrderController extends \yii\web\Controller
                 $arrs[] = $arr;
             }
             $out['results'] = $arrs;
+            $list = '';
+            foreach ($out['results'] as $result){
+                $desc = str_replace(["'", '"'], "\'", strval($result['text']));
+                $list .= "\t" . '<span 
+                id="'.$result['id'].'" 
+                onclick="addressInput('. '\'' . $result['id']. '\'' . ', '. '\'' . $desc.'\'' . ')"
+                >'.$desc.'</span>' . "\n";
+            }
         } else {
             $out['results'] = ['id' => '', 'text' => '', 'area' => ''];
         }
-        return $out;
+        return $list;
     }
 
-    public function actionSubNp()
+    public function actionSubNp($id)
     {
         /**
          * Запись клиента в бд для статистики
@@ -157,19 +158,18 @@ class OrderController extends \yii\web\Controller
         );
 
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $result = [
-            'output' => [],
-            'selected' => ''
-        ];
-        $post = Yii::$app->request->post('depdrop_all_params');
-        $warehouses = $np->getWarehouses(strval($post['checkout-country']));
+        $warehouses = $np->getWarehouses(strval($id));
+        $list = [];
         foreach ($warehouses['data'] as $warehous) {
-            $result['output'][] = [
-                'id' => $warehous['Ref'] ?? '',
-                'name' => $warehous['Description'] ?? '',
-            ];
+//            return $warehous;
+            $ref = strval($warehous['Ref']);
+            $desc = str_replace(["'", '"'], "\'", strval($warehous['Description']));
+//            $desc = strval($warehous['Description']);
+                $l = [];
+                $l['ref'] = $ref;
+                $l['desc'] = $desc;
+                $list[] = $l;
         }
-        return $result;
-        // return $warehouses;
+        return $list;
     }
 }
