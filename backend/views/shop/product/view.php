@@ -46,12 +46,27 @@ $this->params['breadcrumbs'][] = $this->title;
                     'created_at:datetime',
                     'updated_at:datetime',
                     [
+                        'attribute' => 'group_id',
+                        'format' => 'raw',
+                        'value' => function ($model) {
+                            return $model->productGroup ? $model->productGroup->name : "<span style='color: red'>Не указано</span>";
+                        }
+                    ],
+                    [
+                        'attribute' => 'main',
+                        'format' => 'raw',
+                        'value' => function ($model) {
+                            return $model->published == 1 ? "Так" : "Ні";
+                        }
+                    ],
+                    [
                         'attribute' => 'published',
                         'format' => 'raw',
                         'value' => function ($model) {
                             return $model->published == 1 ? "Так" : "Ні";
                         }
                     ],
+
                     'category.name',
                     'producer.name',
 //            'delivery_id',

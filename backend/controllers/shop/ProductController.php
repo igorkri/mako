@@ -2,9 +2,12 @@
 
 namespace backend\controllers\shop;
 
+use common\models\shop\GroupProducts;
 use common\models\shop\Product;
 use backend\models\search\shop\ProductSearch;
 use Yii;
+use yii\base\BaseObject;
+use yii\bootstrap5\Html;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -169,5 +172,58 @@ class ProductController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+
+    public function actionUpdateGroup()
+    {
+        $request = Yii::$app->request;
+        $model = new GroupProducts();
+        $pks = explode(',', $request->post('pks'));
+
+        $products = Product::find()->where(['id' => $pks])->all();
+        $param = $request->post('GroupProducts');
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if ($request->isAjax) {
+            if ($param) {
+                $ids = explode(',', $param['product_id']);
+                foreach ($ids as $pk) {
+                    $product = Product::find()->where(['id' => $pk])->one();
+                    if ($product) {
+                        $product->group_id = $param['name'];
+                        $product->save(false);
+                    }
+                }
+
+                return [
+                    'forceClose'=>true,
+                    'forceReload' => '#crud-datatable-pjax',
+//                    'title' => "ID продуктов: " . $model->name,
+//                    'content' => '<span class="text-success">Категорию успешно обновлено на </span>',
+//                    'footer' => Html::button('Закрыть', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"])
+                ];
+
+            } else {
+                return [
+                    'title' => "Зміна групи у вибраних товарів",
+                    'content' => $this->renderAjax('update-group', [
+                        'model' => $model,
+                        'pks' => $request->post('pks'),
+                        'products' => $products
+                    ]),
+                    'footer' => Html::button('Закрыть', ['class' => 'btn btn-default pull-left', 'data-bs-dismiss' => "modal"]) .
+                        Html::button('Сохранить', ['class' => 'btn btn-primary', 'type' => "submit"])
+
+                ];
+            }
+        }
+    }
+
+    public function actionUpdateMainProduct($id, $val){
+        $model = $this->findModel($id);
+        $model->main = intval($val);
+        $model->save(false);
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return true;
     }
 }

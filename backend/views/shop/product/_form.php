@@ -42,6 +42,21 @@ use yii\helpers\Html;
 
         </div>
         <div class="col-sm-4">
+            <?= $form->field($model, 'main')->dropDownList([
+                0 => 'Не головний товар',
+                1 => 'Головний товар',
+            ]); ?>
+
+            <?= $form->field($model, 'group_id')->widget(Select2::classname(), [
+                'data' => ArrayHelper::map(\common\models\shop\GroupProducts::find()->all(), 'id', 'name'),
+                'language' => 'uk',
+                'options' => ['placeholder' => "Виберіть із списку групу"],
+                'pluginLoading' => true,
+                'pluginOptions' => [
+                    'allowClear' => true,
+                ],
+            ]); ?>
+
             <?= $form->field($model, 'published')->dropDownList([
                 '1' => 'Опубліковано',
                 '0' => 'Не опубліковано',

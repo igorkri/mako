@@ -73,6 +73,7 @@ use yii\helpers\Html;
                         'items' => [
                             ['label' => 'Замовлення', 'icon' => 'dot-circle', 'url' => ['/shop/order/index']],
                             ['label' => 'Список товарів', 'icon' => 'dot-circle', 'url' => ['/shop/product/index']],
+                            ['label' => 'Товари по групах', 'icon' => 'dot-circle', 'url' => ['/shop/group-product/index']],
                             ['label' => 'Виробники', 'icon' => 'dot-circle', 'url' => ['/shop/producer/index']],
                             ['label' => 'Категорії товарів', 'icon' => 'dot-circle', 'url' => ['/shop/category/index']],
                             ['label' => 'Серії', 'icon' => 'dot-circle', 'url' => ['/shop/series/index']],
@@ -94,11 +95,11 @@ use yii\helpers\Html;
 <?php Modal::begin([
     "id"=>"ajaxCrudModal",
     "size" => Modal::SIZE_EXTRA_LARGE,
-    "scrollable" => true,
-    "options" => [
-        "data-bs-backdrop" => "static",
-        // "class" => "modal-dialog-scrollable",
-    ],
+//    "scrollable" => true,
+//    "options" => [
+//        "data-bs-backdrop" => "static",
+//        // "class" => "modal-dialog-scrollable",
+//    ],
     "footer"=>"",// always need it for jquery plugin
 ])?>
 <?php Modal::end(); ?>

@@ -7,7 +7,13 @@ use yii\helpers\Url;
 return [
     [
         'class' => 'kartik\grid\CheckboxColumn',
-        'width' => '20px',
+        'checkboxOptions' => function ($model, $key, $index, $column) {
+            return ['value' => $key];
+        },
+        'headerOptions' => [
+            'class' => 'kartik-sheet-style',
+        ],
+        'width' => '40px',
     ],
     [
         'class' => 'kartik\grid\SerialColumn',
@@ -49,6 +55,16 @@ return [
 //            return $model->published == 1 ? '<span class="badge badge-success">Опубліковано</span>' : '<span class="badge badge-danger">Не опубликовано</span>';
 //        },
         'width' => '220px',
+        'vAlign' => GridView::ALIGN_MIDDLE,
+        'hAlign' => GridView::ALIGN_LEFT,
+    ],[
+        'class' => '\kartik\grid\DataColumn',
+        'attribute' => 'productGroup.name',
+        'format' => 'raw',
+//        'value' => function($model){
+//            return $model->published == 1 ? '<span class="badge badge-success">Опубліковано</span>' : '<span class="badge badge-danger">Не опубликовано</span>';
+//        },
+        'width' => '120px',
         'vAlign' => GridView::ALIGN_MIDDLE,
         'hAlign' => GridView::ALIGN_LEFT,
     ], [

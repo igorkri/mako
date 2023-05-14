@@ -29,6 +29,8 @@ use yz\shoppingcart\CartPositionTrait;
  * @property int|null $popular_product Популярний товар
  * @property float|null $price Ціна
  * @property float|null $volume_int Обєм int
+ * @property int|null $main Головний товар
+ * @property int|null $group_id Група товарів
  */
 class Product extends ActiveRecord implements CartPositionInterface
 {
@@ -74,7 +76,7 @@ class Product extends ActiveRecord implements CartPositionInterface
     public function rules()
     {
         return [
-            [['created_at', 'updated_at', 'producer_id', 'published', 'category_id', 'series_id', 'status_id', 'popular_product'], 'integer'],
+            [['main','group_id','created_at', 'updated_at', 'producer_id', 'published', 'category_id', 'series_id', 'status_id', 'popular_product'], 'integer'],
             [['description', 'indication', 'currency', 'volume_val'], 'string'],
             [['price', 'volume_int'], 'number'],
             [['images'], 'safe'],
@@ -92,7 +94,7 @@ class Product extends ActiveRecord implements CartPositionInterface
             'created_at' => 'Дата створення',
             'updated_at' => 'Дата оновлення',
             'slug' => 'Url',
-            'published' => 'Oпубліковано товар',
+            'published' => 'Відображати товар',
             'name' => 'Назва товару',
             'description' => 'Опис товару',
             'indication' => 'Показання',
@@ -107,6 +109,8 @@ class Product extends ActiveRecord implements CartPositionInterface
             'currency' => 'Валюта',
             'volume_int' => 'Об\'єм 0.00',
             'volume_val' => 'Об\'єм ml',
+            'group_id' => 'Група товарів',
+            'main' => 'Головний товар',
         ];
     }
     public function getPrice()
@@ -137,6 +141,11 @@ class Product extends ActiveRecord implements CartPositionInterface
     public function getProductImages()
     {
         return $this->hasMany(ProductImage::class, ['product_id' => 'id']);
+    }
+
+    public function getProductGroup()
+    {
+        return $this->hasOne(GroupProducts::class, ['id' => 'group_id']);
     }
 
     public function getFilters($gets){
