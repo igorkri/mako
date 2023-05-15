@@ -9,52 +9,6 @@ use yii\helpers\Url;
 use yii\web\JsExpression;
 use yii\web\View;
 
-$formatJs = <<< 'JS'
-var formatRepo = function (repo) {
-    if (repo.loading) {
-        return repo.text;
-    }
-    if( repo.text.indexOf(repo.area) === -1 ){
-        let markup = '<div class="row">' + 
-                '<div class="col-sm-10">' + repo.text + ' (' + repo.area + ' обл.)</div>' +
-            '</div>';   
-        return '<div style="overflow:visible;">' + markup + '</div>';
-    } else {
-        let markup = '<div class="row">' + 
-                '<div class="col-sm-10">' + repo.text + '</div>' +
-            '</div>';   
-        return '<div style="overflow:visible;">' + markup + '</div>';
-    }
-};
-var formatRepoSelection = function (repo) {
-    if(repo.id === ''){    
-       return repo.text;
-   } else {
-        if( repo.text.indexOf(repo.area) === -1 ){
-            return repo.text + ' (' + repo.area + ' обл.)';
-        } else {
-            return repo.text;
-        }
-   }
-}
-JS;
-
-// Register the formatting script
-$this->registerJs($formatJs, View::POS_HEAD);
-
-// script to parse the results into the format expected by Select2
-$resultsJs = <<< JS
-function pagination (data, params) {
-    params.page = params.page || 1;
-    return {
-        results: data.results,
-        pagination: {
-            more: (params.page * 1) < data.total_count
-        }
-    };
-}
-JS;
-
 ?>
 
 <!----- Заказ ----->
@@ -96,7 +50,7 @@ JS;
             </div>
             <div class="specification">
                 <p><?=$product->name?></p>
-                <h5>100 мл</h5>
+                <h5><?=$product->volume_int?> мл</h5>
                 <h6><?= Yii::$app->formatter->asCurrency($product->price) ?> | <?= $product->getQuantity() ?> од.</h6>
             </div>
             <div class="delete" onclick="removePosition(<?=$product->getId()?>)">
