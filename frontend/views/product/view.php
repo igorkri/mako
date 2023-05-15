@@ -69,16 +69,18 @@ use yii\helpers\Url;
             <?= $product->description ?>
             <h4>Об’єм</h4>
             <div class="select_value">
-                <?php foreach ($product->productGroup->products as $group): ?>
-                    <?php if(intval($group->volume_int) != 0): ?>
-                        <label>
-                            <a href="<?=Url::to(['view', 'slug' => $group->slug])?>">
-                                <input type="radio" name="select_value" <?=$group->slug == $product->slug ? 'checked' : ''?>>
-                                <span><?= intval($group->volume_int) ?> мл</span>
-                            </a>
-                        </label>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                <?php if($product->productGroup): ?>
+                    <?php foreach ($product->productGroup->products as $group): ?>
+                        <?php if(intval($group->volume_int) != 0): ?>
+                            <label>
+                                <a href="<?=Url::to(['view', 'slug' => $group->slug])?>">
+                                    <input type="radio" name="select_value" <?=$group->slug == $product->slug ? 'checked' : ''?>>
+                                    <span><?= intval($group->volume_int) ?> мл</span>
+                                </a>
+                            </label>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
             <h4>Показання</h4>
             <?= $product->indication ?>
