@@ -13,12 +13,12 @@ return [
         'headerOptions' => [
             'class' => 'kartik-sheet-style',
         ],
-        'width' => '40px',
+        'width' => '20px',
     ],
-    [
-        'class' => 'kartik\grid\SerialColumn',
-        'width' => '30px',
-    ],
+//    [
+//        'class' => 'kartik\grid\SerialColumn',
+//        'width' => '30px',
+//    ],
 //    'id',
 //        'created_at',
 //        'updated_at',
@@ -44,37 +44,55 @@ return [
         'class' => '\kartik\grid\DataColumn',
         'attribute' => 'name',
         'format' => 'raw',
+        'width' => '60%',
         'vAlign' => GridView::ALIGN_MIDDLE,
         'hAlign' => GridView::ALIGN_LEFT,
     ],
     [
         'class' => '\kartik\grid\DataColumn',
-        'attribute' => 'category.name',
+        'attribute' => 'category_id',
         'format' => 'raw',
-//        'value' => function($model){
-//            return $model->published == 1 ? '<span class="badge badge-success">Опубліковано</span>' : '<span class="badge badge-danger">Не опубликовано</span>';
-//        },
-        'width' => '220px',
+        'filter' => \yii\helpers\ArrayHelper::map(\common\models\shop\Category::find()->asArray()->all(), 'id', 'name'),
+        'value' => function($model){
+            return $model->category ? $model->category->name : '<span class="badge badge-danger">Не вибрано</span>';
+        },
+        'width' => '30%',
         'vAlign' => GridView::ALIGN_MIDDLE,
         'hAlign' => GridView::ALIGN_LEFT,
-    ],[
+    ],
+    [
         'class' => '\kartik\grid\DataColumn',
-        'attribute' => 'productGroup.name',
+        'attribute' => 'group_id',
         'format' => 'raw',
-//        'value' => function($model){
-//            return $model->published == 1 ? '<span class="badge badge-success">Опубліковано</span>' : '<span class="badge badge-danger">Не опубликовано</span>';
-//        },
-        'width' => '120px',
+        'filter' => \yii\helpers\ArrayHelper::map(\common\models\shop\GroupProducts::find()->asArray()->all(), 'id', 'name'),
+        'value' => function($model){
+            return $model->productGroup ? $model->productGroup->name : '<span class="badge badge-danger">Не вибрано</span>';
+        },
+//        'width' => '120px',
         'vAlign' => GridView::ALIGN_MIDDLE,
         'hAlign' => GridView::ALIGN_LEFT,
-    ], [
+    ],
+    [
         'class' => '\kartik\grid\DataColumn',
         'attribute' => 'published',
+        'filter' => [1 => 'Опубліковано', 0 => 'Не опубликовано'],
         'format' => 'raw',
         'value' => function ($model) {
             return $model->published == 1 ? '<span class="badge badge-success">Опубліковано</span>' : '<span class="badge badge-danger">Не опубликовано</span>';
         },
-        'width' => '140px',
+//        'width' => '140px',
+        'vAlign' => GridView::ALIGN_MIDDLE,
+        'hAlign' => GridView::ALIGN_CENTER,
+    ],
+    [
+        'class' => '\kartik\grid\DataColumn',
+        'attribute' => 'main',
+        'format' => 'raw',
+        'filter' => [1 => 'Головна', 0 => 'Не головна'],
+        'value' => function ($model) {
+            return $model->main == 1 ? '<span class="badge badge-info">Головна</span>' : '<span class="badge badge-danger">Не головна</span>';
+        },
+//        'width' => '140px',
         'vAlign' => GridView::ALIGN_MIDDLE,
         'hAlign' => GridView::ALIGN_CENTER,
     ],
@@ -90,7 +108,7 @@ return [
         'class' => '\kartik\grid\DataColumn',
         'attribute' => 'price',
         'format' => ['decimal', 2],
-        'width' => '100px',
+//        'width' => '100px',
         'vAlign' => GridView::ALIGN_MIDDLE,
         'hAlign' => GridView::ALIGN_LEFT,
     ],

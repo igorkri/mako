@@ -112,6 +112,25 @@ class ProductController extends Controller
         ]);
     }
 
+    public function actionDuplicate($id = null)
+    {
+        \Yii::$app->cache->flush();
+        if($id){
+            $model = $this->findModel($id);
+        }
+
+        if ($this->request->isPost) {
+            $model_new = new Product();
+            if ($model_new->load($this->request->post()) && $model_new->save()) {
+                return $this->redirect(['view', 'id' => $model_new->id]);
+            }
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
     /**
      * Deletes an existing Product model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

@@ -50,4 +50,8 @@ class GroupProducts extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Product::class, ['group_id' => 'id'])->count();
     }
+    public function getProducts()
+    {
+        return $this->hasMany(Product::class, ['group_id' => 'id']);
+    }
 }

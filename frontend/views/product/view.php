@@ -1,4 +1,9 @@
-<!----- Продукт ----->
+<?php
+
+use yii\helpers\Url;
+
+?>
+    <!----- Продукт ----->
 <form action="">
     <section class="product_head" id="product_head">
         <div class="filters">
@@ -52,9 +57,9 @@
             <?php $d = explode('/', $image->name); ?>
             <div class="item">
                 <?php if (!isset($d[1])): ?>
-                <img src="/img/products/<?= $image->product_id ?>/<?= $image->name ?>" alt="">
+                    <img src="/img/products/<?= $image->product_id ?>/<?= $image->name ?>" alt="">
                 <?php else: ?>
-                <img src="/img/products/<?= $image->name ?>" alt="">
+                    <img src="/img/products/<?= $image->name ?>" alt="">
                 <?php endif; ?>
             </div>
             <?php endforeach; ?>
@@ -64,18 +69,16 @@
             <?= $product->description ?>
             <h4>Об’єм</h4>
             <div class="select_value">
-                <label>
-                    <input type="radio" name="select_value" checked>
-                    <span>30 мл</span>
-                </label>
-                <label>
-                    <input type="radio" name="select_value">
-                    <span>50 мл</span>
-                </label>
-                <label>
-                    <input type="radio" name="select_value">
-                    <span>100 мл</span>
-                </label>
+                <?php foreach ($product->productGroup->products as $group): ?>
+                    <?php if(intval($group->volume_int) != 0): ?>
+                        <label>
+                            <a href="<?=Url::to(['view', 'slug' => $group->slug])?>">
+                                <input type="radio" name="select_value" <?=$group->slug == $product->slug ? 'checked' : ''?>>
+                                <span><?= intval($group->volume_int) ?> мл</span>
+                            </a>
+                        </label>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </div>
             <h4>Показання</h4>
             <?= $product->indication ?>

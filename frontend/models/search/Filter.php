@@ -40,7 +40,9 @@ class Filter extends Product
     public function search($params)
     {
 
-        $query = Product::find()->where(['published'=> 1]);
+        $query = Product::find()
+            ->where(['published'=> 1])
+            ->andWhere(['main' => 1]);
 
         $sort_price = [];
         if(isset($params['Filter']['sort'][0]) and $params['Filter']['sort'][0] == 1){

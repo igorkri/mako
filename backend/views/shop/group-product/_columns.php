@@ -23,7 +23,7 @@ return [
         'attribute'=>'product_id',
         'label' => 'К-ть товарів',
         'value'=>function($model){
-            return $model->countProducts;
+            return $model->countProducts ? $model->countProducts : 0;
         }
     ],
 //    [

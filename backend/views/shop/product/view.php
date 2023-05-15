@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Редагувати', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('+ Зображення', ['shop/product-image/create', 'product_id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Створити копію товару', ['duplicate', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
 
         <?= Html::a('Видалити ', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger float-end',
@@ -56,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'main',
                         'format' => 'raw',
                         'value' => function ($model) {
-                            return $model->published == 1 ? "Так" : "Ні";
+                            return $model->main == 1 ? "Так" : "Ні";
                         }
                     ],
                     [

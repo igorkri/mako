@@ -17,7 +17,7 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at', 'published', 'category_id', 'series_id', 'status_id', 'popular_product'], 'integer'],
+            [['id', 'created_at', 'updated_at', 'published', 'category_id', 'series_id', 'status_id', 'popular_product', 'main', 'group_id'], 'integer'],
             [['name', 'description', 'indication', 'producer_id', 'images'], 'safe'],
             [['price'], 'number'],
         ];
@@ -51,11 +51,11 @@ class ProductSearch extends Product
 
         $this->load($params);
 
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
+//        if (!$this->validate()) {
+//            // uncomment the following line if you do not want to return any records when validation fails
+//            // $query->where('0=1');
+//            return $dataProvider;
+//        }
 
         // grid filtering conditions
         $query->andFilterWhere([
@@ -63,6 +63,8 @@ class ProductSearch extends Product
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'published' => $this->published,
+            'main' => $this->main,
+            'group_id' => $this->group_id,
             'category_id' => $this->category_id,
 //            'delivery_id' => $this->delivery_id,
             'series_id' => $this->series_id,
