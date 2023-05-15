@@ -126,7 +126,7 @@ class ProductController extends Controller
             }
         }
 
-        return $this->render('update', [
+        return $this->render('group-form', [
             'model' => $model,
         ]);
     }

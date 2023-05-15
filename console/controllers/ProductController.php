@@ -22,4 +22,18 @@ class ProductController extends Controller
 
     }
 
+    public function actionMain(){
+
+        $products = Product::find()
+            ->where(['main' => 0])
+            ->andWhere(['group_id' => 0])
+            ->all();
+
+        foreach($products as $product){
+            $product->main = 1;
+            $product->save(false);
+        }
+
+    }
+
 }

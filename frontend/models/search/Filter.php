@@ -2,9 +2,11 @@
 
 namespace frontend\models\search;
 
+use common\models\shop\GroupProducts;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\shop\Product;
+use yii\db\ActiveQuery;
 
 /**
  * ProductSearch represents the model behind the search form of `common\models\shop\Product`.
@@ -41,8 +43,16 @@ class Filter extends Product
     {
 
         $query = Product::find()
+            ->with('products')
             ->where(['published'=> 1])
-            ->andWhere(['main' => 1]);
+//            ->asArray()
+//            ->all()
+;
+
+
+//        debug(count($query));
+//        debug($query);
+//        die;
 
         $sort_price = [];
         if(isset($params['Filter']['sort'][0]) and $params['Filter']['sort'][0] == 1){
@@ -51,9 +61,11 @@ class Filter extends Product
             $sort_price = ['defaultOrder'=> ['price' => SORT_DESC]];
         }
         $dataProvider = new ActiveDataProvider([
+
             'query' => $query,
 //            'sort' => ['defaultOrder'=> ['price' => SORT_ASC]],
             'sort' => $sort_price,
+//            'pagination' => false,
             'pagination' => [
                 'pageSize' => 9,
                 'forcePageParam' => false,
@@ -78,7 +90,9 @@ class Filter extends Product
             'status_id' => $this->status_id,
             'price' => $this->price,
             'popular_product' => $this->popular_product,
+            'main' => 1,
         ]);
+
 
         return $dataProvider;
     }

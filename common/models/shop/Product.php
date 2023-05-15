@@ -76,7 +76,7 @@ class Product extends ActiveRecord implements CartPositionInterface
     public function rules()
     {
         return [
-            [['main','group_id','created_at', 'updated_at', 'producer_id', 'published', 'category_id', 'series_id', 'status_id', 'popular_product'], 'integer'],
+            [['main', 'group_id', 'created_at', 'updated_at', 'producer_id', 'published', 'category_id', 'series_id', 'status_id', 'popular_product'], 'integer'],
             [['description', 'indication', 'currency', 'volume_val'], 'string'],
             [['price', 'volume_int'], 'number'],
             [['images'], 'safe'],
@@ -146,6 +146,11 @@ class Product extends ActiveRecord implements CartPositionInterface
     public function getProductGroup()
     {
         return $this->hasOne(GroupProducts::class, ['id' => 'group_id']);
+    }
+    public function getProducts()
+    {
+        return $this->hasMany(Product::class, ['group_id' => 'id'])
+            ->viaTable('group_products', ['id' => 'group_id']);
     }
 
     public function getFilters($gets){
