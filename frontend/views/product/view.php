@@ -80,6 +80,15 @@ use yii\helpers\Url;
                             </label>
                         <?php endif; ?>
                     <?php endforeach; ?>
+                <?php else: ?>
+                    <?php if(intval($product->volume_int) != 0): ?>
+                        <label>
+                            <a href="<?=Url::to(['view', 'slug' => $product->slug])?>">
+                                <input type="radio" name="select_value" <?=$product->slug == $product->slug ? 'checked' : ''?>>
+                                <span><?= intval($product->volume_int) ?> мл</span>
+                            </a>
+                        </label>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
             <h4>Показання</h4>
