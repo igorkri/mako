@@ -67,7 +67,9 @@ use yii\helpers\Url;
         <div class="description">
             <h4>Опис товару</h4>
             <?= $product->description ?>
+            <?php if(intval($product->volume_int) != 0 || $product->productGroup): ?>
             <h4>Об’єм</h4>
+            <?php endif; ?>
             <div class="select_value">
                 <?php if($product->productGroup): ?>
                     <?php foreach ($product->productGroup->products as $group): ?>
@@ -91,7 +93,9 @@ use yii\helpers\Url;
                     <?php endif; ?>
                 <?php endif; ?>
             </div>
+            <?php if($product->indication): ?>
             <h4>Показання</h4>
+            <?php endif; ?>
             <?= $product->indication ?>
             <h4>Доставка</h4>
             <div class="post">
