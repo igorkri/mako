@@ -79,7 +79,7 @@ use yii\web\View;
     </div>
 
     <h3>Доставка</h3>
-    <input type="radio" id="new_post" name="new_post">
+    <input type="radio" id="new_post" value="0" name="new_post">
     <label for="new_post">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -109,7 +109,7 @@ use yii\web\View;
 
         </div>
     </div>
-    <input type="radio" id="pickup" name="new_post" checked>
+    <input type="radio" id="pickup" name="new_post" value="1" checked>
     <label for="pickup">Самовивіз</label>
 
     <div class="fields">
@@ -164,6 +164,12 @@ use yii\web\View;
 
 $js = <<<JS
 $( document ).ready(function() {
+    
+    // $('#new_post').on('click', function (){
+    //     $('#pickup').val(0);
+    //     $('#new_post').val(1);
+    // });
+    
     $('#city').change(function(){
     var val =  $('#city').val();
     $.ajax({

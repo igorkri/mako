@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'created_at',
                 'value' => function($model){
-                    return $model->created_at ? Yii::$app->formatter->asDatetime($model->created_at) : '';
+                    return $model->created_at ? Yii::$app->formatter->asDate($model->created_at, 'medium') : '';
                 },
                 'width' => '150px',
 
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'updated_at',
                 'value' => function($model){
-                    return $model->updated_at ? Yii::$app->formatter->asDatetime($model->updated_at) : 'Не оновлювалось';
+                    return $model->updated_at ? Yii::$app->formatter->asDate($model->updated_at, 'medium') : '';
                 },
                 'width' => '150px',
 
