@@ -134,30 +134,32 @@
 
         var qty = $('input#qty-product-modal-' + id).val();
         var valQty = Number(qty) - 1;
-        $('input#qty-product-modal-' + id).val(valQty);
+        if(valQty >= 1) {
 
-        $.ajax({
-            url: "/product/update-cart",
-            type: "get",
-            data: {
-                product_id: id,
-                qty: valQty
-            },
+            $('input#qty-product-modal-' + id).val(valQty);
+            $.ajax({
+                url: "/product/update-cart",
+                type: "get",
+                data: {
+                    product_id: id,
+                    qty: valQty
+                },
 
-            success: function (data) {
-                var productPrice = new Intl.NumberFormat('uk-UA').format(data.products[id].price * valQty);
-                var currency = new Intl.NumberFormat('uk-UA').format(data.totalSumm);
-                $('#qty-total').html(data.qty);
-                $('#header-qty-product').html(data.qty);
-                $('#summ-total').html(currency);
-                $('#qty-total-prod-' + id).html(valQty);
-                $('#qty-total-price-' + id).html(productPrice);
+                success: function (data) {
+                    var productPrice = new Intl.NumberFormat('uk-UA').format(data.products[id].price * valQty);
+                    var currency = new Intl.NumberFormat('uk-UA').format(data.totalSumm);
+                    $('#qty-total').html(data.qty);
+                    $('#header-qty-product').html(data.qty);
+                    $('#summ-total').html(currency);
+                    $('#qty-total-prod-' + id).html(valQty);
+                    $('#qty-total-price-' + id).html(productPrice);
 
-            },
-            error: function () {
-                console.log('error', data);
-            }
-        });
+                },
+                error: function () {
+                    console.log('error', data);
+                }
+            });
+        }
     }
 </script>
 <?php
