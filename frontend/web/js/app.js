@@ -397,6 +397,38 @@ $('#catalog .content .filters .top_panel .close').click(function () {
   $('#catalog .content .filters').slideUp(250);
 });
 
+if ($(window).width() <= 768) {
+  var filter_button = $('#filter_button').offset();
+  $('#catalog .content .filters').offset(filter_button);
+}
+
+// сторінка catalog.html
+// анімація додавання товару до кошика
+$('#catalog .content .goods .item .title .cart img').click(function (e) { /* Клік по кнопці "Додати до кошика" */
+  var butWrap = $(this).parents('.cart'); /* Запам'ятовуємо врапер кнопки */
+  butWrap.append('<img class="animtocart"></img>'); /* Додаємо у враппер об'єкт, який буде анімований і відлітати від кнопки до кошика */
+  $('.animtocart').css({ /* Привласнюємо стилі об'єкту та позицію курсору миші */
+    'position': 'absolute',
+    'dispay': 'block',
+    'width': '30px',
+    'height': '30px',
+    'background': 'no-repeat url(/img/cart_red.svg)',
+    'background-size': 'cover',
+    'z-index': '9999999999',
+    'left': e.pageX - 25,
+    'top': e.pageY - 25,
+  })
+  if ($(window).width() > 1275) {
+    var cart = $('#header .order .cart svg').offset(); /* Отримуємо розташування кошика на сторінці, щоб туди полетіла картинка */
+  }
+  if ($(window).width() <= 1275) {
+    var cart = $('#header .call_us .burger').offset(); /* Отримуємо розташування кошика на сторінці, щоб туди полетіла картинка */
+  }
+  $('.animtocart').animate({ top: cart.top + 'px', left: cart.left + 'px', width: 0, height: 0 }, 800, function () { /* Робимо анімацію польоту картинки від кнопки в кошик і по закінченню видаляємо його */
+    $(this).remove();
+  });
+});
+
 // сторінка product.html
 // счетчик товару
 $('.minus').click(function () {
@@ -448,10 +480,10 @@ $('#product_head .pcc .add_to_cart').click(function (e) { /* Клік по кн�
     'left': e.pageX - 25,
     'top': e.pageY - 25,
   })
-  if ($(window).width() > 1465) {
+  if ($(window).width() > 1275) {
     var cart = $('#header .order .cart svg').offset(); /* Отримуємо розташування кошика на сторінці, щоб туди полетіла картинка */
   }
-  if ($(window).width() <= 1465) {
+  if ($(window).width() <= 1275) {
     var cart = $('#header .call_us .burger').offset(); /* Отримуємо розташування кошика на сторінці, щоб туди полетіла картинка */
   }
   $('.animtocart').animate({ top: cart.top + 'px', left: cart.left + 'px', width: 0, height: 0 }, 800, function () { /* Робимо анімацію польоту картинки від кнопки в кошик і по закінченню видаляємо його */
@@ -491,6 +523,7 @@ $('#body_cart .order form input').click(function () {
 });
 
 $('#body_cart .order form .post_select').click(function () {
+  $('#body_cart .order form .post_select .drop_list').not($(this).find('.drop_list')).slideUp(250);
   $(this).find('.drop_list').slideToggle(250);
 });
 

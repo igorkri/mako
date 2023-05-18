@@ -14,27 +14,32 @@
                 <?= $cart_product->name ?>
             </p>
             <div class="counter">
-                <div class="minus" onclick="minusQtyProduct('<?=$cart_product->getId()?>')">
+                <button class="minus" onclick="minusQtyProduct('<?=$cart_product->getId()?>')">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="28" height="28" rx="14" fill="#FFF5F5" />
                         <path d="M22.5 15L7.5 15" stroke="" stroke-width="2" stroke-linecap="round" />
                         <rect x="1" y="1" width="28" height="28" rx="14" stroke="" stroke-width="2" />
                     </svg>
-                </div>
-                <input type="text" id="qty-product-modal-<?=$cart_product->getId()?>" value="<?= $cart_product->getQuantity() ?>">
-                <div class="plus" onclick="plusQtyProduct('<?=$cart_product->getId()?>')">
+                </button>
+                <input type="text" id="qty-product-modal-<?=$cart_product->getId()?>"
+                    value="<?= $cart_product->getQuantity() ?>">
+                <button class="plus" onclick="plusQtyProduct('<?=$cart_product->getId()?>')">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="28" height="28" rx="14" fill="#FFF5F5" />
                         <path d="M22.5 15L7.5 15" stroke="" stroke-width="2" stroke-linecap="round" />
                         <path d="M15 22.5L15 7.5" stroke="" stroke-width="2" stroke-linecap="round" />
                         <rect x="1" y="1" width="28" height="28" rx="14" stroke="" stroke-width="2" />
                     </svg>
-                </div>
+                </button>
             </div>
             <p class="price">
-                <span id="qty-total-price-<?=$cart_product->getId()?>"><?= Yii::$app->formatter->asDecimal($cart_product->price * $cart_product->getQuantity()) ?> </span> ₴
+                <span id="qty-total-price-<?=$cart_product->getId()?>">
+                    <?= Yii::$app->formatter->asDecimal($cart_product->price * $cart_product->getQuantity()) ?>
+                </span> ₴
                 |
-                <span id="qty-total-prod-<?=$cart_product->getId()?>"><?= $cart_product->getQuantity() ?></span> од.
+                <span id="qty-total-prod-<?=$cart_product->getId()?>">
+                    <?= $cart_product->getQuantity() ?>
+                </span> од.
             </p>
         </div>
         <div class="delete" onclick="removePositionModalCart(<?=$cart_product->getId()?>)">
@@ -51,7 +56,9 @@
     <div class="sum">
         <span class="total">Разом:</span>
         <span class="quantity">
-            <span id="qty-total"><?= \Yii::$app->cart->getCount() ?></span> од.
+            <span id="qty-total">
+                <?= \Yii::$app->cart->getCount() ?>
+            </span> од.
         </span>
         <span class="price" id="summ-total">
             <?= Yii::$app->formatter->asDecimal($totalSumm, 2)?>
@@ -106,7 +113,7 @@
                 qty: valQty
             },
 
-            success: function(data){
+            success: function (data) {
                 // var productPrice = (data.products[id].price * valQty).toLocaleString('uk-UA');;
                 var productPrice = new Intl.NumberFormat('uk-UA').format(data.products[id].price * valQty);
                 var currency = new Intl.NumberFormat('uk-UA').format(data.totalSumm);
@@ -117,13 +124,13 @@
                 $('#qty-total-price-' + id).html(productPrice);
 
             },
-            error: function(){
+            error: function () {
                 console.log('error', data);
             }
         });
     }
 
-    function minusQtyProduct(id){
+    function minusQtyProduct(id) {
 
         var qty = $('input#qty-product-modal-' + id).val();
         var valQty = Number(qty) - 1;
@@ -137,7 +144,7 @@
                 qty: valQty
             },
 
-            success: function(data){
+            success: function (data) {
                 var productPrice = new Intl.NumberFormat('uk-UA').format(data.products[id].price * valQty);
                 var currency = new Intl.NumberFormat('uk-UA').format(data.totalSumm);
                 $('#qty-total').html(data.qty);
@@ -147,7 +154,7 @@
                 $('#qty-total-price-' + id).html(productPrice);
 
             },
-            error: function(){
+            error: function () {
                 console.log('error', data);
             }
         });
