@@ -164,18 +164,12 @@ use yii\web\View;
 
 $js = <<<JS
 $( document ).ready(function() {
-    
-    // $('#new_post').on('click', function (){
-    //     $('#pickup').val(0);
-    //     $('#new_post').val(1);
-    // });
-    
-    $('#city').change(function(){
-    var val =  $('#city').val();
+    $('#city').keyup(function(){
+    var val =  $('input#city').val();
+    // console.log(val);
     $.ajax({
         url: '/order/city',
         data: {q: val},
-       
         success: function(data){
             // console.log(data);
             $('#city-drop_list').html(data);

@@ -26,7 +26,7 @@ class OrderController extends \yii\web\Controller
             $order->phone = $post['phone'];
             $order->note = $post['note'];
             $order->city = $post['new_post'] == '1' ? 'Самовивіз' : $post['Order']['city'];;
-            $order->address = $post['new_post'] == '1' ? 'Самовивіз' : $post['Order']['address'];;
+            $order->address = $post['new_post'] == '1' ? '' : $post['Order']['address'];;
             if($order->save()){
                 foreach ($products as $product){
                     $order_item = new OrderItem();
@@ -39,8 +39,6 @@ class OrderController extends \yii\web\Controller
             }
             \Yii::$app->cart->removeAll();
             return $this->redirect(['confirm']);
-        }else{
-            debug($order->errors);
         }
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
