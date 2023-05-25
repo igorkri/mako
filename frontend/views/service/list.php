@@ -10,6 +10,7 @@ use yii\helpers\Url;
     <section class="background">
         <h1><?=$category->name?></h1>
         <p class="n2"><?=$category->description?></p>
+        <!--  
         <a href="<?=$url?>" class="make_appointment">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="48" rx="24" fill="" />
@@ -18,6 +19,7 @@ use yii\helpers\Url;
             </svg>
             Записатись на прийом
         </a>
+        -->
     </section>
 </div>
 
@@ -42,6 +44,7 @@ use yii\helpers\Url;
     <?php else: ?>
         <h4>Нажаль ще не доступні(:</h4>
     <?php endif; ?>
+    <!--  
     <a href="<?=$url?>" class="make_appointment">
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="48" height="48" rx="24" fill="" />
@@ -50,5 +53,6 @@ use yii\helpers\Url;
         </svg>
         Записатись на прийом
     </a>
+    -->
 </section>
 

@@ -20,12 +20,6 @@ use frontend\Widgets\MakoItWidget;
 <section class="service_description" style="padding-top: 0; padding-bottom: 0;">
     <h3>Спеціалісти</h3>
     <div class="specialists" id="specialists">
-        <div class="close">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M26 26.0001L2 2.00012M2.00003 26L26 2.00005" stroke="" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </div>
         <?php if ($specialists): ?>
         <?php foreach ($specialists as $specialist): ?>
         <div class="card">
@@ -50,6 +44,18 @@ use frontend\Widgets\MakoItWidget;
         <?php endforeach; ?>
         <?php endif; ?>
 </section>
+
+<div class="blur_fond" id="blur_fond">
+    <div class="cont">
+        <div class="close">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M26 26.0001L2 2.00012M2.00003 26L26 2.00005" stroke="" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </div>
+
+    </div>
+</div>
 
 <!----- Мако це ----->
 <?php echo MakoItWidget::widget([]) ?>

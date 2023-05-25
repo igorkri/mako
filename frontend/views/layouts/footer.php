@@ -3,16 +3,18 @@
 use frontend\Widgets\FooterWidget; ?>
 
 <footer>
-    <?= FooterWidget::widget() ?>
-    <div class="bottom_part">
-        <img src="/img/MaKo_logo1.png" style="width: 165px" alt="">
-        <div class="links">
-            <a href="<?=\yii\helpers\Url::to(['promo/index'])?>">Акції</a>
+  <?= FooterWidget::widget() ?>
+  <div class="bottom_part">
+    <img src="/img/MaKo_logo1.png" style="width: 165px" alt="">
+    <div class="links">
+      <a href="<?=\yii\helpers\Url::to(['promo/index'])?>">Акції</a>
       <a href="<?=\yii\helpers\Url::to(['team/index'])?>">Про нас</a>
       <a href="<?=\yii\helpers\Url::to(['reviews/index'])?>">Відгуки</a>
       <a href="<?=\yii\helpers\Url::to(['contacts/index'])?>">Контакти</a>
     </div>
-    <p>© <?=date('Y')?></p>
+    <p>©
+      <?=date('Y')?>
+    </p>
   </div>
   <div class="chat">
     <a href="#">

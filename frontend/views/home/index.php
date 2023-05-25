@@ -75,7 +75,7 @@ $this->title = 'Косметологічний центр МаКо';
         <div class="info">
             <div class="prices">
                 <?php if(!empty($sertificat->if_empty_price)): ?>
-                <h1 style="text-align:center; white-space: unset;font-size: 40px;">
+                <h1>
                     <?=$sertificat->if_empty_price?>
                 </h1>
                 <?php else: ?>
@@ -90,13 +90,12 @@ $this->title = 'Косметологічний центр МаКо';
         </div>
     </div>
 </section>
+
 <style>
     section.gift_certificates .block .pict {
-        width: calc(50% - 8px);
-        height: 500px;
         background: url(../img/certificates/<?=$sertificat->file?>) 50%;
         background-size: cover;
-        position: relative;
     }
 </style>
+
 <?php endif; ?>

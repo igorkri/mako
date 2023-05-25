@@ -9,7 +9,7 @@ use yii\helpers\Url;
         <div class="services_categories">
             <?php foreach ($categories as $category): ?>
             <div class="wrapper">
-                <a href="#">
+                <div class="category_name">
                     <p>
                         <?=$category->name?>
                     </p>
@@ -17,7 +17,7 @@ use yii\helpers\Url;
                         <path d="M7 9C8.33333 6.33333 11 5 11 5M11 5C11 5 8.33333 3.66667 7 1M11 5H1" stroke=""
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                </a>
+                </div>
                 <div class="items">
                     <?php foreach ($category->parents as $parent): ?>
                     <a href="<?=Url::to(['/service/list', 'slug' => $parent->slug])?>">

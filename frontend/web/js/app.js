@@ -51,6 +51,17 @@ $('#header .call_us .burger').click(function () {
   }
 });
 
+$(document).mouseup(function (e) { // событие клика по веб-документу
+  var header = $("#header");
+  var modal = $('#header .order, #header .links, #header .social'); // тут указываем ID элемента
+  if (!header.is(e.target) // если клик был не по нашему блоку
+    && header.has(e.target).length === 0 && ($(window).width() < 1275)) { // и не по его дочерним элементам
+    modal.removeClass('visible').addClass('notVisible');
+    $('#header .call_us .burger').removeClass('active');
+    $('#header .services_block').slideUp(300);
+  }
+});
+
 if ($(window).width() < 1275) {
   $('#header .order, #header .links, #header .social').removeClass('visible').addClass('notVisible');
 }
@@ -75,25 +86,42 @@ $(window).resize(function () {
 });
 
 // заміна назову заголовку
-$('#header .services_block .services_categories a').hover(function () {
+$('#header .services_block .services_categories .category_name').hover(function () {
+  if (($(window).width() < 507) || ($(window).width() > 768)) {
+    $('#header .services_block .services_categories .category_name').removeClass('hover');
+    $(this).addClass('hover');
+  }
   let name = $(this).find('p').html();
   $('#header .services_block .services_names .title h6').html(name);
+  $('#header .services_block .services_names').addClass('on');
 });
 
 // заміна блоку послуг
 $('#header .services_block .services_categories .wrapper').hover(function () {
   $('#header .services_block .services_names .items').remove();
-  $(this).find('.items').clone().appendTo('#header .services_block .services_names');
+  $(this).find('.items').clone().appendTo('#header .services_block .services_names').css('display', 'flex');
 });
 
-$('#header .services_block .services_categories a').click(function () {
+$('#header .services_block .services_categories .category_name').click(function () {
   if (($(window).width() > 506) && ($(window).width() < 769)) {
     $(this).siblings('.items').slideToggle(250);
   }
 });
 
+$(window).resize(function () {
+  if (($(window).width() > 506) && ($(window).width() < 769)) {
+    $('#header .services_block .services_categories .category_name').removeClass('hover');
+  }
+});
+
+$(window).resize(function () {
+  if (($(window).width() < 507) || ($(window).width() > 768)) {
+    $('#header .services_block .services_categories .wrapper .items').slideUp(0);
+  }
+});
+
 // поява вікна в послугах при <506
-$('#header .services_block .services_categories a').click(function () {
+$('#header .services_block .services_categories .category_name').click(function () {
   if ($(window).width() < 506) {
     $('#header .services_block .services_names').css('left', '0');
   }
@@ -106,7 +134,7 @@ $('#header .services_block .services_names .title img').click(function () {
 });
 
 $(document).keydown(function (event) {
-  if ($(window).width() > 1465) {
+  if ($(window).width() > 1275) {
     if (event.keyCode == 27) {
       $('#header .services').removeClass('active');
       $('#header .services_block').slideUp(300);
@@ -115,7 +143,7 @@ $(document).keydown(function (event) {
 });
 
 $(document).mouseup(function (e) {
-  if ($(window).width() > 1465) {
+  if ($(window).width() > 1275) {
     if ($('#header .services_block, #header .services').has(e.target).length === 0) {
       $('#header .services').removeClass('active');
       $('#header .services_block').slideUp(300);
@@ -493,24 +521,20 @@ $('#product_head .pcc .add_to_cart').click(function (e) { /* Клік по кн�
 
 // specialists
 $('#specialists .card').click(function () {
-  $('#specialists').addClass('mod');
-  $(this).addClass('visible');
+  $('#blur_fond').addClass('on');
+  $('#blur_fond .cont').append($(this).clone());
 });
 
-$('#specialists .close').click(function () {
-  $('#specialists').removeClass('mod');
-  $('#specialists .card').removeClass('visible');
+$('#blur_fond .close').click(function () {
+  $('#blur_fond').removeClass('on');
+  $('#blur_fond .cont .card').remove();
+  $('#blur_fond .cont .learning_item').remove();
 });
 
 // learning
 $('#learning .learning_item').click(function () {
-  $('#learning .block').addClass('mod');
-  $(this).addClass('visible');
-});
-
-$('#learning .close').click(function () {
-  $('#learning .block').removeClass('mod');
-  $('#learning .learning_item').removeClass('visible');
+  $('#blur_fond').addClass('on');
+  $('#blur_fond .cont').append($(this).clone());
 });
 
 // order доставка

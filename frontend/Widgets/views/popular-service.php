@@ -35,12 +35,7 @@ use yii\helpers\Url;
         Записатись на прийом
     </a>
     <?php if ($preparats): ?>
-    <div class="work_drugs">
-        <!--  
-        <div class="title">
-            Працюємо з такими препаратами
-        </div>
-        -->
+    <marquee  class="work_drugs">
         <div class="drugs">
             <?php foreach ($preparats as $preparat): ?>
             <div class="img">
@@ -48,6 +43,6 @@ use yii\helpers\Url;
             </div>
             <?php endforeach; ?>
         </div>
-    </div>
+    </marquee>
     <?php endif; ?>
 </section>

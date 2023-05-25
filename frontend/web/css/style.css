@@ -24,10 +24,13 @@
   font-style: normal;
 }
 
-body {
+html, body {
   font-family: "Manrope", sans-serif;
   color: #42414D;
   height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 * {
@@ -651,6 +654,7 @@ h3 {
   justify-content: center;
   gap: 30px;
   background-color: #fff;
+  padding: 20px;
 }
 
 .dark_background .modal_cart .body_cart .empty_cart p {
@@ -667,10 +671,13 @@ h3 {
   font-weight: 700;
   font-size: 20px;
   color: #42414D;
+  text-align: center;
+  width: fit-content;
 }
 
 .dark_background .modal_cart .body_cart .empty_cart a svg {
   margin-right: 8px;
+  min-width: 24px;
 }
 
 .dark_background .modal_cart .body_cart .empty_cart a svg rect {
@@ -841,7 +848,6 @@ header .links .cloud {
   gap: 10px;
   padding: 30px;
   border: 1px solid #EDEDF3;
-  border-radius: 20px;
   background-color: #fff;
   z-index: 3;
   -webkit-transform: scale(0);
@@ -1007,7 +1013,6 @@ header .order .cart:hover svg path {
 header .services_block {
   display: none;
   width: 760px;
-  background-color: #fff;
   position: absolute;
   left: 200px;
   top: 100%;
@@ -1038,6 +1043,7 @@ header .services_block .services_content .services_categories {
   gap: 20px;
   overflow: auto;
   max-height: 400px;
+  background: #fff;
 }
 
 header .services_block .services_content .services_categories::-webkit-scrollbar {
@@ -1052,21 +1058,22 @@ header .services_block .services_content .services_categories::-webkit-scrollbar
   background-color: #F05454;
 }
 
-header .services_block .services_content .services_categories a {
+header .services_block .services_content .services_categories .category_name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  cursor: pointer;
 }
 
-header .services_block .services_content .services_categories a svg {
+header .services_block .services_content .services_categories .category_name svg {
   margin-left: auto;
   stroke: #42414D;
 }
 
-header .services_block .services_content .services_categories a p {
+header .services_block .services_content .services_categories .category_name p {
   font-size: 20px;
   line-height: 30px;
   color: #42414D;
@@ -1076,17 +1083,23 @@ header .services_block .services_content .services_categories .wrapper .items {
   display: none;
 }
 
-header .services_block .services_content .services_categories a:hover svg {
+header .services_block .services_content .services_categories .category_name.hover svg {
   stroke: #F05454;
 }
 
-header .services_block .services_content .services_categories a:hover p {
+header .services_block .services_content .services_categories .category_name.hover p {
   color: #F05454;
 }
 
 header .services_block .services_content .services_names {
   width: 50%;
   border-left: 1px solid #C2C2D1;
+  opacity: 0;
+  background: #fff;
+}
+
+header .services_block .services_content .services_names.on {
+  opacity: 1;
 }
 
 header .services_block .services_content .services_names .title {
@@ -1337,10 +1350,6 @@ section.mako_it a:hover svg rect {
 }
 
 /***** Акційні пропозиції *****/
-
-section.promotional_offers {
-  border-top: 1px solid #F05454;
-}
 
 section.promotional_offers h3 {
   font-weight: 600;
@@ -1601,6 +1610,8 @@ section.popular_services .services_block .item .title h6 {
   font-size: 20px;
   line-height: 24px;
   color: #42414D;
+  hyphens: manual;
+  word-break: break-all;
 }
 
 section.popular_services .services_block .item .arrow {
@@ -1634,22 +1645,6 @@ section.popular_services a.make_appointment {
   margin: 80px auto 60px;
 }
 
-section.popular_services .work_drugs {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-section.popular_services .work_drugs .title {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
-}
-
 section.popular_services .work_drugs .drugs {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1660,7 +1655,7 @@ section.popular_services .work_drugs .drugs {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  overflow: auto;
+  overflow: visible;
   width: 100%;
 }
 
@@ -1745,7 +1740,7 @@ section.gift_certificates .block .pict {
   width: calc(50% - 8px);
   height: 500px;
   background: url(../img/gift_certificates.webp) 50%;
-  background-size: cover;
+  background-size: contain;
   position: relative;
 }
 
@@ -1814,10 +1809,11 @@ section.gift_certificates .block .info .prices {
 
 section.gift_certificates .block .info .prices h1 {
   font-weight: 600;
-  font-size: 60px;
-  line-height: 74px;
+  text-align: center;
+  white-space: wrap;
+  font-size: 40px;
+  line-height: 50px;
   color: #fff;
-  white-space: nowrap;
 }
 
 section.gift_certificates .block .info p {
@@ -1871,6 +1867,11 @@ section.gift_certificates .block .info p {
 
 /***** Опис послуги *****/
 
+section.service_description {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 section.service_description h3 {
   font-weight: 600;
   font-size: 24px;
@@ -1881,7 +1882,7 @@ section.service_description h3 {
 section.service_description .cont {
   max-width: 1064px;
   width: 100%;
-  margin: 30px auto 80px;
+  margin: 30px auto;
 }
 
 section.service_description .cont.video {
@@ -1939,6 +1940,7 @@ section.service_description .specialists .card {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  cursor: pointer;
 }
 
 section.service_description .specialists .close {
@@ -1965,11 +1967,10 @@ section.service_description .specialists .card p {
   line-height: 20px;
 }
 
-section.service_description .specialists.mod {
+.blur_fond {
   position: fixed;
-  max-width: 100%;
+  width: 100%;
   height: 100%;
-  z-index: 10000;
   top: 0;
   bottom: 0;
   left: 0;
@@ -1981,28 +1982,22 @@ section.service_description .specialists.mod {
   -ms-flex-pack: center;
   justify-content: center;
   padding: 20px;
+  z-index: -1;
+  opacity: 0;
 }
 
-section.service_description .specialists.mod .card {
-  display: none;
+.blur_fond.on {
+  z-index: 10000;
+  opacity: 1;
 }
 
-section.service_description .specialists.mod .card.visible {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  gap: 16px;
+.blur_fond .cont {
   max-width: 1064px;
   width: 100%;
-  position: relative;
-  margin-top: 120px;
+  margin: auto;
 }
 
-section.service_description .specialists.mod .close {
+.blur_fond .cont .close {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2014,43 +2009,55 @@ section.service_description .specialists.mod .close {
   justify-content: center;
   width: 48px;
   height: 48px;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
-  margin: auto;
+  margin: 20px auto 20px;
   cursor: pointer;
 }
 
-section.service_description .specialists.mod .close svg {
+.blur_fond .cont .close svg {
   stroke: #42414D;
 }
 
-section.service_description .specialists.mod .close:hover svg {
+.blur_fond .cont .close:hover svg {
   stroke: #F05454;
 }
 
-section.service_description .specialists.mod .card.visible .img {
+.blur_fond .cont .card {
+  display: flex;
+  gap: 16px;
+}
+
+.blur_fond .cont .card .img {
   width: 344px;
 }
 
-section.service_description .specialists.mod .card.visible .img img {
+.blur_fond .cont .card .img img {
   width: 100%;
 }
 
-section.service_description .specialists.mod .card.visible .text {
+.blur_fond .cont .card .text {
   border: 1px solid #C2C2D1;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
+  width: calc(100% - 360px);
 }
 
-section.service_description .specialists.mod .card.visible .text .person {
+.blur_fond .cont .card .text .person {
   background: #EDEDF3;
   padding: 30px;
 }
 
-section.service_description .specialists.mod .card.visible .text .info {
+.blur_fond .cont .card .text .person h6 {
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+
+.blur_fond .cont .card .text .person p {
+  font-size: 18px;
+}
+
+.blur_fond .cont .card .text .info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2070,7 +2077,7 @@ section.service_description .specialists.mod .card.visible .text .info {
 .gallery_title {
   max-width: 1600px;
   width: 100%;
-  margin: 0 auto 88px;
+  margin: 0 auto 30px;
   padding-left: 88px;
   font-weight: 600;
   font-size: 24px;
@@ -2828,34 +2835,6 @@ section.reviews .block .tape .item p.v2 {
   line-height: 30px;
 }
 
-.learning .close {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  cursor: pointer;
-}
-
-.learning .close svg {
-  stroke: #42414D;
-}
-
-.learning .close:hover svg {
-  stroke: #F05454;
-}
-
 .learning .block {
   margin-top: 30px;
   display: -webkit-box;
@@ -2930,30 +2909,7 @@ section.reviews .block .tape .item p.v2 {
   margin-left: 8px;
 }
 
-.learning .block.mod {
-  position: fixed;
-  max-width: 100%;
-  height: 100%;
-  z-index: 10000;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.7);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding: 20px;
-  margin: 0;
-}
-
-.learning .block.mod .learning_item {
-  display: none;
-}
-
-.learning .block.mod .learning_item.visible {
+.blur_fond .cont .learning_item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2962,35 +2918,26 @@ section.reviews .block .tape .item p.v2 {
   -ms-flex-direction: row;
   flex-direction: row;
   gap: 16px;
-  max-width: 1064px;
   width: 100%;
-  position: relative;
-  margin-top: 120px;
 }
 
-.learning .block.mod .learning_item.visible .img {
+.blur_fond .cont .learning_item .img {
   width: 344px;
   height: 394px;
 }
 
-.learning .block.mod .learning_item.visible:hover img {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+.blur_fond .cont .learning_item .img img {
+  width: 100%;
 }
 
-.learning .block.mod .learning_item.visible .text {
+.blur_fond .cont .learning_item .text {
   width: calc(100% - 360px);
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
 }
 
-.learning .block.mod .learning_item.visible:hover .text {
-  border: 1px solid #C2C2D1;
-}
-
-.learning .block.mod .learning_item.visible .text .title {
+.blur_fond .cont .learning_item .text .title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3000,13 +2947,16 @@ section.reviews .block .tape .item p.v2 {
   flex-direction: column;
   gap: 20px;
   background: #EDEDF3;
+  padding: 30px;
 }
 
-.learning .block.mod .learning_item.visible:hover .text .title h6 {
+.blur_fond .cont .learning_item .text .title h6 {
   color: #42414D;
+  font-size: 20px;
+  line-height: 24px;
 }
 
-.learning .block.mod .learning_item.visible .text .title .date {
+.blur_fond .cont .learning_item .text .title .date {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3016,17 +2966,18 @@ section.reviews .block .tape .item p.v2 {
   gap: 16px;
 }
 
-.learning .block.mod .learning_item.visible .text .title .date span {
+.blur_fond .cont .learning_item .text .title .date span {
   font-weight: 500;
   font-size: 18px;
   line-height: 30px;
 }
 
-.learning .block.mod .learning_item.visible .info {
+.blur_fond .cont .learning_item .info {
   display: block;
   padding: 20px;
   max-height: 336px;
   overflow: auto;
+  background-color: #fff;
 }
 
 /***** сторінка catalog *****/
@@ -4261,7 +4212,7 @@ footer {
   border-top: 1px solid #C2C2D1;
   max-width: 1600px;
   width: 100%;
-  margin: auto;
+  margin: auto auto 0;
 }
 
 footer .top_part {
@@ -4389,6 +4340,7 @@ footer .bottom_part .links a:hover {
 }
 
 footer .chat {
+  display: none;
   position: fixed;
   right: 40px;
   bottom: 40px;
@@ -4633,23 +4585,7 @@ footer .chat:hover a svg path {
 }
 
 @media (max-width: 950px) {
-  section.gift_certificates .block {
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-  }
-
-  section.gift_certificates .block .pict {
-    width: 100%;
-  }
-
-  section.gift_certificates .block .info {
-    width: 100%;
-  }
-
-  section.gift_certificates .block .info .prices h1 {
-    width: calc(50% - 10px);
-  }
-
+  
   .catalog .content .goods .item {
     width: 100%;
   }
@@ -4679,6 +4615,7 @@ footer .chat:hover a svg path {
     color: #42414D;
     margin-top: 10px;
     font-size: 18px;
+    display: block;
   }
 
   header .services_block .services_content .services_categories .wrapper .items a:hover {
@@ -4751,11 +4688,8 @@ footer .chat:hover a svg path {
     line-height: 22px;
   }
 
-  section.popular_services .work_drugs {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+  section.popular_services .work_drugs .drugs .img {
+    padding: 0 60px;
   }
 
   section.awards .block .item {
@@ -4765,6 +4699,10 @@ footer .chat:hover a svg path {
   .name_service_category section.background p.n1,
   .name_service_category section.background p.n2 {
     width: 100%;
+  }
+
+  .name_service_category section.background {
+    padding: 30px;
   }
 
   section.service_description .specialists .card {
@@ -4787,6 +4725,19 @@ footer .chat:hover a svg path {
   }
 
   section.reviews .block .tape {
+    width: 100%;
+  }
+
+  section.gift_certificates .block {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  section.gift_certificates .block .pict {
+    width: 100%;
+  }
+
+  section.gift_certificates .block .info {
     width: 100%;
   }
 
@@ -4951,6 +4902,47 @@ footer .chat:hover a svg path {
 }
 
 @media (max-width: 700px) {
+
+  .blur_fond .cont .card,
+  .blur_fond .cont .learning_item {
+    flex-direction: column;
+  }
+
+  .blur_fond .cont .close {
+    margin: 0 auto 20px;
+  }
+
+  .blur_fond .cont .card .img,
+  .blur_fond .cont .learning_item .img {
+    width: 320px;
+    height: 320px;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .blur_fond .cont .card .text .person,
+  .blur_fond .cont .card .text .info,
+  .blur_fond .cont .learning_item .text .title,
+  .blur_fond .cont .learning_item .text .info {
+    padding: 20px;
+  }
+
+  .blur_fond .cont .card .text .info,
+  .blur_fond .cont .learning_item .text .info {
+    max-height: 200px;
+    overflow: auto;
+  }
+
+  .blur_fond .cont .learning_item .img img {
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .blur_fond .cont .card .text,
+  .blur_fond .cont .learning_item .text {
+    width: 100%;
+  }
+
   .product_head {
     padding-top: 130px;
   }
@@ -5418,34 +5410,6 @@ footer .chat:hover a svg path {
     width: 100%;
   }
 
-  section.service_description .specialists.mod .close {
-    top: 20px;
-  }
-
-  section.service_description .specialists.mod .card.visible {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    margin-top: 60px;
-  }
-
-  section.service_description .specialists.mod .card.visible .img {
-    width: 320px;
-    height: 320px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-
-  section.service_description .specialists.mod .card.visible .img img {
-    width: 100%;
-  }
-
-  section.service_description .specialists.mod .card.visible .text .person,
-  section.service_description .specialists.mod .card.visible .text .info {
-    padding: 20px;
-  }
-
   .gallery_title {
     padding-left: 20px;
   }
@@ -5618,6 +5582,16 @@ footer .chat:hover a svg path {
   .name_service_category section.background h1 {
     font-size: 40px;
     line-height: 40px;
+  }
+
+  section.popular_services .services_block .item .title {
+    left: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+  }
+
+  section.popular_services .services_block .item .title h6 {
+    font-size: 16px;
   }
 }
 
