@@ -101,6 +101,10 @@ use yii\helpers\Url;
                 <img src="/img/new_post.svg" alt="">
                 Нова Пошта
             </div>
+            <div class="post">
+                <img src="/img/cart.svg" alt="">
+                Самовивіз
+            </div>
         </div>
     </section>
 </form>

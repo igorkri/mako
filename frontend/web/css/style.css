@@ -3714,11 +3714,14 @@ section.reviews .block .tape .item p.v2 {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 15px;
+  font-weight: 500;
 }
 
 .product .description .post img {
   margin-right: 10px;
+  width: 25px;
+  height: 25px;
 }
 
 .popular_products {
