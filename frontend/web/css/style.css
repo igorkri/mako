@@ -24,12 +24,18 @@
   font-style: normal;
 }
 
-html, body {
+html,
+body {
   font-family: "Manrope", sans-serif;
   color: #42414D;
   height: 100%;
   min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -547,6 +553,8 @@ h3 {
   cursor: pointer;
   background: transparent;
   display: block;
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
 }
 
@@ -672,6 +680,8 @@ h3 {
   font-size: 20px;
   color: #42414D;
   text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -1610,6 +1620,8 @@ section.popular_services .services_block .item .title h6 {
   font-size: 20px;
   line-height: 24px;
   color: #42414D;
+  -webkit-hyphens: manual;
+  -ms-hyphens: manual;
   hyphens: manual;
   word-break: break-all;
 }
@@ -2022,6 +2034,8 @@ section.service_description .specialists .card p {
 }
 
 .blur_fond .cont .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 16px;
 }
@@ -4585,7 +4599,7 @@ footer .chat:hover a svg path {
 }
 
 @media (max-width: 950px) {
-  
+
   .catalog .content .goods .item {
     width: 100%;
   }
@@ -4905,6 +4919,9 @@ footer .chat:hover a svg path {
 
   .blur_fond .cont .card,
   .blur_fond .cont .learning_item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
 
@@ -4934,6 +4951,7 @@ footer .chat:hover a svg path {
   }
 
   .blur_fond .cont .learning_item .img img {
+    -o-object-fit: cover;
     object-fit: cover;
     height: 100%;
   }
@@ -5209,6 +5227,8 @@ footer .chat:hover a svg path {
   header .services_block .services_content .services_names .title {
     padding: 20px;
     border-bottom: 1px solid #C2C2D1;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 
