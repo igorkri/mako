@@ -20,18 +20,17 @@ use yii\helpers\Url;
         <h1>
             <?=$product->name?>
         </h1>
-        <h3>Ціна: <span>
-                <?= Yii::$app->formatter->asCurrency($product->price) ?>
-            </span></h3>
-        <?php
-//        debug($_SESSION);
-        ?>
+        <h3>Ціна:
+            <span id="price" data-price="<?=$product->price?>">
+                <?= Yii::$app->formatter->asDecimal($product->price, 2) ?> ₴</span>
+        </h3>
         <div class="pcc">
-            <span class="price">
-                <?= Yii::$app->formatter->asCurrency($product->price) ?>
+            <span id="price-val" class="price">
+                <?= Yii::$app->formatter->asDecimal($product->price, 2) ?>
             </span>
+            <span class="price"> ₴</span>
             <div class="number">
-                <span class="minus">
+                <span id="btn-minus" class="minus">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="46" height="46" rx="23" fill="" />
                         <path d="M36 24L12 24" stroke="" stroke-width="2" stroke-linecap="round" />
@@ -39,7 +38,7 @@ use yii\helpers\Url;
                     </svg>
                 </span>
                 <input type="text" id="qty-product" value="1" />
-                <span class="plus">
+                <span id="btn-plus" class="plus">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="46" height="46" rx="23" fill="" />
                         <path d="M36 24L12 24" stroke="" stroke-width="2" stroke-linecap="round" />
@@ -139,6 +138,48 @@ $( document ).ready(function() {
     }).on('submit', function(e){
     e.preventDefault();
     });
+    
+    $('#btn-plus').click(function (){
+        var qty = $('input#qty-product').val();
+        var product_id = $('.add_to_cart').data('productId');
+        var price = $('span#price').data('price');
+        var priceRes = price * qty;
+        $('span#price-val').html(new Intl.NumberFormat('ru', {style: "decimal", minimumFractionDigits : 2}).format(priceRes));        
+    });
+    
+    $('#btn-minus').click(function (){
+        var qty = $('input#qty-product').val();
+        var product_id = $('.add_to_cart').data('productId');
+        var price = $('span#price').data('price');
+        var priceRes = price * qty;
+        $('span#price-val').html(new Intl.NumberFormat('ru', {style: "decimal", minimumFractionDigits : 2}).format(priceRes));        
+    });
+    
+    $('#btn-plus').click(function (){
+        var qty = $('input#qty-product').val();
+        var product_id = $('.add_to_cart').data('productId');
+        var price = $('span#price').data('price');
+        var priceRes = price * qty;
+        $('span#price-val').html(new Intl.NumberFormat('ru', {style: "decimal", minimumFractionDigits : 2}).format(priceRes));        
+    });
+    
+    $('input#qty-product').keyup(function (){
+        var qty = $('input#qty-product').val();
+        
+        console.log(qty);
+        
+        if(qty <= 0){
+            var price = $('span#price').data('price');
+            $('span#price-val').html(new Intl.NumberFormat('ru', {style: "decimal", minimumFractionDigits : 2}).format(price));
+            $('input#qty-product').val(1);
+        }else{
+            var product_id = $('.add_to_cart').data('productId');
+            var price = $('span#price').data('price');
+            var priceRes = price * qty;
+            $('span#price-val').html(new Intl.NumberFormat('ru', {style: "decimal", minimumFractionDigits : 2}).format(priceRes));        
+        }
+    });
+
 });
 
 JS;

@@ -63,12 +63,16 @@ class OrderController extends \yii\web\Controller
             if ($product) {
                 \Yii::$app->cart->remove($product);
                 $products = Yii::$app->cart->getPositions();
-                if($request->isAjax) {
-                    Yii::$app->response->format = Response::FORMAT_JSON;
-                    return $this->renderAjax('index', [
-                        'products' => $products,
-                        'totalSumm' => Yii::$app->cart->getCost(),
-                    ]);
+                if($products) {
+                    if ($request->isAjax) {
+                        Yii::$app->response->format = Response::FORMAT_JSON;
+                        return $this->renderAjax('index', [
+                            'products' => $products,
+                            'totalSumm' => Yii::$app->cart->getCost(),
+                        ]);
+                    }
+                }else{
+                    return $this->redirect(['confirm']);
                 }
             }
         }

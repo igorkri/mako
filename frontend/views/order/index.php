@@ -32,8 +32,6 @@ use yii\web\View;
             }else{
                $d = [];
             }
-//            debug($product->productImages);
-//            die;
             ?>
     <div class="item">
         <div class="img">

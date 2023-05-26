@@ -148,10 +148,11 @@ function removePosition(id){
             id: id,
         },
         success: function(data){
-            // console.log(data);
+            console.log('success', data);
             $.pjax.reload({ container: '#body_cart' });
         },
-        error: function(){
+        error: function(data){
+            console.log('error', data);
         }
     });
 
