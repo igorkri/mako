@@ -36,7 +36,7 @@ class FooterWidget extends Widget
     endforeach;
     $res .= '<div class="networks">';
     foreach ($socials as $social):
-    $res .= "\n\t" . '<a href="#">' . "\n\t\t" . $social->icon . "\n\t\t\t" . $social->name . "\n\t" . '</a>' . "\n";
+    $res .= "\n\t" . '<a href="'.$social->link.'">' . "\n\t\t" . $social->icon . "\n\t\t\t" . $social->name . "\n\t" . '</a>' . "\n";
     endforeach;
     $res .= '</div>
   </div>';
