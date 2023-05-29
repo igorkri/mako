@@ -27,11 +27,6 @@
     <div class="cont">
         <?=$service->description?>
     </div>
-    <?php if($service->indication): ?>
-    <h3>Показання</h3>
-    <div class="cont">
-        <?=$service->indication?>
-    </div>
     <a href="<?=$url?>" class="make_appointment" target="_blank">
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="48" height="48" rx="24" fill="" />
@@ -40,6 +35,11 @@
         </svg>
         Записатись на прийом
     </a>
+    <?php if($service->indication): ?>
+    <h3>Показання</h3>
+    <div class="cont">
+        <?=$service->indication?>
+    </div>
     <?php endif; ?>
     <?php if($service->serviceSpecialists): ?>
     <h3 style="margin-top: 60px;">Спеціалісти, що проводять процедуру</h3>

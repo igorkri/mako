@@ -1631,7 +1631,7 @@ section.popular_services .services_block .item .title h6 {
   -webkit-hyphens: manual;
   -ms-hyphens: manual;
   hyphens: manual;
-  word-break: break-all;
+  word-break: keep-all;
 }
 
 section.popular_services .services_block .item .arrow {
