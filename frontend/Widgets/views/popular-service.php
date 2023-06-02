@@ -35,14 +35,21 @@ use yii\helpers\Url;
         Записатись на прийом
     </a>
     <?php if ($preparats): ?>
-    <marquee  class="work_drugs">
-        <div class="drugs">
-            <?php foreach ($preparats as $preparat): ?>
-            <div class="img">
-                <img src="/img/preparat/<?=$preparat->file?>" alt="">
-            </div>
-            <?php endforeach; ?>
+    <marquee class="work_drugs"">
+        <div class=" drugs">
+        <?php foreach ($preparats as $preparat): ?>
+        <div class="img">
+            <img src="/img/preparat/<?=$preparat->file?>" alt="">
+        </div>
+        <?php endforeach; ?>
         </div>
     </marquee>
+    <div class="drugs v2">
+        <?php foreach ($preparats as $preparat): ?>
+        <div class="img">
+            <img src="/img/preparat/<?=$preparat->file?>" alt="">
+        </div>
+        <?php endforeach; ?>
+    </div>
     <?php endif; ?>
 </section>

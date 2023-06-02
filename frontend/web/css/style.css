@@ -830,7 +830,7 @@ header .links {
   align-items: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  position: relative;
+  
 }
 
 header .links.visible {
@@ -855,7 +855,7 @@ header .links a:hover {
 
 header .links .cloud {
   position: absolute;
-  top: calc(100% + 10px);
+  top: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1387,7 +1387,7 @@ section.promotional_offers .slider_block .slider {
   position: relative;
 }
 
-section.promotional_offers .slider_block .slider .item a {
+section.promotional_offers .slider_block .slider .item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1395,7 +1395,7 @@ section.promotional_offers .slider_block .slider .item a {
   border: 1px solid #EDEDF3;
 }
 
-section.promotional_offers .slider_block .slider .item a .title {
+section.promotional_offers .slider_block .slider .item .title {
   width: 50%;
   padding: 20px;
   display: -webkit-box;
@@ -1408,13 +1408,13 @@ section.promotional_offers .slider_block .slider .item a .title {
   gap: 8px;
 }
 
-section.promotional_offers .slider_block .slider .item a .title p {
+section.promotional_offers .slider_block .slider .item .title p {
   font-size: 14px;
   line-height: 20px;
   color: #42414D;
 }
 
-section.promotional_offers .slider_block .slider .item a .title h3 {
+section.promotional_offers .slider_block .slider .item .title h3 {
   font-weight: 700;
   font-size: 24px;
   line-height: 30px;
@@ -1424,24 +1424,24 @@ section.promotional_offers .slider_block .slider .item a .title h3 {
   flex: auto;
 }
 
-section.promotional_offers .slider_block .slider .item a .title .make_appointment {
+section.promotional_offers .slider_block .slider .item .title .make_appointment {
   margin: 0;
 
 }
 
-section.promotional_offers .slider_block .slider .item a .img {
+section.promotional_offers .slider_block .slider .item .img {
   width: 50%;
   overflow: hidden;
 }
 
-section.promotional_offers .slider_block .slider .item a .img img {
+section.promotional_offers .slider_block .slider .item .img img {
   width: 100%;
   height: 300px;
   -o-object-fit: cover;
   object-fit: cover;
 }
 
-section.promotional_offers .slider_block .slider .item a:hover .img img {
+section.promotional_offers .slider_block .slider .item .img:hover img {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
@@ -1679,6 +1679,10 @@ section.popular_services .work_drugs .drugs {
   width: 100%;
 }
 
+section.popular_services .drugs.v2 {
+  display: none;
+}
+
 section.popular_services .work_drugs .drugs .img {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1849,18 +1853,14 @@ section.gift_certificates .block .info p {
 
 .name_service_category {
   padding: 100px 0 0 0;
-  background: -o-linear-gradient(top, #FFFFFF 0%, #FFF2F2 100%);
-  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#FFF2F2));
-  background: linear-gradient(180deg, #FFFFFF 0%, #FFF2F2 100%);
   max-width: 1600px;
   width: 100%;
   margin: auto;
 }
 
 .name_service_category section.background {
-  background: url(../img/service_category_back.png) 50%;
+  background: #ececf8;
   padding: 30px 88px;
-  background-size: cover;
 }
 
 .name_service_category section.background h1 {
@@ -1896,6 +1896,7 @@ section.service_description h3 {
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
@@ -3047,9 +3048,20 @@ section.reviews .block .tape .item p.v2 {
   border-radius: 15px;
 }
 
+.catalog .buttons button.on {
+  background: #F05454;
+  color: #fff;
+}
+
 .catalog .buttons button:hover {
   background: #F05454;
   color: #fff;
+}
+
+.catalog .buttons button:disabled:hover {
+  cursor: auto;
+  background: #fff;
+  color: #1010104D;
 }
 
 .catalog .buttons button.filter_button {
@@ -3167,6 +3179,14 @@ section.reviews .block .tape .item p.v2 {
   stroke: #F05454;
 }
 
+.catalog .content .filters .head .you_choose .clear {
+  color: #F05454;
+}
+
+.catalog .content .filters .head .you_choose .clear svg path {
+  stroke: #F05454;
+}
+
 .catalog .content .filters .checkboxes_block {
   padding: 20px 0;
   margin: 0 20px;
@@ -3260,7 +3280,6 @@ section.reviews .block .tape .item p.v2 {
   color: #42414D;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 1px solid #EDEDF3;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3283,6 +3302,11 @@ section.reviews .block .tape .item p.v2 {
   background: #fff;
   padding: 27px;
   height: 300px;
+  border: 1px solid transparent;
+}
+
+.catalog .content .goods .item .img:hover {
+  border: 1px solid #F05454;
 }
 
 .catalog .content .goods .item .img img {
@@ -3341,10 +3365,6 @@ section.reviews .block .tape .item p.v2 {
 .catalog .content .goods .item .title div .cart {
   opacity: 0;
   cursor: pointer;
-}
-
-.catalog .content .goods .item:hover {
-  border: 1px solid #F05454;
 }
 
 .catalog .content .goods .item:hover .title div h5 {
@@ -4187,12 +4207,14 @@ section.order form .post_select .drop_list span:hover {
 
 section.order_confirm {
   padding-top: 180px;
-  background: #FFF5F5;
 }
 
-section.order_confirm img {
+section.order_confirm .img {
   display: block;
   margin: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 section.order_confirm h3 {
@@ -4208,6 +4230,11 @@ section.order_confirm a {
   -ms-flex-pack: center;
   justify-content: center;
   gap: 8px;
+  text-align: center;
+}
+
+section.order_confirm a div {
+  max-width: calc(100% - 32px);
   font-weight: 700;
   font-size: 20px;
   color: #42414D;
@@ -4217,7 +4244,7 @@ section.order_confirm a svg rect {
   fill: #42414D;
 }
 
-section.order_confirm a:hover {
+section.order_confirm a:hover div {
   color: #F05454;
 }
 
@@ -4271,6 +4298,10 @@ footer .top_part .line .address {
 
 footer .top_part .line .address img {
   margin: 7px 14px 0 0;
+}
+
+footer .top_part .line .address p {
+  white-space: nowrap;
 }
 
 footer .top_part .line .tel {
@@ -4662,11 +4693,11 @@ footer .chat:hover a svg path {
     margin: 0;
   }
 
-  section.promotional_offers .slider_block .slider .item a .img {
+  section.promotional_offers .slider_block .slider .item .img {
     width: 100%;
   }
 
-  section.promotional_offers .slider_block .slider .item a .title {
+  section.promotional_offers .slider_block .slider .item .title {
     position: absolute;
     width: calc(100% - 40px);
     bottom: 20px;
@@ -4677,8 +4708,8 @@ footer .chat:hover a svg path {
     padding: 10px;
   }
 
-  section.promotional_offers .slider_block .slider .item a .title p,
-  section.promotional_offers .slider_block .slider .item a .title .make_appointment {
+  section.promotional_offers .slider_block .slider .item .title p,
+  section.promotional_offers .slider_block .slider .item .title .make_appointment {
     display: none;
   }
 
@@ -4728,6 +4759,11 @@ footer .chat:hover a svg path {
 
   .name_service_category section.background {
     padding: 30px;
+  }
+
+  .name_service_category section.background h1 {
+    font-size: 35px;
+    line-height: 42px;
   }
 
   section.service_description .specialists .card {
@@ -5031,6 +5067,27 @@ footer .chat:hover a svg path {
 }
 
 @media (max-width: 600px) {
+
+  section.popular_services .work_drugs {
+    display: none;
+  }
+
+  section.popular_services .drugs.v2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  }
+
+  section.popular_services .drugs.v2 .img {
+    width: calc(33.33% - 13.34px);
+  }
+
+  section.popular_services .drugs.v2 .img img {
+    width: 80%;
+    margin: auto;
+  }
+
   .product {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
@@ -5166,6 +5223,10 @@ footer .chat:hover a svg path {
     order: 1;
   }
 
+  .dark_background .modal_cart .body_cart .empty_cart a {
+    max-width: 320px;
+  }
+
   header {
     gap: 0;
   }
@@ -5278,7 +5339,7 @@ footer .chat:hover a svg path {
     margin-top: 90px;
   }
 
-  section.promotional_offers .slider_block .slider .item a .title h3 {
+  section.promotional_offers .slider_block .slider .item .title h3 {
     font-size: 16px;
     line-height: 20px;
   }
@@ -5401,6 +5462,17 @@ footer .chat:hover a svg path {
     height: 25px;
     border-radius: 12.5px;
   }
+
+    section.popular_services .services_block .item .title {
+      left: 10px;
+      bottom: 10px;
+      width: calc(100% - 20px);
+    }
+  
+    section.popular_services .services_block .item .title h6 {
+      font-size: 16px;
+      line-height: 20px;
+    }
 
   section.awards .block .item {
     -ms-flex-wrap: wrap;
@@ -5567,6 +5639,11 @@ footer .chat:hover a svg path {
     padding: 30px 20px;
   }
 
+  section.order_confirm a {
+    max-width: 320px;
+    margin: auto;
+  }
+
   .error .dark_back img {
     margin: 40px auto;
   }
@@ -5586,6 +5663,14 @@ footer .chat:hover a svg path {
     -webkit-transform: rotate(180deg) scale(1.5);
     -ms-transform: rotate(180deg) scale(1.5);
     transform: rotate(180deg) scale(1.5);
+  }
+
+  .name_service_category {
+    padding: 80px 0 0 0;
+  }
+
+  footer .top_part .line .address p {
+    white-space: normal;
   }
 }
 
@@ -5610,9 +5695,13 @@ footer .chat:hover a svg path {
     height: 150px;
   }
 
+  .name_service_category section.background {
+    padding: 20px;
+  }
+
   .name_service_category section.background h1 {
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 28px;
+    line-height: 35px;
   }
 
   section.popular_services .services_block .item .title {
@@ -5622,7 +5711,11 @@ footer .chat:hover a svg path {
   }
 
   section.popular_services .services_block .item .title h6 {
-    font-size: 16px;
+    font-size: 14px;
+  }
+
+  section.popular_services .drugs.v2 .img {
+    width: calc(50% - 10px);
   }
 }
 

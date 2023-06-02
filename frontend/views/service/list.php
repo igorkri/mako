@@ -26,7 +26,7 @@ use yii\helpers\Url;
 <!----- Пропонуємо наступні послуги ----->
 <section class="popular_services v2">
     <?php if($services): ?>
-    <h4>Пропонуємо наступні послуги:</h4>
+    <!-- <h4>Пропонуємо наступні послуги:</h4> -->
     <div class="services_block">
         <?php foreach ($services as $service): ?>
         <a href="<?=Url::to(['/service/index', 'slug' => $service->slug])?>" class="item">

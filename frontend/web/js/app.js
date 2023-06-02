@@ -20,6 +20,11 @@ $(window).bind('scroll', function () {
 $('#header .services').click(function () {
   $(this).toggleClass('active');
   $('#header .services_block').slideToggle(300);
+  if ($(this).hasClass('active')) {
+    $('#header .services_block .services_categories .wrapper .category_name').removeClass('hover');
+    $('#header .services_block .services_names').removeClass('on');
+    $('#header .services_block .services_names .items').remove();
+  }
 });
 
 // відкриття вікна про нас
