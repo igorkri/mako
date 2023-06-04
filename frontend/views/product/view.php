@@ -21,12 +21,12 @@ use yii\helpers\Url;
             <?=$product->name?>
         </h1>
         <h3>Ціна:
-            <span id="price" data-price="<?=$product->price?>">
-                <?= Yii::$app->formatter->asCurrency($product->price, 2) ?> ₴</span>
+            <span id="price" data-price="<?=$product->getPrice()?>">
+                <?= Yii::$app->formatter->asDecimal($product->getPrice(), 2) ?> ₴</span>
         </h3>
         <div class="pcc">
             <span id="price-val" class="price">
-                <?= Yii::$app->formatter->asDecimal($product->price, 2) ?>
+                <?= Yii::$app->formatter->asDecimal($product->getPrice(), 2) ?>
             </span>
             <span class="price"> ₴</span>
             <div class="number">
