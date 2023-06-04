@@ -101,7 +101,7 @@ class OrderController extends \yii\web\Controller
 
             $cities = NpCity::find()
                 ->where(['like', 'name', $q])
-                ->orWhere(['like', 'area', $q])
+//                ->orWhere(['like', 'area', $q])
                 ->asArray()
                 ->all();
             $arrs = [];
