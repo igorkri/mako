@@ -100,7 +100,7 @@ class OrderController extends \yii\web\Controller
         if (!is_null($q)) {
 
             $cities = NpCity::find()
-                ->where(['like', 'name', $q])
+                ->where(['like', 'name', $q . '%', false])
 //                ->orWhere(['like', 'area', $q])
                 ->asArray()
                 ->all();
@@ -140,7 +140,7 @@ class OrderController extends \yii\web\Controller
         }else{
             $warehouses = NpWarehouse::find()
                 ->where(['cityRef' => $id])
-                ->andWhere(['like', 'description', $q . '%', false])
+                ->andWhere(['like', 'description', $q])
                 ->asArray()
                 ->all();
         }
