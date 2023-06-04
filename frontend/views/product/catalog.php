@@ -40,8 +40,8 @@ use yii\widgets\Pjax;
             </span>
             </button>
             <button type="button" class="<?=!empty($filters['popular_product']) ? 'on' : ''?>" onclick="filterPopular(1)">Популярні</button>
-            <button type="button" onclick="filterPrice(1)">Дешевше</button>
-            <button type="button" onclick="filterPrice(2)">Дорожче</button>
+            <button type="button" class="<?=!empty($filters['sort']) && $filters['sort'][0] == 1 ? 'on' : '' ?>" onclick="filterPrice(1)">Дешевше</button>
+            <button type="button" class="<?=!empty($filters['sort']) && $filters['sort'][0] == 2 ? 'on' : '' ?>" onclick="filterPrice(2)">Дорожче</button>
         </div>
         <div class="content">
             <?= $this->render('filter', [

@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
         <div class="head">
-            <?php if ($filters and !empty($filters['category']) or !empty($filters['producers']) or !empty($filters['series'] or !empty($filters['popular_product']))): ?>
+            <?php if ($filters and !empty($filters['category']) or !empty($filters['producers']) or !empty($filters['series'] or !empty($filters['popular_product'])) or !empty($filters['sort']) && $filters['sort'][0] == 1 or !empty($filters['sort']) && $filters['sort'][0] == 2): ?>
                 <div class="you_choose">
                     <p>Ви обрали:</p>
                     <div class="clear" id="remove-filter">
@@ -39,6 +39,30 @@ use yii\widgets\ActiveForm;
                 <?php if (!empty($filters['popular_product'])): ?>
                     <div class="clear" onclick="removeFilter('popular_product', 1)">
                         Популярні
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <rect width="24" height="24" fill="white"/>
+                            <path d="M18 18L6 6" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 18L18 6" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($filters['sort']) && $filters['sort'][0] == 1): ?>
+                    <div class="clear" onclick="removeFilter('sort', 1)">
+                        Дешевше
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <rect width="24" height="24" fill="white"/>
+                            <path d="M18 18L6 6" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 18L18 6" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($filters['sort']) && $filters['sort'][0] == 2): ?>
+                    <div class="clear" onclick="removeFilter('sort', 2)">
+                        Дорожче
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <rect width="24" height="24" fill="white"/>
