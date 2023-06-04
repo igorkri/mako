@@ -145,7 +145,7 @@ use yii\web\View;
 
             success: function (data) {
                 $.each(data, function (index, value) {
-                    var html = '<span onclick="warehousInput(`' + value.desc + '`)">' + value.desc + '</span>';
+                    var html = '<span onclick="warehousInput(' + '\'' + value.desc + '\'' + ')">' + value.desc + '</span>';
                     $('#address-drop_list').append(html);
                     // console.log(value.desc);
                 });
@@ -192,13 +192,12 @@ $( document ).ready(function() {
         data: {
             id: id,
             q: val
-            },
+        },
         success: function(data){
             var html = '';
             $.each(data, function (index, value) {
-                    html += '<span onclick="warehousInput(`' + value.desc + '`)">' + value.desc + '</span>';
-                    // console.log(value.desc);
-                });
+                html += '<span onclick="warehousInput(' + '\'' + value.desc + '\'' + ')">' + value.desc + '</span>';
+            });
                 $('#address-drop_list').html(html);
             // console.log(data);
             // $('#city-drop_list').html(data);
