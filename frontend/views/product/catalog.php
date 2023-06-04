@@ -39,7 +39,7 @@ use yii\widgets\Pjax;
                 <?= $count_filters ?>)
             </span>
             </button>
-            <button type="button" onclick="filterPopular(1)">Популярні</button>
+            <button type="button" class="<?=!empty($filters['popular_product']) ? 'on' : ''?>" onclick="filterPopular(1)">Популярні</button>
             <button type="button" onclick="filterPrice(1)">Дешевше</button>
             <button type="button" onclick="filterPrice(2)">Дорожче</button>
         </div>

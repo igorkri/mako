@@ -22,7 +22,7 @@ use yii\helpers\Url;
         </h1>
         <h3>Ціна:
             <span id="price" data-price="<?=$product->price?>">
-                <?= Yii::$app->formatter->asDecimal($product->price, 2) ?> ₴</span>
+                <?= Yii::$app->formatter->asCurrency($product->price, 2) ?> ₴</span>
         </h3>
         <div class="pcc">
             <span id="price-val" class="price">
@@ -119,25 +119,26 @@ $( document ).ready(function() {
         var qty = $('input#qty-product').val();
         var product_id = $('.add_to_cart').data('productId');
         // var headerQtyProduct= $('#header-qty-product').html(qty);
-        console.log('qty', qty);
-        console.log('product_id', product_id);
+        // console.log('qty', qty);
+        // console.log('product_id', product_id);
+                
         $.ajax({
-        url: "/product/add-to-cart",
-        type: "get",
-        data: {
-            product_id: product_id,
-            qty: qty
-        },
-
-        success: function(data){
-            console.log(data);
-            $('#header-qty-product').html(data.qty);
-            $.pjax.reload({ container: '#cart-products' });
-        },
-        error: function(){
-            $.pjax.reload({ container: '#header-qty-product' });
-        }
-    });
+            url: "/product/add-to-cart",
+            type: "get",
+            data: {
+                product_id: product_id,
+                qty: qty
+            },
+    
+            success: function(data){
+                console.log(data);
+                $('#header-qty-product').html(data.qty);
+                $.pjax.reload({ container: '#cart-products' });
+            },
+            error: function(){
+                $.pjax.reload({ container: '#header-qty-product' });
+            }
+        });
     return false;
     }).on('submit', function(e){
     e.preventDefault();

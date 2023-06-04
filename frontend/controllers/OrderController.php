@@ -80,7 +80,6 @@ class OrderController extends \yii\web\Controller
     }
 
     public function actionConfirm(){
-
         return $this->render('confirm');
     }
 
