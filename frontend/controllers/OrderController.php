@@ -3,6 +3,8 @@
 namespace frontend\controllers;
 
 use common\models\NovaPoshta;
+use common\models\shop\NpCity;
+use common\models\shop\NpWarehouse;
 use common\models\shop\Order;
 use common\models\shop\OrderItem;
 use common\models\shop\Product;
@@ -90,29 +92,24 @@ class OrderController extends \yii\web\Controller
 
     public function actionCity($q = null)
     {
-        /**
-         * Запись клиента в бд для статистики
-         */
-        $np = new NovaPoshtaApi2(
-            NovaPoshta::KEY_NP,
-            'ua', // Язык возвращаемых данных: ru (default) | ua | en
-            FALSE, // При ошибке в запросе выбрасывать Exception: FALSE (default) | TRUE
-            'file_get_content' // Используемый механизм запроса: curl (defalut) | file_get_content
-        // 'curl' // Используемый механизм запроса: curl (defalut) | file_get_content
-        );
+
 
         //        $this->enableCsrfValidation = false;
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $out = ['results' => ['id' => '', 'text' => '', 'area' => '']];
         if (!is_null($q)) {
 
-            $cities = $np->getCities(0, $q, '');
+            $cities = NpCity::find()
+                ->where(['like', 'name', $q])
+                ->orWhere(['like', 'area', $q])
+                ->asArray()
+                ->all();
             $arrs = [];
-            foreach ($cities['data'] as $value) {
+            foreach ($cities as $value) {
                 $arr = [];
-                $arr['id'] = $value['Ref'];
-                $arr['text'] = $value['Description'];
-                $arr['area'] = $value['AreaDescription'];
+                $arr['id'] = $value['ref'];
+                $arr['text'] = $value['name'];
+                $arr['area'] = $value['area'];
 
                 $arrs[] = $arr;
             }
@@ -123,7 +120,7 @@ class OrderController extends \yii\web\Controller
                 $list .= "\t" . '<span 
                 id="'.$result['id'].'" 
                 onclick="addressInput('. '\'' . $result['id']. '\'' . ', '. '\'' . $desc.'\'' . ')"
-                >'.$desc.'</span>' . "\n";
+                >'.strval($result['text']).'</span>' . "\n";
             }
         } else {
             $out['results'] = ['id' => '', 'text' => '', 'area' => ''];
@@ -133,31 +130,94 @@ class OrderController extends \yii\web\Controller
 
     public function actionSubNp($id)
     {
-        /**
-         * Запись клиента в бд для статистики
-         */
-
-        $np = new NovaPoshtaApi2(
-            NovaPoshta::KEY_NP,
-            'ua', // Язык возвращаемых данных: ru (default) | ua | en
-            FALSE, // При ошибке в запросе выбрасывать Exception: FALSE (default) | TRUE
-            'file_get_content' // Используемый механизм запроса: curl (defalut) | file_get_content
-        // 'curl' // Используемый механизм запроса: curl (defalut) | file_get_content
-        );
 
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $warehouses = $np->getWarehouses(strval($id));
+        $warehouses = NpWarehouse::find()
+            ->where(['cityRef' => $id])
+            ->asArray()
+            ->all();
         $list = [];
-        foreach ($warehouses['data'] as $warehous) {
-//            return $warehous;
-            $ref = strval($warehous['Ref']);
-            $desc = str_replace(["'", '"'], "\'", strval($warehous['Description']));
-//            $desc = strval($warehous['Description']);
-                $l = [];
-                $l['ref'] = $ref;
-                $l['desc'] = $desc;
-                $list[] = $l;
+        foreach ($warehouses as $warehous) {
+
+            $ref = strval($warehous['ref']);
+            $l = [];
+            $l['ref'] = $ref;
+            $l['desc'] = strval($warehous['description']);
+            $list[] = $l;
         }
         return $list;
     }
+
+//    public function actionCity($q = null)
+//    {
+//        /**
+//         * Запись клиента в бд для статистики
+//         */
+//        $np = new NovaPoshtaApi2(
+//            NovaPoshta::KEY_NP,
+//            'ua', // Язык возвращаемых данных: ru (default) | ua | en
+//            FALSE, // При ошибке в запросе выбрасывать Exception: FALSE (default) | TRUE
+//            'file_get_content' // Используемый механизм запроса: curl (defalut) | file_get_content
+//        // 'curl' // Используемый механизм запроса: curl (defalut) | file_get_content
+//        );
+//
+//        //        $this->enableCsrfValidation = false;
+//        \Yii::$app->response->format = Response::FORMAT_JSON;
+//        $out = ['results' => ['id' => '', 'text' => '', 'area' => '']];
+//        if (!is_null($q)) {
+//
+//            $cities = $np->getCities(0, $q, '');
+//            $arrs = [];
+//            foreach ($cities['data'] as $value) {
+//                $arr = [];
+//                $arr['id'] = $value['Ref'];
+//                $arr['text'] = $value['Description'];
+//                $arr['area'] = $value['AreaDescription'];
+//
+//                $arrs[] = $arr;
+//            }
+//            $out['results'] = $arrs;
+//            $list = '';
+//            foreach ($out['results'] as $result){
+//                $desc = str_replace(["'", '"'], "\'", strval($result['text']));
+//                $list .= "\t" . '<span
+//                id="'.$result['id'].'"
+//                onclick="addressInput('. '\'' . $result['id']. '\'' . ', '. '\'' . $desc.'\'' . ')"
+//                >'.$desc.'</span>' . "\n";
+//            }
+//        } else {
+//            $out['results'] = ['id' => '', 'text' => '', 'area' => ''];
+//        }
+//        return $list;
+//    }
+
+//    public function actionSubNp($id)
+//    {
+//        /**
+//         * Запись клиента в бд для статистики
+//         */
+//
+//        $np = new NovaPoshtaApi2(
+//            NovaPoshta::KEY_NP,
+//            'ua', // Язык возвращаемых данных: ru (default) | ua | en
+//            FALSE, // При ошибке в запросе выбрасывать Exception: FALSE (default) | TRUE
+//            'file_get_content' // Используемый механизм запроса: curl (defalut) | file_get_content
+//        // 'curl' // Используемый механизм запроса: curl (defalut) | file_get_content
+//        );
+//
+//        Yii::$app->response->format = Response::FORMAT_JSON;
+//        $warehouses = $np->getWarehouses(strval($id));
+//        $list = [];
+//        foreach ($warehouses['data'] as $warehous) {
+////            return $warehous;
+//            $ref = strval($warehous['Ref']);
+//            $desc = str_replace(["'", '"'], "\'", strval($warehous['Description']));
+////            $desc = strval($warehous['Description']);
+//                $l = [];
+//                $l['ref'] = $ref;
+//                $l['desc'] = $desc;
+//                $list[] = $l;
+//        }
+//        return $list;
+//    }
 }
