@@ -128,14 +128,22 @@ class OrderController extends \yii\web\Controller
         return $list;
     }
 
-    public function actionSubNp($id)
+    public function actionSubNp($id, $q = null)
     {
 
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $warehouses = NpWarehouse::find()
-            ->where(['cityRef' => $id])
-            ->asArray()
-            ->all();
+        if($q === null) {
+            $warehouses = NpWarehouse::find()
+                ->where(['cityRef' => $id])
+                ->asArray()
+                ->all();
+        }else{
+            $warehouses = NpWarehouse::find()
+                ->where(['cityRef' => $id])
+                ->andWhere(['like', 'description', $q])
+                ->asArray()
+                ->all();
+        }
         $list = [];
         foreach ($warehouses as $warehous) {
 

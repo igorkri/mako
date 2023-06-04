@@ -106,6 +106,7 @@ use yii\web\View;
             </div>
 
         </div>
+        <input type="hidden" autocomplete="off" name="cityId" id="city-id" value="">
     </div>
     <input type="radio" id="pickup" name="new_post" value="1" checked>
     <label for="pickup">Самовивіз</label>
@@ -136,7 +137,8 @@ use yii\web\View;
 <?php endif; ?>
 <script>
     function addressInput(id, city) {
-        $('#city').val(city)
+        $('input#city-id').val(id);
+        document.getElementById("city").value = city;
         $.ajax({
             url: '/order/sub-np',
             data: { id: id },
@@ -169,8 +171,37 @@ $( document ).ready(function() {
         url: '/order/city',
         data: {q: val},
         success: function(data){
-            // console.log(data);
+            // console.log(data);            
             $('#city-drop_list').html(data);
+        },
+        error: function(){
+            
+        }
+    });
+    return false;
+    }).on('submit', function(e){
+    e.preventDefault();
+    
+    });
+    
+    $('#address').keyup(function(){
+    var val =  $('input#address').val();
+    var id =  $('input#city-id').val();
+    $.ajax({
+        url: '/order/sub-np',
+        data: {
+            id: id,
+            q: val
+            },
+        success: function(data){
+            var html = '';
+            $.each(data, function (index, value) {
+                    html += '<span onclick="warehousInput(`' + value.desc + '`)">' + value.desc + '</span>';
+                    // console.log(value.desc);
+                });
+                $('#address-drop_list').html(html);
+            // console.log(data);
+            // $('#city-drop_list').html(data);
         },
         error: function(){
             
