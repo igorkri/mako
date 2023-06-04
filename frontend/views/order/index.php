@@ -88,7 +88,7 @@ use yii\web\View;
     </label>
     <div id="post_select_block">
         <div class="post_select">
-            <input type="text" name="Order[city]" id="city" value="" placeholder="Оберіть населений пункт">
+            <input type="text" autocomplete="off" name="Order[city]" id="city" value="" placeholder="Оберіть населений пункт">
             <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 0.999999C5 3 7 7 7 7C7 7 9 3 13 1" stroke="#42414D" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
@@ -96,7 +96,7 @@ use yii\web\View;
             <div class="drop_list" id="city-drop_list"></div>
         </div>
         <div class="post_select">
-            <input type="text" value="" name="Order[address]" id="address" placeholder="Відділення або поштомат">
+            <input type="text" autocomplete="off" value="" name="Order[address]" id="address" placeholder="Відділення або поштомат">
             <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 0.999999C5 3 7 7 7 7C7 7 9 3 13 1" stroke="#42414D" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
