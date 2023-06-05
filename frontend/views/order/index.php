@@ -139,16 +139,18 @@ use yii\web\View;
     function addressInput(id, city) {
         $('input#city-id').val(id);
         document.getElementById("city").value = city;
+        document.getElementById("address").value = '';
         $.ajax({
             url: '/order/sub-np',
             data: { id: id },
 
             success: function (data) {
+                var html = '';
                 $.each(data, function (index, value) {
-                    var html = '<span onclick="warehousInput(' + '\'' + value.desc + '\'' + ')">' + value.desc + '</span>';
-                    $('#address-drop_list').append(html);
+                    html += '<span class="warehouse">' + value.desc + '</span>';
                     // console.log(value.desc);
                 });
+                $('#address-drop_list').html(html);
             },
             error: function () {
 
@@ -164,6 +166,16 @@ use yii\web\View;
 
 $js = <<<JS
 $( document ).ready(function() {
+   
+    $('input#address').on('click', function () {
+        $('span.warehouse').each(function (i) {
+            $(document).on('click', '.warehouse', function () {
+                var warehouseValue = $(this).text();
+                $('input#address').val(warehouseValue);
+            });
+        });
+    });
+    
     $('#city').keyup(function(){
     var val =  $('input#city').val();
     // console.log(val);
@@ -173,6 +185,7 @@ $( document ).ready(function() {
         success: function(data){
             // console.log(data);            
             $('#city-drop_list').html(data);
+            // $('#address-drop_list').css('display', 'block');
         },
         error: function(){
             
@@ -184,7 +197,7 @@ $( document ).ready(function() {
     
     });
     
-    $('#address').keyup(function(){
+    $('#address').keyup(function(e){
     var val =  $('input#address').val();
     var id =  $('input#city-id').val();
     $.ajax({
@@ -194,13 +207,13 @@ $( document ).ready(function() {
             q: val
         },
         success: function(data){
+            e.preventDefault();
             var html = '';
             $.each(data, function (index, value) {
-                html += '<span onclick="warehousInput(' + '\'' + value.desc + '\'' + ')">' + value.desc + '</span>';
+                html += '<span class="warehouse">' + value.desc + '</span>';
             });
-                $('#address-drop_list').html(html);
+            $('#address-drop_list').html(html);
             // console.log(data);
-            // $('#city-drop_list').html(data);
         },
         error: function(){
             
