@@ -67,7 +67,17 @@ class CustomPager  extends \yii\widgets\LinkPager
         if ($lastPageLabel !== false) {
             $buttons[] = $this->renderPageButton($lastPageLabel, $pageCount - 1, $this->lastPageCssClass, $currentPage >= $pageCount - 1, false);
         }
-//        debug($pageCount);
+        $i = 1;
+        $btn = [];
+        foreach ($buttons as $button){
+            if($i <= 3){
+                $btn[] = Html::tag('div', $button, $this->options);
+
+            }
+        }
+//                        debug($btn);
+//                die;
         return Html::tag('div', implode("\n", $buttons), $this->options);
+//        return $btn;
     }
 }

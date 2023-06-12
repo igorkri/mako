@@ -86,11 +86,13 @@ use yii\widgets\Pjax;
         <br>
         <br>
         <?php
+//        debug($products->pagination);
         echo CustomPager::widget([
             'pagination' => $products->pagination,
             'activePageCssClass' => 'page active',
             'disabledPageCssClass' => 'page',
             'nextPageCssClass' => 'arrow',
+            'maxButtonCount' => 5,
             'nextPageLabel' => '<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 13C3 9 7 7 7 7C7 7 3 5 1 1" stroke="" stroke-width="2" stroke-linecap="round"
                           stroke-linejoin="round" />
