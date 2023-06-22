@@ -15,7 +15,7 @@ $(window).bind('scroll', function () {
     }
   }
 });
-
+/*
 // відкриття вікна послуг
 $('#header .services').click(function () {
   $(this).toggleClass('active');
@@ -43,7 +43,7 @@ $(document).mouseup(function (e) {
     $('#header .links .cloud').removeClass('active');
   }
 });
-
+*/
 // бургер меню
 $('#header .call_us .burger').click(function () {
   $(this).toggleClass('active');
@@ -55,7 +55,7 @@ $('#header .call_us .burger').click(function () {
     $('#header .order, #header .links, #header .social').removeClass('notVisible').addClass('visible');
   }
 });
-
+/*
 $(document).mouseup(function (e) { // событие клика по веб-документу
   var header = $("#header");
   var modal = $('#header .order, #header .links, #header .social'); // тут указываем ID элемента
@@ -100,13 +100,14 @@ $('#header .services_block .services_categories .category_name').hover(function 
   $('#header .services_block .services_names .title h6').html(name);
   $('#header .services_block .services_names').addClass('on');
 });
+*/
 
 // заміна блоку послуг
 $('#header .services_block .services_categories .wrapper').hover(function () {
   $('#header .services_block .services_names .items').remove();
   $(this).find('.items').clone().appendTo('#header .services_block .services_names').css('display', 'flex');
 });
-
+/*
 $('#header .services_block .services_categories .category_name').click(function () {
   if (($(window).width() > 506) && ($(window).width() < 769)) {
     $(this).siblings('.items').slideToggle(250);
@@ -155,7 +156,7 @@ $(document).mouseup(function (e) {
     }
   }
 });
-
+*/
 // закриття модального вікна по кліку по фону
 $(document).mouseup(function (e) { // событие клика по веб-документу
   var dark_background = $("#dark_background");
