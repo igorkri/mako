@@ -1,5 +1,3 @@
-<?php
-?>
 
 <!----- Баннер ----->
 <section class="banner">
@@ -29,7 +27,9 @@
                 <div class="title">
                     <p>22.08.2022 - 30.09.2022</p>
                     <h3>
-                        Довга назва акції на декілька слів у два-три рядки. Назва акції. Довга назва акції на декілька слів у два-три рядки                    </h3>
+                        Акційні комплекси на лазерну епіляцію:
+
+                        Гл. бікіні + пахви - 550 грн.                    </h3>
                     <a href="#" class="make_appointment" target="_blank">
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="48" height="48" rx="24" fill="" />
@@ -40,14 +40,23 @@
                     </a>
                 </div>
                 <a href="/stocks" class="img">
-                    <img src="img/promo/15-01-2323-63c4839edc3f0.jpg" alt="">
+                    <img src="img/promo/12-04-2323-64369fa95d33b.jpg" alt="">
                 </a>
             </div>
             <div class="item">
                 <div class="title">
                     <p>22.08.2022 - 30.09.2022</p>
                     <h3>
-                        Довга назва акції на декілька слів у два-три рядки. Назва акції.                    </h3>
+                        <p>Акційні комплекси на лазерну епіляцію:</p>
+
+                        <p>Ніжки до колін+гл. бікіні+пахви - 870 грн.</p>
+
+                        <p>Ніжки повністю+ гл.бікіні+пахви - 1150 грн.</p>
+
+                        <p>Ніжки повністю+ гл.бікіні+пахви - 1150 грн.</p>
+
+                        <p>Ніжки повністю+ гл.бікіні+пахви - 1150 грн.</p>
+                    </h3>
                     <a href="#" class="make_appointment" target="_blank">
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="48" height="48" rx="24" fill="" />
@@ -58,7 +67,123 @@
                     </a>
                 </div>
                 <a href="/stocks" class="img">
-                    <img src="img/promo/16-01-2323-63c5aceb53a3e.webp" alt="">
+                    <img src="img/promo/12-04-2323-6436a15010cf4.jpg" alt="">
+                </a>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <p>22.08.2022 - 30.09.2022</p>
+                    <h3>
+                        Акційні комплекси на лазерну епіляцію:
+                        Ніжки до колін+гл. бікіні+пахви+ручки - 1190 грн.
+                        Ніжки повністю+ гл.бікіні+пахви+ручки - 1390 грн.                    </h3>
+                    <a href="#" class="make_appointment" target="_blank">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="24" fill="" />
+                            <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Записатись на прийом
+                    </a>
+                </div>
+                <a href="/stocks" class="img">
+                    <img src="img/promo/12-04-2323-6436a1400aefe.jpg" alt="">
+                </a>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <p>22.08.2022 - 30.09.2022</p>
+                    <h3>
+                        Ботулінотерапія - позбавлення зморшок!
+                        1+1+1=2
+                        Чоло+міжбрів’я+зона навколо очей - 3000 грн                    </h3>
+                    <a href="#" class="make_appointment" target="_blank">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="24" fill="" />
+                            <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Записатись на прийом
+                    </a>
+                </div>
+                <a href="/stocks" class="img">
+                    <img src="img/promo/12-04-2323-6436a17dbbe72.jpg" alt="">
+                </a>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <p>22.08.2022 - 30.09.2022</p>
+                    <h3>
+                        Подарункова процедура ручного масажу.
+                        При купівлі курсу ручного масажу з 10-ти процедур - Ви отримуєте 11-ту процедуру абсолютно безкоштовно!                    </h3>
+                    <a href="#" class="make_appointment" target="_blank">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="24" fill="" />
+                            <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Записатись на прийом
+                    </a>
+                </div>
+                <a href="/stocks" class="img">
+                    <img src="img/promo/12-04-2323-6436a1a9107df.jpg" alt="">
+                </a>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <p>22.08.2022 - 30.09.2022</p>
+                    <h3>
+                        Подарункові процедури апаратного масажу тіла.
+                        При купівлі курсу апаратного масажу з 10-ти процедур - Ви отримуєте 2 процедури абсолютно безкоштовно!                    </h3>
+                    <a href="#" class="make_appointment" target="_blank">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="24" fill="" />
+                            <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Записатись на прийом
+                    </a>
+                </div>
+                <a href="/stocks" class="img">
+                    <img src="img/promo/12-04-2323-6436a22f16f4b.jpg" alt="">
+                </a>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <p>22.08.2022 - 30.09.2022</p>
+                    <h3>
+                        Подарункові процедури пресотерапії.
+                        При купівлі курсу пресотерапії з 10-ти процедур - Ви отримуєте 5 процедур абсолютно безкоштовно!                    </h3>
+                    <a href="#" class="make_appointment" target="_blank">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="24" fill="" />
+                            <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Записатись на прийом
+                    </a>
+                </div>
+                <a href="/stocks" class="img">
+                    <img src="img/promo/12-04-2323-6436a2573986e.jpg" alt="">
+                </a>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <p>22.08.2022 - 30.09.2022</p>
+                    <h3>
+                        <p>тстова акція</p>
+                    </h3>
+                    <a href="#" class="make_appointment" target="_blank">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="24" fill="" />
+                            <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Записатись на прийом
+                    </a>
+                </div>
+                <a href="/stocks" class="img">
+                    <img src="img/promo/" alt="">
                 </a>
             </div>
         </div>
@@ -78,7 +203,7 @@
     </a>
 </section>
 <!----- слайдер "Популярні послуги" ----->
-<!--
+<!--  
 <div class="overlay">
     <h3>Популярні послуги</h3>
 </div>
@@ -107,18 +232,18 @@
                     Видалення судин                </h6>
             </div>
         </a>
-        <a href="/service/polinukleotidi" class="item">
-            <img src="/img/service-photo/13-03-2323-640f0a8ead820.jpg" alt="">
-            <div class="title">
-                <h6>
-                    Полінуклеотиди                </h6>
-            </div>
-        </a>
         <a href="/service/botulinoterapiya" class="item">
             <img src="/img/service-photo/02-03-2323-64009e6b428ca.jpg" alt="">
             <div class="title">
                 <h6>
                     Ботулінотерапія                </h6>
+            </div>
+        </a>
+        <a href="/service/in-ektsiyne-zbil-shennya-gub-v-tekhnitsi-natural-lips" class="item">
+            <img src="/img/service-photo/02-03-2323-6400a88f04e20.jpg" alt="">
+            <div class="title">
+                <h6>
+                    Ін`єкційне збільшення губ в техніці Natural lips                 </h6>
             </div>
         </a>
         <a href="/service/konsul-tatsiya-trikhologa" class="item">
@@ -135,11 +260,11 @@
                     Перманентний макіяж                </h6>
             </div>
         </a>
-        <a href="/service/ruchniy-zagal-niy-masazh" class="item">
-            <img src="/img/service-photo/10-03-2323-640b2a75b0dcc.jpg" alt="">
+        <a href="/service/aparatna-korektsiya-figuri" class="item">
+            <img src="/img/service-photo/13-03-2323-640f236c76ff6.jpg" alt="">
             <div class="title">
                 <h6>
-                    Ручний загальний масаж                </h6>
+                    Апаратна корекція фігури: лазерний ліполіз, кавітація, РФ-ліфтинг                </h6>
             </div>
         </a>
         <a href="/service/lazerna-yepilyatsiya-dlya-zhinok" class="item">
@@ -284,7 +409,7 @@
         <div class="info">
             <div class="prices">
                 <h1>
-                    Подарункові сертифікати на <br>будь-яку <br>суму чи послугу                </h1>
+                    Подарункові сертифікати на <br>будь-яку<br> суму чи послугу                </h1>
             </div>
             <p>Отримати сертифікат можна в одній із філій косметології МаКо за адресами: пр-т Л. Курбаса, 5в (Борщагівка), вул. М. Максимовича, 3г (м.Васильківська). Також можемо надіслати поштою.</p>
         </div>
