@@ -83,8 +83,13 @@ return [
             // 'cache' => 'cache',
         ],
         'assetManager' => [
-            'basePath' => '@webroot/assets',
-            'baseUrl' => '@web/assets',
+//            'basePath' => '@webroot/assets',
+//            'baseUrl' => '@web/assets',
+            'bundles' => [
+                'yii\web\JqueryAsset' => false, // Отключение подключения jQuery
+//                'yii\web\YiiAsset' => false, // Отключение подключения yii.js
+//                'yii\widgets\PjaxAsset' => false, // Отключение подключения jquery.pjax.js
+            ],
         ],
     ],
     'params' => $params,
