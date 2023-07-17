@@ -40,7 +40,7 @@
                     </a>
                 </div>
                 <a href="/stocks" class="img">
-                    <img src="img/promo/12-04-2323-64369fa95d33b.jpg" alt="">
+                    <img src="/img/promo/12-04-2323-64369fa95d33b.jpg" alt="">
                 </a>
             </div>
             <div class="item">
@@ -67,7 +67,7 @@
                     </a>
                 </div>
                 <a href="/stocks" class="img">
-                    <img src="img/promo/12-04-2323-6436a15010cf4.jpg" alt="">
+                    <img src="/img/promo/12-04-2323-6436a15010cf4.jpg" alt="">
                 </a>
             </div>
             <div class="item">
@@ -87,7 +87,7 @@
                     </a>
                 </div>
                 <a href="/stocks" class="img">
-                    <img src="img/promo/12-04-2323-6436a1400aefe.jpg" alt="">
+                    <img src="/img/promo/12-04-2323-6436a1400aefe.jpg" alt="">
                 </a>
             </div>
             <div class="item">
@@ -107,7 +107,7 @@
                     </a>
                 </div>
                 <a href="/stocks" class="img">
-                    <img src="img/promo/12-04-2323-6436a17dbbe72.jpg" alt="">
+                    <img src="/img/promo/12-04-2323-6436a17dbbe72.jpg" alt="">
                 </a>
             </div>
             <div class="item">
@@ -126,7 +126,7 @@
                     </a>
                 </div>
                 <a href="/stocks" class="img">
-                    <img src="img/promo/12-04-2323-6436a1a9107df.jpg" alt="">
+                    <img src="/img/promo/12-04-2323-6436a1a9107df.jpg" alt="">
                 </a>
             </div>
             <div class="item">
@@ -145,7 +145,7 @@
                     </a>
                 </div>
                 <a href="/stocks" class="img">
-                    <img src="img/promo/12-04-2323-6436a22f16f4b.jpg" alt="">
+                    <img src="/img/promo/12-04-2323-6436a22f16f4b.jpg" alt="">
                 </a>
             </div>
             <div class="item">
@@ -164,7 +164,7 @@
                     </a>
                 </div>
                 <a href="/stocks" class="img">
-                    <img src="img/promo/12-04-2323-6436a2573986e.jpg" alt="">
+                    <img src="/img/promo/12-04-2323-6436a2573986e.jpg" alt="">
                 </a>
             </div>
             <div class="item">
@@ -183,7 +183,7 @@
                     </a>
                 </div>
                 <a href="/stocks" class="img">
-                    <img src="img/promo/" alt="">
+                    <img src="/img/promo/" alt="">
                 </a>
             </div>
         </div>
