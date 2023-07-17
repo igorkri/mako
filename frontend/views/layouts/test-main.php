@@ -12,7 +12,7 @@
     <meta name="csrf-param" content="_csrf-frontend">
     <meta name="csrf-token" content="PbSrsSrVgCxnyfJjQMEtu7NgPfQPqCcqOpmb2CwjbhMIxMmFE6bNaxKApwp2iFvJnhgMsHb5YG136eKTbVAMJA==">
 
-    <link href="/css/style.css" rel="stylesheet"></head>
+    <link href="/css/style_test.css" rel="stylesheet"></head>
 <body>
 <!-- Модальні вікна -->
 
