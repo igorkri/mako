@@ -103,10 +103,21 @@ $('#header .services_block .services_categories .category_name').hover(function 
 
 
 // заміна блоку послуг
-$('#header .services_block .services_categories .wrapper').hover(function () {
-  $('#header .services_block .services_names .items').remove();
-  $(this).find('.items').clone().appendTo('#header .services_block .services_names').css('display', 'flex');
-});
+if ($(window).width() > 768) {
+  $('#header .services_block .services_categories .wrapper').hover(function () {
+    $('#header .services_block .services_names .items').remove();
+    $(this).find('.items').clone().appendTo('#header .services_block .services_names').css('display', 'flex');
+  });
+}
+
+
+if ($(window).width() < 769) {
+  $('#header .services_block .services_categories .wrapper').on('click', function () {
+    $('#header .services_block .services_names .items').remove();
+    $(this).find('.items').clone().appendTo('#header .services_block .services_names').css('display', 'flex');
+  });
+}
+
 
 $('#header .services_block .services_categories .category_name').click(function () {
   if (($(window).width() > 506) && ($(window).width() < 769)) {
