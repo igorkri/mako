@@ -143,7 +143,7 @@ $('#header .services_block .services_categories .category_name').click(function 
   }
 });
 
-$('#header .services_block .services_names .title img').click(function () {
+$('#header .services_block .services_names .title').click(function () {
   if ($(window).width() < 506) {
     $('#header .services_block .services_names').css('left', '100%');
   }
