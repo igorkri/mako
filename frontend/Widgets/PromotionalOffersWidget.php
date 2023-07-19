@@ -36,7 +36,7 @@ class PromotionalOffersWidget extends Widget
   <path d="M22 30C24 26 28 24 28 24C28 24 24 22 22 18" stroke="" stroke-width="2" stroke-linecap="round"
     stroke-linejoin="round" />
 </svg>
-Записатись на прийом
+Перейти до акції
 </a>
 </div>
 <a href="'.Url::to(['promo/index']).'" class="img">
