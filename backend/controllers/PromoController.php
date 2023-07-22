@@ -242,8 +242,11 @@ class PromoController extends Controller
         $request = Yii::$app->request;
         $dir = Yii::getAlias('@frontendWeb/img/promo');
         $model = $this->findModel($id);
-        unlink($dir . '/' . $model->file);
+        if(!empty($model->file)) {
+            unlink($dir . '/' . $model->file);
+        }
         $model->delete();
+
 
         if($request->isAjax){
             /*
@@ -275,7 +278,9 @@ class PromoController extends Controller
         foreach ( $pks as $pk ) {
             $model = $this->findModel($pk);
             $dir = Yii::getAlias('@frontendWeb/img/promo');
-            unlink($dir . '/' . $model->file);
+            if(!empty($model->file)) {
+                unlink($dir . '/' . $model->file);
+            }
             $model->delete();
         }
 

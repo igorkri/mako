@@ -34,6 +34,7 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'description',
+        'format' =>'raw'
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
