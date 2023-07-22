@@ -29,7 +29,7 @@ use yii\widgets\LinkPager;
                     <?php if(!empty($promo->file)): ?>
                         <img src="/img/promo/<?= $promo->file ?>" alt="">
                     <?php else: ?>
-                        <img src="/img/MaKo_logo1.png" alt="">
+                        <img src="/img/MaKo_logo1.png" alt="" width="20px">
                     <?php endif; ?>
                 </div>
             </div>
