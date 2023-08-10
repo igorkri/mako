@@ -26,7 +26,11 @@ use yii\widgets\LinkPager;
                     </a>
                 </div>
                 <div class="img">
-                    <img src="/img/promo/<?= $promo->file ?>" alt="">
+                    <?php if(!empty($promo->file)): ?>
+                        <img src="/img/promo/<?= $promo->file ?>" alt="">
+                    <?php else: ?>
+                        <img src="/img/MaKo_logo1.png" alt="" style="width: 100%;height: 80%;">
+                    <?php endif; ?>
                 </div>
             </div>
         <?php endforeach; ?>

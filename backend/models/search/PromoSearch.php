@@ -41,7 +41,7 @@ class PromoSearch extends Promo
      */
     public function search($params)
     {
-        $query = Promo::find();
+        $query = Promo::find()->orderBy('id DESC');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
