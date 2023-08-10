@@ -22,6 +22,9 @@ use yii\helpers\Url;
 		<a href="<?=Url::to(['reviews/index'])?>">Відгуки</a>
 		<a href="<?=Url::to(['contacts/index'])?>">Контакти</a>
 		<div class="cloud">
+			<div class="close">
+				<img src="/img/close10.svg" alt="">
+			</div>
 			<a href="<?=Url::to(['certificates/index'])?>">Сертифікати</a>
 			<a href="<?=Url::to(['team/index'])?>">Команда</a>
 			<a href="<?=Url::to(['videos/index'])?>">Відео</a>

@@ -32,6 +32,10 @@ $('#header .links .about').click(function () {
   $('#header .links .cloud').toggleClass('active');
 });
 
+$('#header .links .cloud .close').click(function () {
+  $('#header .links .cloud').removeClass('active');
+});
+
 $(document).keydown(function (event) {
   if (event.keyCode == 27) {
     $('#header .links .cloud').removeClass('active');
@@ -539,18 +543,30 @@ $('#product_head .pcc .add_to_cart').click(function (e) { /* Клік по кн�
 $('#specialists .card').click(function () {
   $('#blur_fond').addClass('on');
   $('#blur_fond .cont').append($(this).clone());
+  $('body').css({
+    'height': '100vh',
+    'overflow': 'hidden'
+  });
 });
 
 $('#blur_fond .close').click(function () {
   $('#blur_fond').removeClass('on');
   $('#blur_fond .cont .card').remove();
   $('#blur_fond .cont .learning_item').remove();
+  $('body').css({
+    'height': 'initial',
+    'overflow': 'auto'
+  });
 });
 
 // learning
 $('#learning .learning_item').click(function () {
   $('#blur_fond').addClass('on');
   $('#blur_fond .cont').append($(this).clone());
+  $('body').css({
+    'height': '100vh',
+    'overflow': 'hidden'
+  });
 });
 
 // order доставка

@@ -863,7 +863,7 @@ header .links .cloud {
   -ms-flex-direction: column;
   flex-direction: column;
   gap: 10px;
-  padding: 30px;
+  padding: 40px 40px 30px 30px;
   border: 1px solid #ededf3;
   border-top: 0;
   background-color: #fff;
@@ -880,6 +880,24 @@ header .links .cloud.active {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
+}
+
+header .links .cloud .close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 header .call_us {
@@ -2062,6 +2080,8 @@ section.service_description .specialists .card p {
   height: -moz-max-content;
   height: max-content;
   width: calc(100% - 360px);
+  height: 85vh;
+  overflow: auto;
 }
 
 .blur_fond .cont .card .text .person {
@@ -2956,7 +2976,8 @@ section.reviews .block .tape .item p.v2 {
   width: calc(100% - 360px);
   height: -webkit-max-content;
   height: -moz-max-content;
-  height: max-content;
+  height: 85vh;
+  overflow: auto;
 }
 
 .blur_fond .cont .learning_item .text .title {
@@ -2997,7 +3018,6 @@ section.reviews .block .tape .item p.v2 {
 .blur_fond .cont .learning_item .info {
   display: block;
   padding: 20px;
-  max-height: 336px;
   overflow: auto;
   background-color: #fff;
 }
@@ -4967,6 +4987,8 @@ footer .chat:hover a svg path {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    max-height: 88vh;
+    overflow: auto;
   }
 
   .blur_fond .cont .close {
@@ -4988,12 +5010,6 @@ footer .chat:hover a svg path {
     padding: 20px;
   }
 
-  .blur_fond .cont .card .text .info,
-  .blur_fond .cont .learning_item .text .info {
-    max-height: 200px;
-    overflow: auto;
-  }
-
   .blur_fond .cont .learning_item .img img {
     -o-object-fit: cover;
     object-fit: cover;
@@ -5003,6 +5019,8 @@ footer .chat:hover a svg path {
   .blur_fond .cont .card .text,
   .blur_fond .cont .learning_item .text {
     width: 100%;
+    overflow: initial;
+    height: calc(90vh - 340px);
   }
 
   .product_head {
