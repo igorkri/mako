@@ -55,14 +55,6 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-12">
-<!--            --><?//= $form->field($model, 'description')->widget(CKEditor::className(), [
-//                'preset' => 'full',
-//                'clientOptions' => [
-//                    'allowedContent' => true,
-//                    'language' => 'uk',
-//                ]
-//            ]); ?>
-
 
             <?php echo $form->field($model, 'description')->widget(Widget::class, [
                 'defaultSettings' => [
