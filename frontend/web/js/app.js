@@ -371,6 +371,7 @@ $('#gallery').slick({
   dots: false,
   arrows: false,
   centerMode: true,
+  touchThreshold: 100,
   autoplay: true,
   swipeToSlide: true,
   autoplaySpeed: 3000,
@@ -394,6 +395,7 @@ $('#team_gallery').slick({
   arrows: false,
   centerMode: true,
   autoplay: true,
+  touchThreshold: 100,
   swipeToSlide: true,
   autoplaySpeed: 3000,
   variableWidth: true
