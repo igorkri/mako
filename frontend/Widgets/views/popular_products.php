@@ -17,6 +17,8 @@ use yii\helpers\Url;
                 <?php else: ?>
                     <?php if(isset($product->productImages[0])): ?>
                         <img src="/img/products/<?=$product->productImages[0]->name ?>" alt="">
+                    <?php else: ?>
+                        <img src="/img/no-image.png" alt="">
                     <?php endif; ?>
                 <?php endif; ?>
             </div>
