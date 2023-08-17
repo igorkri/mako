@@ -15,7 +15,9 @@ use yii\helpers\Url;
                 <?php if (isset($product->productImages[0]) && file_exists('/img/products/' . $product->id . '/' . $product->productImages[0]->name)):?>
                     <img src="/img/products/<?=$product->id ?>/<?= $product->productImages[0]->name ?>" alt="">
                 <?php else: ?>
-                    <img src="/img/products/<?=$product->productImages[0]->name ?>" alt="">
+                    <?php if(isset($product->productImages[0])): ?>
+                        <img src="/img/products/<?=$product->productImages[0]->name ?>" alt="">
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
             <div class="title">
