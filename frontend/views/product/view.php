@@ -52,20 +52,20 @@ use yii\helpers\Url;
     </section>
     <section class="product" id="product">
         <div class="slider">
+            <?php if(!empty($product->productImages)): ?>
             <?php foreach ($product->productImages as $image): ?>
             <?php $d = explode('/', $image->name); ?>
             <div class="item">
                 <?php if (!isset($d[1])): ?>
                     <img src="/img/products/<?= $image->product_id ?>/<?= $image->name ?>" alt="">
                 <?php else: ?>
-<!--                    --><?php //if(!empty($image->name)): ?>
-<!--                        <img src="/img/products/--><?//= $image->name ?><!--" alt="">-->
-<!--                    --><?php //else: ?>
-                        <img src="/img/no-image.png" alt="">
-<!--                    --><?php //endif; ?>
+                    <img src="/img/products/<?= $image->name ?>" alt="">
                 <?php endif; ?>
             </div>
             <?php endforeach; ?>
+            <?php else: ?>
+                <img src="/img/no-image.png" alt="">
+            <?php endif; ?>
         </div>
         <div class="description">
             <h4>Опис товару</h4>
