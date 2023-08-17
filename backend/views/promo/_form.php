@@ -55,36 +55,36 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-12">
-            <?= $form->field($model, 'description')->widget(CKEditor::className(), [
-                'preset' => 'full',
-                'clientOptions' => [
-                    'allowedContent' => true,
-                    'language' => 'uk',
-                ]
-            ]); ?>
+<!--            --><?//= $form->field($model, 'description')->widget(CKEditor::className(), [
+//                'preset' => 'full',
+//                'clientOptions' => [
+//                    'allowedContent' => true,
+//                    'language' => 'uk',
+//                ]
+//            ]); ?>
 
 
-            <?php // $form->field($model, 'description')->widget(Widget::class, [
-//                'defaultSettings' => [
-//                    'style' => 'position: unset;'
-//                ],
-//                'settings' => [
-//                    'lang' => 'ru',
-//                    'minHeight' => 100,
-//                    'plugins' => [
-////                        'clips',
-//                        'fullscreen',
-//                        'table',
+            <?php  $form->field($model, 'description')->widget(Widget::class, [
+                'defaultSettings' => [
+                    'style' => 'position: unset;'
+                ],
+                'settings' => [
+                    'lang' => 'uk',
+                    'minHeight' => 100,
+                    'plugins' => [
+//                        'clips',
+                        'fullscreen',
+                        'table',
+                    ],
+                    'clips' => false,
+//                    'clips' => [
+//                        ['Не вкл', 'Не включается'],
+//                        ['Не раб', 'Не работает'],
+//                        ['Протекает', 'Протекает'],
+//                        ['Шумит', 'Посторонний шум'],
 //                    ],
-//                    'clips' => false,
-////                    'clips' => [
-////                        ['Не вкл', 'Не включается'],
-////                        ['Не раб', 'Не работает'],
-////                        ['Протекает', 'Протекает'],
-////                        ['Шумит', 'Посторонний шум'],
-////                    ],
-//                ],
-//            ]);?>
+                ],
+            ]);?>
         </div>
     </div>
     <div class="row">
