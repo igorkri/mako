@@ -13,14 +13,14 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
 //        'css/site.css',
-        '/css/style.css',
+        '/css/style.css?v=23',
     ];
     public $js = [
 //        "js/jquery-3.6.0.min.js",
 //        "https://unpkg.com/push-data-to-url",
-        "js/slick.min.js",
-        "js/main.js",
-        "js/app.js",
+        "js/slick.min.js?v=23",
+        "js/main.js?v=23",
+        "js/app.js?v=23",
     ];
     public $depends = [
         'yii\web\YiiAsset',
