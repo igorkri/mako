@@ -13,8 +13,6 @@ class CustomPager  extends \yii\widgets\LinkPager
         }
         if ($disabled) {
             Html::addCssClass($options, 'page');
-//            return  Html::tag('a', $label);
-//
         }
 
 

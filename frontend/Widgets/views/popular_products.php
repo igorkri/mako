@@ -12,7 +12,7 @@ use yii\helpers\Url;
         <?php foreach ($products as $product):?>
         <a href="<?= Url::to(['product/view', 'slug' => $product->slug]) ?>" class="item">
             <div class="img">
-                <?php if (file_exists('/img/products/' . $product->id . '/' . $product->productImages[0]->name)):?>
+                <?php if (isset($product->productImages[0]) && file_exists('/img/products/' . $product->id . '/' . $product->productImages[0]->name)):?>
                     <img src="/img/products/<?=$product->id ?>/<?= $product->productImages[0]->name ?>" alt="">
                 <?php else: ?>
                     <img src="/img/products/<?=$product->productImages[0]->name ?>" alt="">
