@@ -2080,7 +2080,7 @@ section.service_description .specialists .card p {
   height: -moz-max-content;
   height: max-content;
   width: calc(100% - 360px);
-  height: 85vh;
+  max-height: 85vh;
   overflow: auto;
 }
 
