@@ -74,7 +74,8 @@ class OrderController extends \yii\web\Controller
                         ]);
                     }
                 }else{
-                    return $this->redirect(['confirm']);
+//                    return $this->redirect(['confirm']);
+                    return $this->goHome();
                 }
             }
         }
