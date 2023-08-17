@@ -56,27 +56,7 @@ use yii\widgets\ActiveForm;
     <div class="row">
         <div class="col-12">
 
-            <?php echo $form->field($model, 'description')->widget(Widget::class, [
-                'defaultSettings' => [
-                    'style' => 'position: unset;'
-                ],
-                'settings' => [
-                    'lang' => 'uk',
-                    'minHeight' => 100,
-                    'plugins' => [
-//                        'clips',
-                        'fullscreen',
-                        'table',
-                    ],
-                    'clips' => false,
-//                    'clips' => [
-//                        ['Не вкл', 'Не включается'],
-//                        ['Не раб', 'Не работает'],
-//                        ['Протекает', 'Протекает'],
-//                        ['Шумит', 'Посторонний шум'],
-//                    ],
-                ],
-            ]);?>
+            <?php echo $form->field($model, 'description')->textarea();?>
         </div>
     </div>
     <div class="row">
