@@ -58,11 +58,11 @@ use yii\helpers\Url;
                 <?php if (!isset($d[1])): ?>
                     <img src="/img/products/<?= $image->product_id ?>/<?= $image->name ?>" alt="">
                 <?php else: ?>
-                    <?php if(!empty($image->name)): ?>
-                        <img src="/img/products/<?= $image->name ?>" alt="">
-                    <?php else: ?>
+<!--                    --><?php //if(!empty($image->name)): ?>
+<!--                        <img src="/img/products/--><?//= $image->name ?><!--" alt="">-->
+<!--                    --><?php //else: ?>
                         <img src="/img/no-image.png" alt="">
-                    <?php endif; ?>
+<!--                    --><?php //endif; ?>
                 <?php endif; ?>
             </div>
             <?php endforeach; ?>
