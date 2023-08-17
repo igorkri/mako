@@ -64,7 +64,7 @@ use yii\widgets\ActiveForm;
 //            ]); ?>
 
 
-            <?php  $form->field($model, 'description')->widget(Widget::class, [
+            <?php echo $form->field($model, 'description')->widget(Widget::class, [
                 'defaultSettings' => [
                     'style' => 'position: unset;'
                 ],
