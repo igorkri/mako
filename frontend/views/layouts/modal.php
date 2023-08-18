@@ -15,33 +15,12 @@ $contacts = \common\models\Contacts::find()->all();
                 <path d="M2 2L18 18M18 2L2 18" stroke="#42414D" stroke-width="3" stroke-linecap="round"/>
             </svg>
         </div>
-        <div class="alert-message"></div>
-        <form action="/order-a-call" method="post" id="order-a-call">
-            <h4>Замовити дзвінок</h4>
-            <input type="text" name="name" 
-            oninvalid="this.setCustomValidity('Укажіть будь ласка Ваше ім’я')"
-             oninput="this.setCustomValidity('')" 
-             placeholder="Ваше ім’я" required>
-            <input type="text" name="phone"  oninvalid="this.setCustomValidity('Укажіть будь ласка Ваш телефон')" oninput="this.setCustomValidity('')"  placeholder="Номер телефону" required>
-            <div class="choose_salon">
-                <input type="text" name="address" autocomplete="off" placeholder="Оберіть салон">
-                <div class="mark">
-                    <img src="/img/mark.svg" alt="">
-                </div>
-                <div class="drop">
-                    <?php foreach ($contacts as $contact): ?>
-                        <span><?=$contact->address?></span>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <input type="checkbox" name="signUpCheckbox" id="sign_up_checkbox" >
-            <label for="sign_up_checkbox">Я даю згоду на обробку моїх персональних даних</label>
-            <div class="submit">
-                <img src="/img/circle_red_arrow.svg" alt="">
-                <input type="submit" value="Відправити заявку">
-            </div>
-        </form>
-        <div class="banner">МаKо — Ви вмились і краса лишилась</div>
+        <?php foreach ($contacts as $contact): ?>
+            <a href="tel:<?=str_replace(' ', '', $contact->phone)?>" class="tel">
+                <img src="/img/vodafone-red.svg" alt="">
+                <p><?=$contact->phone?></p>
+            </a>
+        <?php endforeach; ?>
     </div>
 
     <!-- Модальне вікно "записатись" -->
@@ -56,7 +35,7 @@ $contacts = \common\models\Contacts::find()->all();
                 <img src="/img/vodafone-red.svg" alt="">
                 <p><?=$contact->phone?></p>
             </a>
-            <p class="address"><?=$contact->address?></p>
+<!--            <p class="address">--><?php //$contact->address?><!--</p>-->
         <?php endforeach; ?>
     </div>
 

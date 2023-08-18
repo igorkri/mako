@@ -1675,7 +1675,7 @@ section.popular_services .services_block .item .arrow:hover {
   transform: rotate(0);
 }
 
-section.popular_services a.make_appointment {
+section.popular_services .make_appointment {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
