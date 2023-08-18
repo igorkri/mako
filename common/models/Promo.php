@@ -31,7 +31,7 @@ class Promo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['begin_data', 'end_data', 'description', 'file'], 'required'],
+            [['begin_data', 'end_data', 'description'], 'required'],
             [['description'], 'string'],
             [['published'], 'integer'],
             [['file', 'begin_data', 'end_data'], 'string', 'max' => 255],

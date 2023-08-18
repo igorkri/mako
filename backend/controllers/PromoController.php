@@ -101,13 +101,13 @@ class PromoController extends Controller
         
                 ];         
             }else if($model->load($request->post()) && $model->save()){
-                $dir = Yii::getAlias('@frontendWeb/img/promo');
-
-                $file = UploadedFile::getInstance($model, 'file');
-                $imageName = date('d-m-yy', time()) . '-' . uniqid();
-                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-                $model->file = $imageName . '.' . $file->extension;
-
+                if($_FILES['Promo']['size']['file'] > 0) {
+                    $dir = Yii::getAlias('@frontendWeb/img/promo');
+                    $file = UploadedFile::getInstance($model, 'file');
+                    $imageName = date('d-m-yy', time()) . '-' . uniqid();
+                    $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                    $model->file = $imageName . '.' . $file->extension;
+                }
                 if ($model->save()) {
                     return [
                         'forceReload'=>'#crud-datatable-pjax',

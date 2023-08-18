@@ -86,17 +86,17 @@ class ArticleController extends Controller
         $model = new Article();
 
         if ($model->load($request->post())) {
-            $dir = Yii::getAlias('@frontendWeb/img/article');
-
-            $file = UploadedFile::getInstance($model, 'file');
-            $file_thumb = UploadedFile::getInstance($model, 'file_thumb');
-            $imageName = uniqid();
-            $imageName2 = uniqid();
-            $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-            $file_thumb->saveAs($dir . '/' . $imageName2 . '.' . $file->extension);
-            $model->file = $imageName . '.' . $file->extension;
-            $model->file_thumb = $imageName . '.' . $file->extension;
-
+            if($_FILES['Article']['size']['file'] > 0) {
+                $dir = Yii::getAlias('@frontendWeb/img/article');
+                $file = UploadedFile::getInstance($model, 'file');
+                $file_thumb = UploadedFile::getInstance($model, 'file_thumb');
+                $imageName = uniqid();
+                $imageName2 = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $file_thumb->saveAs($dir . '/' . $imageName2 . '.' . $file->extension);
+                $model->file = $imageName . '.' . $file->extension;
+                $model->file_thumb = $imageName . '.' . $file->extension;
+            }
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             } else {
