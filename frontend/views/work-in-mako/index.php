@@ -27,7 +27,6 @@
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-
     <?php else: ?>
         <p>В даний момент немає відкритих вакансій</p>
     <?php endif; ?>
