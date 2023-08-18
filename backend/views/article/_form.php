@@ -46,7 +46,7 @@ use yii\helpers\Html;
                     'showCaption' => true,
                     'showRemove' => true,
                     'showUpload' => false,
-
+                    'maxFileSize' => 1024, // Ограничение в килобайтах (1 МБ = 1024 КБ)
                     'uploadLabel' => '',
                     'browseLabel' => '',
                     'removeLabel' => '',
@@ -69,7 +69,7 @@ use yii\helpers\Html;
                         'showCaption' => true,
                         'showRemove' => true,
                         'showUpload' => false,
-
+                        'maxFileSize' => 1024, // Ограничение в килобайтах (1 МБ = 1024 КБ)
                         'uploadLabel' => '',
                         'browseLabel' => '',
                         'removeLabel' => '',

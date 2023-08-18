@@ -37,6 +37,7 @@ use yii\helpers\Url;
 //            'uploadUrl' => Url::to(['ajax-upload', 'application_id' => $application_id]),
             // 'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg', 'pdf', 'xls', 'xlsx', 'doc', 'docx'],
             'previewFileType' => 'any',
+            'maxFileSize' => 1024, // Ограничение в килобайтах (1 МБ = 1024 КБ)
             'maxFileCount' => 20,
              'showPreview' => true,
              'showCaption' => true,

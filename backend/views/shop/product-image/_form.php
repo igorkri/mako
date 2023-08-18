@@ -36,6 +36,7 @@ $product_id = Yii::$app->request->get('product_id');
             'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
             'previewFileType' => 'any',
             'maxFileCount' => 10,
+            'maxFileSize' => 1024, // Ограничение в килобайтах (1 МБ = 1024 КБ)
             'showPreview' => true,
             'showCaption' => true,
             'showRemove' => true,
