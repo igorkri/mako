@@ -35,6 +35,7 @@ class Promo extends \yii\db\ActiveRecord
             [['description'], 'string'],
             [['published'], 'integer'],
             [['file', 'begin_data', 'end_data'], 'string', 'max' => 255],
+            ['file', 'file', 'maxSize' => 1024 * 1024, 'tooBig' => 'Зображення занадто велике. Максимальний розмір: 1 МБ.'],
         ];
     }
 

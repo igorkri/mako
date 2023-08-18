@@ -32,6 +32,7 @@ class ServiceGallery extends \yii\db\ActiveRecord
         return [
             [['service_id', 'position'], 'integer'],
             [['file'], 'string', 'max' => 255],
+            ['file', 'file', 'maxSize' => 1024 * 1024, 'tooBig' => 'Зображення занадто велике. Максимальний розмір: 1 МБ.'],
             [['service_id'], 'exist', 'skipOnError' => true, 'targetClass' => Service::class, 'targetAttribute' => ['service_id' => 'id']],
         ];
     }

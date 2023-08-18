@@ -30,6 +30,7 @@ class Team extends \yii\db\ActiveRecord
         return [
             [['description'], 'string'],
             [['title', 'file'], 'string', 'max' => 255],
+            ['file', 'file', 'maxSize' => 1024 * 1024, 'tooBig' => 'Зображення занадто велике. Максимальний розмір: 1 МБ.'],
         ];
     }
 

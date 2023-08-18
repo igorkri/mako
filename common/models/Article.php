@@ -62,6 +62,7 @@ class Article extends \yii\db\ActiveRecord
         return [
             [['text'], 'string'],
             [['name', 'name_header', 'file', 'slug', 'file_thumb'], 'string', 'max' => 255],
+            ['file', 'file', 'maxSize' => 1024 * 1024, 'tooBig' => 'Зображення занадто велике. Максимальний розмір: 1 МБ.'],
             [['created_at', 'updated_at'], 'integer'],
         ];
     }

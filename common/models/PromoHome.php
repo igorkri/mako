@@ -33,6 +33,7 @@ class PromoHome extends \yii\db\ActiveRecord
             [['if_empty_price'], 'string', 'max' => 120],
             [['info'], 'string', 'max' => 1100],
             [['price_1', 'price_2', 'price_3', 'price_4', 'price_5'], 'number'],
+            ['file', 'file', 'maxSize' => 1024 * 1024, 'tooBig' => 'Зображення занадто велике. Максимальний розмір: 1 МБ.'],
         ];
     }
 
