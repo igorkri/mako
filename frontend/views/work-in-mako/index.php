@@ -5,6 +5,7 @@
 <!----- Робота в MaKo ----->
 <section class="work">
     <h3>Робота в MaKo</h3>
+    <?php if($works): ?>
     <p>Запрошуємо спеціалістів до співпраці.</p>
     <div class="block">
         <?php if ($works): ?>
@@ -26,4 +27,8 @@
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
+
+    <?php else: ?>
+        <p>В даний момент немає відкритих вакансій</p>
+    <?php endif; ?>
 </section>
