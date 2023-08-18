@@ -15,10 +15,10 @@ use yii\helpers\Html;
     <?php $form = ActiveForm::begin(); ?>
     <p>
         <?php if (!Yii::$app->request->isAjax) { ?>
-            <div class="form-group">
-                <?= Html::submitButton($model->isNewRecord ? 'Створити' : 'Зберегти', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
-            </div>
-        <?php } ?>
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Створити' : 'Зберегти', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
+    </div>
+<?php } ?>
     </p>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
@@ -38,25 +38,51 @@ use yii\helpers\Html;
     ]); ?>
 
     <?php if ($model->isNewRecord): ?>
-        <div class="col-sm-6">
-            <?= $form->field($model, 'file')->widget(FileInput::class, [
-                'options' => ['accept' => 'image/*'],
-                'language' => 'uk',
-                'pluginOptions' => [
-                    'showCaption' => true,
-                    'showRemove' => true,
-                    'showUpload' => false,
-                    'maxFileSize' => 1024, // Ограничение в килобайтах (1 МБ = 1024 КБ)
-                    'uploadLabel' => '',
-                    'browseLabel' => '',
-                    'removeLabel' => '',
+        <div class="row">
+            <div class="col-sm-6">
+                <?php
+                echo $form->field($model, 'file_thumb')->widget(FileInput::classname(), [
+                    'options' => ['accept' => 'image/*'],
+                    'language' => 'uk',
+                    'pluginOptions' => [
+                        'showCaption' => true,
+                        'showRemove' => true,
+                        'showUpload' => false,
+                        'maxFileSize' => 1024, // Ограничение в килобайтах (1 МБ = 1024 КБ)
+                        'uploadLabel' => '',
+                        'browseLabel' => '',
+                        'removeLabel' => '',
 
-                    'browseClass' => 'btn btn-success',
-                    'uploadClass' => 'btn btn-info',
-                    'removeClass' => 'btn btn-danger',
-                    'removeIcon' => '<i class="fas fa-trash"></i> '
-                ]
-            ]); ?>
+                        'browseClass' => 'btn btn-success',
+                        'uploadClass' => 'btn btn-info',
+                        'removeClass' => 'btn btn-danger',
+                        'removeIcon' => '<i class="fas fa-trash"></i> ',
+                        'initialPreviewAsData' => true,
+                    ]
+                ]);
+
+                ?>
+            </div>
+            <div class="col-sm-6">
+                <?= $form->field($model, 'file')->widget(FileInput::class, [
+                    'options' => ['accept' => 'image/*'],
+                    'language' => 'uk',
+                    'pluginOptions' => [
+                        'showCaption' => true,
+                        'showRemove' => true,
+                        'showUpload' => false,
+                        'maxFileSize' => 1024, // Ограничение в килобайтах (1 МБ = 1024 КБ)
+                        'uploadLabel' => '',
+                        'browseLabel' => '',
+                        'removeLabel' => '',
+
+                        'browseClass' => 'btn btn-success',
+                        'uploadClass' => 'btn btn-info',
+                        'removeClass' => 'btn btn-danger',
+                        'removeIcon' => '<i class="fas fa-trash"></i> '
+                    ]
+                ]); ?>
+            </div>
         </div>
     <?php else: ?>
         <div class="row">

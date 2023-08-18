@@ -86,16 +86,18 @@ class ArticleController extends Controller
         $model = new Article();
 
         if ($model->load($request->post())) {
+            $dir = Yii::getAlias('@frontendWeb/img/article');
             if($_FILES['Article']['size']['file'] > 0) {
-                $dir = Yii::getAlias('@frontendWeb/img/article');
                 $file = UploadedFile::getInstance($model, 'file');
-                $file_thumb = UploadedFile::getInstance($model, 'file_thumb');
                 $imageName = uniqid();
-                $imageName2 = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-                $file_thumb->saveAs($dir . '/' . $imageName2 . '.' . $file->extension);
                 $model->file = $imageName . '.' . $file->extension;
-                $model->file_thumb = $imageName . '.' . $file->extension;
+            }
+            if($_FILES['Article']['size']['file_thumb'] > 0) {
+                $file_thumb = UploadedFile::getInstance($model, 'file_thumb');
+                $imageName2 = uniqid();
+                $file_thumb->saveAs($dir . '/' . $imageName2 . '.' . $file->extension);
+                $model->file_thumb = $imageName2 . '.' . $file->extension;
             }
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -165,8 +167,12 @@ class ArticleController extends Controller
         $dir = Yii::getAlias('@frontendWeb/img/article');
         $request = Yii::$app->request;
         $model = $this->findModel($id);
-        unlink($dir . "/" . $model->file_thumb);
-        unlink($dir . "/" . $model->file);
+        if(is_file($dir . "/" . $model->file_thumb)){
+            unlink($dir . "/" . $model->file_thumb);
+        }
+        if(is_file($dir . "/" . $model->file)) {
+            unlink($dir . "/" . $model->file);
+        }
         $model->delete();
 
         if ($request->isAjax) {
