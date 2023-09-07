@@ -88,7 +88,7 @@ class ServiceController extends Controller
                 </figure>';
         endforeach;
 
-//        debug($items_img);
+    //    debug($items_img);
 //        die();
         $specialists = ServiceSpecialist::find()->where(['service_id' => $id])->all();
         $videos = ServiceVideo::find()->where(['service_id' => $id])->all();

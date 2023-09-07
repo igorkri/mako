@@ -14,7 +14,7 @@ use yii\helpers\Url;
             <?php foreach ($promos as $promo): ?>
             <div class="item">
                 <div class="title">
-                    <p>22.08.2022 - 30.09.2022</p>
+                    <p><?= $promo->begin_data ?> - <?= $promo->end_data ?></p>
                     <h3>
                         <?=$promo->description?>
                     </h3>
