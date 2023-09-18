@@ -37,7 +37,8 @@ class VideoController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {    
+    {
+        Yii::$app->cache->flush();
         $searchModel = new VideoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

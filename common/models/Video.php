@@ -29,7 +29,7 @@ class Video extends \yii\db\ActiveRecord
     {
         return [
             [['data', 'title'], 'string', 'max' => 255],
-            [['url_file'], 'string'],
+            [['url_file'], 'safe'],
         ];
     }
 
