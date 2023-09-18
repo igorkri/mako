@@ -9,7 +9,7 @@
         <?php if ($videos): ?>
             <?php foreach ($videos as $video): ?>
                 <div class="video">
-                    <iframe width="" height="" src="https://www.youtube.com/embed/<?= $video->url_file ?>"
+                    <iframe width="" height="" src="<?= $video->url_file ?>"
                             title="<?= $video->title ?>" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
