@@ -16,26 +16,24 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'id',
     // ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'url_file',
-        'format' => 'raw',
-        'value' => function($model){
-            return '<iframe width="" height="" src="https://www.youtube.com/embed/'. $model->url_file .'"
-                  title="" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>';
-        },
-        'filter' => false, 'mergeHeader' => true,
-        'width' => '120px',
-        'vAlign' => GridView::ALIGN_MIDDLE,
-        'hAlign' => GridView::ALIGN_CENTER,
-    ],
+//    [
+//        'class'=>'\kartik\grid\DataColumn',
+//        'attribute'=>'url_file',
+//        'format' => 'raw',
+//        'value' => function($model){
+//
+//            return $model->url_file;
+//        },
+//        'filter' => false, 'mergeHeader' => true,
+////        'width' => '25px',
+//        'vAlign' => GridView::ALIGN_MIDDLE,
+//        'hAlign' => GridView::ALIGN_CENTER,
+//    ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'data',
         'filter' => false, 'mergeHeader' => true,
-        'width' => '120px',
+//        'width' => '80px',
         'vAlign' => GridView::ALIGN_MIDDLE,
         'hAlign' => GridView::ALIGN_CENTER,
     ],
@@ -43,6 +41,7 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'title',
         'filter' => false, 'mergeHeader' => true,
+//        'width' => '80px',
         'vAlign' => GridView::ALIGN_MIDDLE,
 //        'hAlign' => GridView::ALIGN_CENTER,
     ],
@@ -64,4 +63,5 @@ return [
                         'data-confirm-message'=>'Ви впевнені, що хочете видалити цей елемент?'],
     ],
 
-];   
+];
+

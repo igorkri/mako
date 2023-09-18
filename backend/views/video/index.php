@@ -70,3 +70,20 @@ $this->params['breadcrumbs'][] = $this->title;
     "footer"=>"",// always need it for jquery plugin
 ])?>
 <?php Modal::end(); ?>
+
+<?php
+$css = <<<CSS
+
+    iframe {
+        border: 0;
+        height: 146px;
+        width: 255px;
+    }
+
+
+CSS;
+
+
+$this->registerCss($css);
+
+?>

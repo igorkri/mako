@@ -9,10 +9,7 @@
         <?php if ($videos): ?>
             <?php foreach ($videos as $video): ?>
                 <div class="video">
-                    <iframe width="" height="" src="<?= $video->url_file ?>"
-                            title="<?= $video->title ?>" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                    <?= $video->url_file ?>
                     <div class="title">
                         <p><?= $video->data ?></p>
                         <h2><?= $video->title ?></h2>

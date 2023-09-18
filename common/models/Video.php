@@ -28,7 +28,8 @@ class Video extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['data', 'title', 'url_file'], 'string', 'max' => 255],
+            [['data', 'title'], 'string', 'max' => 255],
+            [['url_file'], 'string'],
         ];
     }
 
